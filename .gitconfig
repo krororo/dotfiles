@@ -1,0 +1,35 @@
+[user]
+	name = krororo
+	email = heavens.feel.7@gmail.com
+[alias]
+	gconf = config --global
+	st = !git status --short && git stash list
+	lg = log --decorate --date=iso --graph
+	ci = commit
+	br = branch -v
+	co = checkout
+	di = diff
+	f = fetch --tags
+	lgo = log --oneline --decorate --graph --date=iso
+	fp = fetch --prune --all --tags
+	ss = stash
+	sp = stash pop
+	mg = merge --no-edit
+	lgp = log -p --decorate --graph --date=iso
+	lgn = log --decorate --graph --name-status --date=iso
+[color]
+	ui = auto
+[push]
+	default = current
+[core]
+	editor = emacs
+[rebase]
+	autosquash = true
+[credential]
+	helper = store
+[merge]
+	ff = false
+[pull]
+	rebase = preserve
+[include]
+	path = ~/.gitconfig.local
