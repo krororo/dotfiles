@@ -17,6 +17,7 @@
 	mg = merge --no-edit
 	lgp = log -p --decorate --graph --date=iso
 	lgn = log --decorate --graph --name-status --date=iso
+	dc = diff --cached
 [color]
 	ui = auto
 [push]
