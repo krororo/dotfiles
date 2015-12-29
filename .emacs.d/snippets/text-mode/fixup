@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: fixup
+# key: fu
+# binding: direct-keybinding
+# --
+fixup! $0

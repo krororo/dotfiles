@@ -1,0 +1,11 @@
+;; wdired
+(require 'wdired)
+(defun dired-open-in-accordance-with-situation ()
+  (interactive)
+  (let ((file (dired-get-filename)))
+    (if (file-directory-p file)
+        (dired-find-alternate-file)
+      (dired-find-file))))
+(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+(define-key dired-mode-map "a" 'dired-find-file)
+(define-key dired-mode-map (kbd "RET") 'dired-open-in-accordance-with-situation)

@@ -1,0 +1,9 @@
+.emacs-places
+*~
+ac-comphist.dat
+proxy-setting.el
+tramp
+url/
+eshell/history
+bookmarks
+el-get

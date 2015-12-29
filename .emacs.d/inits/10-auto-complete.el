@@ -1,0 +1,11 @@
+;; auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+(defun ac-common-setup ()
+  (add-to-list 'ac-sources 'ac-source-yasnippet))
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+(add-to-list 'ac-modes 'haml-mode)
+(add-to-list 'ac-modes 'scss-mode)
