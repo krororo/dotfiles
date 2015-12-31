@@ -47,6 +47,7 @@
 (el-get-bundle scss-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
+(el-get-bundle web-mode)
 
 ;; flymake
 (el-get-bundle flymake-easy)
