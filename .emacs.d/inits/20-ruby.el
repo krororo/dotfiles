@@ -1,6 +1,8 @@
 (setq auto-mode-alist
-      (append '(("\\.ru$\\|\\.rake$\\|Rakefile\\|Gemfile$\\|\\.plugin$\\|\\.gemspec$" . ruby-mode))
-              auto-mode-alist))
+      (append '(("\\.\\(ru\\|rake\\|plugin\\|gemspec\\)\\'" . ruby-mode)
+                ("Rakefile\\'" . ruby-mode)
+                ("Gemfile\\'" . ruby-mode))
+         auto-mode-alist))
 (setq ruby-use-smie nil)
 (add-hook 'ruby-mode-hook
           '(lambda()

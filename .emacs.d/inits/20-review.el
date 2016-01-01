@@ -1,5 +1,5 @@
 (autoload 'review-mode "review-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?$" . review-mode))
+(add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode))
 
 (custom-set-faces
  '(review-mode-bold-face ((t (:foreground "deep sky blue" :weight bold))))
