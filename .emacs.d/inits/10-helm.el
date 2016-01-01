@@ -10,6 +10,7 @@
 (define-key global-map (kbd "C-x b") 'helm-buffers-list)
 (define-key global-map (kbd "C-c C-v") 'helm-ls-git-ls)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
+(define-key global-map (kbd "C-;") 'helm-mini)
 
 ;; リストのソートをしないように
 (defadvice helm-buffers-sort-transformer (around ignore activate)
@@ -17,3 +18,7 @@
 
 (custom-set-faces
  '(helm-source-header ((t (:background "#22083397778B" :foreground "white" :weight bold)))))
+
+(custom-set-variables
+ '(helm-buffer-max-length 40)
+ '(helm-buffer-details-flag nil))
