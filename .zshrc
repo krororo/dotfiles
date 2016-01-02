@@ -63,6 +63,7 @@ alias be='bundle exec'
 alias less='less -R'
 alias emacs='XMODIFIERS=@im=none emacs'
 alias grep="grep --color=auto"
+alias -g P='| peco'
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -70,3 +71,19 @@ eval "$(rbenv init -)"
 
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
+
+# Functions
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+                    eval $tac | \
+                    peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
