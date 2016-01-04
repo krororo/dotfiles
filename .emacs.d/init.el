@@ -41,7 +41,7 @@
 (el-get-bundle feature-mode)
 (el-get-bundle haml-mode)
 (el-get-bundle js2-mode)
-(el-get-bundle markdown-mode)
+(el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
 (el-get-bundle scss-mode)
