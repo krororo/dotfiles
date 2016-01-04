@@ -53,12 +53,6 @@
 (el-get-bundle flymake-easy)
 (el-get-bundle flymake-ruby)
 
-;; load-path 追加
-(let ((default-directory (expand-file-name "~/.emacs.d/elisp")))
-  (add-to-list 'load-path default-directory)
-  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-      (normal-top-level-add-subdirs-to-load-path)))
-
 ;; package
 (require 'package)
 (fset 'package-desc-vers 'package--ac-desc-version)
