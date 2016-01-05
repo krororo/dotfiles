@@ -29,6 +29,7 @@
 (el-get-bundle dash)
 (el-get-bundle yasnippet)
 (el-get-bundle highlight-symbol)
+(el-get-bundle anzu)
 
 ;; magit
 (el-get-bundle magit)
