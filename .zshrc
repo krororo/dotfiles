@@ -1,6 +1,7 @@
 # Global setting
 bindkey -e
 EDITOR=vim
+zstyle ':completion:*' use-cache true
 
 # Complete
 autoload -U compinit; compinit
@@ -12,10 +13,13 @@ bindkey "^[[Z" reverse-menu-complete
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
-setopt extended_glob
 setopt equals
 setopt correct
+setopt completealiases
+setopt magic_equal_subst
 zstyle ':completion:*:default' menu select=1
+source /usr/share/zsh/vendor-completions/_docker
+zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
 
 # History
 HISTFILE=~/.zsh_history
@@ -49,10 +53,10 @@ autoload -U colors; colors
 [ -f /usr/lib/git-core/git-sh-prompt ] && source /usr/lib/git-core/git-sh-prompt
 setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
-PROMPT="%n: %{${fg[red]}%}%~%{${reset_color}%}${git_prompt}
+PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
 $ "
 RPROMPT=''
-SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%f%b "
 
 # Alias
 alias ls="ls --color"
@@ -62,12 +66,19 @@ alias mv="mv -i"
 alias be='bundle exec'
 alias less='less -R'
 alias emacs='XMODIFIERS=@im=none emacs'
-alias grep="grep --color=auto"
+alias sudo='sudo -E '
+alias less='less -R'
+alias rcov='bundle exec rspec -r./test/rcov.rb -c'
+alias brspec='bundle exec rspec -c'
+alias grep='grep --color=always'
+alias today='date +%Y%m%d'
 alias -g P='| peco'
+alias -g L='| less'
+alias -g G='| grep'
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init - zsh)"
 
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
@@ -91,3 +102,6 @@ bindkey '^r' peco-select-history
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Other
+xset -r 49 >/dev/null 2>&1 || :
