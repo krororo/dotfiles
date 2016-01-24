@@ -7,3 +7,5 @@ augroup END
 set list
 set listchars=tab:>.
 hi Comment ctermfg=1
+set expandtab
+set shiftwidth=2
