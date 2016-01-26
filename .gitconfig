@@ -9,7 +9,7 @@
 	br = branch -v
 	co = checkout
 	di = diff
-	f = fetch --tags
+	f = fetch --tags --all
 	lgo = log --oneline --decorate --graph --date=iso
 	fp = fetch --prune --all --tags
 	ss = stash
@@ -18,12 +18,17 @@
 	lgp = log -p --decorate --graph --date=iso
 	lgn = log --decorate --graph --name-status --date=iso
 	dc = diff --cached
+	brr = branch -vr
+	bd = branch -d
+	lga = log --graph --decorate --oneline --all
+	lgr = log -p --reverse
 [color]
 	ui = auto
 [push]
 	default = current
 [core]
-	editor = emacs
+	editor = vim
+	quotepath = false
 [rebase]
 	autosquash = true
 [credential]
