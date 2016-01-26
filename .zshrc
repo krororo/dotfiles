@@ -18,7 +18,7 @@ setopt correct
 setopt completealiases
 setopt magic_equal_subst
 zstyle ':completion:*:default' menu select=1
-source /usr/share/zsh/vendor-completions/_docker
+[ -f /usr/share/zsh/vendor-completions/_docker ] && source /usr/share/zsh/vendor-completions/_docker
 zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
 
 # History
@@ -42,7 +42,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Title
 case "${TERM}" in
-kterm*|xterm)
+kterm*|xterm*)
     precmd () {
         print -Pn "\e]0;%m:%~\a"
     };;
