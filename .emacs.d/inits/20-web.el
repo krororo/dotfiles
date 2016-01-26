@@ -4,4 +4,5 @@
 
 (custom-set-variables
  '(web-mode-code-indent-offset 2)
- '(web-mode-css-indent-offset 2))
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-script-padding 2))
