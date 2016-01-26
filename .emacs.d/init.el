@@ -30,6 +30,7 @@
 (el-get-bundle yasnippet)
 (el-get-bundle highlight-symbol)
 (el-get-bundle anzu)
+(el-get-bundle exec-path-from-shell)
 
 ;; magit
 (el-get-bundle magit)
@@ -54,6 +55,9 @@
 ;; flymake
 (el-get-bundle flymake-easy)
 (el-get-bundle flymake-ruby)
+
+(let ((envs '("PATH")))
+  (exec-path-from-shell-copy-envs envs))
 
 ;; package
 (require 'package)
