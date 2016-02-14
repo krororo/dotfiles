@@ -31,6 +31,7 @@
 	quotepath = false
 [rebase]
 	autosquash = true
+	autostash = true
 [credential]
 	helper = store
 [merge]
