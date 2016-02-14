@@ -50,6 +50,7 @@
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle web-mode)
+(el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
 
 ;; flymake
 (el-get-bundle flymake-easy)
