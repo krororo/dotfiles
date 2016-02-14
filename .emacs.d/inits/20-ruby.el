@@ -29,8 +29,7 @@
              ;; flymake setting
              (flymake-ruby-load)
              ;; yard-mode
-             (yard-mode)
-             (highlight-symbol-mode)))
+             (yard-mode)))
 (custom-set-variables
  '(rspec-spec-command "rspec -c")
  '(rspec-use-rake-when-possible nil)

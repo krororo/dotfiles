@@ -28,7 +28,6 @@
 (el-get-bundle color-moccur)
 (el-get-bundle dash)
 (el-get-bundle yasnippet)
-(el-get-bundle highlight-symbol)
 (el-get-bundle anzu)
 (el-get-bundle exec-path-from-shell)
 
