@@ -1,6 +1,7 @@
 .emacs-places
 *~
 ac-comphist.dat
+elpa
 proxy-setting.el
 tramp
 url/
