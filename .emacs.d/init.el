@@ -30,6 +30,7 @@
 (el-get-bundle yasnippet)
 (el-get-bundle anzu)
 (el-get-bundle exec-path-from-shell)
+(el-get-bundle elpa:open-junk-file)
 
 ;; magit
 (el-get-bundle magit)
