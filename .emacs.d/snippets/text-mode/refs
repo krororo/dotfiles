@@ -3,7 +3,7 @@
 # key: re
 # binding: direct-keybinding
 # --
-refs #`(let ((br (shell-command-to-string "git branch"))
+refs #`(let ((br (shell-command-to-string "git symbolic-ref --short HEAD"))
              (re "\\(dev\\|bug\\)\\([0-9]*\\)"))
          (when (string-match re (cond ((stringp br) br) (t "")))
            (concat (match-string 2 br) " ")))`$0
