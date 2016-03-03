@@ -75,6 +75,7 @@ alias today='date +%Y%m%d'
 alias -g P='| peco'
 alias -g L='| less'
 alias -g G='| grep'
+alias o=xdg-open
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
