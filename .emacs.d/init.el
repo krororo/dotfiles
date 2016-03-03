@@ -52,6 +52,7 @@
 (el-get-bundle yard-mode)
 (el-get-bundle web-mode)
 (el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
+(el-get-bundle krororo/kotlin-mode)
 
 ;; flymake
 (el-get-bundle flymake-easy)
