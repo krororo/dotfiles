@@ -37,6 +37,9 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+# Keybind
+bindkey "^U" backward-kill-line
+
 # Color
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
@@ -83,6 +86,7 @@ eval "$(rbenv init - zsh)"
 
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
+export WARDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # Functions
 function peco-select-history() {
