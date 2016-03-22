@@ -86,7 +86,7 @@ eval "$(rbenv init - zsh)"
 
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
-export WARDCHARS="*?_-.[]~=&;!#$%^(){}<>"
+export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # Functions
 function peco-select-history() {
