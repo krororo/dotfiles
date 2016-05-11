@@ -15,7 +15,7 @@
 	ss = stash
 	sp = stash pop
 	mg = merge --no-edit
-	lgp = log -p --decorate --graph --date=iso
+	lgp = log -p --decorate --date=iso
 	lgn = log --decorate --graph --name-status --date=iso
 	dc = diff --cached
 	brr = branch -vr
@@ -40,3 +40,7 @@
 	rebase = preserve
 [include]
 	path = ~/.gitconfig.local
+[pager]
+	diff = diff-highlight | less
+	show = diff-highlight | less
+	log = diff-highlight | less
