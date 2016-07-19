@@ -43,6 +43,7 @@
 [pager]
 	diff = diff-highlight | less
 	show = diff-highlight | less
-	log = diff-highlight | less
 [diff]
 	compactionHeuristic = true
+[log]
+	date = iso
