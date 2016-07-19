@@ -40,6 +40,7 @@
 (el-get-bundle helm)
 (el-get-bundle helm-ls-git)
 (el-get-bundle helm-descbinds)
+(el-get-bundle helm-ag)
 
 ;; progmode
 (el-get-bundle feature-mode)
