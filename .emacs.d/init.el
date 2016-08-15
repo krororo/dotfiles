@@ -32,6 +32,7 @@
 (el-get-bundle exec-path-from-shell)
 (el-get-bundle elpa:open-junk-file)
 (el-get-bundle rainbow-mode)
+(el-get-bundle ag)
 
 ;; magit
 (el-get-bundle magit)
