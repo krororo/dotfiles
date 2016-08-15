@@ -1,5 +1,4 @@
 (global-set-key "\C-h" 'delete-backward-char)
-(global-set-key "\C-cg" 'goto-line)
 (global-set-key "\C-cm" 'magit-status)
 (global-set-key "\C-cu" 'comment-region)
 (global-set-key "\C-cy" 'uncomment-region)
