@@ -33,6 +33,7 @@
 (el-get-bundle elpa:open-junk-file)
 (el-get-bundle rainbow-mode)
 (el-get-bundle ag)
+(el-get-bundle dumb-jump)
 
 ;; magit
 (el-get-bundle magit)

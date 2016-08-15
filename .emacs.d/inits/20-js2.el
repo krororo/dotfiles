@@ -4,7 +4,8 @@
 (add-hook 'js2-mode-hook
           '(lambda()
              (setq js2-global-externs (list "jQuery" "$"))
-             (setq js2-additional-externs (list "jQuery" "$"))))
+             (setq js2-additional-externs (list "jQuery" "$"))
+             (dumb-jump-mode)))
 
 (custom-set-variables
  '(js-indent-level 2)
