@@ -22,6 +22,9 @@
 	bd = branch -d
 	lga = log --graph --decorate --oneline --all
 	lgr = log -p --reverse
+	p = pull
+	pu = push
+	puf = push --force-with-lease
 [color]
 	ui = auto
 [push]
