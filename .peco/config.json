@@ -1,5 +1,6 @@
 {
   "Keymap": {
     "C-g": "peco.Cancel"
-  }
+  },
+  "Layout": "bottom-up"
 }
