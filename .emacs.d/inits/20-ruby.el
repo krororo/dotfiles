@@ -4,10 +4,19 @@
                 ("Gemfile\\'" . ruby-mode))
          auto-mode-alist))
 (setq ruby-use-smie nil)
+(setq rspec-spec-command "rspec -c")
+(setq rspec-use-rake-when-possible nil)
+(setq ruby-deep-arglist nil)
+(setq ruby-deep-indent-paren-style nil)
+(setq ruby-insert-encoding-magic-comment nil))
+
 (add-hook 'ruby-mode-hook
           '(lambda()
-             (define-key ruby-mode-map (kbd "C-c d") 'flymake-display-err-minibuf)
-             (electric-indent-local-mode -1)))
+             (setq flycheck-checker 'ruby-rubocop)
+             (electric-indent-local-mode -1)
+             (flycheck-mode)
+             (yard-mode)
+             (dumb-jump-mode)))
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
@@ -23,17 +32,3 @@
     (when indent
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
-
-(add-hook 'ruby-mode-hook
-          '(lambda()
-             ;; flymake setting
-             (flymake-ruby-load)
-             ;; yard-mode
-             (yard-mode)
-             (dumb-jump-mode)))
-(custom-set-variables
- '(rspec-spec-command "rspec -c")
- '(rspec-use-rake-when-possible nil)
- '(ruby-deep-arglist nil)
- '(ruby-deep-indent-paren-style nil)
- '(ruby-insert-encoding-magic-comment nil))

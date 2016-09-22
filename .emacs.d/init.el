@@ -58,9 +58,8 @@
 (el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
 (el-get-bundle kotlin-mode)
 
-;; flymake
-(el-get-bundle flymake-easy)
-(el-get-bundle flymake-ruby)
+;; lint check
+(el-get-bundle flycheck)
 
 (let ((envs '("PATH")))
   (exec-path-from-shell-copy-envs envs))
