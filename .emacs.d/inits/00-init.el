@@ -1,3 +1,4 @@
+(setq custom-file (locate-user-emacs-file "custom.el"))
 (setq-default indent-tabs-mode nil)
 ;;; *.~ とかのバックアップファイルを作らない
 (setq make-backup-files nil)
