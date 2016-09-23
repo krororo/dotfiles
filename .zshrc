@@ -75,9 +75,11 @@ alias rcov='bundle exec rspec -r./test/rcov.rb -c'
 alias brspec='bundle exec rspec -c'
 alias grep='grep --color=always'
 alias today='date +%Y%m%d'
+alias -g ag='ag --nogroup'
 alias -g P='| peco'
 alias -g L='| less'
 alias -g G='| grep'
+alias -g B='$(git branch | grep -Ev "^\*" | peco --layout bottom-up --prompt "GIT BRANCH> ")'
 alias o=xdg-open
 
 # rbenv
