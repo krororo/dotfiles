@@ -5,7 +5,13 @@
           '(lambda()
              (setq js2-global-externs (list "jQuery" "$"))
              (setq js2-additional-externs (list "jQuery" "$"))
-             (dumb-jump-mode)))
+             (setq js2-include-browser-externs nil)
+             (setq js2-mode-show-parse-errors nil)
+             (setq js2-mode-show-strict-warnings nil)
+             (setq js2-highlight-external-variables nil)
+             (setq js2-include-jslint-globals nil)
+             (dumb-jump-mode)
+             (flycheck-mode)))
 
 (custom-set-variables
  '(js-indent-level 2)
