@@ -1,8 +1,15 @@
 #!/bin/bash -e
 
+cd $(dirname $(readlink -f $0))
+
 for f in .??*; do
-    [[ "$f" == ".git" ]] && continue
+  [[ "$f" == ".git" ]] && continue
 
-    ln -sf dotfiles/$f ~/$f
+  if [[ "$f" == ".config" ]]; then
+    for ff in $f/**/*; do
+      ln -sf ~/dotfiles/$ff ~/$ff
+    done
+  else
+    ln -snf dotfiles/$f ~/$f
+  fi
 done
-
