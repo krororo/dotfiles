@@ -8,12 +8,12 @@
 (setq rspec-use-rake-when-possible nil)
 (setq ruby-deep-arglist nil)
 (setq ruby-deep-indent-paren-style nil)
-(setq ruby-insert-encoding-magic-comment nil))
+(setq ruby-insert-encoding-magic-comment nil)
 
 (add-hook 'ruby-mode-hook
           '(lambda()
              (setq flycheck-checker 'ruby-rubocop)
-             (electric-indent-local-mode -1)
+             (electric-indent-local-mode 1)
              (flycheck-mode)
              (yard-mode)
              (dumb-jump-mode)))
