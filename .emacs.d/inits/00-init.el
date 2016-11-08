@@ -65,10 +65,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
-(custom-set-variables
- '(recentf-max-menu-items 100)
- '(recentf-max-saved-items 100)
- '(recentf-mode t))
+(setq recentf-max-menu-items 200)
+(setq recentf-max-saved-items 200)
+(setq recentf-mode t)
+(setq compilation-scroll-output t)
 
 ;; default face
 (custom-set-faces

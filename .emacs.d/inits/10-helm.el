@@ -19,6 +19,5 @@
 (custom-set-faces
  '(helm-source-header ((t (:background "#22083397778B" :foreground "white" :weight bold)))))
 
-(custom-set-variables
- '(helm-buffer-max-length 40)
- '(helm-buffer-details-flag nil))
+(setq helm-buffer-max-length 40)
+(setq helm-buffer-details-flag nil)

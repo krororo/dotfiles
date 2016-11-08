@@ -1,2 +1,1 @@
-(custom-set-variables
- '(nxml-child-indent 4))
+(setq nxml-child-indent 4)
