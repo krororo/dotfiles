@@ -80,6 +80,7 @@ alias -g P='| peco'
 alias -g L='| less'
 alias -g G='| grep'
 alias -g B='$(git branch | grep -Ev "^\*" | peco --layout bottom-up --prompt "GIT BRANCH> ")'
+alias -g NP='--no-pager'
 alias o=xdg-open
 
 # rbenv

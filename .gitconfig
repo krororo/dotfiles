@@ -26,6 +26,7 @@
 	pu = push
 	puf = push --force-with-lease
 	cp = cherry-pick
+	lg1 = !git --no-pager log --decorate -1
 [color]
 	ui = auto
 [push]
