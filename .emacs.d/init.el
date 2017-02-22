@@ -1,6 +1,5 @@
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
-(setq with-editor-file-name-history-exclude 1)
 
 ;; load proxy setting
 ;; example
