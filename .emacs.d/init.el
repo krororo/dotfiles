@@ -20,6 +20,10 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+;; mb-url
+(el-get-bundle mb-url)
+(advice-add 'url-http :override 'mb-url-http-curl)
+
 ;; misc
 (el-get-bundle init-loader)
 (el-get-bundle migemo)
