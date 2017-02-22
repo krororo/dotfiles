@@ -45,7 +45,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Title
 case "${TERM}" in
-kterm*|xterm*)
+kterm*|xterm*|rxvt*)
     precmd () {
         print -Pn "\e]0;%m:%~\a"
     };;
@@ -82,6 +82,7 @@ alias -g G='| grep'
 alias -g B='$(git branch | grep -Ev "^\*" | peco --layout bottom-up --prompt "GIT BRANCH> ")'
 alias -g NP='--no-pager'
 alias o=xdg-open
+alias ssh='TERM=xterm-256color ssh'
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
