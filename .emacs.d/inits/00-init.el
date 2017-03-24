@@ -1,4 +1,5 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file)
 (setq-default indent-tabs-mode nil)
 ;;; *.~ とかのバックアップファイルを作らない
 (setq make-backup-files nil)
@@ -69,24 +70,3 @@
 (setq recentf-max-saved-items 200)
 (setq recentf-mode t)
 (setq compilation-scroll-output t)
-
-;; default face
-(custom-set-faces
- '(default
-    ((t (:inherit nil
-         :stipple nil
-         :background "#003300"
-         :foreground "white"
-         :inverse-video nil
-         :box nil
-         :strike-through nil
-         :overline nil
-         :underline nil
-         :slant normal
-         :weight normal
-         :height 105
-         :width normal
-         :foundry "unknown"
-         :family "Ricty"))))
- '(font-lock-comment-face ((t (:foreground "red"))))
- '(font-lock-keyword-face ((t (:foreground "magenta")))))

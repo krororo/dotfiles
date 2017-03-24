@@ -16,8 +16,5 @@
 (defadvice helm-buffers-sort-transformer (around ignore activate)
   (setq ad-return-value (ad-get-arg 0)))
 
-(custom-set-faces
- '(helm-source-header ((t (:background "#22083397778B" :foreground "white" :weight bold)))))
-
 (setq helm-buffer-max-length 40)
 (setq helm-buffer-details-flag nil)
