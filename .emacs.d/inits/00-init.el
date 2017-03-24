@@ -69,4 +69,5 @@
 (setq recentf-max-menu-items 200)
 (setq recentf-max-saved-items 200)
 (setq recentf-mode t)
+(require 'recentf)
 (setq compilation-scroll-output t)
