@@ -38,6 +38,7 @@
 (el-get-bundle rainbow-mode)
 (el-get-bundle ag)
 (el-get-bundle dumb-jump)
+(el-get-bundle editorconfig)
 
 ;; magit
 (el-get-bundle magit)

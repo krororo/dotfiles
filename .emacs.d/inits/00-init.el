@@ -32,6 +32,8 @@
 (set-face-underline  'whitespace-tab t)
 (global-whitespace-mode 1)
 
+(require 'editorconfig)
+
 ;; don't remove *scratch* buffer
 (defun my-make-scratch (&optional arg)
   (interactive)
