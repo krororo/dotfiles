@@ -81,8 +81,10 @@ alias -g L='| less'
 alias -g G='| grep'
 alias -g B='$(git branch | grep -Ev "^\*" | peco --layout bottom-up --prompt "GIT BRANCH> ")'
 alias -g NP='--no-pager'
+alias -g S='| sort'
 alias o=xdg-open
 alias ssh='TERM=xterm-256color ssh'
+alias cdiff='git diff --no-index'
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
