@@ -10,6 +10,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#003300" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "unknown" :family "Ricty"))))
+ '(eruby-standard-face ((t (:background "gray" :foreground "black"))))
  '(font-lock-comment-face ((t (:foreground "red"))))
  '(font-lock-keyword-face ((t (:foreground "magenta"))))
  '(helm-source-header ((t (:background "#22083397778B" :foreground "white" :weight bold))))

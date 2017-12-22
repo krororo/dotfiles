@@ -76,6 +76,9 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
+;; eruby-mode
+(load-file (locate-user-emacs-file "elisp/eruby-mode.el"))
+
 ;; mode-line
 (setq-default mode-line-format
               '("%e"
