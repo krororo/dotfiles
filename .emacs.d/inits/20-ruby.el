@@ -9,6 +9,7 @@
 (setq ruby-deep-arglist nil)
 (setq ruby-deep-indent-paren-style nil)
 (setq ruby-insert-encoding-magic-comment nil)
+(require 'rspec-mode)
 
 (add-hook 'ruby-mode-hook
           '(lambda()
