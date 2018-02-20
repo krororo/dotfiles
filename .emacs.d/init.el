@@ -64,6 +64,7 @@
 
 ;; lint check
 (el-get-bundle flycheck)
+(el-get-bundle rubocop)
 
 (let ((envs '("PATH")))
   (exec-path-from-shell-copy-envs envs))
