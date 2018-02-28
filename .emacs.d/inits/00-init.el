@@ -69,3 +69,5 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 (setq compilation-scroll-output t)
+
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
