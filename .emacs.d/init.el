@@ -67,6 +67,10 @@
 (el-get-bundle flycheck)
 (el-get-bundle rubocop)
 
+;; el-get-lock
+(el-get-bundle tarao/el-get-lock)
+(el-get-lock)
+
 (let ((envs '("PATH")))
   (exec-path-from-shell-copy-envs envs))
 
