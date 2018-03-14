@@ -4,6 +4,7 @@ EDITOR=vim
 zstyle ':completion:*' use-cache true
 
 # Complete
+fpath=(~/.zsh fpath)
 autoload -U compinit; compinit
 setopt auto_list
 setopt auto_menu
@@ -19,7 +20,6 @@ setopt completealiases
 setopt magic_equal_subst
 zstyle ':completion:*:default' menu select=1
 [ -f /usr/share/zsh/vendor-completions/_docker ] && source /usr/share/zsh/vendor-completions/_docker
-zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
 
 # History
 HISTFILE=~/.zsh_history
