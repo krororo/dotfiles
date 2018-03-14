@@ -4,7 +4,7 @@ EDITOR=vim
 zstyle ':completion:*' use-cache true
 
 # Complete
-fpath=(~/.zsh fpath)
+fpath=(~/.zsh $fpath)
 autoload -U compinit; compinit
 setopt auto_list
 setopt auto_menu
