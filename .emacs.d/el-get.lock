@@ -1,4 +1,9 @@
 (setq el-get-lock-package-versions
-      '((magit :checksum "f0a29e8adb233bf8f483e04874bf1042bc257789")))
+      '((anzu :checksum "e6c56ca8b23ac433f7be58b6f3f50801dd4164e4")
+        (auto-complete :checksum "2e83566ddfa758c69afe50b8a1c62a66f47471e3")
+        (dash :checksum "87d5feac1a08ea09e55e52442dc5e497817b4f08")
+        (ag :checksum "77b4f50c5372bf219da496567b2b867261f0d354")
+        (color-moccur :checksum "4f1c59ffd1ccc2ab1a171cd6b721e8cb9e002fb7")
+        (magit :checksum "f0a29e8adb233bf8f483e04874bf1042bc257789")))
 (setq el-get-lock-locked-packages 'nil)
 (setq el-get-lock-unlocked-packages 'nil)
