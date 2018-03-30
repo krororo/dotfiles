@@ -40,7 +40,7 @@
 (el-get-bundle editorconfig)
 
 ;; magit
-(el-get-bundle magit)
+(el-get-bundle magit :checkout "2.12.0")
 
 ;; helm
 (el-get-bundle helm)
