@@ -1,0 +1,33 @@
+! urxvt
+urxvt.cursorColor: #ff0000
+urxvt.fading: 30
+urxvt.font: xft:Ricty:size=10.5:antialias=true, \
+            xft:Noto Emoji-10.5, \
+            [codeset=JISX0218]x:-mplus-gothic-medium-r-normal--10.5-*-*-*-*-*-jisx0208.1990-*
+urxvt.geometry: 130x55
+urxvt.iconFile: /usr/share/icons/Humanity/apps/128/gnome-terminal.svg
+urxvt.inputMethod: fcitx
+urxvt.letterSpace: -1
+urxvt.perl-ext: xim-onthespot
+urxvt.preeditType: OverTheSpot
+urxvt.saveLines: 10240
+urxvt.scrollBar: true
+urxvt.scrollBar_floating: true
+urxvt.scrollBar_right: true
+urxvt.secondaryScreen: 1
+urxvt.secondaryScroll: 0
+
+! url
+urxvt.perl-ext-common: default,matcher,url-select
+urxvt.url-launcher: /usr/bin/xdg-open
+urxvt.matcher.button: 1
+urxvt.url-select.underline: true
+
+! color
+urxvt.depth: 32
+urxvt.foreground: rgba:ffff/ffff/ffff/ffff
+urxvt.background: rgba:0000/0000/0000/cccc
+
+! blue
+urxvt.color4: #5566ff
+urxvt.color12: #7799ff
