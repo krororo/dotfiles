@@ -33,6 +33,7 @@
 (global-whitespace-mode 1)
 
 (require 'editorconfig)
+(editorconfig-mode t)
 
 ;; don't remove *scratch* buffer
 (defun my-make-scratch (&optional arg)
