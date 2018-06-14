@@ -110,7 +110,8 @@
     ;; Major modes
     (ruby-mode   . "Rb")
     (emacs-lisp-mode . "El")
-    (markdown-mode . "Md")))
+    (markdown-mode . "Md")
+    (typescript-mode . "Ts")))
 
 (defun clean-mode-line ()
   (interactive)
