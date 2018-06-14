@@ -62,6 +62,7 @@
 (el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
 (el-get-bundle kotlin-mode)
 (el-get-bundle typescript-mode)
+(el-get-bundle dockerfile-mode)
 
 ;; lint check
 (el-get-bundle flycheck)
