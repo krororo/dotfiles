@@ -51,7 +51,9 @@
 	diff = diff-highlight | less
 	show = diff-highlight | less
 	stash = false
+	branch = false
 [diff]
 	compactionHeuristic = true
+	colorMoved = default
 [log]
 	date = iso
