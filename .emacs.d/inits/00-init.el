@@ -35,6 +35,11 @@
 (require 'editorconfig)
 (editorconfig-mode t)
 
+(defun editorconfig-disable-trim-whitespace-in-read-only-buffers (props)
+  (when (and buffer-read-only (gethash 'trim_trailing_whitespace props))
+    (remove-hook 'write-file-functions #'delete-trailing-whitespace :local)))
+(add-hook 'editorconfig-custom-hooks #'editorconfig-disable-trim-whitespace-in-read-only-buffers)
+
 ;; don't remove *scratch* buffer
 (defun my-make-scratch (&optional arg)
   (interactive)
