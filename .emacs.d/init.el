@@ -108,9 +108,10 @@
   '( ;; For minor-mode, first char is 'space'
     (editorconfig-mode . " EC")
     ;; Major modes
-    (ruby-mode   . "Rb")
     (emacs-lisp-mode . "El")
+    (kotlin-mode . "Kt")
     (markdown-mode . "Md")
+    (ruby-mode   . "Rb")
     (typescript-mode . "Ts")))
 
 (defun clean-mode-line ()
