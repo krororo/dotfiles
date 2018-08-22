@@ -2,7 +2,7 @@
 
 cd $(dirname $(readlink -f $0))
 
-for f in .??*; do
+for f in .??* *.conf; do
   [[ "$f" == ".git" ]] && continue
 
   if [[ "$f" == ".config" ]]; then
