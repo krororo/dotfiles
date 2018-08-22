@@ -104,8 +104,9 @@ function peco-select-history() {
         tac="tail -r"
     fi
     BUFFER=$(\history -n 1 | \
-                    eval $tac | \
-                    peco --layout bottom-up --query "$LBUFFER")
+               eval $tac | \
+               awk '!a[$0]++' | \
+               peco --layout bottom-up --query "$LBUFFER")
     CURSOR=$#BUFFER
 }
 zle -N peco-select-history
