@@ -55,7 +55,6 @@
 (el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
-(el-get-bundle scss-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle web-mode)
