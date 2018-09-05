@@ -1,5 +1,6 @@
 (setq el-get-lock-package-versions
-      '((dockerfile-mode :checksum "818e6946fcf2d58438ab78ea06761a372cc5435a")
+      '((web-mode :checksum "e31d1dd4ee436db8aaca3f35223af5a05fb47dec")
+        (dockerfile-mode :checksum "818e6946fcf2d58438ab78ea06761a372cc5435a")
         (neotree :checksum "5e1271655170f4cdc6849258e383c548a4e6e3d0")
         (anzu :checksum "e6c56ca8b23ac433f7be58b6f3f50801dd4164e4")
         (auto-complete :checksum "2e83566ddfa758c69afe50b8a1c62a66f47471e3")
