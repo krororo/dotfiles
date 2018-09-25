@@ -77,3 +77,10 @@
 (setq compilation-scroll-output t)
 
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
+;; dired バッファに [dir] 追加
+(defun dired-my-append-buffer-name-hint ()
+  "Append a auxiliary string to a name of dired buffer."
+  (when (eq major-mode 'dired-mode)
+    (rename-buffer (concat (buffer-name) " [dir]") t)))
+(add-hook 'dired-mode-hook 'dired-my-append-buffer-name-hint)
