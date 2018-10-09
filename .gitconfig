@@ -52,8 +52,11 @@
 	show = diff-highlight | less
 	stash = false
 	branch = false
+	grep = false
 [diff]
 	compactionHeuristic = true
 	colorMoved = default
 [log]
 	date = iso
+[grep]
+	lineNumber = true
