@@ -88,29 +88,33 @@ alias cdiff='git diff --no-index'
 alias logcolor='sed -e "s/INFO/\x1b[32mINFO\x1b[0m/g" -e "s/WARN/\x1b[33mWARN\x1b[0m/g" -e "s/ERROR/\x1b[31mERRO\x1b[0m/g"'
 
 # rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init - zsh)"
+if [ -d $HOME/.rbenv ]; then
+  export PATH=$HOME/.rbenv/bin:$PATH
+  eval "$(rbenv init - zsh)"
+fi
 
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # Functions
-function peco-select-history() {
+if which peco > /dev/null; then
+  function peco-select-history() {
     local tac
     if which tac > /dev/null; then
-        tac="tac"
+      tac="tac"
     else
-        tac="tail -r"
+      tac="tail -r"
     fi
     BUFFER=$(\history -n 1 | \
                eval $tac | \
                awk '!a[$0]++' | \
                peco --layout bottom-up --query "$LBUFFER")
     CURSOR=$#BUFFER
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+  }
+  zle -N peco-select-history
+  bindkey '^r' peco-select-history
+fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
