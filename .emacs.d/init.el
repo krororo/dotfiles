@@ -62,6 +62,7 @@
 (el-get-bundle kotlin-mode)
 (el-get-bundle typescript-mode)
 (el-get-bundle dockerfile-mode)
+(el-get-bundle vue-mode)
 
 ;; lint check
 (el-get-bundle flycheck)
