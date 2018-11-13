@@ -84,3 +84,8 @@
   (when (eq major-mode 'dired-mode)
     (rename-buffer (concat (buffer-name) " [dir]") t)))
 (add-hook 'dired-mode-hook 'dired-my-append-buffer-name-hint)
+
+;; highlight-indent-guides
+(setq highlight-indent-guides-method 'column)
+(setq highlight-indent-guides-responsive 'top)
+(setq highlight-indent-guides-delay 0.5)

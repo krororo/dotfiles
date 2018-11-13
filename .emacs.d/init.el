@@ -36,8 +36,8 @@
 (el-get-bundle exec-path-from-shell)
 (el-get-bundle rainbow-mode)
 (el-get-bundle ag)
-(el-get-bundle dumb-jump)
 (el-get-bundle editorconfig)
+(el-get-bundle highlight-indentation-guides)
 
 ;; magit
 (el-get-bundle magit :checkout "2.12.0")

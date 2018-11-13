@@ -17,7 +17,7 @@
              (electric-indent-local-mode 1)
              (flycheck-mode)
              (yard-mode)
-             (dumb-jump-mode)))
+             (highlight-indent-guides-mode)))
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
