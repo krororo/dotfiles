@@ -3,13 +3,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(compilation-scroll-output t)
  '(editorconfig-exclude-modes (quote (web-mode)))
  '(flycheck-ruby-rubocop-executable nil)
+ '(initial-buffer-choice "~/memo.md")
  '(magit-diff-highlight-hunk-body nil)
  '(magit-log-margin
    (quote
     (t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18)))
+ '(package-selected-packages
+   (quote
+    (vue-mode magit-popup editorconfig request rainbow-mode let-alist kotlin-mode dumb-jump)))
+ '(scroll-conservatively 1)
+ '(scroll-margin 5)
+ '(scroll-preserve-screen-position 1)
  '(sh-indentation 4)
+ '(typescript-indent-level 2)
  '(web-mode-attr-indent-offset 4)
  '(web-mode-code-indent-offset 2)
  '(web-mode-css-indent-offset 2)
