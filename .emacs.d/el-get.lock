@@ -1,5 +1,6 @@
 (setq el-get-lock-package-versions
-      '((highlight-indentation-guides :checksum "e46356487d4b19144af3025cf16f1b1bd174a450")
+      '((mb-url :checksum "23078f2e59808890268401f294d860ba51bc71d9")
+        (highlight-indentation-guides :checksum "e46356487d4b19144af3025cf16f1b1bd174a450")
         (web-mode :checksum "e31d1dd4ee436db8aaca3f35223af5a05fb47dec")
         (dockerfile-mode :checksum "818e6946fcf2d58438ab78ea06761a372cc5435a")
         (neotree :checksum "5e1271655170f4cdc6849258e383c548a4e6e3d0")
