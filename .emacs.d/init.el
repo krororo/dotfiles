@@ -22,7 +22,8 @@
 
 ;; mb-url
 (el-get-bundle mb-url)
-(advice-add 'url-http :override 'mb-url-http-curl)
+(advice-add 'url-http :around 'mb-url-http-around-advice)
+(setq mb-url-http-backend 'mb-url-http-curl)
 
 ;; misc
 (el-get-bundle init-loader)
