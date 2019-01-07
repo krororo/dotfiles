@@ -60,3 +60,5 @@
 	date = iso
 [grep]
 	lineNumber = true
+[includeIf "gitdir:~/github/"]
+	path = ~/github/gitconfig
