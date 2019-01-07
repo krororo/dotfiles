@@ -64,6 +64,7 @@
 (el-get-bundle typescript-mode)
 (el-get-bundle dockerfile-mode)
 (el-get-bundle vue-mode)
+(el-get-bundle emacs-pug-mode)
 
 ;; lint check
 (el-get-bundle flycheck)

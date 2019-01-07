@@ -14,11 +14,13 @@
  '(package-selected-packages
    (quote
     (vue-mode magit-popup editorconfig request rainbow-mode let-alist kotlin-mode dumb-jump)))
+ '(pug-tab-width 2)
  '(scroll-conservatively 1)
  '(scroll-margin 5)
- '(scroll-preserve-screen-position 1)
+ '(scroll-preserve-screen-position nil)
  '(sh-indentation 4)
  '(typescript-indent-level 2)
+ '(vue-html-extra-indent 2)
  '(web-mode-attr-indent-offset 4)
  '(web-mode-code-indent-offset 2)
  '(web-mode-css-indent-offset 2)

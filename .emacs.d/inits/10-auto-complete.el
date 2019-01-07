@@ -8,4 +8,4 @@
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 (add-to-list 'ac-modes 'haml-mode)
-(add-to-list 'ac-modes 'scss-mode)
+(add-to-list 'ac-modes 'vue-mode)
