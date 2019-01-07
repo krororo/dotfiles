@@ -16,8 +16,7 @@
              (setq flycheck-checker 'ruby-rubocop)
              (electric-indent-local-mode 1)
              (flycheck-mode)
-             (yard-mode)
-             (highlight-indent-guides-mode)))
+             (yard-mode)))
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
