@@ -40,6 +40,22 @@
     (remove-hook 'write-file-functions #'delete-trailing-whitespace :local)))
 (add-hook 'editorconfig-custom-hooks #'editorconfig-disable-trim-whitespace-in-read-only-buffers)
 
+;; delete-trailing-whitespace モードの状態表示と反転
+(defvar my/current-cleanup-state "")
+(setq-default mode-line-format
+              (cons '(:eval my/current-cleanup-state)
+                    mode-line-format))
+(defun toggle-cleanup-spaces ()
+  (interactive)
+  (cond ((memq 'delete-trailing-whitespace write-file-hooks)
+         (setq my/current-cleanup-state
+               (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
+         (remove-hook 'write-file-hooks 'delete-trailing-whitespace))
+        (t
+         (setq my/current-cleanup-state "")
+         (add-hook 'write-file-hooks 'delete-trailing-whitespace)))
+  (force-mode-line-update))
+
 ;; don't remove *scratch* buffer
 (defun my-make-scratch (&optional arg)
   (interactive)
