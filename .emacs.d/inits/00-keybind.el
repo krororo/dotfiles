@@ -7,5 +7,6 @@
 (global-set-key "\C-xp" (lambda()(interactive)(other-window -1)))
 ;; 暴発するので無効化
 (global-unset-key (kbd "C-x C-p"))
+(global-unset-key (kbd "C-x m")) ;; compose-mail
 (define-key dumb-jump-mode-map (kbd "C-M-p") nil)
 (define-key dumb-jump-mode-map (kbd "C-M-S-g") 'dumb-jump-back)
