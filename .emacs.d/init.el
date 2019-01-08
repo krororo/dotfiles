@@ -41,7 +41,7 @@
 (el-get-bundle highlight-indentation-guides)
 
 ;; magit
-(el-get-bundle magit :checkout "2.12.0")
+(el-get-bundle magit :checkout "v2.90.1")
 
 ;; helm
 (el-get-bundle helm)

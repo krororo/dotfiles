@@ -1,5 +1,6 @@
 (setq el-get-lock-package-versions
-      '((emacs-pug-mode :checksum "685fd3414d89736bf232f5d1a6bed9e0353b98fe")
+      '((with-editor :checksum "9dd9f176d96abc60365369de6d08c26c414ef1f3")
+        (emacs-pug-mode :checksum "685fd3414d89736bf232f5d1a6bed9e0353b98fe")
         (mb-url :checksum "23078f2e59808890268401f294d860ba51bc71d9")
         (highlight-indentation-guides :checksum "e46356487d4b19144af3025cf16f1b1bd174a450")
         (web-mode :checksum "e31d1dd4ee436db8aaca3f35223af5a05fb47dec")
@@ -10,6 +11,6 @@
         (dash :checksum "a74f4cfcdc8d0642a9f602ad494f0354f27dacc9")
         (ag :checksum "77b4f50c5372bf219da496567b2b867261f0d354")
         (color-moccur :checksum "4f1c59ffd1ccc2ab1a171cd6b721e8cb9e002fb7")
-        (magit :checksum "f0a29e8adb233bf8f483e04874bf1042bc257789")))
+        (magit :checksum "791901b2f1d26fa0a383147fe77948a9abc753da")))
 (setq el-get-lock-locked-packages 'nil)
 (setq el-get-lock-unlocked-packages 'nil)
