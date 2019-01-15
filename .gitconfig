@@ -9,9 +9,9 @@
 	br = branch -v
 	co = checkout
 	di = diff
-	f = fetch --tags --all
+	f = fetch --tags
 	lgo = log --oneline --decorate --graph --date=iso
-	fp = fetch --prune --all --tags
+	fp = fetch --prune --tags
 	ss = stash
 	sp = stash pop
 	mg = merge --no-edit
