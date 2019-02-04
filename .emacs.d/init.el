@@ -39,6 +39,7 @@
 (el-get-bundle ag)
 (el-get-bundle editorconfig)
 (el-get-bundle highlight-indentation-guides)
+(el-get-bundle docker)
 
 ;; magit
 (el-get-bundle magit :checkout "v2.90.1")

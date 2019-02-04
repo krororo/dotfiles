@@ -1,5 +1,11 @@
 (setq el-get-lock-package-versions
-      '((with-editor :checksum "9dd9f176d96abc60365369de6d08c26c414ef1f3")
+      '((docker :checksum "9ed06b1b2050b33cc42608866e2a1f84649c2a3c")
+        (json-mode :checksum "0e819e519ae17a2686e0881c4ca51fa873fa9b83")
+        (json-reformat :checksum "8eb6668ed447988aea06467ba8f42e1f2178246f")
+        (json-snatcher :checksum "c4cecc0a5051bd364373aa499c47a1bb7a5ac51c")
+        (docker-tramp :checksum "8e2b671eff7a81af43b76d9dfcf94ddaa8333a23")
+        (tablist :checksum "389730ef0a01e73358d24a37f40fd9db01917f6c")
+        (with-editor :checksum "9dd9f176d96abc60365369de6d08c26c414ef1f3")
         (emacs-pug-mode :checksum "685fd3414d89736bf232f5d1a6bed9e0353b98fe")
         (mb-url :checksum "23078f2e59808890268401f294d860ba51bc71d9")
         (highlight-indentation-guides :checksum "e46356487d4b19144af3025cf16f1b1bd174a450")
