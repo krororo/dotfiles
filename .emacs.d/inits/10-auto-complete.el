@@ -9,3 +9,4 @@
 (define-key ac-menu-map "\C-p" 'ac-previous)
 (add-to-list 'ac-modes 'haml-mode)
 (add-to-list 'ac-modes 'vue-mode)
+(add-to-list 'ac-modes 'typescript-mode)
