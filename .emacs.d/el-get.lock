@@ -1,5 +1,7 @@
 (setq el-get-lock-package-versions
-      '((docker :checksum "9ed06b1b2050b33cc42608866e2a1f84649c2a3c")
+      '((helm-ls-git :checksum "0702bc1950f26358c1a024bdbb2d0b1d7dcd2e51")
+        (helm :checksum "353c84076d5489b6a4085537775992226f9d5156")
+        (docker :checksum "9ed06b1b2050b33cc42608866e2a1f84649c2a3c")
         (json-mode :checksum "0e819e519ae17a2686e0881c4ca51fa873fa9b83")
         (json-reformat :checksum "8eb6668ed447988aea06467ba8f42e1f2178246f")
         (json-snatcher :checksum "c4cecc0a5051bd364373aa499c47a1bb7a5ac51c")
