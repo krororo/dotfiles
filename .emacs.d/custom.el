@@ -11,6 +11,7 @@
  '(magit-log-margin
    (quote
     (t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18)))
+ '(magit-section-initial-visibility-alist (quote ((unpushed . show) (stashes . hide))))
  '(package-selected-packages
    (quote
     (vue-mode magit-popup editorconfig request rainbow-mode let-alist kotlin-mode dumb-jump)))
@@ -18,7 +19,7 @@
  '(scroll-conservatively 1)
  '(scroll-margin 5)
  '(scroll-preserve-screen-position nil)
- '(sh-indentation 4)
+ '(sh-indentation 4 t)
  '(typescript-indent-level 2)
  '(vue-html-extra-indent 2)
  '(web-mode-attr-indent-offset 4)
@@ -43,6 +44,7 @@
  '(magit-diff-removed-highlight ((t (:foreground "red"))))
  '(magit-hash ((t (:foreground "gold"))))
  '(magit-item-highlight ((t (:background "gray5"))))
+ '(mmm-default-submode-face ((t nil)))
  '(review-mode-bold-face ((t (:foreground "deep sky blue" :weight bold))))
  '(review-mode-header1-face ((t (:foreground "chartreuse" :weight bold))))
  '(review-mode-header2-face ((t (:foreground "lawn green" :weight bold))))
