@@ -1,3 +1,4 @@
 (add-hook 'typescript-mode-hook
           '(lambda ()
-             (flycheck-mode)))
+             (unless (string-match "/node_modules/" (or (buffer-file-name) ""))
+               (flycheck-mode))))
