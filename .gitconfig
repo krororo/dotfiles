@@ -28,6 +28,7 @@
 	cp = cherry-pick
 	lg1 = !git --no-pager log --decorate -1
 	wt = worktree
+	fa = fetch --prune --tags --all
 [color]
 	ui = auto
 [push]
