@@ -86,6 +86,8 @@ alias o=xdg-open
 alias ssh='TERM=xterm-256color ssh'
 alias cdiff='git diff --no-index'
 alias logcolor='sed -e "s/INFO/\x1b[32mINFO\x1b[0m/g" -e "s/WARN/\x1b[33mWARN\x1b[0m/g" -e "s/ERROR/\x1b[31mERRO\x1b[0m/g"'
+alias g='git'
+alias y='yarn'
 
 # rbenv
 if [ -d $HOME/.rbenv ]; then
