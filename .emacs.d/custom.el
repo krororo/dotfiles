@@ -14,7 +14,7 @@
  '(magit-section-initial-visibility-alist (quote ((unpushed . show) (stashes . hide))))
  '(package-selected-packages
    (quote
-    (vue-mode magit-popup editorconfig request rainbow-mode let-alist kotlin-mode dumb-jump)))
+    (vue-mode magit-popup editorconfig request let-alist kotlin-mode dumb-jump)))
  '(pug-tab-width 2)
  '(scroll-conservatively 1)
  '(scroll-margin 5)

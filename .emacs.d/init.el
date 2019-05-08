@@ -35,7 +35,6 @@
 (el-get-bundle yasnippet)
 (el-get-bundle anzu)
 (el-get-bundle exec-path-from-shell)
-(el-get-bundle rainbow-mode)
 (el-get-bundle ag)
 (el-get-bundle editorconfig)
 (el-get-bundle highlight-indentation-guides)
