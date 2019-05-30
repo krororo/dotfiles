@@ -63,3 +63,5 @@
 	lineNumber = true
 [includeIf "gitdir:~/github/"]
 	path = ~/github/gitconfig
+[commit]
+	template = ~/.gitcommit_template
