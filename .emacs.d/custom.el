@@ -32,7 +32,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#003300" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "unknown" :family "Ricty"))))
+ '(default ((t (:inherit nil :stipple nil :background "#003300" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "unknown" :family "HackGen"))))
  '(eruby-standard-face ((t (:background "gray" :foreground "black"))))
  '(font-lock-comment-face ((t (:foreground "red"))))
  '(font-lock-keyword-face ((t (:foreground "magenta"))))
