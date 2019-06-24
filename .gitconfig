@@ -3,7 +3,7 @@
 	email = krororo.07@gmail.com
 [alias]
 	gconf = config --global
-	st = !git status --short && git stash list
+	st = !git status --short && echo '----' && git --no-pager stash list
 	lg = log --decorate --date=iso --graph
 	ci = commit
 	br = branch -v
