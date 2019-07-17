@@ -105,3 +105,5 @@
 (setq highlight-indent-guides-method 'column)
 (setq highlight-indent-guides-responsive 'top)
 (setq highlight-indent-guides-delay 0.5)
+
+(global-git-gutter-mode t)

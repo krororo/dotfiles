@@ -34,6 +34,7 @@
 (el-get-bundle docker)
 (el-get-bundle editorconfig)
 (el-get-bundle exec-path-from-shell)
+(el-get-bundle git-gutter)
 (el-get-bundle highlight-indentation-guides)
 (el-get-bundle init-loader)
 (el-get-bundle migemo)
@@ -109,6 +110,7 @@
 (defvar mode-line-cleaner-alist
   '( ;; For minor-mode, first char is 'space'
     (editorconfig-mode . " EC")
+    (git-gutter-mode . " GG")
     ;; Major modes
     (emacs-lisp-mode . "El")
     (kotlin-mode . "Kt")
