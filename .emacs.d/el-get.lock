@@ -1,5 +1,7 @@
 (setq el-get-lock-package-versions
-      '((git-gutter :checksum "00c05264af046b5ce248e5b0bc42f117d9c27a09")
+      '((el-get :checksum "e8bdc7be1a61faf61787d4a3c0b80dafc37d2ef4")
+        (el-get-lock :checksum "df8cfe55441695865a64b97946750b6413a40425")
+        (git-gutter :checksum "00c05264af046b5ce248e5b0bc42f117d9c27a09")
         (helm-ls-git :checksum "0702bc1950f26358c1a024bdbb2d0b1d7dcd2e51")
         (helm :checksum "353c84076d5489b6a4085537775992226f9d5156")
         (docker :checksum "9ed06b1b2050b33cc42608866e2a1f84649c2a3c")
