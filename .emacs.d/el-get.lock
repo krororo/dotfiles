@@ -1,5 +1,9 @@
 (setq el-get-lock-package-versions
-      '((el-get :checksum "e8bdc7be1a61faf61787d4a3c0b80dafc37d2ef4")
+      '((ghub :checksum "7d59937d7782d0062216130a4d059b45e8396f82")
+        (treepy :checksum "b40e6b09eb9be45da67b8c9e4990a5a0d7a2a09d")
+        (graphql :checksum "e2b309689f4faf9225f290080f836e988c5a576d")
+        (magit-popup :checksum "4250c3a606011e3ff2477e3b5bbde2b493f3c85c")
+        (el-get :checksum "e8bdc7be1a61faf61787d4a3c0b80dafc37d2ef4")
         (el-get-lock :checksum "df8cfe55441695865a64b97946750b6413a40425")
         (git-gutter :checksum "00c05264af046b5ce248e5b0bc42f117d9c27a09")
         (helm-ls-git :checksum "0702bc1950f26358c1a024bdbb2d0b1d7dcd2e51")
@@ -22,6 +26,6 @@
         (dash :checksum "a74f4cfcdc8d0642a9f602ad494f0354f27dacc9")
         (ag :checksum "77b4f50c5372bf219da496567b2b867261f0d354")
         (color-moccur :checksum "4f1c59ffd1ccc2ab1a171cd6b721e8cb9e002fb7")
-        (magit :checksum "791901b2f1d26fa0a383147fe77948a9abc753da")))
+        (magit :checksum "bcd161d8ad3fcd80cbf69e7720c1d75a79415021")))
 (setq el-get-lock-locked-packages 'nil)
 (setq el-get-lock-unlocked-packages 'nil)

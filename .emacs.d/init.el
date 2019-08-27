@@ -42,7 +42,7 @@
 (el-get-bundle yasnippet)
 
 ;; magit
-(el-get-bundle magit :checkout "v2.90.1")
+(el-get-bundle magit)
 
 ;; helm
 (el-get-bundle helm)
