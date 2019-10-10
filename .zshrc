@@ -64,7 +64,7 @@ SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%f%b "
 # Alias
 alias ls="ls --color"
 alias rm="rm -i"
-alias cp="cp -i"
+alias cp="cp -iv"
 alias mv="mv -i"
 alias be='bundle exec'
 alias less='less -R'
