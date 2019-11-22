@@ -20,6 +20,10 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(add-to-list 'load-path (locate-user-emacs-file "elisp"))
+(require 'eaw)
+(eaw-fullwidth)
+
 ;; mb-url
 (el-get-bundle mb-url)
 (advice-add 'url-http :around 'mb-url-http-around-advice)
