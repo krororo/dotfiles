@@ -99,7 +99,7 @@ fi
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$PATH"
 
 # Functions
 if which peco > /dev/null; then
