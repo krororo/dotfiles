@@ -9,7 +9,7 @@
         (git-gutter :checksum "00c05264af046b5ce248e5b0bc42f117d9c27a09")
         (helm-ls-git :checksum "0702bc1950f26358c1a024bdbb2d0b1d7dcd2e51")
         (helm :checksum "353c84076d5489b6a4085537775992226f9d5156")
-        (docker :checksum "117c220a9cea9890978a0d931f792f70d1c4e140")
+        (docker :checksum "a2092b3b170214587127b6c05f386504cae6981b")
         (json-mode :checksum "0e819e519ae17a2686e0881c4ca51fa873fa9b83")
         (json-reformat :checksum "8eb6668ed447988aea06467ba8f42e1f2178246f")
         (json-snatcher :checksum "c4cecc0a5051bd364373aa499c47a1bb7a5ac51c")
