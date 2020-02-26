@@ -5,8 +5,10 @@ bookmarks
 el-get
 elpa
 eshell/history
+migemo-pattern
 proxy-setting.el
 recentf
 session.*
 tramp
+transient
 url/
