@@ -68,3 +68,7 @@
 	path = /work/github/gitconfig
 [commit]
 	template = ~/.gitcommit_template
+[http]
+	postBuffer = 524288000
+[hub]
+	protocol = https

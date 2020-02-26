@@ -96,6 +96,11 @@ if [ -d $HOME/.rbenv ]; then
   eval "$(rbenv init - zsh)"
 fi
 
+# hub
+if [ -x /usr/bin/hub ]; then
+  eval "$(hub alias -s)"
+fi
+
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
