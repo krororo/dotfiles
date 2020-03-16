@@ -1,5 +1,6 @@
 (setq el-get-lock-package-versions
-      '((flycheck :checksum "269237f6529a4ad7db5bbbc5a40c1f038accf3cd")
+      '((php-mode :checksum "f1da0bec47cbbca7065e53cc1eaee920bb4f67d2")
+        (flycheck :checksum "269237f6529a4ad7db5bbbc5a40c1f038accf3cd")
         (ghub :checksum "7d59937d7782d0062216130a4d059b45e8396f82")
         (treepy :checksum "b40e6b09eb9be45da67b8c9e4990a5a0d7a2a09d")
         (graphql :checksum "e2b309689f4faf9225f290080f836e988c5a576d")

@@ -70,6 +70,7 @@
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle emacs-pug-mode)
+(el-get-bundle php-mode)
 
 ;; lint check
 (el-get-bundle flycheck)
