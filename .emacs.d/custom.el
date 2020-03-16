@@ -44,6 +44,7 @@
  '(magit-diff-removed-highlight ((t (:foreground "red"))))
  '(magit-hash ((t (:foreground "gold"))))
  '(magit-item-highlight ((t (:background "gray5"))))
+ '(markdown-code-face ((t (:inherit default :foreground "medium aquamarine"))))
  '(mmm-default-submode-face ((t nil)))
  '(review-mode-bold-face ((t (:foreground "deep sky blue" :weight bold))))
  '(review-mode-header1-face ((t (:foreground "chartreuse" :weight bold))))
