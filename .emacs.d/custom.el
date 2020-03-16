@@ -16,6 +16,15 @@
    (quote
     (vue-mode magit-popup editorconfig request let-alist kotlin-mode dumb-jump)))
  '(pug-tab-width 2)
+ '(safe-local-variable-values
+   (quote
+    ((eval setq-local flycheck-command-wrapper-function
+           (lambda
+             (command)
+             (append
+              (quote
+               ("bundle" "exec"))
+              command))))))
  '(scroll-conservatively 1)
  '(scroll-margin 5)
  '(scroll-preserve-screen-position nil)
