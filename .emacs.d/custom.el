@@ -12,9 +12,10 @@
    (quote
     (t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18)))
  '(magit-section-initial-visibility-alist (quote ((unpushed . show) (stashes . hide))))
+ '(package-archives (quote (("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (vue-mode magit-popup editorconfig request let-alist kotlin-mode dumb-jump)))
+    (el-get leaf-keywords leaf vue-mode magit-popup editorconfig request let-alist kotlin-mode dumb-jump)))
  '(pug-tab-width 2)
  '(safe-local-variable-values
    (quote

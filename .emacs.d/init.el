@@ -20,9 +20,27 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(prog1 "leaf"
+  (prog1 "install leaf"
+    (custom-set-variables
+     '(package-archives '(("melpa" . "https://melpa.org/packages/"))))
+    (package-initialize)
+    (unless (package-installed-p 'leaf)
+      (package-refresh-contents)
+      (package-install 'leaf)))
+
+  (leaf leaf-keywords
+    :ensure t
+    :config
+    (leaf el-get :ensure t)
+
+    ;; initialize leaf-keywords.el
+    (leaf-keywords-init)))
+
 (add-to-list 'load-path (locate-user-emacs-file "elisp"))
-(require 'eaw)
-(eaw-fullwidth)
+(leaf eaw
+  :require t
+  :config (eaw-fullwidth))
 
 ;; mb-url
 (el-get-bundle mb-url)
@@ -82,13 +100,6 @@
 
 (let ((envs '("PATH")))
   (exec-path-from-shell-copy-envs envs))
-
-;; package
-(require 'package)
-(fset 'package-desc-vers 'package--ac-desc-version)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
 
 ;; eruby-mode
 (load-file (locate-user-emacs-file "elisp/eruby-mode.el"))
