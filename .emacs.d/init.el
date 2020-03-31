@@ -42,10 +42,11 @@
   :require t
   :config (eaw-fullwidth))
 
-;; mb-url
-(el-get-bundle mb-url)
-(advice-add 'url-http :around 'mb-url-http-around-advice)
-(setq mb-url-http-backend 'mb-url-http-curl)
+(leaf mb-url
+  :el-get t
+  :config
+  (advice-add 'url-http :around 'mb-url-http-around-advice)
+  (setq mb-url-http-backend 'mb-url-http-curl))
 
 ;; misc
 (el-get-bundle ag)
