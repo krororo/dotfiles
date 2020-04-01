@@ -15,7 +15,7 @@
  '(package-archives (quote (("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (el-get leaf-keywords leaf vue-mode magit-popup editorconfig request let-alist kotlin-mode dumb-jump)))
+    (el-get leaf-keywords leaf vue-mode magit-popup editorconfig request let-alist kotlin-mode)))
  '(pug-tab-width 2)
  '(safe-local-variable-values
    (quote

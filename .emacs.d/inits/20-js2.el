@@ -10,7 +10,6 @@
              (setq js2-mode-show-strict-warnings nil)
              (setq js2-highlight-external-variables nil)
              (setq js2-include-jslint-globals nil)
-             (dumb-jump-mode)
              (flycheck-mode)))
 
 (setq js-indent-level 2)

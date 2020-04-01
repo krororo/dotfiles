@@ -166,6 +166,20 @@
           (unless (member (get-buffer "*scratch*") (buffer-list))
             (my-make-scratch 1)))))))
 
+(leaf *key-binding
+  :config
+  (global-set-key (kbd "C-h") 'delete-backward-char)
+  (global-set-key (kbd "C-c m") 'magit-status)
+  (global-set-key (kbd "C-c u") 'comment-region)
+  (global-set-key (kbd "C-c y") 'uncomment-region)
+  (global-set-key (kbd "C-c r") 'revert-buffer)
+  ;; ウィンドウ逆移動
+  (global-set-key (kbd "C-x p") (lambda()(interactive)(other-window -1)))
+  ;; 暴発するので無効化
+  (global-unset-key (kbd "C-x C-p"))
+  ;; compose-mail
+  (global-unset-key (kbd "C-x m")))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle anzu)
