@@ -180,6 +180,64 @@
   ;; compose-mail
   (global-unset-key (kbd "C-x m")))
 
+(leaf *mode-line
+  :config
+  (setq-default mode-line-format
+                '("%e"
+                  mode-line-front-space
+                  mode-line-mule-info
+                  mode-line-client
+                  mode-line-modified
+                  mode-line-remote
+                  " "
+                  mode-line-position
+                  " "
+                  ;; mode-line-frame-identification
+                  mode-line-buffer-identification
+                  (vc-mode vc-mode)
+                  "  "
+                  mode-line-modes
+                  mode-line-misc-info
+                  mode-line-end-spaces))
+
+  (defvar mode-line-cleaner-alist
+    '( ;; For minor-mode, first char is 'space'
+      (editorconfig-mode . " EC")
+      (git-gutter-mode . " GG")
+      ;; Major modes
+      (emacs-lisp-mode . "El")
+      (kotlin-mode . "Kt")
+      (markdown-mode . "Md")
+      (ruby-mode   . "Rb")
+      (typescript-mode . "Ts")))
+
+  (defun clean-mode-line ()
+    (interactive)
+    (loop for (mode . mode-str) in mode-line-cleaner-alist
+          do
+          (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
+            (when old-mode-str
+              (setcar old-mode-str mode-str))
+            ;; major mode
+            (when (eq mode major-mode)
+              (setq mode-name mode-str)))))
+  (add-hook 'after-change-major-mode-hook 'clean-mode-line)
+
+  (defvar my-mode-line-format)
+  (setq my-mode-line-format "%d")
+  (if size-indication-mode
+      (setq my-mode-line-format (concat my-mode-line-format " of %%I")))
+  (cond ((and (eq line-number-mode t) (eq column-number-mode t))
+         (setq my-mode-line-format (concat "(%%l,%%c) " my-mode-line-format)))
+        ((eq line-number-mode t)
+         (setq my-mode-line-format (concat my-mode-line-format " L%%l")))
+        ((eq column-number-mode t)
+         (setq my-mode-line-format (concat my-mode-line-format " C%%c"))))
+
+  (setq mode-line-position
+        '(:eval (format my-mode-line-format
+                        (+ (count-lines (point-max) (point-min)) 1)))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle anzu)
@@ -234,49 +292,6 @@
 
 ;; eruby-mode
 (load-file (locate-user-emacs-file "elisp/eruby-mode.el"))
-
-;; mode-line
-(setq-default mode-line-format
-              '("%e"
-                mode-line-front-space
-                mode-line-mule-info
-                mode-line-client
-                mode-line-modified
-                mode-line-remote
-                " "
-                mode-line-position
-                " "
-                ;; mode-line-frame-identification
-                mode-line-buffer-identification
-                (vc-mode vc-mode)
-                "  "
-                mode-line-modes
-                mode-line-misc-info
-                mode-line-end-spaces))
-
-(defvar mode-line-cleaner-alist
-  '( ;; For minor-mode, first char is 'space'
-    (editorconfig-mode . " EC")
-    (git-gutter-mode . " GG")
-    ;; Major modes
-    (emacs-lisp-mode . "El")
-    (kotlin-mode . "Kt")
-    (markdown-mode . "Md")
-    (ruby-mode   . "Rb")
-    (typescript-mode . "Ts")))
-
-(defun clean-mode-line ()
-  (interactive)
-  (loop for (mode . mode-str) in mode-line-cleaner-alist
-        do
-        (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
-          (when old-mode-str
-            (setcar old-mode-str mode-str))
-          ;; major mode
-          (when (eq mode major-mode)
-            (setq mode-name mode-str)))))
-
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
 ;; init-loader
 (require 'init-loader)
