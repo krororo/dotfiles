@@ -38,9 +38,6 @@
     (leaf-keywords-init)))
 
 (add-to-list 'load-path (locate-user-emacs-file "elisp"))
-(leaf eaw
-  :require t
-  :config (eaw-fullwidth))
 
 (leaf mb-url
   :el-get t
@@ -92,6 +89,12 @@
     (when (eq major-mode 'dired-mode)
       (rename-buffer (concat (buffer-name) " [dir]") t)))
   (add-hook 'dired-mode-hook 'dired-my-append-buffer-name-hint)
+
+  (leaf eaw
+    :el-get (hamano/locale-eaw
+             :name eaw)
+    :require t
+    :config (eaw-fullwidth))
 
   (leaf whitespace
     :doc "tab に色を付ける"
