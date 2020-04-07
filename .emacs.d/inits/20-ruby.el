@@ -1,7 +1,5 @@
 (setq auto-mode-alist
-      (append '(("\\.\\(ru\\|rake\\|plugin\\|gemspec\\)\\'" . ruby-mode)
-                ("Rakefile\\'" . ruby-mode)
-                ("Gemfile\\'" . ruby-mode))
+      (append '(("\\.ruby\\'" . ruby-mode))
          auto-mode-alist))
 (setq ruby-use-smie nil)
 (setq rspec-spec-command "rspec -c")
