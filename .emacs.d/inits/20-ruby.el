@@ -1,5 +1,5 @@
 (setq auto-mode-alist
-      (append '(("\\.ruby\\'" . ruby-mode))
+      (append '(("\\.\\(ruby\\|plugin\\)\\'" . ruby-mode))
          auto-mode-alist))
 (setq ruby-use-smie nil)
 (setq rspec-spec-command "rspec -c")
