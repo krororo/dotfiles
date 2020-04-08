@@ -50,8 +50,8 @@
 [include]
 	path = ~/.gitconfig.local
 [pager]
-	diff = diff-highlight | less
-	show = diff-highlight | less
+	diff = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+	show = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
 	stash = false
 	branch = false
 	grep = false
