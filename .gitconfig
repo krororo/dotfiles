@@ -52,6 +52,7 @@
 [pager]
 	diff = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
 	show = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+	log = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
 	stash = false
 	branch = false
 	grep = false
