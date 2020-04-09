@@ -77,7 +77,6 @@
 
   (put 'downcase-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
-  (put 'dired-find-alternate-file 'disabled nil)
 
   (setq compilation-scroll-output t)
 
@@ -318,6 +317,19 @@ do nothing. And suppress the output from `message' and
   :config
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets
         uniquify-ignore-buffers-re "*[^*]+*"))
+
+(leaf *dired
+  :config
+  (put 'dired-find-alternate-file 'disabled nil)
+
+  (defun dired-open-in-accordance-with-situation ()
+    (interactive)
+    (let ((file (dired-get-filename)))
+      (if (file-directory-p file)
+          (dired-find-alternate-file)
+        (dired-find-file))))
+  (define-key dired-mode-map "a" 'dired-find-file)
+  (define-key dired-mode-map (kbd "RET") 'dired-open-in-accordance-with-situation))
 
 ;; misc
 (el-get-bundle ag)
