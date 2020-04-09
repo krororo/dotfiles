@@ -307,6 +307,12 @@ do nothing. And suppress the output from `message' and
         (run-with-idle-timer 30 t 'recentf-save-list))
   (recentf-mode 1))
 
+(leaf server
+  :require t
+  :config
+  (unless (server-running-p)
+    (server-start)))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle anzu)
