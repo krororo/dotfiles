@@ -313,6 +313,12 @@ do nothing. And suppress the output from `message' and
   (unless (server-running-p)
     (server-start)))
 
+(leaf uniquify
+  :require t
+  :config
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+        uniquify-ignore-buffers-re "*[^*]+*"))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle anzu)
