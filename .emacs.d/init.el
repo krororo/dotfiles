@@ -343,9 +343,23 @@ do nothing. And suppress the output from `message' and
   (global-set-key (kbd "C-c q") 'anzu-query-replace-regexp)
   (global-set-key (kbd "C-c Q") 'anzu-query-replace-at-cursor-thing))
 
+(leaf auto-complete
+  :el-get t
+  :require auto-complete-config
+  :config
+  (ac-config-default)
+  (defun ac-common-setup ()
+    (add-to-list 'ac-sources 'ac-source-yasnippet))
+  (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+  (setq ac-use-menu-map t)
+  (define-key ac-menu-map "\C-n" 'ac-next)
+  (define-key ac-menu-map "\C-p" 'ac-previous)
+  (add-to-list 'ac-modes 'haml-mode)
+  (add-to-list 'ac-modes 'vue-mode)
+  (add-to-list 'ac-modes 'typescript-mode))
+
 ;; misc
 (el-get-bundle ag)
-(el-get-bundle auto-complete)
 (el-get-bundle color-moccur)
 (el-get-bundle dash)
 (el-get-bundle docker)
