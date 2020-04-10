@@ -331,9 +331,20 @@ do nothing. And suppress the output from `message' and
   (define-key dired-mode-map "a" 'dired-find-file)
   (define-key dired-mode-map (kbd "RET") 'dired-open-in-accordance-with-situation))
 
+(leaf anzu
+  :el-get t
+  :config
+  (global-anzu-mode +1)
+
+  (setq anzu-mode-lighter "")
+  (setq anzu-deactivate-region t)
+  (setq anzu-search-threshold 1000)
+
+  (global-set-key (kbd "C-c q") 'anzu-query-replace-regexp)
+  (global-set-key (kbd "C-c Q") 'anzu-query-replace-at-cursor-thing))
+
 ;; misc
 (el-get-bundle ag)
-(el-get-bundle anzu)
 (el-get-bundle auto-complete)
 (el-get-bundle color-moccur)
 (el-get-bundle dash)
