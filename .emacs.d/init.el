@@ -358,6 +358,37 @@ do nothing. And suppress the output from `message' and
   (add-to-list 'ac-modes 'vue-mode)
   (add-to-list 'ac-modes 'typescript-mode))
 
+(leaf helm
+  :el-get t
+  :require helm-config
+  :config
+  (helm-mode 1)
+  (helm-descbinds-mode 1)
+  (define-key helm-map (kbd "C-h") 'delete-backward-char)
+  (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
+  (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+  (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+  (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
+  (define-key global-map (kbd "M-x") 'helm-M-x)
+  (define-key global-map (kbd "C-x b") 'helm-buffers-list)
+  (define-key global-map (kbd "C-c C-v") 'helm-ls-git-ls)
+  (define-key global-map (kbd "C-x C-f") 'helm-find-files)
+  (define-key global-map (kbd "C-;") 'helm-mini)
+
+  ;; リストのソートをしないように
+  (defadvice helm-buffers-sort-transformer (around ignore activate)
+    (setq ad-return-value (ad-get-arg 0)))
+
+  (setq helm-buffer-max-length 40)
+  (setq helm-buffer-details-flag nil)
+
+  (leaf helm-ag
+    :el-get t)
+  (leaf helm-descbinds
+    :el-get t)
+  (leaf helm-ls-git
+    :el-get t))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -372,12 +403,6 @@ do nothing. And suppress the output from `message' and
 
 ;; magit
 (el-get-bundle magit)
-
-;; helm
-(el-get-bundle helm)
-(el-get-bundle helm-ag)
-(el-get-bundle helm-descbinds)
-(el-get-bundle helm-ls-git)
 
 ;; progmode
 (el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
