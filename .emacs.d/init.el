@@ -431,6 +431,14 @@ do nothing. And suppress the output from `message' and
   :config
   (setq feature-default-language "ja"))
 
+(leaf flycheck
+  :el-get t
+  :require t
+  :bind (("M-n" . flycheck-next-error)
+         ("M-p" . flycheck-previous-error))
+  :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save)))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -462,7 +470,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle php-mode)
 
 ;; lint check
-(el-get-bundle flycheck)
 (el-get-bundle rubocop)
 
 ;; el-get-lock
