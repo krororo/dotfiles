@@ -411,6 +411,21 @@ do nothing. And suppress the output from `message' and
   (setq sh-basic-offset 2)
   (setq sh-indentation 2))
 
+(leaf yasnippet
+  :el-get t
+  :require t
+  :config
+  (setq yas-snippet-dirs
+        '("~/.emacs.d/snippets"
+          "~/.emacs.d/el-get/yasnippet/snippets"))
+  (yas-global-mode 1)
+  (define-key yas-minor-mode-map (kbd "C-o") 'yas-expand)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-minor-mode-map [(tab)] nil)
+  (define-key yas-minor-mode-map (kbd "C-x i i") 'yas-insert-snippet)
+  (define-key yas-minor-mode-map (kbd "C-x i n") 'yas-new-snippet)
+  (define-key yas-minor-mode-map (kbd "C-x i v") 'yas-visit-snippet-file))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -420,7 +435,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle highlight-indentation-guides)
 (el-get-bundle init-loader)
 (el-get-bundle moccur-edit)
-(el-get-bundle yasnippet)
 
 ;; magit
 (el-get-bundle magit)
