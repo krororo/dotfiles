@@ -426,6 +426,11 @@ do nothing. And suppress the output from `message' and
   (define-key yas-minor-mode-map (kbd "C-x i n") 'yas-new-snippet)
   (define-key yas-minor-mode-map (kbd "C-x i v") 'yas-visit-snippet-file))
 
+(leaf feature-mode
+  :el-get t
+  :config
+  (setq feature-default-language "ja"))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -442,7 +447,6 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
 (el-get-bundle dockerfile-mode)
-(el-get-bundle feature-mode)
 (el-get-bundle haml-mode)
 (el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle js2-mode)
