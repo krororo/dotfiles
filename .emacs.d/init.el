@@ -389,6 +389,23 @@ do nothing. And suppress the output from `message' and
   (leaf helm-ls-git
     :el-get t))
 
+(leaf migemo
+  :if (executable-find "cmigemo")
+  :el-get t
+  :require t
+  :config
+  (setq migemo-command "cmigemo")
+  (setq migemo-options '("-q" "--emacs"))
+  (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+  (setq migemo-user-dictionary nil)
+  (setq migemo-regex-dictionary nil)
+  (setq migemo-use-pattern-alist t)
+  (setq migemo-use-frequent-pattern-alist t)
+  (setq migemo-pattern-alist-length 1000)
+  (setq migemo-coding-system 'utf-8-unix)
+  (migemo-init)
+  (set-process-query-on-exit-flag (get-process "migemo") nil))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -397,7 +414,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle exec-path-from-shell)
 (el-get-bundle highlight-indentation-guides)
 (el-get-bundle init-loader)
-(el-get-bundle migemo)
 (el-get-bundle moccur-edit)
 (el-get-bundle yasnippet)
 
