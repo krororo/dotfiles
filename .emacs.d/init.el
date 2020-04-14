@@ -406,6 +406,11 @@ do nothing. And suppress the output from `message' and
   (migemo-init)
   (set-process-query-on-exit-flag (get-process "migemo") nil))
 
+(leaf sh-mode
+  :config
+  (setq sh-basic-offset 2)
+  (setq sh-indentation 2))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
