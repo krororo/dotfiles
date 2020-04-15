@@ -486,6 +486,13 @@ do nothing. And suppress the output from `message' and
             #'(lambda()
                 (add-hook 'before-save-hook 'cleanup-org-tables  nil 'make-it-local))))
 
+(leaf vue-mode
+  :el-get t
+  :config
+  ;; see: https://qiita.com/akicho8/items/58c2ac5d762a2a4479c6
+  (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+  (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -504,7 +511,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
 (el-get-bundle typescript-mode)
-(el-get-bundle vue-mode)
 (el-get-bundle web-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
