@@ -447,6 +447,9 @@ do nothing. And suppress the output from `message' and
             '(lambda()
                (setq c-basic-offset 4))))
 
+(leaf haml-mode
+  :el-get t)
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -462,7 +465,6 @@ do nothing. And suppress the output from `message' and
 
 ;; progmode
 (el-get-bundle dockerfile-mode)
-(el-get-bundle haml-mode)
 (el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle js2-mode)
 (el-get-bundle kotlin-mode)
