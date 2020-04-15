@@ -493,15 +493,21 @@ do nothing. And suppress the output from `message' and
   (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
   (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
 
+(leaf color-moccur
+  :el-get t
+  :require t
+  :init
+  (leaf moccur-edit :el-get t)
+  :config
+  (load "moccur-edit"))
+
 ;; misc
 (el-get-bundle ag)
-(el-get-bundle color-moccur)
 (el-get-bundle dash)
 (el-get-bundle docker)
 (el-get-bundle exec-path-from-shell)
 (el-get-bundle highlight-indentation-guides)
 (el-get-bundle init-loader)
-(el-get-bundle moccur-edit)
 
 ;; magit
 (el-get-bundle magit)
