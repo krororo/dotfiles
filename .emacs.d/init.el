@@ -440,6 +440,13 @@ do nothing. And suppress the output from `message' and
 (leaf eruby-mode
   :el-get petere/emacs-eruby-mode)
 
+(leaf groovy-mode
+  :el-get Groovy-Emacs-Modes/groovy-emacs-modes
+  :config
+  (add-hook 'groovy-mode-hook
+            '(lambda()
+               (setq c-basic-offset 4))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -454,7 +461,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle magit)
 
 ;; progmode
-(el-get-bundle Groovy-Emacs-Modes/groovy-emacs-modes)
 (el-get-bundle dockerfile-mode)
 (el-get-bundle haml-mode)
 (el-get-bundle jrblevin/markdown-mode)
