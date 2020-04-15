@@ -468,6 +468,11 @@ do nothing. And suppress the output from `message' and
   (setq js-indent-level 2)
   (setq js2-basic-offset 2))
 
+(leaf kotlin-mode
+  :el-get t
+  :config
+  (setq kotlin-tab-width 4))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -484,7 +489,6 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle jrblevin/markdown-mode)
-(el-get-bundle kotlin-mode)
 (el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
 (el-get-bundle typescript-mode)
