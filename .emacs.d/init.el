@@ -206,7 +206,8 @@
       (kotlin-mode . "Kt")
       (markdown-mode . "Md")
       (ruby-mode   . "Rb")
-      (typescript-mode . "Ts")))
+      (typescript-mode . "Ts")
+      (js2-mode . "Js")))
 
   (defun clean-mode-line ()
     (interactive)
