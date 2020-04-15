@@ -450,6 +450,23 @@ do nothing. And suppress the output from `message' and
 (leaf haml-mode
   :el-get t)
 
+(leaf js2-mode
+  :el-get t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (add-hook 'js2-mode-hook
+            '(lambda()
+               (setq js2-global-externs (list "jQuery" "$"))
+               (setq js2-additional-externs (list "jQuery" "$"))
+               (setq js2-include-browser-externs nil)
+               (setq js2-mode-show-parse-errors nil)
+               (setq js2-mode-show-strict-warnings nil)
+               (setq js2-highlight-external-variables nil)
+               (setq js2-include-jslint-globals nil)
+               (flycheck-mode)))
+  (setq js-indent-level 2)
+  (setq js2-basic-offset 2))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -466,7 +483,6 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle jrblevin/markdown-mode)
-(el-get-bundle js2-mode)
 (el-get-bundle kotlin-mode)
 (el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
