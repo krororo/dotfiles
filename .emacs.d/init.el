@@ -37,8 +37,6 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
-(add-to-list 'load-path (locate-user-emacs-file "elisp"))
-
 (leaf mb-url
   :el-get t
   :config
@@ -439,6 +437,9 @@ do nothing. And suppress the output from `message' and
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save)))
 
+(leaf eruby-mode
+  :el-get petere/emacs-eruby-mode)
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -478,9 +479,6 @@ do nothing. And suppress the output from `message' and
 
 (let ((envs '("PATH")))
   (exec-path-from-shell-copy-envs envs))
-
-;; eruby-mode
-(load-file (locate-user-emacs-file "elisp/eruby-mode.el"))
 
 ;; init-loader
 (require 'init-loader)
