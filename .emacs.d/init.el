@@ -473,6 +473,19 @@ do nothing. And suppress the output from `message' and
   :config
   (setq kotlin-tab-width 4))
 
+(leaf markdown-mode
+  :el-get jrblevin/markdown-mode
+  :require org-table
+  :config
+  (add-hook 'markdown-mode-hook 'orgtbl-mode)
+  (defun cleanup-org-tables ()
+    (save-excursion
+      (goto-char (point-min))
+      (while (search-forward "-+-" nil t) (replace-match "-|-"))))
+  (add-hook 'markdown-mode-hook
+            #'(lambda()
+                (add-hook 'before-save-hook 'cleanup-org-tables  nil 'make-it-local))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle color-moccur)
@@ -488,7 +501,6 @@ do nothing. And suppress the output from `message' and
 
 ;; progmode
 (el-get-bundle dockerfile-mode)
-(el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
 (el-get-bundle typescript-mode)
