@@ -574,11 +574,16 @@ do nothing. And suppress the output from `message' and
                 (flycheck-add-mode 'javascript-eslint 'web-mode)
                 (flycheck-mode)))))
 
+(leaf exec-path-from-shell
+  :el-get t
+  :custom ((exec-path-from-shell-check-startup-files . nil))
+  :config
+  (exec-path-from-shell-copy-env "PATH"))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
 (el-get-bundle docker)
-(el-get-bundle exec-path-from-shell)
 (el-get-bundle highlight-indentation-guides)
 
 ;; magit
@@ -597,6 +602,3 @@ do nothing. And suppress the output from `message' and
 ;; el-get-lock
 (el-get-bundle tarao/el-get-lock)
 (el-get-lock)
-
-(let ((envs '("PATH")))
-  (exec-path-from-shell-copy-envs envs))
