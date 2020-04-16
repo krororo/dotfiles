@@ -541,6 +541,11 @@ do nothing. And suppress the output from `message' and
         (indent-line-to indent)
         (when (> offset 0) (forward-char offset))))))
 
+(leaf css-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+  (setq css-indent-offset 2))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
