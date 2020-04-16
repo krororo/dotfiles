@@ -499,9 +499,7 @@ do nothing. And suppress the output from `message' and
   :el-get t
   :require t
   :init
-  (leaf moccur-edit :el-get t)
-  :config
-  (load "moccur-edit"))
+  (leaf moccur-edit :el-get t))
 
 (leaf review-mode
   :el-get t
