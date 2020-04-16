@@ -503,6 +503,11 @@ do nothing. And suppress the output from `message' and
   :config
   (load "moccur-edit"))
 
+(leaf review-mode
+  :el-get t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode)))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
@@ -516,7 +521,6 @@ do nothing. And suppress the output from `message' and
 
 ;; progmode
 (el-get-bundle dockerfile-mode)
-(el-get-bundle review-mode)
 (el-get-bundle rspec-mode)
 (el-get-bundle typescript-mode)
 (el-get-bundle web-mode)
