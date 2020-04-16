@@ -509,6 +509,9 @@ do nothing. And suppress the output from `message' and
   (add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode)))
 
 (leaf ruby-mode
+  (leaf rspec-mode
+    :el-get t)
+
   :config
   (add-to-list 'auto-mode-alist '("\\.\\(ruby\\|plugin\\)\\'" . ruby-mode))
   (setq ruby-use-smie nil)
@@ -517,7 +520,6 @@ do nothing. And suppress the output from `message' and
   (setq ruby-deep-arglist nil)
   (setq ruby-deep-indent-paren-style nil)
   (setq ruby-insert-encoding-magic-comment nil)
-  (require 'rspec-mode)
 
   (add-hook 'ruby-mode-hook
             '(lambda()
@@ -584,7 +586,6 @@ do nothing. And suppress the output from `message' and
 
 ;; progmode
 (el-get-bundle dockerfile-mode)
-(el-get-bundle rspec-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle emacs-pug-mode)
