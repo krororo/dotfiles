@@ -37,6 +37,10 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
+(leaf cus-edit
+  :doc "tools for customizing Emacs and Lisp packages"
+  :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
+
 (leaf mb-url
   :el-get t
   :config
@@ -44,9 +48,15 @@
   (setq mb-url-http-backend 'mb-url-http-curl))
 
 (leaf *initialize-emacs
+  :custom ((initial-buffer-choice . "~/memo.md")
+           (scroll-conservatively . 1)
+           (scroll-margin . 5)
+           (scroll-preserve-screen-position . nil))
+  :custom-face
+  (default . '((t (:inherit nil :stipple nil :background "#003300" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "PfEd" :family "HackGen"))))
+  (font-lock-comment-face . '((t (:foreground "red"))))
+  (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :config
-  (setq custom-file (locate-user-emacs-file "custom.el"))
-  (load custom-file)
   (setq-default indent-tabs-mode nil)
   ;; *.~ とかのバックアップファイルを作らない
   (setq make-backup-files nil)
@@ -110,6 +120,7 @@
   (leaf editorconfig
     :require t
     :el-get t
+    :custom ((editorconfig-exclude-modes . '(web-mode)))
     :config
     (editorconfig-mode t)
     (defun editorconfig-disable-trim-whitespace-in-read-only-buffers (props)
@@ -362,6 +373,8 @@ do nothing. And suppress the output from `message' and
 (leaf helm
   :el-get t
   :require helm-config
+  :custom-face
+  (helm-source-header . '((t (:background "#22083397778B" :foreground "white" :weight bold))))
   :config
   (helm-mode 1)
   (helm-descbinds-mode 1)
@@ -437,11 +450,20 @@ do nothing. And suppress the output from `message' and
   :require t
   :bind (("M-n" . flycheck-next-error)
          ("M-p" . flycheck-previous-error))
+  :custom ((flycheck-ruby-rubocop-executable . nil)
+           (safe-local-variable-values . '((eval setq-local flycheck-command-wrapper-function
+                                                 (lambda
+                                                   (command)
+                                                   (append
+                                                    (quote
+                                                     ("bundle" "exec"))
+                                                    command))))))
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save)))
 
 (leaf eruby-mode
-  :el-get petere/emacs-eruby-mode)
+  :el-get petere/emacs-eruby-mode
+  :custom-face ((eruby-standard-face . '((t (:background "gray" :foreground "black"))))))
 
 (leaf groovy-mode
   :el-get Groovy-Emacs-Modes/groovy-emacs-modes
@@ -478,6 +500,8 @@ do nothing. And suppress the output from `message' and
 (leaf markdown-mode
   :el-get jrblevin/markdown-mode
   :require org-table
+  :custom-face
+  (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
   :config
   (add-hook 'markdown-mode-hook 'orgtbl-mode)
   (defun cleanup-org-tables ()
@@ -490,6 +514,15 @@ do nothing. And suppress the output from `message' and
 
 (leaf vue-mode
   :el-get t
+
+  :init
+  (leaf pug-mode
+    :el-get emacs-pug-mode
+    :custom ((pug-tab-width . 2)))
+
+  :custom ((vue-html-extra-indent . 2))
+  :custom-face
+  (mmm-default-submode-face . '((t nil)))
   :config
   ;; see: https://qiita.com/akicho8/items/58c2ac5d762a2a4479c6
   (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
@@ -503,6 +536,15 @@ do nothing. And suppress the output from `message' and
 
 (leaf review-mode
   :el-get t
+  :custom-face
+  (review-mode-bold-face . '((t (:foreground "deep sky blue" :weight bold))))
+  (review-mode-header1-face . '((t (:foreground "chartreuse" :weight bold))))
+  (review-mode-header2-face . '((t (:foreground "lawn green" :weight bold))))
+  (review-mode-header3-face . '((t (:foreground "green" :weight bold))))
+  (review-mode-header4-face . '((t (:foreground "#0dd" :weight bold))))
+  (review-mode-italic-face . '((t (:foreground "red" :slant italic :weight bold))))
+  (review-mode-title-face . '((t (:foreground "cyan" :weight bold))))
+  (review-mode-underline-face . '((t (:foreground "cyan" :underline t))))
   :config
   (add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode)))
 
@@ -548,6 +590,7 @@ do nothing. And suppress the output from `message' and
 
 (leaf typescript-mode
   :el-get t
+  :custom ((typescript-indent-level . 2))
   :config
   (add-hook 'typescript-mode-hook
             '(lambda ()
@@ -556,6 +599,7 @@ do nothing. And suppress the output from `message' and
 
 (leaf web-mode
   :el-get t
+  :custom ((web-mode-enable-auto-indentation . nil))
   :config
   (setq web-mode-attr-indent-offset 4)
   (setq web-mode-code-indent-offset 2)
@@ -578,20 +622,30 @@ do nothing. And suppress the output from `message' and
   :config
   (exec-path-from-shell-copy-env "PATH"))
 
+(leaf magit
+  :el-get t
+  :custom ((magit-diff-highlight-hunk-body . nil)
+           (magit-log-margin . '(t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18))
+           (magit-section-initial-visibility-alist '((unpushed . show) (stashes . hide))))
+  :custom-face
+  (magit-diff-added . '((t (:foreground "green"))))
+  (magit-diff-added-highlight . '((t (:foreground "green"))))
+  (magit-diff-file-header . '((t (:foreground "yellow"))))
+  (magit-diff-removed . '((t (:foreground "red"))))
+  (magit-diff-removed-highlight . '((t (:foreground "red"))))
+  (magit-hash . '((t (:foreground "gold"))))
+  (magit-item-highlight . '((t (:background "gray5")))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
 (el-get-bundle docker)
 (el-get-bundle highlight-indentation-guides)
 
-;; magit
-(el-get-bundle magit)
-
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
-(el-get-bundle emacs-pug-mode)
 (el-get-bundle php-mode)
 
 ;; lint check
