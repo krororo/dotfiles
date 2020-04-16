@@ -78,6 +78,8 @@
 
   (setq compilation-scroll-output t)
 
+  (setq nxml-child-indent 4)
+
   (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
   ;; dired バッファに [dir] 追加
