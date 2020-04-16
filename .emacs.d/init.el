@@ -546,6 +546,14 @@ do nothing. And suppress the output from `message' and
   (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
   (setq css-indent-offset 2))
 
+(leaf typescript-mode
+  :el-get t
+  :config
+  (add-hook 'typescript-mode-hook
+            '(lambda ()
+               (unless (string-match "/node_modules/" (or (buffer-file-name) ""))
+                 (flycheck-mode)))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
@@ -560,7 +568,6 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle rspec-mode)
-(el-get-bundle typescript-mode)
 (el-get-bundle web-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
