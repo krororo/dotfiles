@@ -626,7 +626,7 @@ do nothing. And suppress the output from `message' and
   :el-get t
   :custom ((magit-diff-highlight-hunk-body . nil)
            (magit-log-margin . '(t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18))
-           (magit-section-initial-visibility-alist '((unpushed . show) (stashes . hide))))
+           (magit-section-initial-visibility-alist . '((unpushed . show) (stashes . hide))))
   :custom-face
   (magit-diff-added . '((t (:foreground "green"))))
   (magit-diff-added-highlight . '((t (:foreground "green"))))
