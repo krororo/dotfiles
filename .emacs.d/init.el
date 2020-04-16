@@ -554,6 +554,24 @@ do nothing. And suppress the output from `message' and
                (unless (string-match "/node_modules/" (or (buffer-file-name) ""))
                  (flycheck-mode)))))
 
+(leaf web-mode
+  :el-get t
+  :config
+  (setq web-mode-attr-indent-offset 4)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-script-padding 2)
+
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.vm\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (equal web-mode-content-type "javascript")
+                (flycheck-add-mode 'javascript-eslint 'web-mode)
+                (flycheck-mode)))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
@@ -568,7 +586,6 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle rspec-mode)
-(el-get-bundle web-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle emacs-pug-mode)
