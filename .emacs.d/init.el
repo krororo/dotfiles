@@ -53,7 +53,7 @@
            (scroll-margin . 5)
            (scroll-preserve-screen-position . nil))
   :custom-face
-  (default . '((t (:inherit nil :stipple nil :background "#003300" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "PfEd" :family "HackGen"))))
+  (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "red"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :config
