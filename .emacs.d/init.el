@@ -508,6 +508,39 @@ do nothing. And suppress the output from `message' and
   :config
   (add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode)))
 
+(leaf ruby-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.\\(ruby\\|plugin\\)\\'" . ruby-mode))
+  (setq ruby-use-smie nil)
+  (setq rspec-spec-command "rspec -c")
+  (setq rspec-use-rake-when-possible nil)
+  (setq ruby-deep-arglist nil)
+  (setq ruby-deep-indent-paren-style nil)
+  (setq ruby-insert-encoding-magic-comment nil)
+  (require 'rspec-mode)
+
+  (add-hook 'ruby-mode-hook
+            '(lambda()
+               (setq flycheck-checker 'ruby-rubocop)
+               (electric-indent-local-mode 1)
+               (flycheck-mode)
+               (yard-mode)))
+
+  (defadvice ruby-indent-line (after unindent-closing-paren activate)
+    (let ((column (current-column))
+          indent offset)
+      (save-excursion
+        (back-to-indentation)
+        (let ((state (syntax-ppss)))
+          (setq offset (- column (current-column)))
+          (when (and (eq (char-after) ?\))
+                     (not (zerop (car state))))
+            (goto-char (cadr state))
+            (setq indent (current-indentation)))))
+      (when indent
+        (indent-line-to indent)
+        (when (> offset 0) (forward-char offset))))))
+
 ;; misc
 (el-get-bundle ag)
 (el-get-bundle dash)
