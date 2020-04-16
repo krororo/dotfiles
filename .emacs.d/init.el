@@ -578,7 +578,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle docker)
 (el-get-bundle exec-path-from-shell)
 (el-get-bundle highlight-indentation-guides)
-(el-get-bundle init-loader)
 
 ;; magit
 (el-get-bundle magit)
@@ -600,8 +599,3 @@ do nothing. And suppress the output from `message' and
 
 (let ((envs '("PATH")))
   (exec-path-from-shell-copy-envs envs))
-
-;; init-loader
-(require 'init-loader)
-(setq init-loader-show-log-after-init nil)
-(init-loader-load "~/.emacs.d/inits")
