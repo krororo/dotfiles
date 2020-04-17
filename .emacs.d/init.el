@@ -547,7 +547,10 @@ do nothing. And suppress the output from `message' and
   (add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode)))
 
 (leaf ruby-mode
+  :init
   (leaf rspec-mode
+    :el-get t)
+  (leaf rubocop
     :el-get t)
 
   :config
@@ -644,9 +647,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle php-mode)
-
-;; lint check
-(el-get-bundle rubocop)
 
 ;; el-get-lock
 (el-get-bundle tarao/el-get-lock)
