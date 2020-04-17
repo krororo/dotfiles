@@ -21,7 +21,6 @@
         (with-editor :checksum "9dd9f176d96abc60365369de6d08c26c414ef1f3")
         (emacs-pug-mode :checksum "685fd3414d89736bf232f5d1a6bed9e0353b98fe")
         (mb-url :checksum "7230902e1f844e0a1388f741e9ae6260cda3de69")
-        (highlight-indentation-guides :checksum "e46356487d4b19144af3025cf16f1b1bd174a450")
         (web-mode :checksum "e31d1dd4ee436db8aaca3f35223af5a05fb47dec")
         (dockerfile-mode :checksum "818e6946fcf2d58438ab78ea06761a372cc5435a")
         (anzu :checksum "e6c56ca8b23ac433f7be58b6f3f50801dd4164e4")

@@ -638,7 +638,6 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle ag)
 (el-get-bundle dash)
 (el-get-bundle docker)
-(el-get-bundle highlight-indentation-guides)
 
 ;; progmode
 (el-get-bundle dockerfile-mode)
