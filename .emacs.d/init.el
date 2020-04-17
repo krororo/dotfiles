@@ -428,10 +428,8 @@ do nothing. And suppress the output from `message' and
 (leaf yasnippet
   :el-get t
   :require t
+  :custom ((yas-snippet-dirs . '("~/.emacs.d/snippets")))
   :config
-  (setq yas-snippet-dirs
-        '("~/.emacs.d/snippets"
-          "~/.emacs.d/el-get/yasnippet/snippets"))
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "C-o") 'yas-expand)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
