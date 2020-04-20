@@ -475,8 +475,8 @@ do nothing. And suppress the output from `message' and
 
 (leaf js2-mode
   :el-get t
+  :mode "\\.js\\'"
   :config
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   (add-hook 'js2-mode-hook
             '(lambda()
                (setq js2-global-externs (list "jQuery" "$"))
@@ -534,6 +534,7 @@ do nothing. And suppress the output from `message' and
 
 (leaf review-mode
   :el-get t
+  :mode "\\.re_?\\(\\.erb\\)?\\'"
   :custom-face
   (review-mode-bold-face . '((t (:foreground "deep sky blue" :weight bold))))
   (review-mode-header1-face . '((t (:foreground "chartreuse" :weight bold))))
@@ -542,9 +543,7 @@ do nothing. And suppress the output from `message' and
   (review-mode-header4-face . '((t (:foreground "#0dd" :weight bold))))
   (review-mode-italic-face . '((t (:foreground "red" :slant italic :weight bold))))
   (review-mode-title-face . '((t (:foreground "cyan" :weight bold))))
-  (review-mode-underline-face . '((t (:foreground "cyan" :underline t))))
-  :config
-  (add-to-list 'auto-mode-alist '("\\.re_?\\(\\.erb\\)?\\'" . review-mode)))
+  (review-mode-underline-face . '((t (:foreground "cyan" :underline t)))))
 
 (leaf ruby-mode
   :init
@@ -553,8 +552,8 @@ do nothing. And suppress the output from `message' and
   (leaf rubocop
     :el-get t)
 
+  :mode "\\.\\(ruby\\|plugin\\)\\'"
   :config
-  (add-to-list 'auto-mode-alist '("\\.\\(ruby\\|plugin\\)\\'" . ruby-mode))
   (setq ruby-use-smie nil)
   (setq rspec-spec-command "rspec -c")
   (setq rspec-use-rake-when-possible nil)
@@ -585,8 +584,8 @@ do nothing. And suppress the output from `message' and
         (when (> offset 0) (forward-char offset))))))
 
 (leaf css-mode
+  :mode "\\.scss\\'"
   :config
-  (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
   (setq css-indent-offset 2))
 
 (leaf typescript-mode
@@ -600,16 +599,13 @@ do nothing. And suppress the output from `message' and
 
 (leaf web-mode
   :el-get t
+  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'"
   :custom ((web-mode-enable-auto-indentation . nil))
   :config
   (setq web-mode-attr-indent-offset 4)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-script-padding 2)
-
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.vm\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
 
   (add-hook 'web-mode-hook
             (lambda ()
