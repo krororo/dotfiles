@@ -92,6 +92,9 @@
 
   (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
+  ;; スクリーンの最大化
+  (set-frame-parameter nil 'fullscreen 'maximized)
+
   ;; dired バッファに [dir] 追加
   (defun dired-my-append-buffer-name-hint ()
     "Append a auxiliary string to a name of dired buffer."
