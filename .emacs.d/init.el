@@ -653,7 +653,3 @@ do nothing. And suppress the output from `message' and
 (el-get-bundle yaml-mode)
 (el-get-bundle yard-mode)
 (el-get-bundle php-mode)
-
-;; el-get-lock
-(el-get-bundle tarao/el-get-lock)
-(el-get-lock)
