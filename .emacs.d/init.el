@@ -634,7 +634,14 @@ do nothing. And suppress the output from `message' and
   (magit-diff-removed . '((t (:foreground "red"))))
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
-  (magit-item-highlight . '((t (:background "gray5")))))
+  (magit-item-highlight . '((t (:background "gray5"))))
+  :config
+  (leaf magit-delta
+    :el-get dandavison/magit-delta
+    :after magit xterm-color
+    :config (magit-delta-mode t))
+
+  (leaf xterm-color :ensure t))
 
 ;; misc
 (el-get-bundle ag)
