@@ -137,13 +137,13 @@
                         mode-line-format))
     (defun toggle-cleanup-spaces ()
       (interactive)
-      (cond ((memq 'delete-trailing-whitespace write-file-hooks)
+      (cond ((memq 'delete-trailing-whitespace write-file-functions)
              (setq my/current-cleanup-state
                    (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
-             (remove-hook 'write-file-hooks 'delete-trailing-whitespace))
+             (remove-hook 'write-file-functions 'delete-trailing-whitespace))
             (t
              (setq my/current-cleanup-state "")
-             (add-hook 'write-file-hooks 'delete-trailing-whitespace)))
+             (add-hook 'write-file-functions 'delete-trailing-whitespace)))
       (force-mode-line-update)))
 
   (leaf git-gutter
