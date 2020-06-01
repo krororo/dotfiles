@@ -132,9 +132,6 @@
     (add-hook 'editorconfig-custom-hooks #'editorconfig-disable-trim-whitespace-in-read-only-buffers)
     ;; delete-trailing-whitespace モードの状態表示と反転
     (defvar my/current-cleanup-state "")
-    (setq-default mode-line-format
-                  (cons '(:eval my/current-cleanup-state)
-                        mode-line-format))
     (defun toggle-cleanup-spaces ()
       (interactive)
       (cond ((memq 'delete-trailing-whitespace write-file-functions)
@@ -196,7 +193,8 @@
 (leaf *mode-line
   :config
   (setq-default mode-line-format
-                '("%e"
+                '((:eval my/current-cleanup-state)
+                  "%e"
                   mode-line-front-space
                   mode-line-mule-info
                   mode-line-client
