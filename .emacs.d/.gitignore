@@ -6,7 +6,9 @@ custom.el
 el-get
 elpa
 eshell/history
+games
 migemo-pattern
+network-security.data
 proxy-setting.el
 recentf
 session.*
