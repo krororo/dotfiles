@@ -143,6 +143,11 @@
     :el-get t
     :config (global-git-gutter-mode t))
 
+  (leaf avy
+    :ensure t
+    :bind (("C-M-:" . avy-goto-char-timer)
+           ("M-g M-g" . avy-goto-line)))
+
   (leaf *keep-scratch-buffer
     :doc "don't remove *scratch* buffer"
     :preface
