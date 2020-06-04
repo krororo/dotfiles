@@ -211,6 +211,7 @@
     '( ;; For minor-mode, first char is 'space'
       (editorconfig-mode . " EC")
       (git-gutter-mode . " GG")
+      (magit-delta-mode . " Δ")
       ;; Major modes
       (emacs-lisp-mode . "El")
       (kotlin-mode . "Kt")
@@ -629,11 +630,18 @@ do nothing. And suppress the output from `message' and
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
   (magit-item-highlight . '((t (:background "gray5"))))
+  :hook (magit-status-mode-hook . magit-delta-mode)
   :config
   (leaf magit-delta
     :el-get dandavison/magit-delta
     :after magit xterm-color
-    :config (magit-delta-mode t))
+    :custom ((magit-delta-delta-args
+              . `("--max-line-distance" "0.6"
+                  "--24-bit-color" ,(if xterm-color--support-truecolor "always" "never")
+                  "--color-only"
+                  "--plus-color" "#003345"
+                  "--plus-emph-color" "#006b6b"))
+             (magit-delta-hide-plus-minus-markers . nil)))
 
   (leaf xterm-color :ensure t))
 
