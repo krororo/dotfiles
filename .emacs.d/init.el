@@ -37,15 +37,11 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
+(leaf package-utils :ensure t)
+
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
-
-(leaf mb-url
-  :el-get t
-  :config
-  (advice-add 'url-http :around 'mb-url-http-around-advice)
-  (setq mb-url-http-backend 'mb-url-http-curl))
 
 (leaf *initialize-emacs
   :custom ((initial-buffer-choice . "~/memo.md")
