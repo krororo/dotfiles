@@ -148,6 +148,17 @@
     :bind (("C-M-:" . avy-goto-char-timer)
            ("M-g M-g" . avy-goto-line)))
 
+  (leaf rainbow-delimiters
+    :ensure t
+    :require cl-lib color
+    :hook prog-mode-hook
+    :config
+    (cl-loop
+     for index from 1 to rainbow-delimiters-max-face-count
+     do
+     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+       (cl-callf color-saturate-name (face-foreground face) 30))))
+
   (leaf *keep-scratch-buffer
     :doc "don't remove *scratch* buffer"
     :preface
