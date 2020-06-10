@@ -564,10 +564,9 @@ do nothing. And suppress the output from `message' and
 
 (leaf ruby-mode
   :init
-  (leaf rspec-mode
-    :el-get t)
-  (leaf rubocop
-    :el-get t)
+  (leaf rspec-mode :el-get t)
+  (leaf rubocop :el-get t)
+  (leaf yard-mode :el-get t)
 
   :mode "\\.\\(ruby\\|plugin\\)\\'"
   :config
@@ -672,5 +671,4 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle yaml-mode)
-(el-get-bundle yard-mode)
 (el-get-bundle php-mode)
