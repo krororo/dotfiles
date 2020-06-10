@@ -150,14 +150,17 @@
 
   (leaf rainbow-delimiters
     :ensure t
-    :require cl-lib color
     :hook prog-mode-hook
-    :config
-    (cl-loop
-     for index from 1 to rainbow-delimiters-max-face-count
-     do
-     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-       (cl-callf color-saturate-name (face-foreground face) 30))))
+    :custom-face
+    ((rainbow-delimiters-depth-1-face . '((t (:foreground "#9a4040"))))
+     (rainbow-delimiters-depth-2-face . '((t (:foreground "#ff5e5e"))))
+     (rainbow-delimiters-depth-3-face . '((t (:foreground "#ffaa77"))))
+     (rainbow-delimiters-depth-4-face . '((t (:foreground "#dddd77"))))
+     (rainbow-delimiters-depth-5-face . '((t (:foreground "#80ee80"))))
+     (rainbow-delimiters-depth-6-face . '((t (:foreground "#66bbff"))))
+     (rainbow-delimiters-depth-7-face . '((t (:foreground "#da6bda"))))
+     (rainbow-delimiters-depth-8-face . '((t (:foreground "#afafaf"))))
+     (rainbow-delimiters-depth-9-face . '((t (:foreground "#f0f0f0"))))))
 
   (leaf *keep-scratch-buffer
     :doc "don't remove *scratch* buffer"
