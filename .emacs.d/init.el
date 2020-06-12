@@ -91,13 +91,6 @@
   ;; スクリーンの最大化
   (set-frame-parameter nil 'fullscreen 'maximized)
 
-  ;; dired バッファに [dir] 追加
-  (defun dired-my-append-buffer-name-hint ()
-    "Append a auxiliary string to a name of dired buffer."
-    (when (eq major-mode 'dired-mode)
-      (rename-buffer (concat (buffer-name) " [dir]") t)))
-  (add-hook 'dired-mode-hook 'dired-my-append-buffer-name-hint)
-
   (leaf eaw
     :el-get (hamano/locale-eaw
              :name eaw)
@@ -348,6 +341,12 @@ do nothing. And suppress the output from `message' and
         uniquify-ignore-buffers-re "*[^*]+*"))
 
 (leaf *dired
+  :preface
+  (defun dired-my-append-buffer-name-hint ()
+    "dired バッファに [dir] 追加"
+    (when (eq major-mode 'dired-mode)
+      (rename-buffer (concat (buffer-name) " [dir]") t)))
+  :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
   :config
   (put 'dired-find-alternate-file 'disabled nil)
 
