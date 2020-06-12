@@ -152,7 +152,7 @@
     :ensure t
     :hook prog-mode-hook
     :custom-face
-    ((rainbow-delimiters-depth-1-face . '((t (:foreground "#9a4040"))))
+    ((rainbow-delimiters-depth-1-face . '((t (:foreground "#ffa500"))))
      (rainbow-delimiters-depth-2-face . '((t (:foreground "#ff5e5e"))))
      (rainbow-delimiters-depth-3-face . '((t (:foreground "#ffaa77"))))
      (rainbow-delimiters-depth-4-face . '((t (:foreground "#dddd77"))))
