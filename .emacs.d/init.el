@@ -69,8 +69,6 @@
   (column-number-mode t)
   ;; 起動時のメッセージをでなくする
   (setq inhibit-startup-message t)
-  ;; 不要な行末の空白を表示
-  (setq-default show-trailing-whitespace t)
   ;; 対応する括弧をハイライト
   (show-paren-mode t)
   ;; スクロールバーを右に
@@ -100,6 +98,7 @@
   (leaf whitespace
     :doc "tab に色を付ける"
     :require t
+    :hook (prog-mode-hook . (lambda () (setq show-trailing-whitespace t)))
     :config
     (setq whitespace-style '(face tabs tab-mark))
     (setq whitespace-display-mappings
