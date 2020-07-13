@@ -37,7 +37,7 @@
 [core]
 	editor = vim
 	quotepath = false
-	pager = (delta --color-only --theme Dracula 2>/dev/null || cat) | ${PAGER:-less}
+	pager = (delta 2>/dev/null || cat) | ${PAGER:-less}
 [rebase]
 	autosquash = true
 	autostash = true
@@ -70,3 +70,6 @@
 	postBuffer = 524288000
 [hub]
 	protocol = https
+[delta]
+	color-only = true
+	theme = Dracula
