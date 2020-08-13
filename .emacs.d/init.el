@@ -392,7 +392,6 @@ do nothing. And suppress the output from `message' and
   (helm-source-header . '((t (:background "#22083397778B" :foreground "white" :weight bold))))
   :config
   (helm-mode 1)
-  (helm-descbinds-mode 1)
   (define-key helm-map (kbd "C-h") 'delete-backward-char)
   (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
   (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
@@ -414,7 +413,9 @@ do nothing. And suppress the output from `message' and
   (leaf helm-ag
     :el-get t)
   (leaf helm-descbinds
-    :el-get t)
+    :el-get t
+    :config
+    (helm-descbinds-mode 1))
   (leaf helm-ls-git
     :el-get t))
 
