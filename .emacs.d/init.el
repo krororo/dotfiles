@@ -97,7 +97,7 @@
   (leaf whitespace
     :doc "tab に色を付ける"
     :require t
-    :hook (prog-mode-hook . (lambda () (setq show-trailing-whitespace t)))
+    :hook ((prog-mode-hook text-mode-hook) . (lambda () (setq show-trailing-whitespace t)))
     :config
     (setq whitespace-style '(face tabs tab-mark))
     (setq whitespace-display-mappings
