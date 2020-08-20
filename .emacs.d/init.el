@@ -224,7 +224,6 @@
       (magit-delta-mode . " Δ")
       ;; Major modes
       (emacs-lisp-mode . "El")
-      (kotlin-mode . "Kt")
       (markdown-mode . "Md")
       (ruby-mode   . "Rb")
       (typescript-mode . "Ts")
@@ -504,11 +503,6 @@ do nothing. And suppress the output from `message' and
                (flycheck-mode)))
   (setq js-indent-level 2)
   (setq js2-basic-offset 2))
-
-(leaf kotlin-mode
-  :el-get t
-  :config
-  (setq kotlin-tab-width 4))
 
 (leaf markdown-mode
   :el-get jrblevin/markdown-mode
