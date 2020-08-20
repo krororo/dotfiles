@@ -645,4 +645,3 @@ do nothing. And suppress the output from `message' and
 ;; progmode
 (el-get-bundle dockerfile-mode)
 (el-get-bundle yaml-mode)
-(el-get-bundle php-mode)
