@@ -47,7 +47,8 @@
   :custom ((initial-buffer-choice . "~/memo.md")
            (scroll-conservatively . 1)
            (scroll-margin . 5)
-           (scroll-preserve-screen-position . nil))
+           (scroll-preserve-screen-position . nil)
+           (compilation-scroll-output . t))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "red"))))
@@ -79,8 +80,6 @@
 
   (put 'downcase-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
-
-  (setq compilation-scroll-output t)
 
   (setq nxml-child-indent 4)
 
