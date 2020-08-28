@@ -51,7 +51,7 @@
            (compilation-scroll-output . t))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
-  (font-lock-comment-face . '((t (:foreground "red"))))
+  (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :config
   (setq-default indent-tabs-mode nil)
