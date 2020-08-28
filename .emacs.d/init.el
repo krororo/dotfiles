@@ -463,7 +463,8 @@ do nothing. And suppress the output from `message' and
   :bind (("M-n" . flycheck-next-error)
          ("M-p" . flycheck-previous-error))
   :custom ((flycheck-ruby-rubocop-executable . nil)
-           (safe-local-variable-values . '((eval setq-local flycheck-command-wrapper-function
+           (safe-local-variable-values . '((encoding . utf-8)
+                                           (eval setq-local flycheck-command-wrapper-function
                                                  (lambda
                                                    (command)
                                                    (append
