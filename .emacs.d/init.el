@@ -108,8 +108,7 @@
     (global-whitespace-mode 1))
 
   (leaf editorconfig
-    :require t
-    :el-get t
+    :ensure t
     :custom ((editorconfig-exclude-modes . '(web-mode)))
     :config
     (editorconfig-mode t)
