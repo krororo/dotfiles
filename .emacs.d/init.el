@@ -72,8 +72,8 @@
   (setq inhibit-startup-message t)
   ;; 対応する括弧をハイライト
   (show-paren-mode t)
-  ;; スクロールバーを右に
-  (set-scroll-bar-mode 'right)
+  ;; スクロールバー無し
+  (set-scroll-bar-mode nil)
   ;; bell をならなくする
   (setq visible-bell t)
   (setq ring-bell-function 'ignore)
