@@ -130,7 +130,7 @@
       (force-mode-line-update)))
 
   (leaf git-gutter
-    :el-get t
+    :ensure t
     :config (global-git-gutter-mode t))
 
   (leaf avy
