@@ -418,7 +418,7 @@ do nothing. And suppress the output from `message' and
 
 (leaf migemo
   :if (executable-find "cmigemo")
-  :el-get t
+  :ensure t
   :require t
   :config
   (setq migemo-command "cmigemo")
