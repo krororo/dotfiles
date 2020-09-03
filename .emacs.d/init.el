@@ -439,7 +439,7 @@ do nothing. And suppress the output from `message' and
   (setq sh-indentation 2))
 
 (leaf yasnippet
-  :el-get t
+  :ensure t
   :require t
   :custom ((yas-snippet-dirs . '("~/.emacs.d/snippets")))
   :config
