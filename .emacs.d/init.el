@@ -368,7 +368,7 @@ do nothing. And suppress the output from `message' and
   (global-set-key (kbd "C-c Q") 'anzu-query-replace-at-cursor-thing))
 
 (leaf auto-complete
-  :el-get t
+  :ensure t
   :require auto-complete-config
   :config
   (ac-config-default)
@@ -383,7 +383,7 @@ do nothing. And suppress the output from `message' and
   (add-to-list 'ac-modes 'typescript-mode))
 
 (leaf helm
-  :el-get t
+  :ensure t
   :require helm-config
   :custom-face
   (helm-source-header . '((t (:background "#22083397778B" :foreground "white" :weight bold))))
@@ -408,13 +408,13 @@ do nothing. And suppress the output from `message' and
   (setq helm-buffer-details-flag nil)
 
   (leaf helm-ag
-    :el-get t)
+    :ensure t)
   (leaf helm-descbinds
-    :el-get t
+    :ensure t
     :config
     (helm-descbinds-mode 1))
   (leaf helm-ls-git
-    :el-get t))
+    :ensure t))
 
 (leaf migemo
   :if (executable-find "cmigemo")
