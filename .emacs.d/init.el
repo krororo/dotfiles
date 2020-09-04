@@ -452,7 +452,7 @@ do nothing. And suppress the output from `message' and
   (define-key yas-minor-mode-map (kbd "C-x i v") 'yas-visit-snippet-file))
 
 (leaf feature-mode
-  :el-get t
+  :ensure t
   :config
   (setq feature-default-language "ja"))
 
