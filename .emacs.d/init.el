@@ -477,13 +477,6 @@ do nothing. And suppress the output from `message' and
   :el-get petere/emacs-eruby-mode
   :custom-face ((eruby-standard-face . '((t (:background "gray" :foreground "black"))))))
 
-(leaf groovy-mode
-  :el-get Groovy-Emacs-Modes/groovy-emacs-modes
-  :config
-  (add-hook 'groovy-mode-hook
-            '(lambda()
-               (setq c-basic-offset 4))))
-
 (leaf haml-mode
   :el-get t)
 
