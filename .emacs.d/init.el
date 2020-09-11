@@ -485,7 +485,7 @@ properly disable mozc-mode."
   (setq js2-basic-offset 2))
 
 (leaf markdown-mode
-  :el-get jrblevin/markdown-mode
+  :ensure t
   :require org-table
   :custom-face
   (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
