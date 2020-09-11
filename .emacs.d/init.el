@@ -468,7 +468,7 @@ properly disable mozc-mode."
   :ensure t)
 
 (leaf js2-mode
-  :el-get t
+  :ensure t
   :mode "\\.js\\'"
   :config
   (add-hook 'js2-mode-hook
