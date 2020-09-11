@@ -500,11 +500,11 @@ properly disable mozc-mode."
                 (add-hook 'before-save-hook 'cleanup-org-tables  nil 'make-it-local))))
 
 (leaf vue-mode
-  :el-get t
+  :ensure t
 
   :init
   (leaf pug-mode
-    :el-get emacs-pug-mode
+    :ensure t
     :custom ((pug-tab-width . 2)))
 
   :custom ((vue-html-extra-indent . 2))
