@@ -478,7 +478,7 @@ do nothing. And suppress the output from `message' and
   :custom-face ((eruby-standard-face . '((t (:background "gray" :foreground "black"))))))
 
 (leaf haml-mode
-  :el-get t)
+  :ensure t)
 
 (leaf js2-mode
   :el-get t
