@@ -515,12 +515,6 @@ properly disable mozc-mode."
   (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
   (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
 
-(leaf color-moccur
-  :el-get t
-  :require t
-  :init
-  (leaf moccur-edit :el-get t))
-
 (leaf review-mode
   :el-get t
   :mode "\\.re_?\\(\\.erb\\)?\\'"
