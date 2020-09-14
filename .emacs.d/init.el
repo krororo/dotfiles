@@ -532,7 +532,7 @@ properly disable mozc-mode."
   :init
   (leaf rspec-mode :ensure t)
   (leaf rubocop :el-get t)
-  (leaf yard-mode :el-get t)
+  (leaf yard-mode :ensure t)
 
   :mode "\\.\\(ruby\\|plugin\\)\\'"
   :config
