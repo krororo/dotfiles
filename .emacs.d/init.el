@@ -562,7 +562,7 @@ properly disable mozc-mode."
                  (flycheck-mode)))))
 
 (leaf web-mode
-  :el-get t
+  :ensure t
   :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'"
   :custom ((web-mode-enable-auto-indentation . nil))
   :config
