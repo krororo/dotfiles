@@ -578,7 +578,7 @@ properly disable mozc-mode."
                 (flycheck-mode)))))
 
 (leaf exec-path-from-shell
-  :el-get t
+  :ensure t
   :custom ((exec-path-from-shell-check-startup-files . nil))
   :config
   (exec-path-from-shell-copy-env "PATH"))
