@@ -553,7 +553,7 @@ properly disable mozc-mode."
   (setq css-indent-offset 2))
 
 (leaf typescript-mode
-  :el-get t
+  :ensure t
   :custom ((typescript-indent-level . 2))
   :config
   (add-hook 'typescript-mode-hook
