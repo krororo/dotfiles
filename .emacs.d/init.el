@@ -530,7 +530,7 @@ properly disable mozc-mode."
 
 (leaf ruby-mode
   :init
-  (leaf rspec-mode :el-get t)
+  (leaf rspec-mode :ensure t)
   (leaf rubocop :el-get t)
   (leaf yard-mode :el-get t)
 
