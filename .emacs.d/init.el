@@ -444,7 +444,7 @@ properly disable mozc-mode."
   (setq feature-default-language "ja"))
 
 (leaf flycheck
-  :el-get t
+  :ensure t
   :require t
   :bind (("M-n" . flycheck-next-error)
          ("M-p" . flycheck-previous-error))
@@ -531,7 +531,7 @@ properly disable mozc-mode."
 (leaf ruby-mode
   :init
   (leaf rspec-mode :ensure t)
-  (leaf rubocop :el-get t)
+  (leaf rubocop :ensure t)
   (leaf yard-mode :ensure t)
 
   :mode "\\.\\(ruby\\|plugin\\)\\'"
@@ -584,7 +584,7 @@ properly disable mozc-mode."
   (exec-path-from-shell-copy-env "PATH"))
 
 (leaf magit
-  :el-get t
+  :ensure t
   :custom ((magit-diff-highlight-hunk-body . nil)
            (magit-log-margin . '(t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18))
            (magit-section-initial-visibility-alist . '((unpushed . show) (stashes . hide))))
@@ -599,7 +599,7 @@ properly disable mozc-mode."
   :hook (magit-status-mode-hook . magit-delta-mode)
   :config
   (leaf magit-delta
-    :el-get dandavison/magit-delta
+    :ensure t
     :after magit xterm-color
     :custom ((magit-delta-delta-args
               . `("--max-line-distance" "0.6"
@@ -611,11 +611,11 @@ properly disable mozc-mode."
 
   (leaf xterm-color :ensure t))
 
-;; misc
-(el-get-bundle ag)
-(el-get-bundle dash)
-(el-get-bundle docker)
+(leaf ag :ensure t)
 
-;; progmode
-(el-get-bundle dockerfile-mode)
-(el-get-bundle yaml-mode)
+(leaf docker
+  :ensure t
+  :config
+  (leaf dockerfile-mode :ensure t))
+
+(leaf yaml-mode :ensure t)
