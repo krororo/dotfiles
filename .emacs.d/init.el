@@ -516,7 +516,7 @@ properly disable mozc-mode."
   (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
 
 (leaf review-mode
-  :el-get t
+  :ensure t
   :mode "\\.re_?\\(\\.erb\\)?\\'"
   :custom-face
   (review-mode-bold-face . '((t (:foreground "deep sky blue" :weight bold))))
