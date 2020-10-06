@@ -139,7 +139,8 @@
      (rainbow-delimiters-depth-6-face . '((t (:foreground "#66bbff"))))
      (rainbow-delimiters-depth-7-face . '((t (:foreground "#da6bda"))))
      (rainbow-delimiters-depth-8-face . '((t (:foreground "#afafaf"))))
-     (rainbow-delimiters-depth-9-face . '((t (:foreground "#f0f0f0"))))))
+     (rainbow-delimiters-depth-9-face . '((t (:foreground "#f0f0f0"))))
+     (rainbow-delimiters-base-error-face . '((t (:foreground "#ff2020"))))))
 
   (leaf *keep-scratch-buffer
     :doc "don't remove *scratch* buffer"
