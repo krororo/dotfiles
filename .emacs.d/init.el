@@ -332,6 +332,12 @@ properly disable mozc-mode."
   (define-key dired-mode-map "a" 'dired-find-file)
   (define-key dired-mode-map (kbd "RET") 'dired-open-in-accordance-with-situation))
 
+(leaf dired-subtree
+  :ensure t
+  :bind ((:dired-mode-map
+          ("i" . dired-subtree-insert)
+          ("<tab>" . dired-subtree-remove))))
+
 (leaf anzu
   :ensure t
   :config
