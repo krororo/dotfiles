@@ -52,7 +52,6 @@
 [pager]
 	stash = false
 	branch = false
-	grep = false
 [diff]
 	compactionHeuristic = true
 	colorMoved = default
