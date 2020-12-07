@@ -96,6 +96,12 @@ if [ -d $HOME/.rbenv ]; then
   eval "$(rbenv init - zsh)"
 fi
 
+# nodenv
+if [ -d $HOME/.nodenv ]; then
+  export PATH=$HOME/.nodenv/bin:$PATH
+  eval "$(nodenv init -)"
+fi
+
 # hub
 if [ -x /usr/bin/hub ]; then
   eval "$(hub alias -s)"
