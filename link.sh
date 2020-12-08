@@ -7,6 +7,7 @@ for f in .??* *.conf; do
 
   if [[ "$f" == ".config" ]]; then
     for ff in $f/**/*; do
+      mkdir -p ~/$(dirname $ff)
       ln -sf ~/dotfiles/$ff ~/$ff
     done
   else
