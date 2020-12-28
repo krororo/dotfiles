@@ -399,6 +399,8 @@ properly disable mozc-mode."
   (leaf helm-ls-git
     :ensure t))
 
+(leaf sudo-edit :ensure t)
+
 (leaf migemo
   :if (executable-find "cmigemo")
   :ensure t
