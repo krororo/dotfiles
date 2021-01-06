@@ -172,6 +172,13 @@
             (my-make-scratch 1)))))))
 
 (leaf *key-binding
+  :preface
+  (defun my-move-beginning-alt()
+    (interactive)
+    (if (bolp)
+        (back-to-indentation)
+      (beginning-of-line)))
+  :bind (("C-a" . my-move-beginning-alt))
   :config
   (global-set-key (kbd "C-h") 'delete-backward-char)
   (global-set-key (kbd "C-c m") 'magit-status)
