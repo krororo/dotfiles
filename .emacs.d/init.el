@@ -173,24 +173,26 @@
 
 (leaf *key-binding
   :preface
-  (defun my-move-beginning-alt()
+  (defun my-move-beginning-alt ()
     (interactive)
     (if (bolp)
         (back-to-indentation)
       (beginning-of-line)))
-  :bind (("C-a" . my-move-beginning-alt))
-  :config
-  (global-set-key (kbd "C-h") 'delete-backward-char)
-  (global-set-key (kbd "C-c m") 'magit-status)
-  (global-set-key (kbd "C-c u") 'comment-region)
-  (global-set-key (kbd "C-c y") 'uncomment-region)
-  (global-set-key (kbd "C-c r") 'revert-buffer)
-  ;; ウィンドウ逆移動
-  (global-set-key (kbd "C-x p") (lambda()(interactive)(other-window -1)))
-  ;; 暴発するので無効化
-  (global-unset-key (kbd "C-x C-p"))
-  ;; compose-mail
-  (global-unset-key (kbd "C-x m")))
+  (defun my-reverse-other-window ()
+    (interactive)
+    (other-window -1))
+  :bind (("C-a" . my-move-beginning-alt)
+         ("C-h" . delete-backward-char)
+         ("C-c m" . magit-status)
+         ("C-c u" . comment-region)
+         ("C-c y" . uncomment-region)
+         ("C-c r" . revert-buffer)
+         ;; ウィンドウ逆移動
+         ("C-x p" . my-reverse-other-window)
+         ;; 暴発するので無効化
+         ("C-x C-p" . nil)
+         ;; compose-mail
+         ("C-x m" . nil)))
 
 (leaf *mode-line
   :config
