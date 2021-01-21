@@ -584,6 +584,10 @@ properly disable mozc-mode."
                 (flycheck-add-mode 'javascript-eslint 'web-mode)
                 (flycheck-mode)))))
 
+(leaf add-node-modules-path
+  :ensure t
+  :hook (typescript-mode-hook . add-node-modules-path))
+
 (leaf exec-path-from-shell
   :ensure t
   :custom ((exec-path-from-shell-check-startup-files . nil))
