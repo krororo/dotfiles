@@ -89,6 +89,8 @@ alias logcolor='sed -e "s/INFO/\x1b[32mINFO\x1b[0m/g" -e "s/WARN/\x1b[33mWARN\x1
 alias g='git'
 compdef g=git
 alias y='yarn'
+alias b='bundle'
+compdef b=bundle
 
 # rbenv
 if [ -d $HOME/.rbenv ]; then
