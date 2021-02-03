@@ -580,13 +580,13 @@ properly disable mozc-mode."
 (leaf web-mode
   :ensure t
   :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'"
-  :custom ((web-mode-enable-auto-indentation . nil))
+  :custom ((web-mode-enable-auto-indentation . nil)
+           (web-mode-attr-indent-offset . 2)
+           (web-mode-code-indent-offset . 2)
+           (web-mode-css-indent-offset . 2)
+           (web-mode-markup-indent-offset . 2)
+           (web-mode-script-padding . 2))
   :config
-  (setq web-mode-attr-indent-offset 4)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-script-padding 2)
-
   (add-hook 'web-mode-hook
             (lambda ()
               (when (equal web-mode-content-type "javascript")
