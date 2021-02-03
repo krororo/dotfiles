@@ -514,7 +514,16 @@ properly disable mozc-mode."
     :ensure t
     :custom ((pug-tab-width . 2)))
 
-  :custom ((vue-html-extra-indent . 2))
+  :custom ((vue-html-extra-indent . 2)
+           (js-indent-level . 2),
+           (vue-modes . '((:type template :name nil :mode web-mode)
+                          (:type template :name html :mode web-mode)
+                          (:type script :name nil :mode js-mode)
+                          (:type script :name js :mode js-mode)
+                          (:type script :name ts :mode typescript-mode)
+                          (:type style :name nil :mode css-mode)
+                          (:type style :name css :mode css-mode)
+                          (:type style :name scss :mode css-mode))))
   :custom-face
   (mmm-default-submode-face . '((t nil)))
   :config
