@@ -91,6 +91,8 @@ compdef g=git
 alias y='yarn'
 alias b='bundle'
 compdef b=bundle
+alias dc='docker-compose'
+compdef dc=docker-compose
 
 # rbenv
 if [ -d $HOME/.rbenv ]; then
