@@ -37,7 +37,8 @@
            (scroll-conservatively . 1)
            (scroll-margin . 5)
            (scroll-preserve-screen-position . nil)
-           (compilation-scroll-output . t))
+           (compilation-scroll-output . t)
+           (create-lockfiles . nil))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
