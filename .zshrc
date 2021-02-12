@@ -91,6 +91,10 @@ compdef b=bundle
 alias dc='docker-compose'
 compdef dc=docker-compose
 
+if [ -x /usr/bin/lsd ]; then
+  alias ls=lsd
+fi
+
 # rbenv
 if [ -d $HOME/.rbenv ]; then
   export PATH=$HOME/.rbenv/bin:$PATH
