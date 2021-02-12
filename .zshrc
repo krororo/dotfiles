@@ -67,10 +67,8 @@ alias rm="rm -i"
 alias cp="cp -iv"
 alias mv="mv -i"
 alias be='bundle exec'
-alias less='less -R'
 alias emacs='XMODIFIERS=@im=none emacs'
 alias sudo='sudo -E '
-alias less='less -R'
 alias brspec='bundle exec rspec -c'
 alias grep='grep --color=auto'
 alias today='date +%Y%m%d'
@@ -114,6 +112,7 @@ fi
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$PATH"
+export LESS="-RFXiM"
 
 # Functions
 if which peco > /dev/null; then
