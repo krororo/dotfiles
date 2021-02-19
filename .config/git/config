@@ -42,13 +42,13 @@
 	autosquash = true
 	autostash = true
 [credential]
-	helper = store
+	helper = store --file ~/.config/git/credentials
 [merge]
 	ff = false
 [pull]
 	rebase = merges
 [include]
-	path = ~/.gitconfig.local
+	path = config.local
 [pager]
 	stash = false
 	branch = false
@@ -64,7 +64,7 @@
 [includeIf "gitdir:/work/github/"]
 	path = /work/github/gitconfig
 [commit]
-	template = ~/.gitcommit_template
+	template = ~/.config/git/commit_template
 [http]
 	postBuffer = 524288000
 [hub]
