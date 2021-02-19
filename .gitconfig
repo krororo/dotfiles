@@ -72,3 +72,5 @@
 [delta]
 	color-only = true
 	theme = Dracula
+[init]
+	defaultBranch = main
