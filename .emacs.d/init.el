@@ -255,6 +255,7 @@
         '(:eval (format my-mode-line-format
                         (+ (count-lines (point-max) (point-min)) 1)))))
 (leaf mozc
+  :if (file-directory-p "/usr/share/emacs/site-lisp/emacs-mozc")
   :init (add-to-list 'load-path "/usr/share/emacs/site-lisp/emacs-mozc")
   :require t
   :config
