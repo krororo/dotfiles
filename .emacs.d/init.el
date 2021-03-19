@@ -507,31 +507,6 @@ properly disable mozc-mode."
             #'(lambda()
                 (add-hook 'before-save-hook 'cleanup-org-tables  nil 'make-it-local))))
 
-(leaf vue-mode
-  :ensure t
-
-  :init
-  (leaf pug-mode
-    :ensure t
-    :custom ((pug-tab-width . 2)))
-
-  :custom ((vue-html-extra-indent . 2)
-           (js-indent-level . 2),
-           (vue-modes . '((:type template :name nil :mode web-mode)
-                          (:type template :name html :mode web-mode)
-                          (:type script :name nil :mode js-mode)
-                          (:type script :name js :mode js-mode)
-                          (:type script :name ts :mode typescript-mode)
-                          (:type style :name nil :mode css-mode)
-                          (:type style :name css :mode css-mode)
-                          (:type style :name scss :mode css-mode))))
-  :custom-face
-  (mmm-default-submode-face . '((t nil)))
-  :config
-  ;; see: https://qiita.com/akicho8/items/58c2ac5d762a2a4479c6
-  (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
-  (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
-
 (leaf review-mode
   :ensure t
   :mode "\\.re_?\\(\\.erb\\)?\\'"
@@ -580,19 +555,22 @@ properly disable mozc-mode."
 
 (leaf web-mode
   :ensure t
-  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'"
+  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'" "\\.vue\\'"
   :custom ((web-mode-enable-auto-indentation . nil)
            (web-mode-attr-indent-offset . 2)
            (web-mode-code-indent-offset . 2)
            (web-mode-css-indent-offset . 2)
            (web-mode-markup-indent-offset . 2)
            (web-mode-script-padding . 2))
-  :config
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (when (equal web-mode-content-type "javascript")
-                (flycheck-add-mode 'javascript-eslint 'web-mode)
-                (flycheck-mode)))))
+  :hook
+  (web-mode-hook
+   . (lambda ()
+       (when (equal web-mode-content-type "javascript")
+         (flycheck-add-mode 'javascript-eslint 'web-mode)
+         (flycheck-mode))
+       (when (string-match "\\.vue\\'" (or (buffer-file-name) ""))
+         (setq-local web-mode-script-padding nil)
+         (setq-local web-mode-style-padding nil)))))
 
 (leaf add-node-modules-path
   :ensure t
