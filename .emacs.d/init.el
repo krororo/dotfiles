@@ -572,6 +572,10 @@ properly disable mozc-mode."
          (setq-local web-mode-script-padding nil)
          (setq-local web-mode-style-padding nil)))))
 
+(leaf json-mode
+  :ensure t
+  :custom (js-indent-level . 2))
+
 (leaf add-node-modules-path
   :ensure t
   :hook (typescript-mode-hook . add-node-modules-path))
