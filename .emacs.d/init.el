@@ -600,7 +600,7 @@ properly disable mozc-mode."
 
 (leaf exec-path-from-shell
   :ensure t
-  :custom ((exec-path-from-shell-check-startup-files . nil))
+  :custom ((exec-path-from-shell-arguments . '("-l")))
   :config
   (exec-path-from-shell-copy-env "PATH"))
 
