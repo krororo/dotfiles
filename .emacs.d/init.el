@@ -119,6 +119,10 @@
              (add-hook 'write-file-functions 'delete-trailing-whitespace)))
       (force-mode-line-update)))
 
+  (leaf windmove
+    :config
+    (windmove-default-keybindings))
+
   (leaf git-gutter
     :ensure t
     :config (global-git-gutter-mode t))
