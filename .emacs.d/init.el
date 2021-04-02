@@ -593,7 +593,8 @@ properly disable mozc-mode."
 
 (leaf exec-path-from-shell
   :ensure t
-  :custom ((exec-path-from-shell-arguments . '("-l")))
+  :custom ((exec-path-from-shell-warn-duration-millis . 2000)
+           (exec-path-from-shell-shell-name . "/usr/bin/zsh"))
   :config
   (exec-path-from-shell-copy-env "PATH"))
 
