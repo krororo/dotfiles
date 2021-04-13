@@ -610,7 +610,7 @@ properly disable mozc-mode."
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
   (magit-item-highlight . '((t (:background "gray5"))))
-  :hook (magit-status-mode-hook . magit-delta-mode)
+  :hook (magit-mode-hook . magit-delta-mode)
   :config
   (leaf magit-delta
     :ensure t
