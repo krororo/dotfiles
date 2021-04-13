@@ -228,7 +228,6 @@
     '( ;; For minor-mode, first char is 'space'
       (editorconfig-mode . " EC")
       (git-gutter-mode . " GG")
-      (magit-delta-mode . " Δ")
       ;; Major modes
       (emacs-lisp-mode . "El")
       (markdown-mode . "Md")
