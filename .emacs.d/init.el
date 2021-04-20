@@ -502,18 +502,9 @@ properly disable mozc-mode."
 
 (leaf markdown-mode
   :ensure t
-  :require org-table
+  :custom (markdown-fontify-code-blocks-natively . t)
   :custom-face
-  (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
-  :config
-  (add-hook 'markdown-mode-hook 'orgtbl-mode)
-  (defun cleanup-org-tables ()
-    (save-excursion
-      (goto-char (point-min))
-      (while (search-forward "-+-" nil t) (replace-match "-|-"))))
-  (add-hook 'markdown-mode-hook
-            #'(lambda()
-                (add-hook 'before-save-hook 'cleanup-org-tables  nil 'make-it-local))))
+  (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine")))))
 
 (leaf review-mode
   :ensure t
