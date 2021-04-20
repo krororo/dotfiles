@@ -178,7 +178,15 @@
       ;; *scratch* バッファの内容を保存したら *scratch* バッファを新しく作る
       . (lambda ()
           (unless (member (get-buffer "*scratch*") (buffer-list))
-            (my-make-scratch 1)))))))
+            (my-make-scratch 1))))))
+
+  (leaf *deepl
+    :config
+    (defun my-trans-deepl (beg end)
+      (interactive "r")
+      (let ((str (buffer-substring beg end)))
+        (browse-url
+         (concat "https://www.deepl.com/translator#en/ja/" (url-hexify-string str)))))))
 
 (leaf *key-binding
   :preface
