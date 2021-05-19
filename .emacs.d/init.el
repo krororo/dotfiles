@@ -241,6 +241,7 @@
       (git-gutter-mode . " GG")
       ;; Major modes
       (emacs-lisp-mode . "El")
+      (enh-ruby-mode . "EnhRb")
       (markdown-mode . "Md")
       (ruby-mode   . "Rb")
       (typescript-mode . "Ts")
@@ -390,6 +391,7 @@ properly disable mozc-mode."
   (setq ac-use-menu-map t)
   (define-key ac-menu-map "\C-n" 'ac-next)
   (define-key ac-menu-map "\C-p" 'ac-previous)
+  (add-to-list 'ac-modes 'enh-ruby-mode)
   (add-to-list 'ac-modes 'haml-mode)
   (add-to-list 'ac-modes 'vue-mode)
   (add-to-list 'ac-modes 'typescript-mode))
@@ -548,6 +550,19 @@ properly disable mozc-mode."
                (electric-indent-local-mode 1)
                (flycheck-mode)
                (yard-mode))))
+
+(leaf enh-ruby-mode
+  :if (executable-find "ruby")
+  :ensure t
+  :mode "\\.\\(rb\\|ru\\)\\'"
+  :custom-face
+  (enh-ruby-op-face . '((t (:foreground "gainsboro"))))
+  :bind ((:enh-ruby-mode-map
+          ("C-c '" . ruby-toggle-string-quotes)))
+  :hook (enh-ruby-mode-hook . (lambda ()
+                                (setq flycheck-checker 'ruby-rubocop)
+                                (flycheck-mode)
+                                (yard-mode))))
 
 (leaf css-mode
   :mode "\\.scss\\'"
