@@ -29,6 +29,13 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
+(leaf exec-path-from-shell
+  :ensure t
+  :custom ((exec-path-from-shell-warn-duration-millis . 2000)
+           (exec-path-from-shell-shell-name . "/usr/bin/zsh"))
+  :config
+  (exec-path-from-shell-copy-env "PATH"))
+
 (leaf package-utils :ensure t)
 
 (leaf cus-edit
@@ -606,13 +613,6 @@ properly disable mozc-mode."
 (leaf add-node-modules-path
   :ensure t
   :hook (typescript-mode-hook . add-node-modules-path))
-
-(leaf exec-path-from-shell
-  :ensure t
-  :custom ((exec-path-from-shell-warn-duration-millis . 2000)
-           (exec-path-from-shell-shell-name . "/usr/bin/zsh"))
-  :config
-  (exec-path-from-shell-copy-env "PATH"))
 
 (leaf magit
   :ensure t
