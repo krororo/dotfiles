@@ -74,3 +74,5 @@
 	theme = Dracula
 [init]
 	defaultBranch = main
+[fetch]
+	prune = true
