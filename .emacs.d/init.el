@@ -61,7 +61,6 @@
   (setq auto-save-default nil)
   ;; yes or no を y or n に
   (fset 'yes-or-no-p 'y-or-n-p)
-  (setq save-place-file "~/.emacs.d/.emacs-places")
   ;; menu bar
   (if window-system (menu-bar-mode 1) (menu-bar-mode -1))
   ;; tool bar
@@ -394,7 +393,7 @@ properly disable mozc-mode."
   (ac-config-default)
   (defun ac-common-setup ()
     (add-to-list 'ac-sources 'ac-source-yasnippet))
-  (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+  (add-to-list 'ac-dictionary-directories (locate-user-emacs-file "ac-dict"))
   (setq ac-use-menu-map t)
   (define-key ac-menu-map "\C-n" 'ac-next)
   (define-key ac-menu-map "\C-p" 'ac-previous)
@@ -464,7 +463,7 @@ properly disable mozc-mode."
 (leaf yasnippet
   :ensure t
   :require t
-  :custom ((yas-snippet-dirs . '("~/.emacs.d/snippets")))
+  :custom (yas-snippet-dirs . `(,(locate-user-emacs-file "snippets")))
   :config
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "C-o") 'yas-expand)
