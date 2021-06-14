@@ -76,3 +76,5 @@
 	defaultBranch = main
 [fetch]
 	prune = true
+[status]
+	showUntrackedFiles = all
