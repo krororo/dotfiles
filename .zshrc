@@ -93,6 +93,7 @@ compdef dc=docker-compose
 
 if [ -x /usr/bin/lsd ]; then
   alias ls=lsd
+  compdef ls=lsd
 fi
 
 # rbenv
