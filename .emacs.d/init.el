@@ -377,8 +377,24 @@ properly disable mozc-mode."
 
 (leaf vertico
   :ensure t
+  :preface
+  (defun my-filename-upto-parent ()
+    "Move to parent directory like \"cd ..\" in find-file."
+    (interactive)
+    (let ((sep (eval-when-compile (regexp-opt '("/" "\\")))))
+      (save-excursion
+        (left-char 1)
+        (when (looking-at-p sep)
+          (delete-char 1)))
+      (save-match-data
+        (when (search-backward-regexp sep nil t)
+          (right-char 1)
+          (filter-buffer-substring (point)
+                                   (save-excursion (end-of-line) (point))
+                                   #'delete)))))
+  :bind (:vertico-map ("C-l" . my-filename-upto-parent))
   :custom (vertico-count . 20)
-  :config
+  :init
   (vertico-mode)
   (savehist-mode))
 
