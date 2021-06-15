@@ -375,6 +375,31 @@ properly disable mozc-mode."
           ("i" . dired-subtree-insert)
           ("<tab>" . dired-subtree-remove))))
 
+(leaf vertico
+  :ensure t
+  :custom (vertico-count . 20)
+  :config
+  (vertico-mode)
+  (savehist-mode))
+
+(leaf consult
+  :ensure t
+  :custom ((consult-project-root-function
+            . (lambda ()
+                (when-let (project (project-current))
+                  (car (project-roots project))))))
+  :bind (("C-;" . consult-buffer)))
+
+(leaf orderless
+  :ensure t
+  :custom
+  (completion-styles . '(orderless)))
+
+(leaf marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+
 (leaf anzu
   :ensure t
   :config
@@ -402,40 +427,6 @@ properly disable mozc-mode."
   (add-to-list 'ac-modes 'haml-mode)
   (add-to-list 'ac-modes 'vue-mode)
   (add-to-list 'ac-modes 'typescript-mode))
-
-(leaf helm
-  :ensure t
-  :require helm-config
-  :custom-face
-  (helm-source-header . '((t (:background "#22083397778B" :foreground "white" :weight bold))))
-  :config
-  (helm-mode 1)
-  (define-key helm-map (kbd "C-h") 'delete-backward-char)
-  (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
-  (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
-  (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
-  (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
-  (define-key global-map (kbd "M-x") 'helm-M-x)
-  (define-key global-map (kbd "C-x b") 'helm-buffers-list)
-  (define-key global-map (kbd "C-c C-v") 'helm-ls-git-ls)
-  (define-key global-map (kbd "C-x C-f") 'helm-find-files)
-  (define-key global-map (kbd "C-;") 'helm-mini)
-
-  ;; リストのソートをしないように
-  (defadvice helm-buffers-sort-transformer (around ignore activate)
-    (setq ad-return-value (ad-get-arg 0)))
-
-  (setq helm-buffer-max-length 40)
-  (setq helm-buffer-details-flag nil)
-
-  (leaf helm-ag
-    :ensure t)
-  (leaf helm-descbinds
-    :ensure t
-    :config
-    (helm-descbinds-mode 1))
-  (leaf helm-ls-git
-    :ensure t))
 
 (leaf sudo-edit :ensure t)
 

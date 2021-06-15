@@ -7,6 +7,7 @@ el-get
 elpa
 eshell/history
 games
+history
 migemo-pattern
 network-security.data
 proxy-setting.el
