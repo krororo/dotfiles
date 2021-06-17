@@ -404,7 +404,7 @@ properly disable mozc-mode."
             . (lambda ()
                 (when-let (project (project-current))
                   (car (project-roots project))))))
-  :bind (("C-;" . consult-buffer)
+  :bind (("C-x b" . consult-buffer)
          ("C-s" . consult-line)
          ("M-y" . consult-yank-pop)))
 
