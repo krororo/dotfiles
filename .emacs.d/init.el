@@ -645,8 +645,6 @@ properly disable mozc-mode."
 
   (leaf xterm-color :ensure t))
 
-(leaf ag :ensure t)
-
 (leaf docker
   :ensure t
   :config
