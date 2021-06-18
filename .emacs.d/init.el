@@ -422,21 +422,24 @@ properly disable mozc-mode."
   (global-set-key (kbd "C-c q") 'anzu-query-replace-regexp)
   (global-set-key (kbd "C-c Q") 'anzu-query-replace-at-cursor-thing))
 
-(leaf auto-complete
+(leaf company
   :ensure t
-  :require auto-complete-config
-  :config
-  (ac-config-default)
-  (defun ac-common-setup ()
-    (add-to-list 'ac-sources 'ac-source-yasnippet))
-  (add-to-list 'ac-dictionary-directories (locate-user-emacs-file "ac-dict"))
-  (setq ac-use-menu-map t)
-  (define-key ac-menu-map "\C-n" 'ac-next)
-  (define-key ac-menu-map "\C-p" 'ac-previous)
-  (add-to-list 'ac-modes 'enh-ruby-mode)
-  (add-to-list 'ac-modes 'haml-mode)
-  (add-to-list 'ac-modes 'vue-mode)
-  (add-to-list 'ac-modes 'typescript-mode))
+  :custom ((compnay-idle-delay . 0.3)
+           (company-selection-wrap-around . t)
+           (company-require-match . 'never)
+           (company-backends . '(company-files
+                                 company-capf
+                                 (company-dabbrev-code
+                                  company-gtags
+                                  company-etags
+                                  company-keywords))))
+  :bind ((:company-active-map
+          ("C-n" . company-select-next)
+          ("C-p" . company-select-previous)
+          ;; disable help
+          ("C-h" . nil)))
+  :init
+  (global-company-mode))
 
 (leaf sudo-edit :ensure t)
 
