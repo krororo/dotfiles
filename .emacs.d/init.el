@@ -434,8 +434,6 @@ properly disable mozc-mode."
                                   company-etags
                                   company-keywords))))
   :bind ((:company-active-map
-          ("C-n" . company-select-next)
-          ("C-p" . company-select-previous)
           ;; disable help
           ("C-h" . nil)))
   :init
