@@ -1,6 +1,3 @@
-[user]
-	name = krororo
-	email = krororo.07@gmail.com
 [alias]
 	gconf = config --global
 	st = !git status --short && echo '----' && git --no-pager stash list
