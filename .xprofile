@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# https://github.com/mooz/xkeysnail
-# https://qiita.com/miy4/items/dd0e2aec388138f803c5
-if [ -x /usr/local/bin/xkeysnail ]; then
-  xhost +SI:localuser:xkeysnail
-  sudo -u xkeysnail DISPLAY=:0.0 /usr/local/bin/xkeysnail ~/xkeysnail.conf &
-fi
