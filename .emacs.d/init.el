@@ -135,8 +135,7 @@
 
   (leaf avy
     :ensure t
-    :bind (("C-M-:" . avy-goto-char-timer)
-           ("M-g M-g" . avy-goto-line)))
+    :bind (("C-M-:" . avy-goto-char-timer)))
 
   (leaf rainbow-delimiters
     :ensure t
@@ -398,7 +397,8 @@ properly disable mozc-mode."
                   (car (project-roots project))))))
   :bind (("C-x b" . consult-buffer)
          ("C-s" . consult-line)
-         ("M-y" . consult-yank-pop)))
+         ("M-y" . consult-yank-pop)
+         ("M-g M-g" . consult-goto-line)))
 
 (leaf orderless
   :ensure t
