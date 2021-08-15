@@ -384,7 +384,8 @@ properly disable mozc-mode."
                                    (save-excursion (end-of-line) (point))
                                    #'delete)))))
   :bind (:vertico-map ("C-l" . my-filename-upto-parent))
-  :custom (vertico-count . 14)
+  :custom ((vertico-count . 14)
+           (vertico-cycle . t))
   :init
   (vertico-mode)
   (savehist-mode))
