@@ -575,7 +575,9 @@ properly disable mozc-mode."
   :custom-face
   (enh-ruby-op-face . '((t (:foreground "gainsboro"))))
   :bind ((:enh-ruby-mode-map
-          ("C-c '" . ruby-toggle-string-quotes)))
+          ("C-c '" . ruby-toggle-string-quotes)
+          ("C-M-f" . forward-sexp)
+          ("C-M-b" . backward-sexp)))
   :hook (enh-ruby-mode-hook . (lambda ()
                                 (setq flycheck-checker 'ruby-rubocop)
                                 (flycheck-mode)
