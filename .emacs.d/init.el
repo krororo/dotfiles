@@ -399,7 +399,12 @@ properly disable mozc-mode."
   :bind (("C-x b" . consult-buffer)
          ("C-s" . consult-line)
          ("M-y" . consult-yank-pop)
-         ("M-g M-g" . consult-goto-line)))
+         ("M-g M-g" . consult-goto-line))
+  :config
+  (consult-customize
+   consult--source-file consult--source-project-file consult--source-bookmark
+   consult-ripgrep
+   :preview-key (kbd "M-.")))
 
 (leaf orderless
   :ensure t
