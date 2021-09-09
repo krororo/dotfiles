@@ -96,6 +96,11 @@ if [ -x /usr/bin/lsd ]; then
   compdef ls=lsd
 fi
 
+# Plugin
+if [ -d ~/.zsh/zsh-autosuggestions ]; then
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 # rbenv
 if [ -d $HOME/.rbenv ]; then
   export PATH=$HOME/.rbenv/bin:$PATH
