@@ -556,7 +556,9 @@ properly disable mozc-mode."
 
 (leaf ruby-mode
   :init
-  (leaf rspec-mode :ensure t)
+  (leaf rspec-mode
+    :ensure t
+    :custom (rspec-use-spring-when-possible . nil))
   (leaf rubocop :ensure t)
   (leaf yard-mode :ensure t)
 
