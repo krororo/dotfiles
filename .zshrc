@@ -118,6 +118,16 @@ if [ -x /usr/bin/hub ]; then
   eval "$(hub alias -s)"
 fi
 
+# bookmarks
+if [ -d $HOME/.config/bookmarks ]; then
+  export CDPATH=".:$HOME/.config/bookmarks"
+  alias goto="cd -P"
+  _goto() {
+    _files -W $HOME/.config/bookmarks
+  }
+  compdef _goto goto
+fi
+
 # environment
 export CRYSTAL_CACHE_DIR=$HOME/.crystal
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
