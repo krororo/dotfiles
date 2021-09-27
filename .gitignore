@@ -1,2 +1,3 @@
 .docker/.buildNodeID
+.docker/cli-plugins
 .zsh/zsh-autosuggestions
