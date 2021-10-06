@@ -396,7 +396,9 @@ properly disable mozc-mode."
   :custom ((consult-project-root-function
             . (lambda ()
                 (when-let (project (project-current))
-                  (car (project-roots project))))))
+                  (car (project-roots project)))))
+           (xref-show-xrefs-function . #'consult-xref)
+           (xref-show-definitions-function . #'consult-xref))
   :bind (("C-x b" . consult-buffer)
          ("C-s" . consult-line)
          ("M-y" . consult-yank-pop)
