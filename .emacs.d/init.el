@@ -471,6 +471,13 @@ properly disable mozc-mode."
   (migemo-init)
   (set-process-query-on-exit-flag (get-process "migemo") nil))
 
+(leaf lsp-mode
+  :ensure t
+  :init
+  (leaf lsp-ui :ensure t)
+  (leaf consult-lsp :ensure t)
+  :hook (enh-ruby-mode-hook . lsp))
+
 (leaf sh-mode
   :config
   (setq sh-basic-offset 2)
