@@ -1,5 +1,6 @@
 *~
 .emacs-places
+.lsp-session-*
 ac-comphist.dat
 bookmarks
 custom.el
