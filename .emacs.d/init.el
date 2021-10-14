@@ -412,7 +412,8 @@ properly disable mozc-mode."
 (leaf orderless
   :ensure t
   :custom
-  (completion-styles . '(orderless)))
+  (completion-styles . '(orderless))
+  (orderless-component-separator . #'orderless-escapable-split-on-space))
 
 (leaf marginalia
   :ensure t
