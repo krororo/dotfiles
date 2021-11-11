@@ -444,9 +444,8 @@ properly disable mozc-mode."
            (company-selection-wrap-around . t)
            (company-require-match . 'never)
            (company-backends . '(company-files
-                                 company-capf
-                                 (company-dabbrev-code
-                                  company-gtags
+                                 (company-capf :with company-dabbrev-code)
+                                 (company-gtags
                                   company-etags
                                   company-keywords))))
   :bind ((:company-active-map
@@ -476,6 +475,10 @@ properly disable mozc-mode."
 
 (leaf lsp-mode
   :ensure t
+  ;; workaround for `require: Symbol’s value as variable is void: lsp-ada-project-file`
+  ;; refs: https://github.com/emacs-lsp/lsp-mode/commit/491d667d1e113bd6b43d1f88d47383e7fb137ddb
+  :custom ((lsp-client-packages . '(lsp-solargraph))
+           (lsp-completion-provider . :none))
   :init
   (leaf lsp-ui :ensure t)
   (leaf consult-lsp :ensure t)
