@@ -31,11 +31,8 @@ setopt share_history
 setopt hist_reduce_blanks
 setopt no_flow_control
 setopt extended_history
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
 
 # Keybind
 bindkey "^U" backward-kill-line
