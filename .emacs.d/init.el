@@ -686,3 +686,6 @@ properly disable mozc-mode."
   (leaf dockerfile-mode :ensure t))
 
 (leaf yaml-mode :ensure t)
+
+(leaf electric-pair-mode
+  :hook emacs-lisp-mode-hook)
