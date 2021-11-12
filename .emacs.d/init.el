@@ -153,6 +153,11 @@
      (rainbow-delimiters-depth-9-face . '((t (:foreground "#f0f0f0"))))
      (rainbow-delimiters-base-error-face . '((t (:foreground "#ff2020"))))))
 
+  (leaf beacon
+    :ensure t
+    :config
+    (beacon-mode 1))
+
   (leaf *keep-scratch-buffer
     :doc "don't remove *scratch* buffer"
     :preface
