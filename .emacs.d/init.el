@@ -123,10 +123,6 @@
       (force-mode-line-update)))
 
   (leaf windmove
-    :bind (("C-c h" . windmove-left)
-           ("C-c j" . windmove-down)
-           ("C-c k" . windmove-up)
-           ("C-c l" . windmove-right))
     :config
     (windmove-default-keybindings))
 
