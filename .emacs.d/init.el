@@ -446,7 +446,8 @@ properly disable mozc-mode."
            (company-require-match . 'never)
            (company-backends . '(company-files
                                  (company-capf :with company-dabbrev-code)
-                                 (company-gtags
+                                 (company-dabbrev-code
+                                  company-gtags
                                   company-etags
                                   company-keywords))))
   :bind ((:company-active-map
