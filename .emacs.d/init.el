@@ -684,5 +684,5 @@ properly disable mozc-mode."
 
 (leaf yaml-mode :ensure t)
 
-(leaf electric-pair-mode
+(leaf electric-pair-local-mode
   :hook emacs-lisp-mode-hook)
