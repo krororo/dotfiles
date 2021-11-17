@@ -497,7 +497,6 @@ properly disable mozc-mode."
   :custom (yas-snippet-dirs . `(,(locate-user-emacs-file "snippets")))
   :config
   (yas-global-mode 1)
-  (define-key yas-minor-mode-map (kbd "C-o") 'yas-expand)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
   (define-key yas-minor-mode-map [(tab)] nil)
   (define-key yas-minor-mode-map (kbd "C-x i i") 'yas-insert-snippet)
