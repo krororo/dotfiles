@@ -600,10 +600,12 @@ properly disable mozc-mode."
           ("C-c '" . ruby-toggle-string-quotes)
           ("C-M-f" . forward-sexp)
           ("C-M-b" . backward-sexp)))
-  :hook (enh-ruby-mode-hook . (lambda ()
-                                (setq flycheck-checker 'ruby-rubocop)
-                                (flycheck-mode)
-                                (yard-mode))))
+  :hook (enh-ruby-mode-hook
+         . (lambda ()
+             (setq flycheck-checker 'ruby-rubocop)
+             (flycheck-mode)
+             (yard-mode)
+             (add-hook 'electric-indent-functions #'ruby--electric-indent-p nil 'local))))
 
 (leaf css-mode
   :mode "\\.scss\\'"
