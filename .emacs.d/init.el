@@ -406,8 +406,8 @@ properly disable mozc-mode."
          ("M-g M-g" . consult-goto-line))
   :config
   (consult-customize
-   consult--source-file consult--source-project-file consult--source-bookmark
-   consult-ripgrep consult-git-grep
+   consult--source-recent-file consult--source-project-recent-file
+   consult--source-bookmark consult-ripgrep consult-git-grep
    :preview-key (kbd "M-.")))
 
 (leaf orderless
