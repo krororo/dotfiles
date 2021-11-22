@@ -486,7 +486,8 @@ properly disable mozc-mode."
   ;; workaround for `require: Symbol’s value as variable is void: lsp-ada-project-file`
   ;; refs: https://github.com/emacs-lsp/lsp-mode/commit/491d667d1e113bd6b43d1f88d47383e7fb137ddb
   :custom ((lsp-client-packages . '(lsp-solargraph))
-           (lsp-completion-provider . :none))
+           (lsp-completion-provider . :none)
+           (lsp-keymap-prefix . "C-c l"))
   :init
   (leaf lsp-ui :ensure t)
   (leaf consult-lsp :ensure t)
