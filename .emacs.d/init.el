@@ -211,7 +211,9 @@
          ;; 暴発するので無効化
          ("C-x C-p" . nil)
          ;; compose-mail
-         ("C-x m" . nil)))
+         ("C-x m" . nil))
+  :config
+  (ffap-bindings))
 
 (leaf *mode-line
   :config
