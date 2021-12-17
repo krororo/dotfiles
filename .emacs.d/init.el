@@ -203,7 +203,6 @@
     (other-window -1))
   :bind (("C-a" . my-move-beginning-alt)
          ("C-h" . delete-backward-char)
-         ("C-c m" . magit-status)
          ("C-c u" . comment-region)
          ("C-c y" . uncomment-region)
          ("C-c r" . revert-buffer)
