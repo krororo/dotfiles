@@ -65,6 +65,7 @@ alias cp="cp -iv"
 alias mv="mv -i"
 alias be='bundle exec'
 alias emacs='XMODIFIERS=@im=none emacs'
+alias e='emacsclient -n'
 alias sudo='sudo -E '
 alias brspec='bundle exec rspec -c'
 alias grep='grep --color=auto'
