@@ -489,6 +489,7 @@ properly disable mozc-mode."
   ;; refs: https://github.com/emacs-lsp/lsp-mode/commit/491d667d1e113bd6b43d1f88d47383e7fb137ddb
   :custom ((lsp-client-packages . '(lsp-solargraph))
            (lsp-completion-provider . :none)
+           (lsp-diagnostics-provider . :none)
            (lsp-keymap-prefix . "C-c l"))
   :init
   (leaf lsp-ui :ensure t)
