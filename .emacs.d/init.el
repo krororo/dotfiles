@@ -422,6 +422,7 @@ properly disable mozc-mode."
   ;; https://github.com/bbatsov/projectile/issues/1664#issuecomment-934632497
   (setq marginalia-command-categories
         (append '((projectile-find-file . project-file)
+                  (projectile-find-file-other-window . project-file)
                   (projectile-find-dir . project-file)
                   (projectile-switch-project . file))
                 marginalia-command-categories)))
