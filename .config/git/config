@@ -27,6 +27,7 @@
 	wt = worktree
 	fa = fetch --prune --tags --all
 	sw = switch
+	release = !git switch -c release/$(date +\"%Y%m%d%H%M\")
 [color]
 	ui = auto
 [push]
