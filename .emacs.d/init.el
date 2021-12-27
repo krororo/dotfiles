@@ -617,6 +617,12 @@ properly disable mozc-mode."
              (yard-mode)
              (add-hook 'electric-indent-functions #'ruby--electric-indent-p nil 'local))))
 
+(leaf rd-mode
+  :el-get (rd-mode
+           :url "https://github.com/uwabami/rdtool/raw/master/utils/rd-mode.el")
+  ;; for rurema
+  :mode "/refm/api/src/")
+
 (leaf css-mode
   :mode "\\.scss\\'"
   :config
