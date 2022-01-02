@@ -1,0 +1,59 @@
+modmap:
+  - name: Global
+    remap:
+      CapsLock: Ctrl_L
+      KATAKANAHIRAGANA: Super_R
+
+keymap:
+  - name: Default
+    application:
+      not: [Emacs, Xfce4-terminal]
+    remap:
+      # Emacs basic
+      C-b: { with_mark: left }
+      C-f: { with_mark: right }
+      C-p: { with_mark: up }
+      C-n: { with_mark: down }
+
+      # Forward/Backward word
+      M-b: { with_mark: C-left }
+      M-f: { with_mark: C-right }
+
+      # Emacs lines
+      C-a: { with_mark: home }
+      C-e: { with_mark: end }
+
+      # Page up/down
+      M-v: { with_mark: PageUp }
+      C-v: { with_mark: PageDown }
+
+      # Beginning/End of file
+      M-Shift-comma: { with_mark: C-home }
+      M-Shift-dot: { with_mark: C-end }
+
+      # Copy/Paste
+      C-w: [C-x, { set_mark: false }]
+      M-w: [C-c, { set_mark: false }]
+      C-y: [C-v, { set_mark: false }]
+
+      # Delete
+      C-h: [backspace, { set_mark: false }]
+      C-d: [delete, { set_mark: false }]
+      M-d: [C-delete, { set_mark: false }]
+
+      # Kill line
+      C-u: [Shift-home, C-x, { set_mark: false }]
+      C-k: [Shift-end, C-x, { set_mark: false }]
+
+      # Undo
+      C-slash: [C-z, { set_mark: false }]
+
+      # Tab
+      C-i: TAB
+
+      # Search
+      C-s: F3
+      C-r: Shift-F3
+
+      # Cancel
+      C-g: [esc, { set_mark: false }]
