@@ -3,7 +3,9 @@
 ## Installation
 
 ```console
-$ curl -L https://raw.githubusercontent.com/krororo/dotfiles/master/install.sh | bash
+$ git clone https://github.com/krororo/dotfiles.git ~/dotfiles
+$ cd ~/dotfiles
+$ ./install.sh
 ```
 
 ## git のユーザ名、メールアドレスを設定

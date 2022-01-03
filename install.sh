@@ -1,4 +1,7 @@
-#!/bin/bash -e
+#!/bin/bash
 
-git clone https://github.com/krororo/dotfiles.git ~/dotfiles
-(cd ~/dotfiles; ./link.sh)
+set -e
+
+bin/setup
+
+bin/mitamae local $@ lib/recipe.rb
