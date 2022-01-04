@@ -1,4 +1,4 @@
-node.reverse_marge!(user: ENV['USER'])
+node.reverse_merge!(user: ENV['USER'])
 
 directory "#{ENV['HOME']}/bin" do
   owner node[:user]
