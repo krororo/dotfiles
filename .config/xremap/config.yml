@@ -48,6 +48,9 @@ keymap:
       # Undo
       C-slash: [C-z, { set_mark: false }]
 
+      # Mark
+      C-space: { set_mark: true }
+
       # Tab
       C-i: TAB
 
