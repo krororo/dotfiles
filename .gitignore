@@ -1,5 +1,4 @@
-.docker/.buildNodeID
-.docker/cli-plugins
-.zsh/zsh-autosuggestions
-
-bin/mitamae*
+/bin/mitamae*
+/config/.docker/.buildNodeID
+/config/.docker/cli-plugins
+/config/.zsh/zsh-autosuggestions

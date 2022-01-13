@@ -10,4 +10,8 @@ directory "#{ENV['HOME']}/.config/systemd/user" do
   owner node[:user]
 end
 
+dotfile '.docker'
+dotfile '.peco'
 dotfile '.vimrc'
+dotfile '.zsh'
+dotfile '.zshrc'
