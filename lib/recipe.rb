@@ -15,3 +15,7 @@ dotfile '.peco'
 dotfile '.vimrc'
 dotfile '.zsh'
 dotfile '.zshrc'
+
+xdg_config 'gemrc' do
+  dir 'gem'
+end
