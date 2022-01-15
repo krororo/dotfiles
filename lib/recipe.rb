@@ -13,7 +13,7 @@ end
 dotfile '.docker'
 dotfile '.peco'
 dotfile '.vimrc'
-dotfile '.zsh'
-dotfile '.zshrc'
 
 xdg_config 'gem/gemrc'
+
+include_recipe '../cookbooks/zsh'
