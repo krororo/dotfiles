@@ -15,5 +15,7 @@ dotfile '.peco'
 dotfile '.vimrc'
 
 xdg_config 'gem/gemrc'
+xdg_config 'git/config'
+xdg_config 'git/commit_template'
 
 include_recipe '../cookbooks/zsh'
