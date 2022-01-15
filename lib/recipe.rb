@@ -16,6 +16,4 @@ dotfile '.vimrc'
 dotfile '.zsh'
 dotfile '.zshrc'
 
-xdg_config 'gemrc' do
-  dir 'gem'
-end
+xdg_config 'gem/gemrc'
