@@ -111,11 +111,6 @@ if [ -d $HOME/.nodenv ]; then
   eval "$(nodenv init -)"
 fi
 
-# hub
-if [ -x /usr/bin/hub ]; then
-  eval "$(hub alias -s)"
-fi
-
 # bookmarks
 if [ -d $HOME/.config/bookmarks ]; then
   export CDPATH=".:$HOME/.config/bookmarks"
