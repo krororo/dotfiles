@@ -21,4 +21,5 @@ xdg_config 'gtk-3.0/gtk.css'
 xdg_config 'lsd/config.yaml'
 
 include_recipe '../cookbooks/emacs'
+include_recipe '../cookbooks/gh'
 include_recipe '../cookbooks/zsh'
