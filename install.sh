@@ -4,4 +4,4 @@ set -e
 
 bin/setup
 
-bin/mitamae local $@ lib/recipe.rb
+sudo -E bin/mitamae local $@ lib/recipe.rb
