@@ -214,7 +214,7 @@
          ("C-x m" . nil)
          ("M-\"" . insert-pair)
          ("M-'" . insert-pair))
-  :config
+  :init
   (ffap-bindings))
 
 (leaf *mode-line
