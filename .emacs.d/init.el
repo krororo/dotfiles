@@ -664,6 +664,8 @@ properly disable mozc-mode."
   :ensure t
   :custom (js-indent-level . 2))
 
+(leaf csv-mode :ensure t)
+
 (leaf add-node-modules-path
   :ensure t
   :hook (typescript-mode-hook . add-node-modules-path))
