@@ -61,10 +61,5 @@ keymap:
       # Cancel
       C-g: [esc, { set_mark: false }]
 
-  - name: Firefox
-    application:
-      - Firefox
-    remap:
-      C-c:
-        remap:
-          f: C-f
+      # Escape
+      C-q: { escape_next_key: true }
