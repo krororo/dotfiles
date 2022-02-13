@@ -1,0 +1,15 @@
+[Unit]
+Description=xremap
+
+[Service]
+KillMode=process
+ExecStart=/home/<%= node[:user] %>/bin/xremap /home/<%= node[:user] %>/.config/xremap/config.yml
+ExecStartPre=/usr/bin/xhost +SI:localuser:<%= node[:user] %>
+Type=simple
+Restart=always
+
+# Update DISPLAY to be the same as `echo $DISPLAY` on your graphical terminal.
+Environment=DISPLAY=<%= ENV['DISPLAY'] %>
+
+[Install]
+WantedBy=default.target
