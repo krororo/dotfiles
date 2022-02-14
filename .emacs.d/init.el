@@ -48,6 +48,8 @@
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :config
+  (set-fontset-font nil '(#x1F000 . #x1FAFF) "Noto Color Emoji")
+
   (setq-default indent-tabs-mode nil)
   ;; *.~ とかのバックアップファイルを作らない
   (setq make-backup-files nil)
