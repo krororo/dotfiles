@@ -19,3 +19,14 @@ define :xdg_config do
     force true
   end
 end
+
+define :github_release, repository: nil, version: nil, filename: nil do
+  raise 'repository is required' unless params[:repository]
+  raise 'version is required' unless params[:version]
+  raise 'filename is required' unless (filename = params[:filename])
+
+  url = "https://github.com/#{params[:repository]}/releases/download/#{params[:version]}/#{filename}"
+
+  execute "curl -sL -o /tmp/#{filename} #{url}"
+  execute "dpkg -i /tmp/#{filename}"
+end
