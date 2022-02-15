@@ -692,10 +692,10 @@ properly disable mozc-mode."
     :after magit xterm-color
     :custom ((magit-delta-delta-args
               . `("--max-line-distance" "0.6"
-                  "--24-bit-color" ,(if xterm-color--support-truecolor "always" "never")
+                  "--true-color" ,(if xterm-color--support-truecolor "always" "never")
                   "--color-only"
-                  "--plus-color" "#003345"
-                  "--plus-emph-color" "#006b6b"))
+                  "--plus-style" "syntax #003345"
+                  "--plus-emph-style" "syntax #006b6b"))
              (magit-delta-hide-plus-minus-markers . nil)))
 
   (leaf xterm-color :ensure t))

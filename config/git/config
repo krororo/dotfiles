@@ -69,7 +69,7 @@
 	protocol = https
 [delta]
 	color-only = true
-	theme = Dracula
+	syntax-theme = Dracula
 [init]
 	defaultBranch = main
 [fetch]
