@@ -1,0 +1,10 @@
+AllCops:
+  NewCops: enable
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "lib/**/*"
+    - "cookbooks/**/*"
+
+Style/StringLiterals:
+  Enabled: false
