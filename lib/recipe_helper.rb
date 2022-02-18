@@ -28,5 +28,17 @@ define :github_release, repository: nil, version: nil, filename: nil do
   url = "https://github.com/#{params[:repository]}/releases/download/#{params[:version]}/#{filename}"
 
   execute "curl -sL -o /tmp/#{filename} #{url}"
-  execute "dpkg -i /tmp/#{filename}"
+  case filename
+  when /\.deb\z/
+    execute "dpkg -i /tmp/#{filename}"
+  when /\.zip\z/
+    execute "unzip -o /tmp/#{filename}" do
+      cwd '/tmp'
+    end
+    cmd = params[:name]
+    bin_path = "#{ENV['HOME']}/bin/#{cmd}"
+    execute "mv /tmp/#{cmd} #{bin_path} && chmod +x #{bin_path}"
+  else
+    raise "unknown type: #{filename}"
+  end
 end

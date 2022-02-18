@@ -1,5 +1,13 @@
 xdg_config 'xremap/config.yml'
 
+github_release 'xremap' do
+  repository 'k0kubun/xremap'
+  version(v = '0.2.5')
+  filename 'xremap-linux-x86_64-x11.zip'
+  bin_path = "#{ENV['HOME']}/bin/xremap"
+  not_if "test -f #{bin_path} && [ $(#{bin_path} --version | egrep -o '([0-9]+.){2}[0-9]+') = #{v} ]"
+end
+
 execute "gpasswd -a #{node[:user]} input" do
   not_if "groups #{node[:user]} | grep -q input"
 end
