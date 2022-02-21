@@ -588,7 +588,6 @@ properly disable mozc-mode."
     :ensure t
     :custom (rspec-use-spring-when-possible . nil))
   (leaf rubocop :ensure t)
-  (leaf yard-mode :ensure t)
 
   :mode "\\.\\(ruby\\|plugin\\)\\'"
   :config
@@ -600,8 +599,7 @@ properly disable mozc-mode."
             '(lambda()
                (setq flycheck-checker 'ruby-rubocop)
                (electric-indent-local-mode 1)
-               (flycheck-mode)
-               (yard-mode))))
+               (flycheck-mode))))
 
 (leaf enh-ruby-mode
   :if (executable-find "ruby")
@@ -618,8 +616,11 @@ properly disable mozc-mode."
          . (lambda ()
              (setq flycheck-checker 'ruby-rubocop)
              (flycheck-mode)
-             (yard-mode)
              (add-hook 'electric-indent-functions #'ruby--electric-indent-p nil 'local))))
+
+(leaf yard-mode
+  :ensure t
+  :hook ruby-mode-hook enh-ruby-mode-hook)
 
 (leaf rd-mode
   :el-get (rd-mode
