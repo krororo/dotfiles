@@ -591,6 +591,22 @@ properly disable mozc-mode."
     :custom (rspec-use-spring-when-possible . nil))
   (leaf rubocop :ensure t)
 
+  :preface
+  (defun my-ruby-smie-rules (kind token)
+    (pcase (cons kind token)
+      ('(:before . ".")
+       (cond
+        ((smie-rule-sibling-p)
+         (smie-backward-sexp ".")
+         (forward-char -1)
+         (if (ruby-smie--bosp)
+             0
+           (smie-backward-sexp ";")
+           (cons 'column (+ (current-column) ruby-indent-level))))
+        ((not (smie-rule-parent-p ";"))
+         (smie-rule-parent ruby-indent-level))))))
+  :advice
+  (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\)\\'"
   :config
   (setq rspec-spec-command "rspec -c")
