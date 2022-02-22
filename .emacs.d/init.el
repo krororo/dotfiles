@@ -686,7 +686,10 @@ properly disable mozc-mode."
   :ensure t
   :custom (js-indent-level . 2))
 
-(leaf csv-mode :ensure t)
+(leaf csv-mode
+  :ensure t
+  :init
+  (modify-coding-system-alist 'file "\\.csv\\'" 'cp932-dos))
 
 (leaf add-node-modules-path
   :ensure t
