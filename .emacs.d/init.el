@@ -435,6 +435,7 @@ properly disable mozc-mode."
 
 (leaf projectile
   :ensure t
+  :custom (projectile-mode-line-prefix . " Prj")
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
