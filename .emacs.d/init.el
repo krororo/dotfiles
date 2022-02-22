@@ -499,7 +499,8 @@ properly disable mozc-mode."
   :init
   (leaf lsp-ui :ensure t)
   (leaf consult-lsp :ensure t)
-  :hook (enh-ruby-mode-hook . lsp))
+  :hook ((enh-ruby-mode-hook . lsp)
+         (ruby-mode-hook . lsp)))
 
 (leaf sh-mode
   :config
