@@ -578,9 +578,6 @@ properly disable mozc-mode."
   (review-mode-underline-face . '((t (:foreground "cyan" :underline t)))))
 
 (leaf ruby-mode
-  :init
-  (leaf rubocop :ensure t)
-
   :preface
   (defun my-ruby-smie-rules (kind token)
     (pcase (cons kind token)
@@ -637,6 +634,8 @@ properly disable mozc-mode."
   :custom ((rspec-spec-command . "rspec -c")
            (rspec-use-rake-when-possible . nil)
            (rspec-use-spring-when-possible . nil)))
+
+(leaf rubocop :ensure t)
 
 (leaf rd-mode
   :el-get (rd-mode
