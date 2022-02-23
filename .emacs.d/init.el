@@ -586,9 +586,6 @@ properly disable mozc-mode."
 
 (leaf ruby-mode
   :init
-  (leaf rspec-mode
-    :ensure t
-    :custom (rspec-use-spring-when-possible . nil))
   (leaf rubocop :ensure t)
 
   :preface
@@ -608,10 +605,7 @@ properly disable mozc-mode."
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\)\\'"
-  :config
-  (setq rspec-spec-command "rspec -c")
-  (setq rspec-use-rake-when-possible nil)
-  (setq ruby-insert-encoding-magic-comment nil))
+  :custom (ruby-insert-encoding-magic-comment . nil))
 
 (leaf enh-ruby-mode
   :if (executable-find "ruby")
@@ -633,6 +627,12 @@ properly disable mozc-mode."
 (leaf yard-mode
   :ensure t
   :hook ruby-mode-hook enh-ruby-mode-hook)
+
+(leaf rspec-mode
+  :ensure t
+  :custom ((rspec-spec-command . "rspec -c")
+           (rspec-use-rake-when-possible . nil)
+           (rspec-use-spring-when-possible . nil)))
 
 (leaf rd-mode
   :el-get (rd-mode
