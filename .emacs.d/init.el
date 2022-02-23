@@ -530,14 +530,7 @@ properly disable mozc-mode."
   :bind ((:flycheck-mode-map
           ("M-n" . flycheck-next-error)
           ("M-p" . flycheck-previous-error)))
-  :custom ((safe-local-variable-values . '((encoding . utf-8)
-                                           (eval setq-local flycheck-command-wrapper-function
-                                                 (lambda
-                                                   (command)
-                                                   (append
-                                                    (quote
-                                                     ("bundle" "exec"))
-                                                    command)))))
+  :custom ((safe-local-variable-values . '((encoding . utf-8)))
            (flycheck-check-syntax-automatically . '(mode-enabled save)))
   :hook ruby-mode-hook)
 
@@ -605,7 +598,18 @@ properly disable mozc-mode."
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\)\\'"
-  :custom (ruby-insert-encoding-magic-comment . nil))
+  :custom (ruby-insert-encoding-magic-comment . nil)
+  :hook
+  (ruby-mode-hook
+   . (lambda ()
+       (setq-local flycheck-command-wrapper-function
+                   (lambda (command)
+                     (let ((config-dir (locate-dominating-file buffer-file-name
+                                                               "Gemfile")))
+                       (if (and config-dir
+                                (ruby-flymake-rubocop--use-bundler-p config-dir))
+                           (append '("bundle" "exec") command)
+                         command)))))))
 
 (leaf enh-ruby-mode
   :if (executable-find "ruby")
