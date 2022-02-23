@@ -42,7 +42,8 @@
            (scroll-preserve-screen-position . nil)
            (compilation-scroll-output . t)
            (create-lockfiles . nil)
-           (indicate-buffer-boundaries . 'left))
+           (indicate-buffer-boundaries . 'left)
+           (use-default-font-for-symbols . nil))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
