@@ -34,10 +34,13 @@ define :github_release, repository: nil, version: nil, filename: nil do
   when /\.zip\z/
     execute "unzip -o /tmp/#{filename}" do
       cwd '/tmp'
+      user node[:user]
     end
     cmd = params[:name]
     bin_path = "#{ENV['HOME']}/bin/#{cmd}"
-    execute "mv /tmp/#{cmd} #{bin_path} && chmod +x #{bin_path}"
+    execute "mv /tmp/#{cmd} #{bin_path} && chmod +x #{bin_path}" do
+      user node[:user]
+    end
   else
     raise "unknown type: #{filename}"
   end
