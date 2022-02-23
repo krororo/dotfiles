@@ -2,7 +2,8 @@ xdg_config 'xremap/config.yml'
 
 github_release 'xremap' do
   repository 'k0kubun/xremap'
-  version(v = '0.2.5')
+  v = '0.3.0'
+  version "v#{v}"
   filename 'xremap-linux-x86_64-x11.zip'
   bin_path = "#{ENV['HOME']}/bin/xremap"
   not_if "test -f #{bin_path} && [ $(#{bin_path} --version | egrep -o '([0-9]+.){2}[0-9]+') = #{v} ]"
