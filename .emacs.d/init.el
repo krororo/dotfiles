@@ -704,21 +704,23 @@ properly disable mozc-mode."
   (magit-diff-removed . '((t (:foreground "red"))))
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
-  (magit-item-highlight . '((t (:background "gray5"))))
-  :hook (magit-mode-hook . magit-delta-mode)
-  :config
-  (leaf magit-delta
-    :ensure t
-    :after magit xterm-color
-    :custom ((magit-delta-delta-args
-              . `("--max-line-distance" "0.6"
-                  "--true-color" ,(if xterm-color--support-truecolor "always" "never")
-                  "--color-only"
-                  "--plus-style" "syntax #003345"
-                  "--plus-emph-style" "syntax #006b6b"))
-             (magit-delta-hide-plus-minus-markers . nil)))
+  (magit-item-highlight . '((t (:background "gray5")))))
 
-  (leaf xterm-color :ensure t))
+(leaf xterm-color
+  :ensure t
+  :require t)
+
+(leaf magit-delta
+  :ensure t
+  :after xterm-color
+  :custom ((magit-delta-delta-args
+            . `("--max-line-distance" "0.6"
+                "--true-color" ,(if xterm-color--support-truecolor "always" "never")
+                "--color-only"
+                "--plus-style" "syntax #003345"
+                "--plus-emph-style" "syntax #006b6b"))
+           (magit-delta-hide-plus-minus-markers . nil))
+  :hook magit-mode-hook)
 
 (leaf docker
   :ensure t
