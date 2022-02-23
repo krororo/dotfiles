@@ -526,20 +526,19 @@ properly disable mozc-mode."
 
 (leaf flycheck
   :ensure t
-  :require t
-  :bind (("M-n" . flycheck-next-error)
-         ("M-p" . flycheck-previous-error))
-  :custom ((flycheck-ruby-rubocop-executable . nil)
-           (safe-local-variable-values . '((encoding . utf-8)
+  :bind ((:flycheck-mode-map
+          ("M-n" . flycheck-next-error)
+          ("M-p" . flycheck-previous-error)))
+  :custom ((safe-local-variable-values . '((encoding . utf-8)
                                            (eval setq-local flycheck-command-wrapper-function
                                                  (lambda
                                                    (command)
                                                    (append
                                                     (quote
                                                      ("bundle" "exec"))
-                                                    command))))))
-  :config
-  (setq flycheck-check-syntax-automatically '(mode-enabled save)))
+                                                    command)))))
+           (flycheck-check-syntax-automatically . '(mode-enabled save)))
+  :hook ruby-mode-hook)
 
 (leaf eruby-mode
   :el-get petere/emacs-eruby-mode
@@ -611,13 +610,7 @@ properly disable mozc-mode."
   :config
   (setq rspec-spec-command "rspec -c")
   (setq rspec-use-rake-when-possible nil)
-  (setq ruby-insert-encoding-magic-comment nil)
-
-  (add-hook 'ruby-mode-hook
-            '(lambda()
-               (setq flycheck-checker 'ruby-rubocop)
-               (electric-indent-local-mode 1)
-               (flycheck-mode))))
+  (setq ruby-insert-encoding-magic-comment nil))
 
 (leaf enh-ruby-mode
   :if (executable-find "ruby")
