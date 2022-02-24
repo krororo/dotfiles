@@ -609,7 +609,7 @@ properly disable mozc-mode."
   :if (executable-find "ruby")
   :ensure t
   :require ruby-mode
-  :mode "\\.\\(rb\\|ru\\)\\'"
+  ;; :mode "\\.\\(rb\\|ru\\)\\'"
   :custom-face
   (enh-ruby-op-face . '((t (:foreground "gainsboro"))))
   :bind ((:enh-ruby-mode-map
