@@ -1,9 +1,6 @@
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
-;; suppress "Package cl is deprecated"
-(setq byte-compile-warnings '(not cl-functions obsolete))
-
 (prog1 "leaf"
   (prog1 "install leaf"
     (custom-set-variables
