@@ -313,26 +313,24 @@ properly disable mozc-mode."
             '(lambda () (set-cursor-color "red"))))
 
 (leaf recentf
-  :require t
-  :after cl-lib
-  :config
-  (defun my-recentf-save-list-inhibit-message:around (orig-func &rest args)
+  :preface
+  (defun my-recentf-inhibit-message:around (orig-func &rest args)
     "recentf の メッセージをエコーエリア(ミニバッファ)に表示しない
 (*Messages* バッファには出力される)"
     (setq inhibit-message t)
     (apply orig-func args)
     (setq inhibit-message nil)
     'around)
-  (advice-add 'recentf-cleanup   :around 'my-recentf-save-list-inhibit-message:around)
-  (advice-add 'recentf-save-list :around 'my-recentf-save-list-inhibit-message:around)
-
-  (setq recentf-max-menu-items 500)
-  (setq recentf-max-saved-items 500)
-  (setq recentf-exclude '("recentf" "COMMIT_EDITMSG"))
-  (setq recentf-auto-cleanup 'never)
-  (setq recentf-auto-save-timer
-        (run-with-idle-timer 30 t 'recentf-save-list))
-  (recentf-mode 1))
+  :custom ((recentf-max-menu-items . 500)
+           (recentf-max-saved-items . 500)
+           (recentf-exclude . '("recentf" "COMMIT_EDITMSG"))
+           (recentf-auto-cleanup . 'never))
+  :advice
+  (:around recentf-cleanup my-recentf-inhibit-message:around)
+  (:around recentf-save-list my-recentf-inhibit-message:around)
+  :config
+  (recentf-mode 1)
+  (run-with-idle-timer 30 t 'recentf-save-list))
 
 (leaf server
   :require t
