@@ -601,7 +601,12 @@ properly disable mozc-mode."
                        (if (and config-dir
                                 (ruby-flymake-rubocop--use-bundler-p config-dir))
                            (append '("bundle" "exec") command)
-                         command)))))))
+                         command))))))
+  :init
+  (font-lock-add-keywords
+   'ruby-mode
+   '(("\\(?:^\\|[^.@$:]\\|\\.\\.\\)\\_<\\(nil\\|true\\|false\\)\\_>"
+      1 font-lock-keyword-face))))
 
 (leaf enh-ruby-mode
   :if (executable-find "ruby")
