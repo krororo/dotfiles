@@ -112,13 +112,23 @@ if [ -d $HOME/.nodenv ]; then
 fi
 
 # bookmarks
-if [ -d $HOME/.config/bookmarks ]; then
-  export CDPATH=".:$HOME/.config/bookmarks"
+bookmark_dir=$HOME/.config/bookmarks
+if [ -d $bookmark_dir ]; then
+  export CDPATH=".:$bookmark_dir"
   alias goto="cd -P"
   _goto() {
-    _files -W $HOME/.config/bookmarks
+    _files -W $bookmark_dir
   }
   compdef _goto goto
+
+  function mkbm() {
+    local dest=$bookmark_dir/@$(basename $1)
+    if [ -e $dest ]; then
+      echo 'already exist' $dest
+    else
+      ln -s $(realpath $1) $dest
+    fi
+  }
 fi
 
 # environment

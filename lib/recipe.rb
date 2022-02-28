@@ -2,12 +2,14 @@ include_recipe 'recipe_helper'
 
 node.reverse_merge!(user: ENV['SUDO_USER'] || ENV['USER'])
 
-directory "#{ENV['HOME']}/bin" do
-  owner node[:user]
-end
-
-directory "#{ENV['HOME']}/.config/systemd/user" do
-  owner node[:user]
+[
+  "#{ENV['HOME']}/bin",
+  "#{ENV['HOME']}/.config/bookmarks",
+  "#{ENV['HOME']}/.config/systemd/user",
+].each do |dir|
+  directory dir do
+    owner node[:user]
+  end
 end
 
 dotfile '.docker'
