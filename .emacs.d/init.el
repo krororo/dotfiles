@@ -87,19 +87,6 @@
     :require t
     :config (eaw-fullwidth))
 
-  (leaf whitespace
-    :doc "tab に色を付ける"
-    :require t
-    :hook ((prog-mode-hook text-mode-hook) . (lambda () (setq show-trailing-whitespace t)))
-    :config
-    (setq whitespace-style '(face tabs tab-mark))
-    (setq whitespace-display-mappings
-          '((tab-mark   ?\t   [?\xBB ?\t])))
-    (set-face-foreground 'whitespace-tab "royal blue")
-    (set-face-background 'whitespace-tab 'nil)
-    (set-face-underline  'whitespace-tab t)
-    (global-whitespace-mode 1))
-
   (leaf editorconfig
     :ensure t
     :custom ((editorconfig-exclude-modes . '(web-mode)))
@@ -190,6 +177,16 @@
       (let ((str (buffer-substring beg end)))
         (browse-url
          (concat "https://www.deepl.com/translator#en/ja/" (url-hexify-string str)))))))
+
+(leaf whitespace
+  :doc "tab に色を付ける"
+  :hook ((prog-mode-hook text-mode-hook) . (lambda () (setq show-trailing-whitespace t)))
+  :custom
+  (whitespace-style . '(face tabs tab-mark))
+  (whitespace-display-mappings . '((tab-mark ?\t [?\xBB ?\t])))
+  :custom-face
+  (whitespace-tab . '((t (:foreground "royal blue" :background nil :underline t))))
+  :global-minor-mode global-whitespace-mode)
 
 (leaf *key-binding
   :preface
