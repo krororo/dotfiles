@@ -394,7 +394,9 @@ properly disable mozc-mode."
   :ensure t
   :custom
   (completion-styles . '(orderless))
-  (orderless-component-separator . #'orderless-escapable-split-on-space))
+  (orderless-component-separator . #'orderless-escapable-split-on-space)
+  (completion-category-defaults . nil)
+  (completion-category-overrides . '((file (styles . (partial-completion))))))
 
 (leaf marginalia
   :ensure t
@@ -407,6 +409,40 @@ properly disable mozc-mode."
                   (projectile-find-dir . project-file)
                   (projectile-switch-project . file))
                 marginalia-command-categories)))
+
+(leaf corfu
+  :ensure t
+  :custom
+  (corfu-auto . t)
+  (corfu-cycle . t)
+  (corfu-quit-no-match . 'separator)
+  :global-minor-mode corfu-global-mode)
+
+(leaf cape
+  :ensure t
+  :require t
+  :preface
+  (defun my-custom-capf ()
+    (let* ((capfs (remove t completion-at-point-functions)))
+      (add-to-list 'capfs #'cape-dabbrev t)
+      (setq-local completion-at-point-functions
+                  `(cape-file
+                    ,(cape-capf-buster (apply #'cape-super-capf capfs))))))
+  :hook ((lsp-completion-mode-hook emacs-lisp-mode-hook) . my-custom-capf)
+  :config
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-keyword))
+
+(leaf kind-icon
+  :ensure t
+  :after corfu
+  :require t
+  :custom
+  (kind-icon-default-face . 'corfu-default)
+  `(svg-lib-icons-dir . ,(expand-file-name "~/.cache/emacs/svg-lib/"))
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (leaf projectile
   :ensure t
@@ -440,9 +476,7 @@ properly disable mozc-mode."
                                   company-keywords))))
   :bind ((:company-active-map
           ;; disable help
-          ("C-h" . nil)))
-  :init
-  (global-company-mode))
+          ("C-h" . nil))))
 
 (leaf sudo-edit :ensure t)
 
