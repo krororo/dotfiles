@@ -87,28 +87,6 @@
     :require t
     :config (eaw-fullwidth))
 
-  (leaf editorconfig
-    :ensure t
-    :custom ((editorconfig-exclude-modes . '(web-mode)))
-    :config
-    (editorconfig-mode t)
-    (defun editorconfig-disable-trim-whitespace-in-read-only-buffers (props)
-      (when (and buffer-read-only (gethash 'trim_trailing_whitespace props))
-        (remove-hook 'write-file-functions #'delete-trailing-whitespace :local)))
-    (add-hook 'editorconfig-custom-hooks #'editorconfig-disable-trim-whitespace-in-read-only-buffers)
-    ;; delete-trailing-whitespace モードの状態表示と反転
-    (defvar my/current-cleanup-state "")
-    (defun toggle-cleanup-spaces ()
-      (interactive)
-      (cond ((memq 'delete-trailing-whitespace write-file-functions)
-             (setq my/current-cleanup-state
-                   (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
-             (remove-hook 'write-file-functions 'delete-trailing-whitespace))
-            (t
-             (setq my/current-cleanup-state "")
-             (add-hook 'write-file-functions 'delete-trailing-whitespace)))
-      (force-mode-line-update)))
-
   (leaf windmove
     :config
     (windmove-default-keybindings))
@@ -188,6 +166,29 @@
   (whitespace-tab . '((t (:foreground "royal blue" :background nil :underline t))))
   :global-minor-mode global-whitespace-mode)
 
+(leaf editorconfig
+  :ensure t
+  :preface
+  (defun my-editorconfig-disable-trim-whitespace-in-read-only-buffers (props)
+    (when (and buffer-read-only (gethash 'trim_trailing_whitespace props))
+      (remove-hook 'write-file-functions #'delete-trailing-whitespace :local)))
+
+  (defvar my-current-cleanup-state ""
+    "delete-trailing-whitespace モードの状態")
+  (defun my-toggle-cleanup-spaces ()
+    (interactive)
+    (cond ((memq 'delete-trailing-whitespace write-file-functions)
+           (setq my-current-cleanup-state
+                 (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
+           (remove-hook 'write-file-functions 'delete-trailing-whitespace))
+          (t
+           (setq my-current-cleanup-state "")
+           (add-hook 'write-file-functions 'delete-trailing-whitespace)))
+    (force-mode-line-update))
+  :custom ((editorconfig-exclude-modes . '(web-mode)))
+  :hook (editorconfig-custom-hooks . my-editorconfig-disable-trim-whitespace-in-read-only-buffers)
+  :global-minor-mode t)
+
 (leaf *key-binding
   :preface
   (defun my-move-beginning-alt ()
@@ -217,7 +218,7 @@
 (leaf *mode-line
   :config
   (setq-default mode-line-format
-                '((:eval my/current-cleanup-state)
+                '((:eval my-current-cleanup-state)
                   "%e"
                   mode-line-front-space
                   mode-line-mule-info
