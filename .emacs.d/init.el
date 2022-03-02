@@ -628,10 +628,11 @@ properly disable mozc-mode."
       1 font-lock-keyword-face))))
 
 (leaf enh-ruby-mode
+  :disabled t
   :if (executable-find "ruby")
   :ensure t
   :require ruby-mode
-  ;; :mode "\\.\\(rb\\|ru\\)\\'"
+  :mode "\\.\\(rb\\|ru\\)\\'"
   :custom-face
   (enh-ruby-op-face . '((t (:foreground "gainsboro"))))
   :bind ((:enh-ruby-mode-map
