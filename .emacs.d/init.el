@@ -446,6 +446,10 @@ properly disable mozc-mode."
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
+(leaf embark
+  :ensure t
+  :bind ("C-." . embark-act))
+
 (leaf projectile
   :ensure t
   :custom (projectile-mode-line-prefix . " Prj")
