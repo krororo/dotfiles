@@ -384,7 +384,8 @@ properly disable mozc-mode."
   :bind (("C-x b" . consult-buffer)
          ("C-s" . consult-line)
          ("M-y" . consult-yank-pop)
-         ("M-g M-g" . consult-goto-line))
+         ("M-g M-g" . consult-goto-line)
+         ("M-s g" . consult-git-grep))
   :config
   (consult-customize
    consult--source-recent-file consult--source-project-recent-file
