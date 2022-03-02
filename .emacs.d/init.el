@@ -81,44 +81,6 @@
   ;; スクリーンの最大化
   (set-frame-parameter nil 'fullscreen 'maximized)
 
-  (leaf eaw
-    :el-get (hamano/locale-eaw
-             :name eaw)
-    :require t
-    :config (eaw-fullwidth))
-
-  (leaf windmove
-    :config
-    (windmove-default-keybindings))
-
-  (leaf git-gutter
-    :ensure t
-    :config (global-git-gutter-mode t))
-
-  (leaf avy
-    :ensure t
-    :bind (("C-M-:" . avy-goto-char-timer)))
-
-  (leaf rainbow-delimiters
-    :ensure t
-    :hook prog-mode-hook
-    :custom-face
-    ((rainbow-delimiters-depth-1-face . '((t (:foreground "#ffa500"))))
-     (rainbow-delimiters-depth-2-face . '((t (:foreground "#ff5e5e"))))
-     (rainbow-delimiters-depth-3-face . '((t (:foreground "#ffaa77"))))
-     (rainbow-delimiters-depth-4-face . '((t (:foreground "#dddd77"))))
-     (rainbow-delimiters-depth-5-face . '((t (:foreground "#80ee80"))))
-     (rainbow-delimiters-depth-6-face . '((t (:foreground "#66bbff"))))
-     (rainbow-delimiters-depth-7-face . '((t (:foreground "#da6bda"))))
-     (rainbow-delimiters-depth-8-face . '((t (:foreground "#afafaf"))))
-     (rainbow-delimiters-depth-9-face . '((t (:foreground "#f0f0f0"))))
-     (rainbow-delimiters-base-error-face . '((t (:foreground "#ff2020"))))))
-
-  (leaf beacon
-    :ensure t
-    :config
-    (beacon-mode 1))
-
   (leaf *keep-scratch-buffer
     :doc "don't remove *scratch* buffer"
     :preface
@@ -188,6 +150,43 @@
   :custom ((editorconfig-exclude-modes . '(web-mode)))
   :hook (editorconfig-custom-hooks . my-editorconfig-disable-trim-whitespace-in-read-only-buffers)
   :global-minor-mode t)
+
+(leaf eaw
+  :el-get (hamano/locale-eaw
+           :name eaw)
+  :require t
+  :config (eaw-fullwidth))
+
+(leaf windmove
+  :config
+  (windmove-default-keybindings))
+
+(leaf git-gutter
+  :ensure t
+  :global-minor-mode global-git-gutter-mode)
+
+(leaf avy
+  :ensure t
+  :bind (("C-M-:" . avy-goto-char-timer)))
+
+(leaf rainbow-delimiters
+  :ensure t
+  :hook prog-mode-hook
+  :custom-face
+  ((rainbow-delimiters-depth-1-face . '((t (:foreground "#ffa500"))))
+   (rainbow-delimiters-depth-2-face . '((t (:foreground "#ff5e5e"))))
+   (rainbow-delimiters-depth-3-face . '((t (:foreground "#ffaa77"))))
+   (rainbow-delimiters-depth-4-face . '((t (:foreground "#dddd77"))))
+   (rainbow-delimiters-depth-5-face . '((t (:foreground "#80ee80"))))
+   (rainbow-delimiters-depth-6-face . '((t (:foreground "#66bbff"))))
+   (rainbow-delimiters-depth-7-face . '((t (:foreground "#da6bda"))))
+   (rainbow-delimiters-depth-8-face . '((t (:foreground "#afafaf"))))
+   (rainbow-delimiters-depth-9-face . '((t (:foreground "#f0f0f0"))))
+   (rainbow-delimiters-base-error-face . '((t (:foreground "#ff2020"))))))
+
+(leaf beacon
+  :ensure t
+  :global-minor-mode beacon-mode)
 
 (leaf *key-binding
   :preface
