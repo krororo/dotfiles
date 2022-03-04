@@ -447,7 +447,14 @@ properly disable mozc-mode."
 
 (leaf embark
   :ensure t
+  :custom (embark-help-key . "?")
   :bind ("C-." . embark-act))
+
+(leaf embark-consult
+  :ensure t
+  :after consult embark
+  :require t
+  :hook (embark-collect-mode-hook . consult-preview-at-point-mode))
 
 (leaf projectile
   :ensure t
