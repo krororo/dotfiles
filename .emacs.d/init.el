@@ -79,44 +79,44 @@
   (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
   ;; スクリーンの最大化
-  (set-frame-parameter nil 'fullscreen 'maximized)
+  (set-frame-parameter nil 'fullscreen 'maximized))
 
-  (leaf *keep-scratch-buffer
-    :doc "don't remove *scratch* buffer"
-    :preface
-    (defun my-make-scratch (&optional arg)
-      (interactive)
-      (progn
-        ;; "*scratch*" を作成して buffer-list に放り込む
-        (set-buffer (get-buffer-create "*scratch*"))
-        (funcall initial-major-mode)
-        (erase-buffer)
-        (when (and initial-scratch-message (not inhibit-startup-message))
-          (insert initial-scratch-message))
-        (or arg (progn (setq arg 0)
-                       (switch-to-buffer "*scratch*")))
-        (cond ((= arg 0) (message "*scratch* is cleared up."))
-              ((= arg 1) (message "another *scratch* is created")))))
-    :hook
-    ((kill-buffer-query-functions
-      ;; *scratch* バッファで kill-buffer したら内容を消去するだけにする
-      . (lambda ()
-          (if (string= "*scratch*" (buffer-name))
-              (progn (my-make-scratch 0) nil)
-            t)))
-     (after-save-hook
-      ;; *scratch* バッファの内容を保存したら *scratch* バッファを新しく作る
-      . (lambda ()
-          (unless (member (get-buffer "*scratch*") (buffer-list))
-            (my-make-scratch 1))))))
+(leaf *keep-scratch-buffer
+  :doc "don't remove *scratch* buffer"
+  :preface
+  (defun my-make-scratch (&optional arg)
+    (interactive)
+    (progn
+      ;; "*scratch*" を作成して buffer-list に放り込む
+      (set-buffer (get-buffer-create "*scratch*"))
+      (funcall initial-major-mode)
+      (erase-buffer)
+      (when (and initial-scratch-message (not inhibit-startup-message))
+        (insert initial-scratch-message))
+      (or arg (progn (setq arg 0)
+                     (switch-to-buffer "*scratch*")))
+      (cond ((= arg 0) (message "*scratch* is cleared up."))
+            ((= arg 1) (message "another *scratch* is created")))))
+  :hook
+  ((kill-buffer-query-functions
+    ;; *scratch* バッファで kill-buffer したら内容を消去するだけにする
+    . (lambda ()
+        (if (string= "*scratch*" (buffer-name))
+            (progn (my-make-scratch 0) nil)
+          t)))
+   (after-save-hook
+    ;; *scratch* バッファの内容を保存したら *scratch* バッファを新しく作る
+    . (lambda ()
+        (unless (member (get-buffer "*scratch*") (buffer-list))
+          (my-make-scratch 1))))))
 
-  (leaf *deepl
-    :config
-    (defun my-trans-deepl (beg end)
-      (interactive "r")
-      (let ((str (buffer-substring beg end)))
-        (browse-url
-         (concat "https://www.deepl.com/translator#en/ja/" (url-hexify-string str)))))))
+(leaf *deepl
+  :config
+  (defun my-trans-deepl (beg end)
+    (interactive "r")
+    (let ((str (buffer-substring beg end)))
+      (browse-url
+       (concat "https://www.deepl.com/translator#en/ja/" (url-hexify-string str))))))
 
 (leaf whitespace
   :doc "tab に色を付ける"
