@@ -625,6 +625,7 @@ properly disable mozc-mode."
                      (let ((config-dir (locate-dominating-file buffer-file-name
                                                                "Gemfile")))
                        (if (and config-dir
+                                (file-exists-p (expand-file-name "Gemfile.lock" config-dir))
                                 (ruby-flymake-rubocop--use-bundler-p config-dir))
                            (append '("bundle" "exec") command)
                          command))))))
