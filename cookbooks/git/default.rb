@@ -2,7 +2,7 @@ xdg_config 'git/config'
 xdg_config 'git/commit_template'
 
 github_release 'git-delta' do
-  v = '0.12.0'
+  v = '0.12.1'
   repository 'dandavison/delta'
   version v
   filename "git-delta_#{v}_amd64.deb"
