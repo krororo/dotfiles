@@ -12,7 +12,6 @@ node.reverse_merge!(user: ENV['SUDO_USER'] || ENV['USER'])
   end
 end
 
-dotfile '.docker'
 dotfile '.peco'
 dotfile '.vimrc'
 
@@ -20,6 +19,7 @@ xdg_config 'gem/gemrc'
 xdg_config 'gtk-3.0/gtk.css'
 xdg_config 'lsd/config.yaml'
 
+include_recipe '../cookbooks/docker'
 include_recipe '../cookbooks/emacs'
 include_recipe '../cookbooks/gh'
 include_recipe '../cookbooks/git'
