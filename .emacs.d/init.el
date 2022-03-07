@@ -384,6 +384,7 @@ properly disable mozc-mode."
          ("C-s" . consult-line)
          ("M-y" . consult-yank-pop)
          ("M-g M-g" . consult-goto-line)
+         ("M-g i" . consult-imenu)
          ("M-s g" . consult-git-grep))
   :config
   (consult-customize
