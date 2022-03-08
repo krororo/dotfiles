@@ -1,2 +1,2 @@
 package 'emacs'
-package 'emacs-mozc'
+package 'emacs-mozc-bin'

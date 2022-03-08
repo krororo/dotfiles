@@ -27,4 +27,5 @@ include_recipe '../cookbooks/rbenv'
 include_recipe '../cookbooks/xremap'
 include_recipe '../cookbooks/zsh'
 
+package 'fcitx-mozc'
 package 'fonts-noto-color-emoji'

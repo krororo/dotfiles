@@ -48,6 +48,9 @@
   :config
   (set-fontset-font nil '(#x1F000 . #x1FAFF) "Noto Color Emoji")
 
+  (set-cursor-color "red")
+  (set-language-environment 'utf-8)
+
   (setq-default indent-tabs-mode nil)
   ;; *.~ とかのバックアップファイルを作らない
   (setq make-backup-files nil)
@@ -273,41 +276,42 @@
   (setq mode-line-position
         '(:eval (format my-mode-line-format
                         (+ (count-lines (point-max) (point-min)) 1)))))
+
 (leaf mozc
-  :if (file-directory-p "/usr/share/emacs/site-lisp/emacs-mozc")
-  :init (add-to-list 'load-path "/usr/share/emacs/site-lisp/emacs-mozc")
+  :if (executable-find "mozc_emacs_helper")
+  :ensure t
   :require t
-  :config
-  (setq mozc-candidate-style 'echo-area)
-  (set-cursor-color "red")
-  (set-language-environment 'utf-8)
-  (setq default-file-name-coding-system 'utf-8)
-  (setq default-input-method "japanese-mozc")
-  (global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
-  ;; 変換キーでon
-  (global-set-key (kbd "<henkan>")
-                  (lambda () (interactive)
-                    (when (null current-input-method) (toggle-input-method))))
-  ;; 無変換キーでon
-  (global-set-key (kbd "<muhenkan>")
-                  (lambda () (interactive)
-                    (inactivate-input-method)))
-  ;; 全角半角キーと無変換キーのキーイベントを横取りする
-  (defadvice mozc-handle-event (around intercept-keys (event))
+  :preface
+  (defun my-mozc-handle-event (event)
     "Intercept keys muhenkan and zenkaku-hankaku, before passing keys
 to mozc-server (which the function mozc-handle-event does), to
 properly disable mozc-mode."
-    (if (member event (list 'zenkaku-hankaku 'muhenkan))
-        (progn
-          (mozc-clean-up-session)
-          (toggle-input-method))
-      (progn ;(message "%s" event) ;debug
-        ad-do-it)))
-  (ad-activate 'mozc-handle-event)
-  (add-hook 'input-method-activate-hook
-            '(lambda () (set-cursor-color "green")))
-  (add-hook 'input-method-inactivate-hook
-            '(lambda () (set-cursor-color "red"))))
+    (when (member event (list 'zenkaku-hankaku 'muhenkan))
+      (mozc-clean-up-session)
+      (toggle-input-method)
+      t))
+  :bind
+  ("<zenkaku-hankaku>" . toggle-input-method)
+  ("<henkan>" . (lambda () (interactive)
+                  (when (null current-input-method) (toggle-input-method))))
+  ("<muhenkan>" . (lambda () (interactive) (inactivate-input-method)))
+  :hook
+  (input-method-activate-hook . (lambda () (set-cursor-color "green")))
+  (input-method-inactivate-hook . (lambda () (set-cursor-color "red")))
+  :advice
+  (:before-until mozc-handle-event my-mozc-handle-event)
+  :config
+  (setq default-input-method "japanese-mozc"))
+
+(leaf mozc-cand-posframe
+  :ensure t
+  :after mozc
+  :require t
+  :custom-face
+  (mozc-cand-posframe-normal-face . '((t (:background "#333333" :foreground "#dcd4be"))))
+  (mozc-cand-posframe-footer-face . '((t (:foreground "#ededed"))))
+  :config
+  (setq mozc-candidate-style 'posframe))
 
 (leaf recentf
   :preface
