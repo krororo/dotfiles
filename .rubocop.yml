@@ -1,6 +1,10 @@
 AllCops:
   NewCops: enable
 
+Style/ExpandPathArguments:
+  Exclude:
+    - "cookbooks/**/*"
+
 Style/FrozenStringLiteralComment:
   Exclude:
     - "lib/**/*"
