@@ -475,15 +475,14 @@ properly disable mozc-mode."
 
 (leaf anzu
   :ensure t
-  :config
-  (global-anzu-mode +1)
-
-  (setq anzu-mode-lighter "")
-  (setq anzu-deactivate-region t)
-  (setq anzu-search-threshold 1000)
-
-  (global-set-key (kbd "C-c q") 'anzu-query-replace-regexp)
-  (global-set-key (kbd "C-c Q") 'anzu-query-replace-at-cursor-thing))
+  :custom
+  (anzu-mode-lighter . "")
+  (anzu-deactivate-region . t)
+  (anzu-search-threshold . 1000)
+  :bind
+  ("C-c q" . 'anzu-query-replace-regexp)
+  ("C-c Q" . 'anzu-query-replace-at-cursor-thing)
+  :global-minor-mode global-anzu-mode)
 
 (leaf company
   :ensure t
