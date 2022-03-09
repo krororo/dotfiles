@@ -19,6 +19,11 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
+(leaf xdg
+  :require t
+  :config
+  (defvar my-emacs-cache-home (expand-file-name "emacs" (xdg-cache-home))))
+
 (leaf exec-path-from-shell
   :ensure t
   :custom ((exec-path-from-shell-warn-duration-millis . 2000)
@@ -446,7 +451,7 @@ properly disable mozc-mode."
   :require t
   :custom
   (kind-icon-default-face . 'corfu-default)
-  `(svg-lib-icons-dir . ,(expand-file-name "~/.cache/emacs/svg-lib/"))
+  `(svg-lib-icons-dir . ,(expand-file-name "svg-lib/" my-emacs-cache-home))
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
