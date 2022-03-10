@@ -45,48 +45,35 @@
            (compilation-scroll-output . t)
            (create-lockfiles . nil)
            (indicate-buffer-boundaries . 'left)
-           (use-default-font-for-symbols . nil))
+           (use-default-font-for-symbols . nil)
+           (make-backup-files . nil) ;; *.~ とかのバックアップファイルを作らない
+           (auto-save-default . nil) ;; .#* とかのバックアップファイルを作らない
+           (inhibit-startup-message . t) ;; 起動時のメッセージを非表示
+           (visible-bell . t)
+           (ring-bell-function . 'ignore))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
+  :setq-default
+  (indent-tabs-mode . nil)
   :config
   (set-fontset-font nil '(#x1F000 . #x1FAFF) "Noto Color Emoji")
 
   (set-cursor-color "red")
   (set-language-environment 'utf-8)
 
-  (setq-default indent-tabs-mode nil)
-  ;; *.~ とかのバックアップファイルを作らない
-  (setq make-backup-files nil)
-  ;; .#* とかのバックアップファイルを作らない
-  (setq auto-save-default nil)
-  ;; yes or no を y or n に
   (fset 'yes-or-no-p 'y-or-n-p)
-  ;; menu bar
+
   (if window-system (menu-bar-mode 1) (menu-bar-mode -1))
-  ;; tool bar
   (tool-bar-mode -1)
-  ;; モード行に桁数も表示
   (column-number-mode t)
-  ;; 起動時のメッセージをでなくする
-  (setq inhibit-startup-message t)
-  ;; 対応する括弧をハイライト
   (show-paren-mode t)
-  ;; スクロールバー無し
   (set-scroll-bar-mode nil)
-  ;; bell をならなくする
-  (setq visible-bell t)
-  (setq ring-bell-function 'ignore)
 
   (put 'downcase-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
 
-  (setq nxml-child-indent 4)
-
-  (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
-
-  ;; スクリーンの最大化
   (set-frame-parameter nil 'fullscreen 'maximized))
 
 (leaf *keep-scratch-buffer
@@ -125,6 +112,10 @@
     (let ((str (buffer-substring beg end)))
       (browse-url
        (concat "https://www.deepl.com/translator#en/ja/" (url-hexify-string str))))))
+
+(leaf tramp
+  :defer-config
+  (setenv "SHELL" "/bin/bash"))
 
 (leaf whitespace
   :doc "tab に色を付ける"
@@ -767,3 +758,6 @@ properly disable mozc-mode."
 
 (leaf electric-pair-local-mode
   :hook emacs-lisp-mode-hook)
+
+(leaf nxml-mode
+  :custom (nxml-child-indent . 4))
