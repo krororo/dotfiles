@@ -629,11 +629,16 @@ properly disable mozc-mode."
                                 (ruby-flymake-rubocop--use-bundler-p config-dir))
                            (append '("bundle" "exec") command)
                          command))))))
-  :init
+  :config
   (font-lock-add-keywords
    'ruby-mode
-   '(("\\(?:^\\|[^.@$:]\\|\\.\\.\\)\\_<\\(nil\\|true\\|false\\)\\_>"
-      1 font-lock-keyword-face))))
+   `(("\\s *def\\s +\\(?:[^( \t\n.]*\\.\\)?\\([^( \t\n]+\\)"
+      1 font-lock-function-name-face)
+     (,(concat ruby-font-lock-keyword-beg-re
+               "\\_<\\(nil\\|true\\|false\\)\\_>")
+      1 font-lock-keyword-face)
+     ("\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\(\\(?:if\\|unless\\):\\)"
+      1 font-lock-constant-face))))
 
 (leaf enh-ruby-mode
   :disabled t
