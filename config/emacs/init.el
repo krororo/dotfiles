@@ -637,7 +637,9 @@ properly disable mozc-mode."
      (,(concat ruby-font-lock-keyword-beg-re
                "\\_<\\(nil\\|true\\|false\\)\\_>")
       1 font-lock-keyword-face)
-     ("\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\(\\(?:if\\|unless\\):\\)"
+     (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
+               (regexp-opt '("if" "unless" "in") "\\(?:")
+               ":\\)")
       1 font-lock-constant-face))))
 
 (leaf enh-ruby-mode
