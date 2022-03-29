@@ -166,7 +166,7 @@
 
 (leaf avy
   :ensure t
-  :bind (("C-M-:" . avy-goto-char-timer)))
+  :bind (("C-:" . avy-goto-char-timer)))
 
 (leaf rainbow-delimiters
   :ensure t
