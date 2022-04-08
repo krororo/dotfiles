@@ -579,11 +579,18 @@ properly disable mozc-mode."
   (setq js-indent-level 2)
   (setq js2-basic-offset 2))
 
+(leaf mermaid-mode
+  :ensure t
+  :mode "\\.mmd\\'"
+  :commands mermaid-compile-region)
+
 (leaf markdown-mode
   :ensure t
   :custom (markdown-fontify-code-blocks-natively . t)
   :custom-face
-  (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine")))))
+  (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
+  :defer-config
+  (define-key markdown-mode-map (kbd "C-c C-r") 'mermaid-compile-region))
 
 (leaf review-mode
   :ensure t
