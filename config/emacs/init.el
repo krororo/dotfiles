@@ -416,6 +416,7 @@ properly disable mozc-mode."
   :ensure t
   :custom
   (corfu-auto . t)
+  (corfu-auto-prefix . 4)
   (corfu-cycle . t)
   (corfu-quit-no-match . 'separator)
   :global-minor-mode corfu-global-mode)
