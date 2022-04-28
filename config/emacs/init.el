@@ -620,7 +620,14 @@ properly disable mozc-mode."
            (smie-backward-sexp ";")
            (cons 'column (+ (current-column) ruby-indent-level))))
         ((not (smie-rule-parent-p ";"))
-         (smie-rule-parent ruby-indent-level))))))
+         (smie-rule-parent ruby-indent-level))))
+      ;; expect(...).to eq [] のインデント対応
+      ('(:before . "[")
+       (cond
+        ((and (smie-rule-hanging-p)
+              (smie-rule-parent-p " @ "))
+         (smie-backward-sexp ";")
+         (cons 'column (current-column)))))))
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\)\\'"
@@ -645,8 +652,9 @@ properly disable mozc-mode."
      (,(concat ruby-font-lock-keyword-beg-re
                "\\_<\\(nil\\|true\\|false\\)\\_>")
       1 font-lock-keyword-face)
+     ;; ex. if: :hoge
      (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
-               (regexp-opt '("if" "unless" "in") "\\(?:")
+               (regexp-opt '("if" "unless" "in" "format") "\\(?:")
                ":\\)")
       1 font-lock-constant-face))))
 
