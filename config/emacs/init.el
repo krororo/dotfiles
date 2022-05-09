@@ -419,7 +419,7 @@ properly disable mozc-mode."
   (corfu-auto-prefix . 4)
   (corfu-cycle . t)
   (corfu-quit-no-match . 'separator)
-  :global-minor-mode corfu-global-mode)
+  :global-minor-mode global-corfu-mode)
 
 (leaf cape
   :ensure t
