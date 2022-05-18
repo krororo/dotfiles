@@ -622,7 +622,7 @@ properly disable mozc-mode."
         ((not (smie-rule-parent-p ";"))
          (smie-rule-parent ruby-indent-level))))
       ;; expect(...).to eq [] のインデント対応
-      ('(:before . "[")
+      (`(:before . ,(or "[" "("))
        (cond
         ((and (smie-rule-hanging-p)
               (smie-rule-parent-p " @ "))
