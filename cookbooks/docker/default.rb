@@ -31,7 +31,7 @@ directory cli_plugins_dir do
 end
 
 execute 'Download docker-compose' do
-  v = 'v2.5.0'
+  v = 'v2.5.1'
   url = "https://github.com/docker/compose/releases/download/#{v}/docker-compose-linux-x86_64"
 
   user node[:user]
