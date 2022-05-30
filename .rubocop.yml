@@ -1,9 +1,17 @@
 AllCops:
   NewCops: enable
+  Exclude:
+    - "config/emacs/elpa/**/*"
+
+Style/EnvHome:
+  Enabled: false
 
 Style/ExpandPathArguments:
   Exclude:
     - "cookbooks/**/*"
+
+Style/FetchEnvVar:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Exclude:
