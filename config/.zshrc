@@ -4,7 +4,9 @@ EDITOR=vim
 zstyle ':completion:*' use-cache true
 
 # Complete
-_cache_hosts=($(egrep '^Host\s+[a-z0-9._-]+$' ~/.ssh/config | cut -d' ' -f2))
+if [ -f ~/.ssh/config ]; then
+  _cache_hosts=($(egrep '^Host\s+[a-z0-9._-]+$' ~/.ssh/config | cut -d' ' -f2))
+fi
 fpath=(~/.zsh $fpath)
 autoload -U compinit; compinit
 setopt auto_list
