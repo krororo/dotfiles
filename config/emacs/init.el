@@ -652,6 +652,8 @@ properly disable mozc-mode."
                            (append '("bundle" "exec") command)
                          command))))))
   :config
+  ;; workaround: https://gnu.emacs.bug.narkive.com/H2x8ODth/bug-42841-28-0-50-ruby-mode-ruby-beginning-end-of-block-doesn-t-work-as-is-exepected-if-arguments
+  (setq ruby-deep-indent-paren (delete ?\( ruby-deep-indent-paren))
   (font-lock-add-keywords
    'ruby-mode
    `(("\\s *def\\s +\\(?:[^( \t\n.]*\\.\\)?\\([^( \t\n]+\\)"
