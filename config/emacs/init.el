@@ -627,7 +627,14 @@ properly disable mozc-mode."
         ((and (smie-rule-hanging-p)
               (smie-rule-parent-p " @ "))
          (smie-backward-sexp ";")
-         (cons 'column (current-column)))))))
+         (cons 'column (current-column)))))
+      ;; for `foo([...])'
+      ('(:after . "(")
+       (if (smie-rule-next-p "[")
+           (save-excursion
+             (beginning-of-line)
+             (skip-chars-forward " \t")
+             (cons 'column (current-column)))))))
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\)\\'"
