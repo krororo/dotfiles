@@ -2,9 +2,9 @@
 
 set -e
 
-mitamae_version="1.12.8"
+mitamae_version="1.13.0"
 mitamae_bin="mitamae-x86_64-linux"
-mitamae_sha256="96d0c446da9329a32752233ec22ddbeffefe02afedfb85d29cea39749a0b115d"
+mitamae_sha256="0c69f62b0019ea5d1029dc71e6dd7051992efebf97b088ba57e981e44d05a0c6"
 
 mitamae_cache="mitamae-${mitamae_version}"
 if ! [ -f "bin/${mitamae_cache}" ]; then
