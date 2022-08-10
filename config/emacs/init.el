@@ -38,7 +38,7 @@
   :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
 
 (leaf *initialize-emacs
-  :custom ((initial-buffer-choice . "~/memo.org")
+  :custom ((initial-buffer-choice . "~/memo.md")
            (scroll-conservatively . 1)
            (scroll-margin . 5)
            (scroll-preserve-screen-position . nil)
