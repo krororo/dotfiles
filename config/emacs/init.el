@@ -27,7 +27,7 @@
 (leaf exec-path-from-shell
   :ensure t
   :custom ((exec-path-from-shell-warn-duration-millis . 2000)
-           (exec-path-from-shell-shell-name . "/usr/bin/zsh"))
+           (exec-path-from-shell-shell-name . "/bin/zsh"))
   :config
   (exec-path-from-shell-copy-env "PATH"))
 
@@ -52,7 +52,6 @@
            (visible-bell . t)
            (ring-bell-function . 'ignore))
   :custom-face
-  (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :setq-default
@@ -72,9 +71,22 @@
   (set-scroll-bar-mode nil)
 
   (put 'downcase-region 'disabled nil)
-  (put 'upcase-region 'disabled nil)
+  (put 'upcase-region 'disabled nil))
 
+(leaf *linux-settings
+  :unless (eq system-type 'darwin)
+  :custom-face
+  (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
+  :config
   (set-frame-parameter nil 'fullscreen 'maximized))
+
+(leaf *mac-settings
+  :if (eq system-type 'darwin)
+  :custom-face
+  (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
+  :config
+  (mac-auto-ascii-mode 1)
+  (define-key global-map [?¥] [?\\]))
 
 (leaf *keep-scratch-buffer
   :doc "don't remove *scratch* buffer"
