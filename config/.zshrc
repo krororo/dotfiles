@@ -4,6 +4,10 @@ EDITOR=vim
 zstyle ':completion:*' use-cache true
 
 # Complete
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+fi
 if [ -f ~/.ssh/config ]; then
   _cache_hosts=($(egrep '^Host\s+[a-z0-9._-]+$' ~/.ssh/config | cut -d' ' -f2))
 fi
@@ -53,7 +57,11 @@ esac
 
 # Prompt
 autoload -U colors; colors
-[ -f /usr/lib/git-core/git-sh-prompt ] && source /usr/lib/git-core/git-sh-prompt
+if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+  source /usr/lib/git-core/git-sh-prompt
+elif [ -f ~/.zsh/git-prompt.sh ]; then
+  source ~/.zsh/git-prompt.sh
+fi
 setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
 PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
@@ -92,9 +100,13 @@ compdef b=bundle
 alias dc='docker compose'
 compdef dc=docker-compose
 
-if [ -x /usr/bin/lsd ]; then
+if type lsd &>/dev/null; then
   alias ls=lsd
   compdef ls=lsd
+fi
+
+if type gfind &>/dev/null; then
+  alias find=gfind
 fi
 
 # Plugin
