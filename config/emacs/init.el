@@ -85,8 +85,7 @@
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   :config
-  (mac-auto-ascii-mode 1)
-  (define-key global-map [?¥] [?\\]))
+  (mac-auto-ascii-mode 1))
 
 (leaf *keep-scratch-buffer
   :doc "don't remove *scratch* buffer"
