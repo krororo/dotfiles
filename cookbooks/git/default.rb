@@ -1,5 +1,6 @@
 xdg_config 'git/config'
 xdg_config 'git/commit_template'
+xdg_config 'git/ignore'
 
 github_release 'git-delta' do
   v = '0.13.0'
