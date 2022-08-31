@@ -41,6 +41,7 @@
 	autostash = true
 [credential]
 	helper = store --file ~/.config/git/credentials
+	UseHttpPath = true
 [merge]
 	ff = false
 [pull]
