@@ -1,4 +1,8 @@
 /bin/mitamae*
 /config/.docker/.buildNodeID
 /config/.docker/cli-plugins
+/config/.docker/contexts
+/config/.docker/daemon.json
+/config/.docker/devenvironments
+/config/.docker/scan
 /config/.zsh/zsh-autosuggestions
