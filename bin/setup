@@ -3,13 +3,28 @@
 set -e
 
 mitamae_version="1.13.0"
-mitamae_bin="mitamae-x86_64-linux"
-mitamae_sha256="0c69f62b0019ea5d1029dc71e6dd7051992efebf97b088ba57e981e44d05a0c6"
+mitamae_linux_sha256="0c69f62b0019ea5d1029dc71e6dd7051992efebf97b088ba57e981e44d05a0c6"
+mitamae_darwin_sha256="d10bc13c3655170764eb9f2e1b4a70a705de44617c2202b629c6c8656fc605c8"
 
 mitamae_cache="mitamae-${mitamae_version}"
 if ! [ -f "bin/${mitamae_cache}" ]; then
+  case "$(uname)" in
+    "Linux")
+      mitamae_bin="mitamae-x86_64-linux"
+      mitamae_sha256="$mitamae_linux_sha256"
+      ;;
+    "Darwin")
+      mitamae_bin="mitamae-aarch64-darwin"
+      mitamae_sha256="$mitamae_darwin_sha256"
+      ;;
+    *)
+      echo "unexpected uname: $(uname)"
+      exit 1
+      ;;
+  esac
+
   curl -o "bin/${mitamae_bin}.tar.gz" -fL "https://github.com/itamae-kitchen/mitamae/releases/download/v${mitamae_version}/${mitamae_bin}.tar.gz"
-  sha256="$(sha256sum "bin/${mitamae_bin}.tar.gz" | cut -d" " -f1)"
+  sha256="$(openssl dgst -sha256 "bin/${mitamae_bin}.tar.gz" | cut -d" " -f2)"
   if [ "$mitamae_sha256" != "$sha256" ]; then
     echo "checksum verification failed!\nexpected: ${mitamae_sha256}\n  actual: ${sha256}"
     exit 1

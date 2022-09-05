@@ -15,8 +15,9 @@ Style/FetchEnvVar:
 
 Style/FrozenStringLiteralComment:
   Exclude:
-    - "lib/**/*"
     - "cookbooks/**/*"
+    - "lib/**/*"
+    - "recipes/**/*"
 
 Style/StringLiterals:
   Enabled: false
