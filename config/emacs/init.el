@@ -84,6 +84,7 @@
   :if (eq system-type 'darwin)
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
+  :bind ("C-M-¥" . indent-region)
   :config
   (mac-auto-ascii-mode 1))
 
