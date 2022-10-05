@@ -577,17 +577,17 @@ properly disable mozc-mode."
 (leaf js2-mode
   :ensure t
   :mode "\\.js\\'"
+  :hook (js2-mode-hook
+         . (lambda ()
+             (setq js2-global-externs (list "jQuery" "$"))
+             (setq js2-additional-externs (list "jQuery" "$"))
+             (setq js2-include-browser-externs nil)
+             (setq js2-mode-show-parse-errors nil)
+             (setq js2-mode-show-strict-warnings nil)
+             (setq js2-highlight-external-variables nil)
+             (setq js2-include-jslint-globals nil)
+             (flycheck-mode)))
   :config
-  (add-hook 'js2-mode-hook
-            '(lambda()
-               (setq js2-global-externs (list "jQuery" "$"))
-               (setq js2-additional-externs (list "jQuery" "$"))
-               (setq js2-include-browser-externs nil)
-               (setq js2-mode-show-parse-errors nil)
-               (setq js2-mode-show-strict-warnings nil)
-               (setq js2-highlight-external-variables nil)
-               (setq js2-include-jslint-globals nil)
-               (flycheck-mode)))
   (setq js-indent-level 2)
   (setq js2-basic-offset 2))
 
@@ -724,11 +724,10 @@ properly disable mozc-mode."
 (leaf typescript-mode
   :ensure t
   :custom ((typescript-indent-level . 2))
-  :config
-  (add-hook 'typescript-mode-hook
-            '(lambda ()
-               (unless (string-match "/node_modules/" (or (buffer-file-name) ""))
-                 (flycheck-mode)))))
+  :hook (typescript-mode-hook
+         . (lambda ()
+             (unless (string-match "/node_modules/" (or (buffer-file-name) ""))
+               (flycheck-mode)))))
 
 (leaf web-mode
   :ensure t
