@@ -732,7 +732,7 @@ properly disable mozc-mode."
 
 (leaf web-mode
   :ensure t
-  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'" "\\.vue\\'"
+  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'" "\\.vue\\'" "\\.tsx\\'"
   :custom ((web-mode-enable-auto-indentation . nil)
            (web-mode-attr-indent-offset . 2)
            (web-mode-block-padding . 2)
