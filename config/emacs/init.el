@@ -71,14 +71,14 @@
   (set-scroll-bar-mode nil)
 
   (put 'downcase-region 'disabled nil)
-  (put 'upcase-region 'disabled nil))
+  (put 'upcase-region 'disabled nil)
+
+  (set-frame-parameter nil 'fullscreen 'maximized))
 
 (leaf *linux-settings
   :unless (eq system-type 'darwin)
   :custom-face
-  (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen"))))
-  :config
-  (set-frame-parameter nil 'fullscreen 'maximized))
+  (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen")))))
 
 (leaf *mac-settings
   :if (eq system-type 'darwin)
