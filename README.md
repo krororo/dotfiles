@@ -45,3 +45,15 @@ $ git config -f ~/.config/git/config.local user.email <email>
 システム環境設定 → キーボード → ユーザ辞書
 
 - 「スマート引用符とスマートダッシュを使用」のチェックを外す
+
+### iTerm2 でメタキーを使いやすく
+iTerm2 の環境設定からキーリマップの設定をする
+
+* Profiles → Keys：Left option (⌥) key acts as で `Esc+` をチェック
+* Profiles → Keys：Right option (⌥) key acts as で `Esc+` をチェック
+* Keys → Remap Modifier Keys で Left ⌘ を Left option にリマップ
+* Keys → Remap Modifier Keys で Left option(⌥) を Left ⌘ にリマップ
+* Keys → Key Bindings で以下を "Do Not Remap Modifiers" に設定
+  * Command-Tab : ウィンドウ切り替え
+  * Command-Shift-Tab : ウィンドウ切り替え
+  * Command-Space : Spotlight
