@@ -11,10 +11,10 @@ execute 'sudo apt update' do
 end
 
 execute 'Add apt source' do
-  command 'echo "deb [arch=$(dpkg --print-architecture)' \
-          ' signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg]' \
-          ' https://cli.github.com/packages stable main"' \
-          ' | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null'
+  command 'echo "deb [arch=$(dpkg --print-architecture) ' \
+          'signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] ' \
+          'https://cli.github.com/packages stable main" ' \
+          '| sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null'
   not_if "test -f /etc/apt/sources.list.d/github-cli.list"
 end
 
