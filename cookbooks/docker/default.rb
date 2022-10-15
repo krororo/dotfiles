@@ -25,6 +25,10 @@ end
   package pkg
 end
 
+execute "gpasswd -a #{node[:user]} docker" do
+  not_if { run_command("id #{node[:user]}").stdout.include?('docker') }
+end
+
 cli_plugins_dir = "#{ENV['HOME']}/.docker/cli-plugins"
 directory cli_plugins_dir do
   owner node[:user]
