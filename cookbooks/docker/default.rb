@@ -31,10 +31,15 @@ directory cli_plugins_dir do
 end
 
 execute 'Download docker-compose' do
-  v = 'v2.7.0'
+  v = 'v2.11.2'
   url = "https://github.com/docker/compose/releases/download/#{v}/docker-compose-linux-x86_64"
 
   user node[:user]
-  command "curl -sL -o #{cli_plugins_dir}/docker-compose #{url}"
-  only_if %(command -v docker && [ $(docker compose version | egrep -o "v([0-9]+\\\\.){2}[0-9]+") != #{v} ])
+  command "curl -sL -o #{cli_plugins_dir}/docker-compose #{url} && chmod +x #{cli_plugins_dir}/docker-compose"
+  only_if do
+    next true unless File.exist?("#{cli_plugins_dir}/docker-compose")
+
+    m = run_command('docker compose version').stdout.match(/v(\d+\.){2}\d+/)
+    m && m[0] != v
+  end
 end
