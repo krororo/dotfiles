@@ -59,8 +59,8 @@ esac
 autoload -U colors; colors
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
   source /usr/lib/git-core/git-sh-prompt
-elif [ -f ~/.zsh/git-prompt.sh ]; then
-  source ~/.zsh/git-prompt.sh
+elif [ -f /opt/homebrew/etc/bash_completion.d/git-prompt.sh ]; then
+  source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
 fi
 setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
