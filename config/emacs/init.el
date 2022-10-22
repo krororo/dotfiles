@@ -808,3 +808,11 @@ properly disable mozc-mode."
 
 (leaf nxml-mode
   :custom (nxml-child-indent . 4))
+
+(leaf sqlformat
+  ;; pip3 install sqlparse
+  :if (executable-find "sqlformat")
+  :ensure t
+  :custom (sqlformat-command . 'sqlformat)
+  :bind ((:sql-mode-map
+          ("C-c C-f" . sqlformat))))
