@@ -225,6 +225,10 @@
   :init
   (ffap-bindings))
 
+(leaf which-key
+  :ensure t
+  :global-minor-mode t)
+
 (leaf *mode-line
   :config
   (setq-default mode-line-format
