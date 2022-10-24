@@ -85,7 +85,7 @@
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   :bind ("C-M-¥" . indent-region)
-  :config
+  :init
   (mac-auto-ascii-mode 1))
 
 (leaf *keep-scratch-buffer
