@@ -8,13 +8,13 @@ define :dotfile, source: nil do
 end
 
 define :xdg_config do
-  d, f = params[:name].split('/', 2)
-  config_dir = File.join(ENV['HOME'], '.config', d)
+  *d, f = params[:name].split('/')
+  config_dir = File.join(ENV['HOME'], '.config', *d)
   directory config_dir do
     owner node[:user]
   end
   link File.join(config_dir, f) do
-    to File.expand_path("../../config/#{d}/#{f}", __FILE__)
+    to File.expand_path(File.join('../../config', *d, f), __FILE__)
     user node[:user]
     force true
   end
