@@ -125,6 +125,18 @@
       (browse-url
        (concat "https://www.deepl.com/translator#en/ja/" (url-hexify-string str))))))
 
+(leaf *show-buffer-file-name
+  :config
+  (defun my-show-buffer-file-name ()
+    "Show the full path to the current file in the minibuffer."
+    (interactive)
+    (let ((file-name (buffer-file-name)))
+      (if file-name
+          (progn
+            (message file-name)
+            (kill-new file-name))
+        (error "Buffer not visiting a file")))))
+
 (leaf tramp
   :defer-config
   (setenv "SHELL" "/bin/bash"))
