@@ -746,9 +746,14 @@ properly disable mozc-mode."
              (unless (string-match "/node_modules/" (or (buffer-file-name) ""))
                (flycheck-mode)))))
 
+(leaf typescript-tsx-mode
+  :mode "\\.tsx\\'"
+  :init
+  (define-derived-mode typescript-tsx-mode typescript-mode "tsx"))
+
 (leaf web-mode
   :ensure t
-  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'" "\\.vue\\'" "\\.tsx\\'"
+  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'" "\\.vue\\'"
   :custom ((web-mode-enable-auto-indentation . nil)
            (web-mode-attr-indent-offset . 2)
            (web-mode-block-padding . 2)
@@ -832,3 +837,14 @@ properly disable mozc-mode."
   :custom (sqlformat-command . 'sqlformat)
   :bind ((:sql-mode-map
           ("C-c C-f" . sqlformat))))
+
+(leaf tree-sitter
+  :ensure (t tree-sitter-langs)
+  :require tree-sitter-langs
+  :hook (tree-sitter-after-on-hook . tree-sitter-hl-mode)
+  :custom-face
+  (tree-sitter-hl-face:property . '((t (:inherit font-lock-constant-face :slant normal))))
+  :config
+  (global-tree-sitter-mode)
+  (add-to-list 'tree-sitter-major-mode-language-alist
+               '(typescript-tsx-mode . tsx)))
