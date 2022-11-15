@@ -88,7 +88,6 @@ alias -g G='| grep'
 alias -g B='$(git branch | grep -Ev "^\*" | peco --layout bottom-up --prompt "GIT BRANCH> ")'
 alias -g NP='--no-pager'
 alias -g S='| sort'
-alias o=xdg-open
 alias ssh='TERM=xterm-256color ssh'
 alias cdiff='git diff --no-index'
 alias logcolor='sed -e "s/INFO/\x1b[32mINFO\x1b[0m/g" -e "s/WARN/\x1b[33mWARN\x1b[0m/g" -e "s/ERROR/\x1b[31mERRO\x1b[0m/g"'
@@ -99,6 +98,12 @@ alias b='bundle'
 compdef b=bundle
 alias dc='docker compose'
 compdef dc=docker-compose
+
+if type xdg-open &>/dev/null; then
+  alias o=xdg-open
+else
+  alias o=open
+fi
 
 if type lsd &>/dev/null; then
   alias ls=lsd
