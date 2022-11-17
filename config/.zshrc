@@ -114,6 +114,8 @@ if type gfind &>/dev/null; then
   alias find=gfind
 fi
 
+alias gae-ssh='(){ gcloud --project $1 app instances ssh $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" | jq -r ".[0].id") --service $2 --version $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" | jq -r ".[0].version") }'
+
 # Plugin
 if [ -d ~/.zsh/zsh-autosuggestions ]; then
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
