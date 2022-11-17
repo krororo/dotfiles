@@ -841,10 +841,10 @@ properly disable mozc-mode."
 (leaf tree-sitter
   :ensure (t tree-sitter-langs)
   :require tree-sitter-langs
-  :hook (tree-sitter-after-on-hook . tree-sitter-hl-mode)
+  :hook (typescript-tsx-mode-hook
+         (tree-sitter-after-on-hook . tree-sitter-hl-mode))
   :custom-face
   (tree-sitter-hl-face:property . '((t (:inherit font-lock-constant-face :slant normal))))
   :config
-  (global-tree-sitter-mode)
   (add-to-list 'tree-sitter-major-mode-language-alist
                '(typescript-tsx-mode . tsx)))
