@@ -543,7 +543,7 @@ properly disable mozc-mode."
   :ensure t
   ;; workaround for `require: Symbol’s value as variable is void: lsp-ada-project-file`
   ;; refs: https://github.com/emacs-lsp/lsp-mode/commit/491d667d1e113bd6b43d1f88d47383e7fb137ddb
-  :custom ((lsp-client-packages . '(lsp-solargraph))
+  :custom ((lsp-client-packages . '(lsp-solargraph lsp-javascript))
            (lsp-completion-provider . :none)
            (lsp-diagnostics-provider . :none)
            (lsp-keymap-prefix . "C-c l"))
@@ -551,7 +551,9 @@ properly disable mozc-mode."
   (leaf lsp-ui :ensure t)
   (leaf consult-lsp :ensure t)
   :hook ((enh-ruby-mode-hook . lsp)
-         (ruby-mode-hook . lsp)))
+         (ruby-mode-hook . lsp)
+         (typescript-mode-hook . lsp)
+         (typescript-tsx-mode-hook . lsp)))
 
 (leaf sh-mode
   :config
