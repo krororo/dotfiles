@@ -448,6 +448,8 @@ properly disable mozc-mode."
   (corfu-auto-prefix . 4)
   (corfu-cycle . t)
   (corfu-quit-no-match . 'separator)
+  :bind ((:corfu-map
+          ("M-s" . corfu-insert-separator)))
   :global-minor-mode global-corfu-mode)
 
 (leaf cape
