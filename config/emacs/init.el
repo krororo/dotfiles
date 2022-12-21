@@ -50,7 +50,8 @@
            (auto-save-default . nil) ;; .#* とかのバックアップファイルを作らない
            (inhibit-startup-message . t) ;; 起動時のメッセージを非表示
            (visible-bell . t)
-           (ring-bell-function . 'ignore))
+           (ring-bell-function . 'ignore)
+           (split-height-threshold . nil))
   :custom-face
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
