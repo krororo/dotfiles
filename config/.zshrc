@@ -5,8 +5,9 @@ zstyle ':completion:*' use-cache true
 
 # Complete
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+  brew_prefix=$(brew --prefix)
+  FPATH=${brew_prefix}/share/zsh-completions:$FPATH
+  fpath=(${brew_prefix}/share/zsh/site-functions $fpath)
 fi
 if [ -f ~/.ssh/config ]; then
   _cache_hosts=($(egrep '^Host\s+[a-z0-9._-]+$' ~/.ssh/config | cut -d' ' -f2))
@@ -110,8 +111,10 @@ if type lsd &>/dev/null; then
   compdef ls=lsd
 fi
 
-if type gfind &>/dev/null; then
-  alias find=gfind
+if ls /opt/homebrew/opt/*/libexec/gnubin &>/dev/null; then
+  for d in /opt/homebrew/opt/*/libexec/gnubin; do
+    PATH=$d:$PATH
+  done
 fi
 
 alias gae-ssh='(){ gcloud --project $1 app instances ssh $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" | jq -r ".[0].id") --service $2 --version $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" | jq -r ".[0].version") }'
@@ -188,3 +191,19 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Other
 xset -r 49 >/dev/null 2>&1 || :
+
+if type brew &>/dev/null; then
+  brew_prefix=$(brew --prefix)
+  if [ -d ${brew_prefix}/opt/libpq/bin ]; then
+    export PATH=${brew_prefix}/opt/libpq/bin:$PATH
+  fi
+fi
+
+export YVM_DIR=/opt/homebrew/opt/yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f $HOME'/google-cloud-sdk/path.zsh.inc' ]; then . $HOME'/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f $HOME'/google-cloud-sdk/completion.zsh.inc' ]; then . $HOME'/google-cloud-sdk/completion.zsh.inc'; fi
