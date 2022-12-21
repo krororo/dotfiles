@@ -1,4 +1,5 @@
 *~
+.cache
 .emacs-places
 .lsp-session-*
 ac-comphist.dat
