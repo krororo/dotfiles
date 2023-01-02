@@ -111,7 +111,7 @@ if type lsd &>/dev/null; then
   compdef ls=lsd
 fi
 
-if ls /opt/homebrew/opt/*/libexec/gnubin &>/dev/null; then
+if [ -d /opt/homebrew ] && ls /opt/homebrew/opt/*/libexec/gnubin &>/dev/null; then
   for d in /opt/homebrew/opt/*/libexec/gnubin; do
     PATH=$d:$PATH
   done
