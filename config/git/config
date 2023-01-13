@@ -32,6 +32,7 @@
 	ui = auto
 [push]
 	default = current
+	useForceIfIncludes = true
 [core]
 	editor = vim
 	quotepath = false
