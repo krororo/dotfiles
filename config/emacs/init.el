@@ -853,3 +853,5 @@ properly disable mozc-mode."
   :config
   (add-to-list 'tree-sitter-major-mode-language-alist
                '(typescript-tsx-mode . tsx)))
+
+(leaf quickrun :ensure t)
