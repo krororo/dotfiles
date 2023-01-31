@@ -419,7 +419,7 @@ properly disable mozc-mode."
   (consult-customize
    consult--source-recent-file consult--source-project-recent-file
    consult--source-bookmark consult-ripgrep consult-git-grep
-   :preview-key (kbd "M-.")))
+   :preview-key "M-."))
 
 (leaf orderless
   :ensure t
