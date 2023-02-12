@@ -1,5 +1,5 @@
 github_release 'lsd' do
-  v = '0.22.0'
+  v = '0.23.1'
   repository 'Peltoche/lsd'
   version v
   filename "lsd_#{v}_amd64.deb"
