@@ -67,7 +67,7 @@ setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
 PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
 $ "
-RPROMPT='%{$fg[green]%} %D{%Y-%m-%d} %* %{$reset_color%}'
+RPROMPT=''
 SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%f%b "
 
 # Alias
