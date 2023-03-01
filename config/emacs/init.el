@@ -822,6 +822,10 @@ properly disable mozc-mode."
            (magit-delta-hide-plus-minus-markers . nil))
   :hook magit-mode-hook)
 
+(leaf browse-at-remote
+  :ensure t
+  :bind (("C-c g g" . browse-at-remote)))
+
 (leaf docker
   :ensure t
   :config
