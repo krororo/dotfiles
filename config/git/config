@@ -36,7 +36,7 @@
 [core]
 	editor = vim
 	quotepath = false
-	pager = (delta 2>/dev/null || cat) | ${PAGER:-less}
+	pager = delta
 [rebase]
 	autosquash = true
 	autostash = true
@@ -72,9 +72,15 @@
 [delta]
 	color-only = true
 	syntax-theme = Dracula
+	navigate = true
+	features = line-numbers
+[delta "magit-delta"]
+	line-numbers = false
 [init]
 	defaultBranch = main
 [fetch]
 	prune = true
 [status]
 	showUntrackedFiles = all
+[interactive]
+	diffFilter = delta --color-only

@@ -818,7 +818,8 @@ properly disable mozc-mode."
                 "--true-color" ,(if xterm-color--support-truecolor "always" "never")
                 "--color-only"
                 "--plus-style" "syntax #003345"
-                "--plus-emph-style" "syntax #006b6b"))
+                "--plus-emph-style" "syntax #006b6b"
+                "--features" "magit-delta"))
            (magit-delta-hide-plus-minus-markers . nil))
   :hook magit-mode-hook)
 
