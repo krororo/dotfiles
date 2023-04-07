@@ -860,3 +860,15 @@ properly disable mozc-mode."
                '(typescript-tsx-mode . tsx)))
 
 (leaf quickrun :ensure t)
+
+(leaf copilot
+  :if (executable-find "node")
+  :el-get (zerolfx/copilot.el :name copilot)
+  :hook prog-mode-hook
+  :init
+  (defun my-copilot-tab ()
+    (interactive)
+    (or (copilot-accept-completion)
+        (indent-for-tab-command)))
+  :bind ((:copilot-mode-map
+          ("<tab>" . my-copilot-tab))))
