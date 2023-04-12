@@ -419,7 +419,14 @@ properly disable mozc-mode."
   (consult-customize
    consult--source-recent-file consult--source-project-recent-file
    consult--source-bookmark consult-ripgrep consult-git-grep
-   :preview-key "M-."))
+   :preview-key "M-.")
+
+  (defvar my-consult-line-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map "\C-s" #'previous-history-element)
+      ;; (define-key map "\C-w" #'my-yank-char) ;; see: isearch--yank-char-or-syntax
+      map))
+  (consult-customize consult-line :keymap my-consult-line-map))
 
 (leaf orderless
   :ensure t
