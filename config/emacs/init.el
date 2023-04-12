@@ -825,7 +825,8 @@ properly disable mozc-mode."
 
 (leaf browse-at-remote
   :ensure t
-  :bind (("C-c g g" . browse-at-remote)))
+  :bind (("C-c g g" . browse-at-remote))
+  :custom ((browse-at-remote-prefer-symbolic . nil)))
 
 (leaf docker
   :ensure t
