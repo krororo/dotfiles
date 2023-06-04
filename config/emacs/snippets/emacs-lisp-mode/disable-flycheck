@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dir-locals disable flycheck
+# key: disable-flychck
+# --
+((nil . ((eval . (flycheck-mode 0)))))
