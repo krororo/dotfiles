@@ -560,10 +560,18 @@ properly disable mozc-mode."
   :init
   (leaf lsp-ui :ensure t)
   (leaf consult-lsp :ensure t)
-  :hook ((enh-ruby-mode-hook . lsp)
-         (ruby-mode-hook . lsp)
-         (typescript-mode-hook . lsp)
+  :hook ((typescript-mode-hook . lsp)
          (typescript-tsx-mode-hook . lsp)))
+
+(leaf eglot
+  :ensure t
+  :hook (ruby-mode-hook . eglot-ensure)
+  :advice
+  (:around save-buffers-kill-emacs
+           (lambda (orig-fun &rest args)
+             (cl-letf (((symbol-function #'process-list) (lambda ())))
+               (apply orig-fun args))))
+  :custom (eglot-autoshutdown . t))
 
 (leaf sh-mode
   :config
