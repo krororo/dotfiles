@@ -6,3 +6,5 @@
 /config/.docker/devenvironments
 /config/.docker/scan
 /config/.zsh/zsh-autosuggestions
+
+.DS_Store
