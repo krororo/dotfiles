@@ -888,4 +888,6 @@ properly disable mozc-mode."
     (or (copilot-accept-completion)
         (indent-for-tab-command)))
   :bind ((:copilot-mode-map
-          ("<tab>" . my-copilot-tab))))
+          ("C-c <tab>" . my-copilot-tab)))
+  :custom-face
+  (copilot-overlay-face . '((t (:background "gray5")))))
