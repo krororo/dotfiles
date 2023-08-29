@@ -136,6 +136,21 @@
           (progn
             (message file-name)
             (kill-new file-name))
+        (error "Buffer not visiting a file"))))
+  (defun my-show-buffer-file-name-relative-vc-root ()
+    "Show the relative path of vc root to the current file in the minibuffer."
+    (interactive)
+    (let ((file-name (buffer-file-name)))
+      (if file-name
+          (let ((root (vc-root-dir)))
+            (if root
+                (progn
+                  (let ((file-rel-name (file-relative-name file-name root)))
+                    (message file-rel-name)
+                    (kill-new file-rel-name)))
+              (progn
+                (message file-name)
+                (kill-new file-name))))
         (error "Buffer not visiting a file")))))
 
 (leaf tramp
