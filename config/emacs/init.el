@@ -876,7 +876,9 @@ properly disable mozc-mode."
   (add-to-list 'tree-sitter-major-mode-language-alist
                '(typescript-tsx-mode . tsx)))
 
-(leaf quickrun :ensure t)
+(leaf quickrun
+  :ensure t
+  :custom (quickrun-truncate-lines . nil))
 
 (leaf copilot
   :if (executable-find "node")
