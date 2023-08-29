@@ -149,7 +149,7 @@
   (whitespace-style . '(face tabs tab-mark))
   (whitespace-display-mappings . '((tab-mark ?\t [?\xBB ?\t])))
   :custom-face
-  (whitespace-tab . '((t (:foreground "royal blue" :background nil :underline t))))
+  (whitespace-tab . '((t (:foreground "royal blue" :background unspecified :underline t))))
   :global-minor-mode global-whitespace-mode)
 
 (leaf editorconfig
