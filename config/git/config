@@ -67,8 +67,6 @@
 	template = ~/.config/git/commit_template
 [http]
 	postBuffer = 524288000
-[hub]
-	protocol = https
 [delta]
 	color-only = true
 	syntax-theme = Dracula
