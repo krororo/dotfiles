@@ -234,7 +234,8 @@
          ;; compose-mail
          ("C-x m" . nil)
          ("M-\"" . insert-pair)
-         ("M-'" . insert-pair))
+         ("M-'" . insert-pair)
+         ("M-/" . xref-find-references))
   :init
   (ffap-bindings))
 
