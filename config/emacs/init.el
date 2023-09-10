@@ -692,13 +692,16 @@ properly disable mozc-mode."
               (smie-rule-parent-p " @ "))
          (smie-backward-sexp ";")
          (cons 'column (current-column)))))
-      ;; foo([...]) and bar({...})
       ('(:after . "(")
-       (if (smie-rule-next-p "[" "{")
-           (save-excursion
-             (beginning-of-line)
-             (skip-chars-forward " \t")
-             (cons 'column (current-column)))))))
+       (cond
+        ;; foo([...]) and bar({...})
+        ((smie-rule-next-p "[" "{")
+         (save-excursion
+           (beginning-of-line)
+           (skip-chars-forward " \t")
+           (cons 'column (current-column))))
+        (t
+          (cons 'column ruby-indent-level))))))
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\)\\'"
