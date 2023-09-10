@@ -692,9 +692,9 @@ properly disable mozc-mode."
               (smie-rule-parent-p " @ "))
          (smie-backward-sexp ";")
          (cons 'column (current-column)))))
-      ;; for `foo([...])'
+      ;; foo([...]) and bar({...})
       ('(:after . "(")
-       (if (smie-rule-next-p "[")
+       (if (smie-rule-next-p "[" "{")
            (save-excursion
              (beginning-of-line)
              (skip-chars-forward " \t")
