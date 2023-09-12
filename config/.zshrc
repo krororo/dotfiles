@@ -99,6 +99,8 @@ alias b='bundle'
 compdef b=bundle
 alias dc='docker compose'
 compdef dc=docker-compose
+alias p='pnpm'
+compdef p=pnpm
 
 if type xdg-open &>/dev/null; then
   alias o=xdg-open
