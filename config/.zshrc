@@ -100,7 +100,6 @@ compdef b=bundle
 alias dc='docker compose'
 compdef dc=docker-compose
 alias p='pnpm'
-compdef p=pnpm
 
 if type xdg-open &>/dev/null; then
   alias o=xdg-open
@@ -206,3 +205,10 @@ if [ -f $HOME'/google-cloud-sdk/path.zsh.inc' ]; then . $HOME'/google-cloud-sdk/
 
 # The next line enables shell command completion for gcloud.
 if [ -f $HOME'/google-cloud-sdk/completion.zsh.inc' ]; then . $HOME'/google-cloud-sdk/completion.zsh.inc'; fi
+
+# tabtab source for packages
+# uninstall by removing these lines
+if [ -f ~/.config/tabtab/zsh/__tabtab.zsh ]; then
+  . ~/.config/tabtab/zsh/__tabtab.zsh || true
+  compdef p=pnpm
+fi
