@@ -734,6 +734,10 @@ properly disable mozc-mode."
                ":\\)")
       1 font-lock-constant-face))))
 
+(leaf inf-ruby
+  :ensure t
+  :hook (after-init-hook . inf-ruby-switch-setup))
+
 (leaf enh-ruby-mode
   :disabled t
   :if (executable-find "ruby")
