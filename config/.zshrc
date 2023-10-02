@@ -10,7 +10,7 @@ if type brew &>/dev/null; then
   fpath=(${brew_prefix}/share/zsh/site-functions $fpath)
 fi
 if [ -f ~/.ssh/config ]; then
-  _cache_hosts=($(egrep '^Host\s+[a-z0-9._-]+$' ~/.ssh/config | cut -d' ' -f2))
+  _cache_hosts=($(grep -E '^Host\s+[a-z0-9._-]+$' ~/.ssh/config | cut -d' ' -f2))
 fi
 fpath=(~/.zsh $fpath)
 autoload -U compinit; compinit
