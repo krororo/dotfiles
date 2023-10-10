@@ -212,3 +212,8 @@ if [ -f ~/.config/tabtab/zsh/__tabtab.zsh ]; then
   . ~/.config/tabtab/zsh/__tabtab.zsh || true
   compdef p=pnpm
 fi
+
+if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+fi
