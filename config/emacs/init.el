@@ -581,7 +581,7 @@ properly disable mozc-mode."
 
 (leaf eglot
   :ensure t
-  :hook (ruby-mode-hook . eglot-ensure)
+  :hook ((ruby-mode-hook typescript-mode-hook) . eglot-ensure)
   :advice
   (:around save-buffers-kill-emacs
            (lambda (orig-fun &rest args)
