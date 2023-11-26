@@ -2,7 +2,7 @@ xdg_config 'xremap/config.yml'
 
 github_release 'xremap' do
   repository 'k0kubun/xremap'
-  v = '0.8.5'
+  v = '0.8.11'
   version "v#{v}"
   filename 'xremap-linux-x86_64-x11.zip'
   bin_path = "#{ENV['HOME']}/bin/xremap"
