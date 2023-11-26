@@ -335,10 +335,10 @@ properly disable mozc-mode."
   ("<zenkaku-hankaku>" . toggle-input-method)
   ("<henkan>" . (lambda () (interactive)
                   (when (null current-input-method) (toggle-input-method))))
-  ("<muhenkan>" . (lambda () (interactive) (inactivate-input-method)))
+  ("<muhenkan>" . (lambda () (interactive) (deactivate-input-method)))
   :hook
   (input-method-activate-hook . (lambda () (set-cursor-color "green")))
-  (input-method-inactivate-hook . (lambda () (set-cursor-color "red")))
+  (input-method-deactivate-hook . (lambda () (set-cursor-color "red")))
   :advice
   (:before-until mozc-handle-event my-mozc-handle-event)
   :config
