@@ -893,12 +893,7 @@ properly disable mozc-mode."
   :if (executable-find "node")
   :el-get (zerolfx/copilot.el :name copilot)
   :hook prog-mode-hook
-  :init
-  (defun my-copilot-tab ()
-    (interactive)
-    (or (copilot-accept-completion)
-        (indent-for-tab-command)))
   :bind ((:copilot-mode-map
-          ("C-c <tab>" . my-copilot-tab)))
+          ("C-c C-c" . copilot-accept-completion)))
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
