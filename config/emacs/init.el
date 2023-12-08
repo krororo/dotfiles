@@ -43,6 +43,7 @@
            (scroll-margin . 5)
            (scroll-preserve-screen-position . nil)
            (compilation-scroll-output . t)
+           (compilation-max-output-line-length . nil)
            (create-lockfiles . nil)
            (indicate-buffer-boundaries . 'left)
            (use-default-font-for-symbols . nil)
