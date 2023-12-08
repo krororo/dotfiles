@@ -637,7 +637,11 @@ properly disable mozc-mode."
 
 (leaf markdown-mode
   :ensure t
-  :custom (markdown-fontify-code-blocks-natively . t)
+  :mode ("\\.md\\'" . gfm-mode)
+  :bind (:markdown-mode-map
+         ("<S-tab>" . markdown-shifttab))
+  :custom ((markdown-fontify-code-blocks-natively . t)
+           (markdown-indent-on-enter . 'indent-and-new-item))
   :custom-face
   (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
   :defer-config
