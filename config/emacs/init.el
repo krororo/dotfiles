@@ -209,6 +209,11 @@
   :ensure t
   :bind (("C-;" . avy-goto-char-timer)))
 
+(leaf mwim
+  :ensure t
+  :bind (("C-a" . mwim-beginning-of-code-or-line)
+         ("C-e" . mwim-end-of-code-or-line)))
+
 (leaf rainbow-delimiters
   :ensure t
   :hook prog-mode-hook
@@ -230,16 +235,10 @@
 
 (leaf *key-binding
   :preface
-  (defun my-move-beginning-alt ()
-    (interactive)
-    (if (bolp)
-        (back-to-indentation)
-      (beginning-of-line)))
   (defun my-reverse-other-window ()
     (interactive)
     (other-window -1))
-  :bind (("C-a" . my-move-beginning-alt)
-         ("C-h" . delete-backward-char)
+  :bind (("C-h" . delete-backward-char)
          ("C-c u" . comment-region)
          ("C-c y" . uncomment-region)
          ("C-c r" . revert-buffer)
