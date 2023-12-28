@@ -382,9 +382,8 @@ properly disable mozc-mode."
 
 (leaf uniquify
   :require t
-  :config
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-        uniquify-ignore-buffers-re "*[^*]+*"))
+  :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
+           (uniquify-ignore-buffers-re . "*[^*]+*")))
 
 (leaf *dired
   :preface
