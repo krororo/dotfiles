@@ -193,13 +193,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Other
 xset -r 49 >/dev/null 2>&1 || :
 
-if type brew &>/dev/null; then
-  brew_prefix=$(brew --prefix)
-  if [ -d ${brew_prefix}/opt/libpq/bin ]; then
-    export PATH=${brew_prefix}/opt/libpq/bin:$PATH
-  fi
-fi
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f $HOME'/google-cloud-sdk/path.zsh.inc' ]; then . $HOME'/google-cloud-sdk/path.zsh.inc'; fi
 
