@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'shellwords'
+require 'tmpdir'
+require 'json'
+
+def latest_sha256_for(binary_name, assets_content)
+  content = assets_content.find { _1['name'] == binary_name }
+  Dir.mktmpdir do |dir|
+    temp_path = File.join(dir, binary_name)
+    unless system(['curl', '-o', temp_path, '-sfL', content['browser_download_url']].shelljoin)
+      raise "Failed to fetch binary: #{binary_name}"
+    end
+
+    result = IO.popen(['shasum', '-a', '256', temp_path], &:read)
+    sha256 = result.sub!(/ +#{temp_path}\n\z/m, '')
+    raise "Failed to fetch sha256 from: #{result}" if sha256.nil?
+
+    sha256
+  end
+end
+
+response = Net::HTTP.start('api.github.com', 443, use_ssl: true) do |http|
+  http.get("/repos/itamae-kitchen/mitamae/releases/latest")
+end
+parsed_body = JSON.parse(response.body)
+
+version = parsed_body['tag_name']&.delete_prefix('v')
+if version.nil?
+  pp parsed_body
+  raise "GitHub responded unexpectedly!"
+end
+
+linux_shasum = latest_sha256_for("mitamae-x86_64-linux.tar.gz", parsed_body['assets'])
+darwin_shasum = latest_sha256_for("mitamae-aarch64-darwin.tar.gz", parsed_body['assets'])
+
+setup_file = "#{__dir__}/setup"
+source = File.read(setup_file)
+source.sub!(/^(mitamae_version=).+$/, %(\\1"#{version}"))
+source.sub!(/^(mitamae_linux_sha256=).+$/, %(\\1"#{linux_shasum}"))
+source.sub!(/^(mitamae_darwin_sha256=).+$/, %(\\1"#{darwin_shasum}"))
+File.write(setup_file, source)
+
+puts 'Update finish!'

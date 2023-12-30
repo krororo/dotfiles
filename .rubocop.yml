@@ -3,6 +3,9 @@ AllCops:
   Exclude:
     - "config/emacs/elpa/**/*"
 
+Metrics:
+  Enabled: false
+
 Style/EnvHome:
   Enabled: false
 
