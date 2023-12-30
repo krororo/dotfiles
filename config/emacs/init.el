@@ -341,8 +341,8 @@ properly disable mozc-mode."
   (input-method-deactivate-hook . (lambda () (set-cursor-color "red")))
   :advice
   (:before-until mozc-handle-event my-mozc-handle-event)
-  :config
-  (setq default-input-method "japanese-mozc"))
+  :custom
+  (default-input-method . "japanese-mozc"))
 
 (leaf mozc-cand-posframe
   :ensure t
@@ -351,8 +351,8 @@ properly disable mozc-mode."
   :custom-face
   (mozc-cand-posframe-normal-face . '((t (:background "#333333" :foreground "#dcd4be"))))
   (mozc-cand-posframe-footer-face . '((t (:foreground "#ededed"))))
-  :config
-  (setq mozc-candidate-style 'posframe))
+  :custom
+  (mozc-candidate-style . 'posframe))
 
 (leaf recentf
   :preface
