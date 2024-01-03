@@ -5,7 +5,7 @@
   libssl-dev
   libyaml-dev
   zlib1g-dev
-  libncurses5-dev
+  libncurses-dev
   libffi-dev
   libgdbm6
   libgdbm-dev
