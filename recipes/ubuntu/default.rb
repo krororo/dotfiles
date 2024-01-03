@@ -20,4 +20,3 @@ include_recipe '../../cookbooks/zsh'
 
 package 'fcitx-mozc'
 package 'fonts-noto-color-emoji'
-package 'lsd'
