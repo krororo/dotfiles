@@ -9,3 +9,4 @@ package 'lsd'
 package 'zsh-syntax-highlighting'
 
 include_recipe '../../cookbooks/emacs'
+include_recipe '../../cookbooks/git'
