@@ -47,6 +47,7 @@
            (create-lockfiles . nil)
            (indicate-buffer-boundaries . 'left)
            (use-default-font-for-symbols . nil)
+           (use-short-answers . t)
            (make-backup-files . nil) ;; *.~ とかのバックアップファイルを作らない
            (auto-save-default . nil) ;; .#* とかのバックアップファイルを作らない
            (inhibit-startup-message . t) ;; 起動時のメッセージを非表示
@@ -63,8 +64,6 @@
 
   (set-cursor-color "red")
   (set-language-environment 'utf-8)
-
-  (fset 'yes-or-no-p 'y-or-n-p)
 
   (if window-system (menu-bar-mode 1) (menu-bar-mode -1))
   (tool-bar-mode -1)
