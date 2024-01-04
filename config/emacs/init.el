@@ -893,7 +893,7 @@ properly disable mozc-mode."
 
 (leaf copilot
   :if (executable-find "node")
-  :el-get (zerolfx/copilot.el :name copilot)
+  :el-get (copilot-emacs/copilot.el :name copilot)
   :hook prog-mode-hook
   :bind ((:copilot-mode-map
           ("C-c C-c" . copilot-accept-completion)))
