@@ -894,7 +894,7 @@ properly disable mozc-mode."
   :bind ((:copilot-completion-map
           ("C-c C-c" . copilot-accept-completion)
           ("M-f" . copilot-accept-completion-by-word)
-          ("M-p" . copilot-previou-completions)
+          ("M-p" . copilot-previous-completion)
           ("M-n" . copilot-next-completion)))
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
