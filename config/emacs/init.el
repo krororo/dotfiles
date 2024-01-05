@@ -604,10 +604,6 @@ properly disable mozc-mode."
            (flycheck-check-syntax-automatically . '(mode-enabled save)))
   :hook ruby-mode-hook)
 
-(leaf eruby-mode
-  :el-get petere/emacs-eruby-mode
-  :custom-face ((eruby-standard-face . '((t (:background "gray" :foreground "black"))))))
-
 (leaf haml-mode
   :ensure t)
 
@@ -784,7 +780,7 @@ properly disable mozc-mode."
 
 (leaf web-mode
   :ensure t
-  :mode "\\.html?\\'" "\\.vm\\'" "\\.jsp\\'" "\\.vue\\'"
+  :mode "\\.html?\\'" "\\.erb\\'" "\\.jsp\\'" "\\.vue\\'"
   :custom ((web-mode-enable-auto-indentation . nil)
            (web-mode-attr-indent-offset . 2)
            (web-mode-block-padding . 2)
