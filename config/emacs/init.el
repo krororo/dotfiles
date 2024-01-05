@@ -14,8 +14,6 @@
   (leaf leaf-keywords
     :ensure t
     :config
-    (leaf el-get :ensure t)
-
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
@@ -191,8 +189,7 @@
   :global-minor-mode t)
 
 (leaf eaw
-  :el-get (hamano/locale-eaw
-           :name eaw)
+  :vc (:url "https://github.com/hamano/locale-eaw")
   :require t
   :config (eaw-fullwidth))
 
@@ -753,8 +750,8 @@ properly disable mozc-mode."
 (leaf rubocop :ensure t)
 
 (leaf rd-mode
-  :el-get (rd-mode
-           :url "https://github.com/uwabami/rdtool/raw/master/utils/rd-mode.el")
+  :vc ( :url "https://github.com/uwabami/rdtool"
+        :lisp-dir "utils")
   ;; for rurema
   :mode "/refm/api/src/")
 
@@ -889,7 +886,7 @@ properly disable mozc-mode."
 
 (leaf copilot
   :if (executable-find "node")
-  :el-get (copilot-emacs/copilot.el :name copilot)
+  :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :hook prog-mode-hook
   :bind ((:copilot-mode-map
           ("C-c C-c" . copilot-accept-completion)))
