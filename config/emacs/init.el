@@ -51,7 +51,9 @@
            (inhibit-startup-message . t) ;; 起動時のメッセージを非表示
            (visible-bell . t)
            (ring-bell-function . 'ignore)
-           (split-height-threshold . nil))
+           (split-height-threshold . nil)
+           ;; see: https://github.com/copilot-emacs/copilot.el/issues/225
+           (warning-suppress-types . '((copilot) (emacs))))
   :custom-face
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
