@@ -890,7 +890,11 @@ properly disable mozc-mode."
   :if (executable-find "node")
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :hook prog-mode-hook
+  ;; ref: https://github.com/copilot-emacs/copilot.el/issues/103
   :bind ((:copilot-mode-map
-          ("C-c C-c" . copilot-accept-completion)))
+          ("C-c C-c" . copilot-accept-completion)
+          ("M-f" . copilot-accept-completion-by-word)
+          ("M-p" . copilot-previou-completions)
+          ("M-n" . copilot-next-completion)))
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
