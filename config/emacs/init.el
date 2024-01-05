@@ -891,7 +891,7 @@ properly disable mozc-mode."
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :hook prog-mode-hook
   ;; ref: https://github.com/copilot-emacs/copilot.el/issues/103
-  :bind ((:copilot-mode-map
+  :bind ((:copilot-completion-map
           ("C-c C-c" . copilot-accept-completion)
           ("M-f" . copilot-accept-completion-by-word)
           ("M-p" . copilot-previou-completions)
