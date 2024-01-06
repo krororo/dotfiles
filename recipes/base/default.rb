@@ -9,6 +9,7 @@ package 'lsd'
 package 'jq'
 
 include_recipe '../../cookbooks/emacs'
+include_recipe '../../cookbooks/fd'
 include_recipe '../../cookbooks/gh'
 include_recipe '../../cookbooks/git'
 include_recipe '../../cookbooks/mise'
