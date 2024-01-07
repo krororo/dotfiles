@@ -125,16 +125,15 @@ if [ -d ~/.zsh/zsh-autosuggestions ]; then
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# rbenv
-if [ -d $HOME/.rbenv ]; then
-  export PATH=$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init - zsh)"
-fi
-
 # nodenv
 if [ -d $HOME/.nodenv ]; then
   export PATH=$HOME/.nodenv/bin:$PATH
   eval "$(nodenv init -)"
+fi
+
+if which mise > /dev/null; then
+  eval "$(mise activate zsh)"
+  export PATH=$HOME/.local/share/mise/shims:$PATH
 fi
 
 # bookmarks

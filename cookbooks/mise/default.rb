@@ -21,3 +21,30 @@ if node[:platform] != 'darwin'
 end
 
 package 'mise'
+
+xdg_config 'mise/config.toml'
+
+# for ruby-build
+if node[:platform] == 'darwin'
+  %w[openssl@3 readline libyaml gmp rust]
+else
+  %w[
+    autoconf
+    patch
+    build-essential
+    rustc
+    libssl-dev
+    libyaml-dev
+    libreadline6-dev
+    zlib1g-dev
+    libgmp-dev
+    libncurses-dev
+    libffi-dev
+    libgdbm6
+    libgdbm-dev
+    libdb-dev
+    uuid-dev
+  ]
+end.each do |pkg|
+  package pkg
+end
