@@ -48,3 +48,11 @@ else
 end.each do |pkg|
   package pkg
 end
+
+if node[:platform] == 'darwin'
+  # TODO
+else
+  execute 'mise completion zsh > /usr/share/zsh/site-functions/_mise' do
+    not_if 'test -f /usr/share/zsh/site-functions/_mise'
+  end
+end
