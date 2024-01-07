@@ -125,12 +125,6 @@ if [ -d ~/.zsh/zsh-autosuggestions ]; then
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# nodenv
-if [ -d $HOME/.nodenv ]; then
-  export PATH=$HOME/.nodenv/bin:$PATH
-  eval "$(nodenv init -)"
-fi
-
 if which mise > /dev/null; then
   eval "$(mise activate zsh)"
   export PATH=$HOME/.local/share/mise/shims:$PATH
