@@ -157,9 +157,8 @@ if [ -d $bookmark_dir ]; then
 fi
 
 # environment
-export CRYSTAL_CACHE_DIR=$HOME/.crystal
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export LESS="-RFXiM"
 
 # Functions
