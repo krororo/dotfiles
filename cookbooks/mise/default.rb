@@ -35,7 +35,7 @@ else
     rustc
     libssl-dev
     libyaml-dev
-    libreadline6-dev
+    libreadline-dev
     zlib1g-dev
     libgmp-dev
     libncurses-dev
