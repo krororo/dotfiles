@@ -577,17 +577,20 @@ properly disable mozc-mode."
   (setq sh-basic-offset 2)
   (setq sh-indentation 2))
 
-(leaf yasnippet
+(leaf tempel
   :ensure t
-  :require t
-  :custom (yas-snippet-dirs . `(,(locate-user-emacs-file "snippets")))
-  :config
-  (yas-global-mode 1)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map [(tab)] nil)
-  (define-key yas-minor-mode-map (kbd "C-x i i") 'yas-insert-snippet)
-  (define-key yas-minor-mode-map (kbd "C-x i n") 'yas-new-snippet)
-  (define-key yas-minor-mode-map (kbd "C-x i v") 'yas-visit-snippet-file))
+  :bind (("M-+" . tempel-complete)
+         ("M-*" . tempel-insert)
+         (:tempel-map
+          ("C-c C-c" . tempel-done)
+          ("<tab>" . tempel-next)
+          ("<backtab>" . tempel-previous)))
+  :preface
+  (defun my-tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+  :hook ((conf-mode-hook prog-mode-hook text-mode-hook) . my-tempel-setup-capf))
 
 (leaf feature-mode
   :ensure t

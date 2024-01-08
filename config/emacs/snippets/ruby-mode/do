@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: do |i| ... end
-# key: do
-# --
-do${1: |${2:e}|}
-  $0
-end

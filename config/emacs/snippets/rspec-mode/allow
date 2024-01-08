@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: allow( ... ).to ...
-# key: allow
-# --
-allow( $1 ).to $0

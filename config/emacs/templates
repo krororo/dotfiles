@@ -1,0 +1,52 @@
+fundamental-mode
+
+(today (format-time-string "%Y-%m-%d"))
+
+prog-mode
+
+(fixme (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "FIXME: ")
+(hack (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "HACK: ")
+(todo (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "TODO: ")
+
+ruby-mode
+
+(birb "binding.irb")
+(cls "class " p  n> q n> "end" >)
+(def "def " (p "name") n> q n> "end" >)
+(do "do" (p "arg: " arg t) (unless (string-empty-p arg) (concat " |" arg "|")) n> r> n "end" >)
+(ea "each { " (p "arg: " arg t) (unless (string-empty-p arg) (concat "|" arg "| ")) r " }")
+(frzsl "# frozen_string_literal: true\n")
+(mod "module " p  n> q n> "end" >)
+
+ruby-mode :when rspec-mode
+
+(aft "after" p " do" n> q n "end" >)
+(allow "allow(" p ").to " q)
+(bef "before" p " do" n> q n "end" >)
+(desc (if (rspec-top-level-desc-p) "RSpec.") "describe "
+      (p (and (rspec-top-level-desc-p) (rspec-class-from-file-name)))
+      " do" n> q n "end" >)
+(exp "expect(" p ").to" q)
+(expb "expect { " p " }.to" q)
+(it "it " p " do" n> q n "end" >)
+(let "let(:" p ") { " q " }")
+(sbj  "subject { " q " }")
+
+lisp-mode emacs-lisp-mode
+
+(lambda "(lambda (" p ")" n> r> ")")
+(disable-flycheck "((nil . ((eval . (flycheck-mode 0)))))")
+
+text-mode
+
+(box "┌─" (make-string (length str) ?─) "─┐" n
+     "│ " (s str)                       " │" n
+     "└─" (make-string (length str) ?─) "─┘" n)
+(abox "+-" (make-string (length str) ?-) "-+" n
+      "| " (s str)                       " |" n
+      "+-" (make-string (length str) ?-) "-+" n)
+
+;; Local Variables:
+;; mode: lisp-data
+;; outline-regexp: "[a-z]"
+;; End:
