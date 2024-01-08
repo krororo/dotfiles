@@ -128,6 +128,9 @@ fi
 if which mise > /dev/null; then
   eval "$(mise activate zsh)"
   export PATH=$HOME/.local/share/mise/shims:$PATH
+  export MISE_NODE_DEFAULT_PACKAGES_FILE=$HOME/.config/mise/node-default-pkgs
+  export MISE_NODE_COREPACK=1
+  export MISE_RUBY_DEFAULT_PACKAGES_FILE=$HOME/.config/mise/ruby-default-gems
 fi
 
 # bookmarks

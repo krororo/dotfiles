@@ -22,7 +22,11 @@ end
 
 package 'mise'
 
-xdg_config 'mise/config.toml'
+link "#{ENV['HOME']}/.config/mise" do
+  to File.expand_path("../../../config/mise", __FILE__)
+  user node[:user]
+  force true
+end
 
 # for ruby-build
 if node[:platform] == 'darwin'
