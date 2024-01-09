@@ -482,7 +482,7 @@ properly disable mozc-mode."
       (setq-local completion-at-point-functions
                   `(cape-file
                     ,(cape-capf-buster (apply #'cape-capf-super capfs))))))
-  :hook ((lsp-completion-mode-hook emacs-lisp-mode-hook) . my-custom-capf)
+  :hook ((emacs-lisp-mode-hook) . my-custom-capf)
   :config
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
