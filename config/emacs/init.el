@@ -690,7 +690,7 @@ properly disable mozc-mode."
           (cons 'column ruby-indent-level))))))
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
-  :mode "\\.\\(ruby\\|plugin\\)\\'"
+  :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
   :custom (ruby-insert-encoding-magic-comment . nil)
   :hook
   (ruby-mode-hook
