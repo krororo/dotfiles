@@ -45,3 +45,11 @@ define :github_release, repository: nil, version: nil, filename: nil do
     raise "unknown type: #{filename}"
   end
 end
+
+define :cask do
+  package params[:name] do
+    # Optimized `brew cask install` command
+    # ref. https://github.com/itamae-plugins/itamae-plugin-resource-cask/blob/v0.2.4/mrblib/itamae/plugin/resource_executor/cask.rb#L46
+    not_if "ls -1 $(brew --prefix)/Caskroom | grep '#{params[:name]}$'"
+  end
+end
