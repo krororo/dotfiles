@@ -53,8 +53,8 @@
            (visible-bell . t)
            (ring-bell-function . 'ignore)
            (split-height-threshold . nil)
-           ;; see: https://github.com/copilot-emacs/copilot.el/issues/225
-           (warning-suppress-types . '((copilot) (emacs))))
+           ;; see: https://github.com/copilot-emacs/copilot.el/pull/230
+           (warning-suppress-types . '((copilot))))
   :custom-face
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
@@ -900,5 +900,29 @@ properly disable mozc-mode."
           ("M-f" . copilot-accept-completion-by-word)
           ("M-p" . copilot-previous-completion)
           ("M-n" . copilot-next-completion)))
+  :preface
+  (defun my-copilot--set-overlay-text (ov completion)
+    "workaround"
+    (move-overlay ov (point) (line-end-position))
+    (let* ((tail (buffer-substring (copilot--overlay-end ov) (line-end-position)))
+           (p-completion (concat (propertize completion 'face 'copilot-overlay-face)
+                                 tail)))
+      (if (eolp)
+          (progn
+            (overlay-put ov 'after-string "") ; make sure posn is correct
+            (setq copilot--real-posn (cons (point) (posn-at-point)))
+            (put-text-property 0 1 'cursor t p-completion)
+            (overlay-put ov 'display "")
+            (overlay-put ov 'after-string p-completion))
+        (overlay-put ov 'display (substring p-completion 0 1))
+        (overlay-put ov 'after-string (substring p-completion 1)))
+      (overlay-put ov 'completion completion)
+      (overlay-put ov 'start (point))))
+  :advice
+  ;; see: https://github.com/copilot-emacs/copilot.el/issues/229
+  (:override copilot--set-overlay-text my-copilot--set-overlay-text)
+  :custom
+  (copilot-indent-offset-warning-disable . t)
+  (copilot-max-char . -1)
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
