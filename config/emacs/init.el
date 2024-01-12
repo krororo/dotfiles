@@ -20,7 +20,8 @@
 (leaf xdg
   :require t
   :config
-  (defvar my-emacs-cache-home (expand-file-name "emacs" (xdg-cache-home))))
+  (defvar my-emacs-cache-home (expand-file-name "emacs" (xdg-cache-home)))
+  (defvar my-emacs-data-home (expand-file-name "emacs" (xdg-data-home))))
 
 (leaf exec-path-from-shell
   :ensure t
@@ -33,7 +34,7 @@
 
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
-  :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
+  :custom `((custom-file . ,(expand-file-name "custom.el" my-emacs-data-home))))
 
 (leaf *initialize-emacs
   :custom ((initial-buffer-choice . "~/memo.md")

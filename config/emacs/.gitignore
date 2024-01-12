@@ -4,7 +4,6 @@
 .lsp-session-*
 ac-comphist.dat
 bookmarks
-custom.el
 eln-cache
 elpa
 eshell/history

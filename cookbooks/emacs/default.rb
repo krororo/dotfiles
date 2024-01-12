@@ -15,3 +15,7 @@ link "#{ENV['HOME']}/.config/emacs" do
   user node[:user]
   force true
 end
+
+directory "#{ENV['HOME']}/.local/share/emacs" do
+  owner node[:user]
+end
