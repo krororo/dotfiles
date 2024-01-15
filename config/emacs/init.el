@@ -384,6 +384,9 @@ properly disable mozc-mode."
   :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
            (uniquify-ignore-buffers-re . "*[^*]+*")))
 
+(leaf bookmark
+  :custom `((bookmark-default-file . ,(expand-file-name "bookmarks" my-emacs-data-home))))
+
 (leaf *dired
   :preface
   (defun dired-my-append-buffer-name-hint ()
