@@ -864,8 +864,10 @@ properly disable mozc-mode."
 
 (leaf yaml-mode :ensure t)
 
-(leaf electric-pair-local-mode
-  :hook emacs-lisp-mode-hook)
+(leaf smartparens
+  :ensure t
+  :require smartparens-config
+  :hook emacs-lisp-mode-hook lisp-data-mode-hook)
 
 (leaf nxml-mode
   :custom (nxml-child-indent . 4))
