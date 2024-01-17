@@ -23,6 +23,7 @@ ruby-mode :when rspec-mode
 (aft "after" p " do" n> q n "end" >)
 (allow "allow(" p ").to " q)
 (bef "before" p " do" n> q n "end" >)
+(cont "context " p " do" n> q n "end" >)
 (desc (if (rspec-top-level-desc-p) "RSpec.") "describe "
       (p (and (rspec-top-level-desc-p) (rspec-class-from-file-name)))
       " do" n> q n "end" >)
