@@ -28,7 +28,8 @@
 	fa = fetch --prune --tags --all
 	sw = switch
 	release = !git switch -c release/$(date +\"%Y%m%d%H%M\")
-	show-pr = !"f() { git log --merges --oneline --ancestry-path $1...HEAD | grep 'Merge pull request #' | tail -n 1; }; f"
+	show-pr = "!f() { git log --merges --oneline --ancestry-path $1...HEAD | grep 'Merge pull request #' | tail -n 1; }; f"
+	open-pr = "!f() { gh browse -- $(git log --merges --oneline --ancestry-path $1...HEAD | grep 'Merge pull request #' | tail -n 1 | cut -f5 -d' ' | sed -e 's/#//'); }; f"
 [color]
 	ui = auto
 [push]
