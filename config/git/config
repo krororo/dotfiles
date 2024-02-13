@@ -84,3 +84,5 @@
 	showUntrackedFiles = all
 [interactive]
 	diffFilter = delta --color-only
+[rerere]
+	enabled = true
