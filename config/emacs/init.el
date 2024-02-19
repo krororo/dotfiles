@@ -238,8 +238,6 @@
     (interactive)
     (other-window -1))
   :bind (("C-h" . delete-backward-char)
-         ("C-c u" . comment-region)
-         ("C-c y" . uncomment-region)
          ("C-c r" . revert-buffer)
          ;; ウィンドウ逆移動
          ("C-x p" . my-reverse-other-window)
