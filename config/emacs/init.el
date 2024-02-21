@@ -60,6 +60,7 @@
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :setq-default
   (indent-tabs-mode . nil)
+  :global-minor-mode electric-pair-mode
   :config
   (set-fontset-font nil '(#x1F000 . #x1FAFF) "Noto Color Emoji")
 
@@ -529,6 +530,10 @@ properly disable mozc-mode."
   ("C-c Q" . 'anzu-query-replace-at-cursor-thing)
   :global-minor-mode global-anzu-mode)
 
+(leaf puni
+  :ensure t
+  :hook (prog-mode-hook . puni-mode))
+
 (leaf company
   :ensure t
   :custom ((compnay-idle-delay . 0.3)
@@ -861,11 +866,6 @@ properly disable mozc-mode."
   (leaf dockerfile-mode :ensure t))
 
 (leaf yaml-mode :ensure t)
-
-(leaf smartparens
-  :ensure t
-  :require smartparens-config
-  :hook emacs-lisp-mode-hook lisp-data-mode-hook)
 
 (leaf nxml-mode
   :custom (nxml-child-indent . 4))
