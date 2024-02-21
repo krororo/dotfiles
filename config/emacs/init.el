@@ -283,7 +283,6 @@
       (git-gutter-mode . " GG")
       ;; Major modes
       (emacs-lisp-mode . "El")
-      (enh-ruby-mode . "EnhRb")
       (markdown-mode . "Md")
       (ruby-mode   . "Rb")
       (typescript-mode . "Ts")
@@ -731,27 +730,9 @@ properly disable mozc-mode."
   :ensure t
   :hook (after-init-hook . inf-ruby-switch-setup))
 
-(leaf enh-ruby-mode
-  :disabled t
-  :if (executable-find "ruby")
-  :ensure t
-  :require ruby-mode
-  :mode "\\.\\(rb\\|ru\\)\\'"
-  :custom-face
-  (enh-ruby-op-face . '((t (:foreground "gainsboro"))))
-  :bind ((:enh-ruby-mode-map
-          ("C-c '" . ruby-toggle-string-quotes)
-          ("C-M-f" . forward-sexp)
-          ("C-M-b" . backward-sexp)))
-  :hook (enh-ruby-mode-hook
-         . (lambda ()
-             (setq flycheck-checker 'ruby-rubocop)
-             (flycheck-mode)
-             (add-hook 'electric-indent-functions #'ruby--electric-indent-p nil 'local))))
-
 (leaf yard-mode
   :ensure t
-  :hook ruby-mode-hook enh-ruby-mode-hook)
+  :hook ruby-mode-hook)
 
 (leaf rspec-mode
   :ensure t
