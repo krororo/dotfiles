@@ -580,9 +580,9 @@ properly disable mozc-mode."
   :custom (eglot-autoshutdown . t))
 
 (leaf sh-mode
-  :config
-  (setq sh-basic-offset 2)
-  (setq sh-indentation 2))
+  :custom
+  (sh-basic-offset . 2)
+  (sh-indentation . 2))
 
 (leaf tempel
   :ensure t
