@@ -590,8 +590,8 @@ properly disable mozc-mode."
 
 (leaf feature-mode
   :ensure t
-  :config
-  (setq feature-default-language "ja"))
+  :custom
+  (feature-default-language . "ja"))
 
 (leaf flycheck
   :ensure t
