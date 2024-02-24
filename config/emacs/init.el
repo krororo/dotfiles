@@ -782,6 +782,7 @@ properly disable mozc-mode."
 
 (leaf json-mode
   :ensure t
+  :mode "\\.json5\\'"
   :custom (js-indent-level . 2))
 
 (leaf csv-mode
