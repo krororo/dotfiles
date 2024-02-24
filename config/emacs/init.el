@@ -533,21 +533,6 @@ properly disable mozc-mode."
   :ensure t
   :hook (prog-mode-hook . puni-mode))
 
-(leaf company
-  :ensure t
-  :custom ((compnay-idle-delay . 0.3)
-           (company-selection-wrap-around . t)
-           (company-require-match . 'never)
-           (company-backends . '(company-files
-                                 (company-capf :with company-dabbrev-code)
-                                 (company-dabbrev-code
-                                  company-gtags
-                                  company-etags
-                                  company-keywords))))
-  :bind ((:company-active-map
-          ;; disable help
-          ("C-h" . nil))))
-
 (leaf sudo-edit :ensure t)
 
 (leaf migemo
