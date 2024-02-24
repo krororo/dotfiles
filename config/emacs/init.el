@@ -687,7 +687,8 @@ properly disable mozc-mode."
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
-  :custom (ruby-insert-encoding-magic-comment . nil)
+  :custom ((ruby-insert-encoding-magic-comment . nil)
+           (ruby-block-indent . nil))
   :hook
   (ruby-mode-hook
    . (lambda ()
