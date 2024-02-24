@@ -740,8 +740,8 @@ properly disable mozc-mode."
 
 (leaf css-mode
   :mode "\\.scss\\'"
-  :config
-  (setq css-indent-offset 2))
+  :custom
+  (css-indent-offset . 2))
 
 (leaf sass-mode :ensure t)
 
