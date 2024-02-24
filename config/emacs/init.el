@@ -618,9 +618,9 @@ properly disable mozc-mode."
              (setq js2-highlight-external-variables nil)
              (setq js2-include-jslint-globals nil)
              (flycheck-mode)))
-  :config
-  (setq js-indent-level 2)
-  (setq js2-basic-offset 2))
+  :custom
+  (js-indent-level . 2)
+  (js2-basic-offset . 2))
 
 (leaf mermaid-mode
   :ensure t
