@@ -564,11 +564,7 @@ properly disable mozc-mode."
              (cl-letf (((symbol-function #'process-list) (lambda ())))
                (apply orig-fun args))))
   :custom ((eglot-autoshutdown . t)
-           (eldoc-echo-area-use-multiline-p . nil))
-  :config
-  (leaf flycheck-eglot
-    :ensure t
-    :global-minor-mode global-flycheck-eglot-mode))
+           (eldoc-echo-area-use-multiline-p . nil)))
 
 (leaf sh-mode
   :custom
