@@ -52,6 +52,7 @@
            (inhibit-startup-message . t) ;; 起動時のメッセージを非表示
            (visible-bell . t)
            (ring-bell-function . 'ignore)
+           (safe-local-variable-values . '((encoding . utf-8)))
            (split-height-threshold . nil)
            ;; see: https://github.com/copilot-emacs/copilot.el/pull/230
            (warning-suppress-types . '((copilot))))
@@ -596,8 +597,7 @@ properly disable mozc-mode."
   :bind ((:flycheck-mode-map
           ("M-n" . flycheck-next-error)
           ("M-p" . flycheck-previous-error)))
-  :custom ((safe-local-variable-values . '((encoding . utf-8)))
-           (flycheck-check-syntax-automatically . '(mode-enabled save)))
+  :custom ((flycheck-check-syntax-automatically . '(mode-enabled save)))
   :hook ruby-mode-hook)
 
 (leaf haml-mode
