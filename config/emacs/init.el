@@ -60,7 +60,6 @@
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :setq-default
   (indent-tabs-mode . nil)
-  :global-minor-mode electric-pair-mode
   :config
   (set-fontset-font nil '(#x1F000 . #x1FAFF) "Noto Color Emoji")
 
@@ -528,6 +527,9 @@ properly disable mozc-mode."
   ("C-c q" . 'anzu-query-replace-regexp)
   ("C-c Q" . 'anzu-query-replace-at-cursor-thing)
   :global-minor-mode global-anzu-mode)
+
+(leaf elec-pair
+  :global-minor-mode electric-pair-mode)
 
 (leaf puni
   :ensure t
