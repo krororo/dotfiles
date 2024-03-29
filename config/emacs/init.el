@@ -795,7 +795,7 @@ properly disable mozc-mode."
 
 (leaf magit
   :ensure t
-  :require magit-mode
+  :require (magit-mode magit-bookmark)
   :custom ((magit-diff-highlight-hunk-body . nil)
            (magit-log-margin . '(t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18))
            (magit-section-initial-visibility-alist . '((unpushed . show) (stashes . show))))
