@@ -534,7 +534,12 @@ properly disable mozc-mode."
 
 (leaf puni
   :ensure t
-  :hook (prog-mode-hook . puni-mode))
+  :hook prog-mode-hook
+  :bind (:puni-mode-map
+         ("C-h" . puni-backward-delete-char)
+         ("M-D" . puni-splice)
+         ("C-)" . puni-slurp-forward)
+         ("C-(" . puni-barf-forward)))
 
 (leaf sudo-edit :ensure t)
 
