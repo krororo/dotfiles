@@ -2,7 +2,6 @@ package 'coreutils'
 package 'findutils'
 package 'grep'
 package 'noborus/tap/ov'
-package 'peco'
 
 cask 'alt-tab'
 cask 'iterm2'

@@ -83,10 +83,8 @@ alias brspec='bundle exec rspec -c'
 alias grep='grep --color=auto'
 alias today='date +%Y%m%d'
 alias -g ag='ag --nogroup'
-alias -g P='| peco'
 alias -g L='| less'
 alias -g G='| grep'
-alias -g B='$(git branch | grep -Ev "^\*" | peco --layout bottom-up --prompt "GIT BRANCH> ")'
 alias -g NP='--no-pager'
 alias -g S='| sort'
 alias ssh='TERM=xterm-256color ssh'
@@ -157,23 +155,13 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 export PATH="$HOME/bin:$PATH"
 export LESS="-RFXiM"
 
-# Functions
-if which peco > /dev/null; then
-  function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-      tac="tac"
-    else
-      tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-               eval $tac | \
-               awk '!a[$0]++' | \
-               peco --layout bottom-up --query "$LBUFFER")
+if which fzf > /dev/null; then
+  function fzf-select-history() {
+    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
     CURSOR=$#BUFFER
   }
-  zle -N peco-select-history
-  bindkey '^r' peco-select-history
+  zle -N fzf-select-history
+  bindkey '^r' fzf-select-history
 fi
 
 function mkcd() {
