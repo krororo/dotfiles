@@ -155,7 +155,9 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 export PATH="$HOME/bin:$PATH"
 export LESS="-RFXiM"
 
-if which fzf > /dev/null; then
+if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+elif which fzf > /dev/null; then
   function fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
     CURSOR=$#BUFFER
