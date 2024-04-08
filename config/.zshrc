@@ -158,12 +158,7 @@ export LESS="-RFXiM"
 if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 elif which fzf > /dev/null; then
-  function fzf-select-history() {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-    CURSOR=$#BUFFER
-  }
-  zle -N fzf-select-history
-  bindkey '^r' fzf-select-history
+  eval "$(fzf --zsh)"
 fi
 
 function mkcd() {
