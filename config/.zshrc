@@ -44,6 +44,7 @@ bindkey "^N" history-beginning-search-forward
 
 # Keybind
 bindkey "^U" backward-kill-line
+bindkey "^W" kill-region
 
 # Color
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
