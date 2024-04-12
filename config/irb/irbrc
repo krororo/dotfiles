@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# frozen_string_literal: true
+
+if defined?(Tenant)
+  def switch_tenant(id_or_conditions) # rubocop:disable Metrics/MethodLength
+    tenant =
+      case id_or_conditions
+      when String
+        Tenant.find(id_or_conditions)
+      else
+        Tenant.find_by(id_or_conditions)
+      end
+    tenant.switch!
+    subdomain = IRB::Color.colorize(tenant.subdomain, [:GREEN])
+    prefix = "%N(%m):#{subdomain}:%03n"
+    irb_context.prompt_i = "#{prefix}> "
+    irb_context.prompt_s = "#{prefix}%l "
+    irb_context.prompt_c = "#{prefix}* "
+    tenant
+  end
+end
+
+if system('which sqlformat > /dev/null 2>&1')
+  def pp_sql(sql)
+    puts `echo #{sql} | sqlformat - -r -k upper`
+  end
+end
+
+if defined?(ApplicationRecord)
+  def exec_query(sql)
+    ApplicationRecord.connection.exec_query(sql)
+  end
+
+  def explain(sql)
+    ApplicationRecord.connection.explain(sql)
+  end
+end
