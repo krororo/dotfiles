@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 if defined?(Tenant)
-  def switch_tenant(id_or_conditions) # rubocop:disable Metrics/MethodLength
+  def switch_tenant(id_or_conditions)
     tenant =
       case id_or_conditions
       when String
@@ -33,5 +33,11 @@ if defined?(ApplicationRecord)
 
   def explain(sql)
     ApplicationRecord.connection.explain(sql)
+  end
+
+  class ActiveRecord::Relation # rubocop:disable Style
+    def order_pluck(*columns)
+      order(*columns).pluck(*columns)
+    end
   end
 end
