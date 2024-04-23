@@ -799,6 +799,10 @@ properly disable mozc-mode."
   :init
   (modify-coding-system-alist 'file "\\.csv\\'" 'cp932-dos))
 
+(leaf rainbow-csv
+  :ensure t
+  :hook csv-mode-hook)
+
 (leaf add-node-modules-path
   :ensure t
   :hook (typescript-mode-hook . add-node-modules-path))
