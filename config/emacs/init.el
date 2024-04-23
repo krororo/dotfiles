@@ -5,7 +5,11 @@
   (prog1 "install leaf"
     (custom-set-variables
      '(package-archives '(("melpa" . "https://melpa.org/packages/")
-                          ("gnu" . "https://elpa.gnu.org/packages/"))))
+                          ("gnu" . "https://elpa.gnu.org/packages/")
+                          ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")))
+     '(package-archive-priorities '(("melpa" . 5)
+                                    ("gnu" . 3)
+                                    ("jcs-elpa" . 0))))
     (package-initialize)
     (unless (package-installed-p 'leaf)
       (package-refresh-contents)
