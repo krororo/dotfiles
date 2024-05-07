@@ -640,6 +640,7 @@ properly disable mozc-mode."
   :bind (:markdown-mode-map
          ("<S-tab>" . markdown-shifttab))
   :custom ((markdown-fontify-code-blocks-natively . t)
+           (markdown-gfm-use-electric-backquote . nil)
            (markdown-indent-on-enter . 'indent-and-new-item))
   :custom-face
   (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
