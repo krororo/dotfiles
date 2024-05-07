@@ -41,8 +41,7 @@
   :custom `((custom-file . ,(expand-file-name "custom.el" my-emacs-data-home))))
 
 (leaf *initialize-emacs
-  :custom ((initial-buffer-choice . "~/memo.md")
-           (scroll-conservatively . 1)
+  :custom ((scroll-conservatively . 1)
            (scroll-margin . 5)
            (scroll-preserve-screen-position . nil)
            (compilation-scroll-output . t)
@@ -894,3 +893,13 @@ properly disable mozc-mode."
   (copilot-max-char . -1)
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
+
+(leaf dashboard
+  :ensure t
+  :custom
+  (dashboard-items . '((recents   . 5)
+                       (bookmarks . 5)
+                       (projects  . 5)
+                       (registers . 5)))
+  :config
+  (dashboard-setup-startup-hook))
