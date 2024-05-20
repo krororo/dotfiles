@@ -4,6 +4,7 @@ package 'grep'
 package 'noborus/tap/ov'
 
 cask 'alt-tab'
+cask 'font-noto-color-emoji'
 cask 'iterm2'
 # cask 'karabiner-elements' # TBD
 cask 'raycast'
