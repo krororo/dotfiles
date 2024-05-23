@@ -204,9 +204,12 @@
   :config
   (windmove-default-keybindings))
 
-(leaf git-gutter
+(leaf diff-hl
   :ensure t
-  :global-minor-mode global-git-gutter-mode)
+  :global-minor-mode global-diff-hl-mode
+  :custom-face ((diff-hl-change . '((t (:background "purple")))))
+  :hook ((magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+         (magit-post-refresh-hook . diff-hl-magit-post-refresh)))
 
 (leaf avy
   :ensure t
