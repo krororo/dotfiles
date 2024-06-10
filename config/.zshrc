@@ -159,7 +159,7 @@ export LESS="-RFXiM"
 if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 elif which fzf > /dev/null; then
-  eval "$(fzf --zsh)"
+  source <(fzf --zsh)
 fi
 
 function mkcd() {
