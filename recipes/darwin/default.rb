@@ -3,6 +3,7 @@ package 'findutils'
 package 'grep'
 package 'jdx/tap/usage'
 package 'noborus/tap/ov'
+package 'watch'
 
 cask 'alt-tab'
 cask 'font-noto-color-emoji'
