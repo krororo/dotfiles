@@ -6,6 +6,7 @@ package 'noborus/tap/ov'
 package 'watch'
 
 cask 'alt-tab'
+cask 'deepl'
 cask 'devtoys'
 cask 'font-noto-color-emoji'
 cask 'iterm2'
