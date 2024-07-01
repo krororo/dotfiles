@@ -1,10 +1,12 @@
 dotfile '.vimrc'
 
+xdg_config 'bat/config'
 xdg_config 'gem/gemrc'
 xdg_config 'irb/irbrc'
 xdg_config 'lsd/config.yaml'
 xdg_config 'ov/config.yaml'
 
+package 'bat'
 package 'fzf'
 package 'lsd'
 package 'jq'
