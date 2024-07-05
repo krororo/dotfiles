@@ -244,7 +244,7 @@
   (defun my-reverse-other-window ()
     (interactive)
     (other-window -1))
-  :bind (("C-;" . comment-region)
+  :bind (("C-;" . comment-dwim)
          ("C-h" . delete-backward-char)
          ("C-c r" . revert-buffer)
          ;; ウィンドウ逆移動
