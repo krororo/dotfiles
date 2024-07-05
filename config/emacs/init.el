@@ -213,7 +213,7 @@
 
 (leaf avy
   :ensure t
-  :bind (("C-;" . avy-goto-char-timer)))
+  :bind (("M-;" . avy-goto-char-timer)))
 
 (leaf mwim
   :ensure t
@@ -244,7 +244,8 @@
   (defun my-reverse-other-window ()
     (interactive)
     (other-window -1))
-  :bind (("C-h" . delete-backward-char)
+  :bind (("C-;" . comment-region)
+         ("C-h" . delete-backward-char)
          ("C-c r" . revert-buffer)
          ;; ウィンドウ逆移動
          ("C-x p" . my-reverse-other-window)
