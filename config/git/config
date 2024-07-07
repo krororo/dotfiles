@@ -87,4 +87,4 @@
 [rerere]
 	enabled = true
 [blame]
-	ignoreRevsFile = .git-blame-ignore-revs
+	markIgnoredLines = true
