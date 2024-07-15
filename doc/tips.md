@@ -82,3 +82,11 @@ redis-server:6379> (Ctrl+D)
  (base64-decode-string "<string>")
  'utf-8)
 ```
+
+## git
+
+### 2つのブランチの派生元を確認する
+
+```shell
+git merge-base branch1 branch2
+```
