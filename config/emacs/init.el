@@ -239,6 +239,10 @@
   :ensure t
   :global-minor-mode beacon-mode)
 
+(leaf indent-bars
+  :ensure t
+  :hook yaml-mode-hook)
+
 (leaf *key-binding
   :preface
   (defun my-reverse-other-window ()
