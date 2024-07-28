@@ -243,6 +243,10 @@
   :ensure t
   :hook yaml-mode-hook)
 
+(leaf vundo
+  :ensure t
+  :bind ("C-x u" . vundo))
+
 (leaf *key-binding
   :preface
   (defun my-reverse-other-window ()
