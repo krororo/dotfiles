@@ -498,6 +498,7 @@ properly disable mozc-mode."
       (add-to-list 'capfs #'cape-dabbrev t)
       (setq-local completion-at-point-functions
                   `(cape-file
+                    (cape-capf-inside-code #'cape-elisp-symbol)
                     ,(cape-capf-buster (apply #'cape-capf-super capfs))))))
   :hook ((emacs-lisp-mode-hook) . my-custom-capf)
   :config
