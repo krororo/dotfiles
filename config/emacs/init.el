@@ -826,7 +826,7 @@ properly disable mozc-mode."
   :require (magit-mode magit-bookmark)
   :custom ((magit-diff-highlight-hunk-body . nil)
            (magit-log-margin . '(t "%Y-%m-%d %H:%M:%S " magit-log-margin-width t 18))
-           (magit-section-initial-visibility-alist . '((unpushed . show) (stashes . show))))
+           (magit-section-initial-visibility-alist . '((unpushed . show) (stashes . show) (untracked . show))))
   :custom-face
   (magit-diff-added . '((t (:foreground "green"))))
   (magit-diff-added-highlight . '((t (:foreground "green"))))
