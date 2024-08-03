@@ -585,7 +585,9 @@ properly disable mozc-mode."
              (cl-letf (((symbol-function #'process-list) (lambda ())))
                (apply orig-fun args))))
   :custom ((eglot-autoshutdown . t)
-           (eldoc-echo-area-use-multiline-p . nil)))
+           (eldoc-echo-area-use-multiline-p . nil))
+  :config
+  (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp")))
 
 (leaf sh-mode
   :custom
