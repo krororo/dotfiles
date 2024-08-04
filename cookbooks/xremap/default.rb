@@ -13,8 +13,10 @@ execute "gpasswd -a #{node[:user]} input" do
   not_if "groups #{node[:user]} | grep -q input"
 end
 
-execute "echo 'KERNEL==\"uinput\", GROUP=\"input\"' > /etc/udev/rules.d/input-xremap.rules" do
-  not_if 'test -f /etc/udev/rules.d/input-xremap.rules'
+file "/etc/udev/rules.d/input-xremap.rules" do
+  content <<~CONTENT
+    KERNEL=="uinput", GROUP="input"
+  CONTENT
 end
 
 template "#{ENV['HOME']}/.config/systemd/user/xremap.service" do
