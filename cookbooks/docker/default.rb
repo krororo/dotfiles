@@ -1,14 +1,14 @@
 dotfile '.docker'
 
-%w[ca-certificates curl gnupg lsb-release].each do |pkg|
+%w[ca-certificates curl lsb-release].each do |pkg|
   package pkg
 end
 
-keyring_path = '/usr/share/keyrings/docker-archive-keyring.gpg'
+keyring_path = '/etc/apt/keyrings/docker-archive-keyring.asc'
 
 execute 'Download keyring' do
   keyring_url = 'https://download.docker.com/linux/ubuntu/gpg'
-  command "curl -fsSL #{keyring_url} | sudo gpg --dearmor -o #{keyring_path}"
+  command "curl -fsSL #{keyring_url} -o #{keyring_path}"
   not_if "test -f #{keyring_path}"
 end
 

@@ -1,22 +1,21 @@
 if node[:platform] != 'darwin'
-  keyring_path = '/etc/apt/keyrings/mise-archive-keyring.gpg'
+  keyring_path = '/etc/apt/keyrings/mise-archive-keyring.asc'
 
   execute 'Download keyring' do
-    command "curl -fsSL https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee #{keyring_path} 1> /dev/null"
+    command "curl -fsSL https://mise.jdx.dev/gpg-key.pub | sudo tee #{keyring_path} 1> /dev/null"
     not_if "test -f #{keyring_path}"
   end
 
   execute 'sudo apt update' do
-    subscribes :run, 'execute[Add apt source]', :immediately
+    subscribes :run, 'file[/etc/apt/sources.list.d/mise.list]', :immediately
     action :nothing
   end
 
-  execute 'Add apt source' do
-    command 'echo "deb [arch=$(dpkg --print-architecture) ' \
-            "signed-by=#{keyring_path}] " \
-            'https://mise.jdx.dev/deb stable main" ' \
-            '| sudo tee /etc/apt/sources.list.d/mise.list > /dev/null'
-    not_if "test -f /etc/apt/sources.list.d/mise.list"
+  file '/etc/apt/sources.list.d/mise.list' do
+    arch = run_command('dpkg --print-architecture').stdout.chomp
+    content "deb [arch=#{arch} signed-by=#{keyring_path}] " \
+            "https://mise.jdx.dev/deb stable main\n"
+    mode "644"
   end
 end
 
