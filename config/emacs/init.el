@@ -241,7 +241,7 @@
 
 (leaf indent-bars
   :ensure t
-  :hook yaml-mode-hook)
+  :hook yaml-mode-hook haml-mode-hook)
 
 (leaf vundo
   :ensure t
