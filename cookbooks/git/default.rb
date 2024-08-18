@@ -6,7 +6,7 @@ if node[:platform] == 'darwin'
   package 'git-delta'
 else
   github_release 'git-delta' do
-    v = '0.17.0'
+    v = '0.18.0'
     repository 'dandavison/delta'
     version v
     filename "git-delta_#{v}_amd64.deb"
