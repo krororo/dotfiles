@@ -43,7 +43,7 @@ else
     libgmp-dev
     libncurses-dev
     libffi-dev
-    libgdbm6
+    libgdbm6t64
     libgdbm-dev
     libdb-dev
     uuid-dev
