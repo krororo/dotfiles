@@ -892,7 +892,9 @@ properly disable mozc-mode."
 
 (leaf quickrun
   :ensure t
-  :custom (quickrun-truncate-lines . nil))
+  :custom
+  (quickrun-truncate-lines . nil)
+  (quickrun-timeout-seconds . 30))
 
 (leaf copilot
   :if (executable-find "node")
