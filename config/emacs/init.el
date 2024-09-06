@@ -255,12 +255,7 @@
   :bind (("C-;" . comment-dwim)
          ("C-h" . delete-backward-char)
          ("C-c r" . revert-buffer)
-         ;; ウィンドウ逆移動
-         ("C-x p" . my-reverse-other-window)
-         ;; 暴発するので無効化
-         ("C-x C-p" . nil)
-         ;; compose-mail
-         ("C-x m" . nil)
+         ("C-x m" . nil) ;; disable compose-mail
          ("M-\"" . insert-pair)
          ("M-'" . insert-pair)
          ("M-/" . xref-find-references))
@@ -468,15 +463,7 @@ properly disable mozc-mode."
 
 (leaf marginalia
   :ensure t
-  :config
-  (marginalia-mode)
-  ;; https://github.com/bbatsov/projectile/issues/1664#issuecomment-934632497
-  (setq marginalia-command-categories
-        (append '((projectile-find-file . project-file)
-                  (projectile-find-file-other-window . project-file)
-                  (projectile-find-dir . project-file)
-                  (projectile-switch-project . file))
-                marginalia-command-categories)))
+  :global-minor-mode t)
 
 (leaf corfu
   :ensure t
@@ -527,12 +514,8 @@ properly disable mozc-mode."
   :require t
   :hook (embark-collect-mode-hook . consult-preview-at-point-mode))
 
-(leaf projectile
-  :ensure t
-  :custom (projectile-mode-line-prefix . " Prj")
-  :config
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+(leaf project
+  :custom `(project-list-file . ,(expand-file-name "projects" my-emacs-data-home)))
 
 (leaf anzu
   :ensure t
