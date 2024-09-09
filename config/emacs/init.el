@@ -290,7 +290,6 @@
   (defvar mode-line-cleaner-alist
     '( ;; For minor-mode, first char is 'space'
       (editorconfig-mode . " EC")
-      (git-gutter-mode . " GG")
       ;; Major modes
       (emacs-lisp-mode . "El")
       (markdown-mode . "Md")
