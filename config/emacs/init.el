@@ -880,7 +880,7 @@ properly disable mozc-mode."
 
 (leaf copilot
   :if (executable-find "node")
-  :vc (:url "https://github.com/copilot-emacs/copilot.el")
+  :ensure t
   :hook prog-mode-hook
   ;; ref: https://github.com/copilot-emacs/copilot.el/issues/103
   :bind ((:copilot-completion-map
