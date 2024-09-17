@@ -569,9 +569,7 @@ properly disable mozc-mode."
                (apply orig-fun args))))
   :custom ((eglot-autoshutdown . t)
            (eldoc-echo-area-use-multiline-p . nil)
-           (eglot-ignored-server-capabilities . '(:documentOnTypeFormattingProvider)))
-  :config
-  (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp")))
+           (eglot-ignored-server-capabilities . '(:documentOnTypeFormattingProvider))))
 
 (leaf sh-mode
   :custom
