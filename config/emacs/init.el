@@ -528,11 +528,23 @@ properly disable mozc-mode."
   :global-minor-mode global-anzu-mode)
 
 (leaf elec-pair
+  :preface
+  (defun my-inhibit-electric-pair-mode (char)
+    (minibufferp))
+  :custom
+  (electric-pair-inhibit-predicate . #'my-inhibit-electric-pair-mode)
   :global-minor-mode electric-pair-mode)
 
 (leaf puni
   :ensure t
-  :hook prog-mode-hook
+  :preface
+  (defun my-disable-puni-in-minibuffer ()
+    "Disable `puni-mode' in minibuffer unless when eval-expression"
+    (unless (eq this-command 'eval-expression)
+      (puni-disable-puni-mode)))
+  :hook
+  prog-mode-hook
+  (minibuffer-setup-hook . my-disable-puni-in-minibuffer)
   :bind (:puni-mode-map
          ("C-h" . puni-backward-delete-char)
          ("M-D" . puni-splice)
