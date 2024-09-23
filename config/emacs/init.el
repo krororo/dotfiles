@@ -84,7 +84,7 @@
 (leaf *linux-settings
   :unless (eq system-type 'darwin)
   :custom-face
-  (default . '((t (:background "#003300" :foreground "white" :height 100 :foundry "PfEd" :family "HackGen")))))
+  (default . '((t (:background "#003300" :foreground "white" :height 120 :foundry "PfEd" :family "HackGen")))))
 
 (leaf *mac-settings
   :if (eq system-type 'darwin)
