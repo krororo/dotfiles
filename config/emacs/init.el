@@ -811,6 +811,8 @@ properly disable mozc-mode."
   :ensure t
   :hook csv-mode-hook)
 
+(leaf lua-mode :ensure t)
+
 (leaf add-node-modules-path
   :ensure t
   :hook (typescript-mode-hook . add-node-modules-path))
