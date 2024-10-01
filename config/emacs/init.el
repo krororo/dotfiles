@@ -811,7 +811,9 @@ properly disable mozc-mode."
   :ensure t
   :hook csv-mode-hook)
 
-(leaf lua-mode :ensure t)
+(leaf lua-mode
+  :ensure t
+  :custom (lua-indent-level . 2))
 
 (leaf add-node-modules-path
   :ensure t
