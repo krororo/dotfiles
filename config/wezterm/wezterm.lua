@@ -21,6 +21,25 @@ wezterm.on('on-startup', function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {width=140, height=50})
 end)
 
+config.window_frame = {
+  inactive_titlebar_bg = "#44475A",
+  active_titlebar_bg = "#BD93F9",
+  inactive_titlebar_fg = "#44475A",
+  active_titlebar_fg = "#F8F8F2",
+}
+
+config.colors = {
+  tab_bar = {
+    active_tab = {
+      bg_color = "#8b7500",
+      fg_color = "#F8F8F2",
+    },
+  },
+}
+
+config.show_new_tab_button_in_tab_bar = false
+-- config.show_close_tab_button_in_tabs = false
+
 -- key bindings
 
 local act = wezterm.action
