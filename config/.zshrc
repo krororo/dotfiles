@@ -161,9 +161,7 @@ export PATH="$HOME/bin:$PATH"
 export LESS="-RFXiM"
 
 export FZF_CTRL_T_COMMAND=""
-if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-elif which fzf > /dev/null; then
+if which fzf > /dev/null; then
   source <(fzf --zsh)
 fi
 
