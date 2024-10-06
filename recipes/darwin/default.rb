@@ -1,7 +1,6 @@
 package 'coreutils'
 package 'findutils'
 package 'grep'
-package 'jdx/tap/usage'
 package 'noborus/tap/ov'
 package 'watch'
 
