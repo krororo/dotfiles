@@ -1,3 +1,5 @@
+include_recipe "../../cookbooks/brew"
+
 dotfile '.vimrc'
 
 xdg_config 'bat/config'

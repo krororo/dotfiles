@@ -3,6 +3,10 @@ bindkey -e
 EDITOR=vim
 zstyle ':completion:*' use-cache true
 
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Complete
 if type brew &>/dev/null; then
   brew_prefix=$(brew --prefix)
@@ -61,8 +65,8 @@ esac
 autoload -U colors; colors
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
   source /usr/lib/git-core/git-sh-prompt
-elif [ -f /opt/homebrew/etc/bash_completion.d/git-prompt.sh ]; then
-  source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
+elif [ -f ${brew_prefix}/etc/bash_completion.d/git-prompt.sh ]; then
+  source ${brew_prefix}/etc/bash_completion.d/git-prompt.sh
 fi
 setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
