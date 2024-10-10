@@ -44,6 +44,7 @@ config.show_new_tab_button_in_tab_bar = false
 
 local act = wezterm.action
 
+config.leader = { key = 'x', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   {
     key = 'f',
@@ -59,6 +60,21 @@ config.keys = {
     key = 'Backspace',
     mods = 'SUPER',
     action = act.SendKey { key = 'Backspace', mods = 'ALT' },
+  },
+  {
+    key = '0',
+    mods = 'LEADER',
+    action = act.PaneSelect,
+  },
+  {
+    key = '2',
+    mods = 'LEADER',
+    action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = '3',
+    mods = 'LEADER',
+    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
 }
 
