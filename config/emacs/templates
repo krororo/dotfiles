@@ -1,3 +1,5 @@
+;; see: https://github.com/minad/tempel?tab=readme-ov-file#template-syntax
+
 fundamental-mode
 
 (today (format-time-string "%Y-%m-%d"))
@@ -15,8 +17,9 @@ ruby-mode
 (def "def " (p "name") n> q n> "end" >)
 (do "do" (p "arg: " arg t) (unless (string-empty-p arg) (concat " |" arg "|")) n> r> n "end" >)
 (ea "each { " (p "arg: " arg t) (unless (string-empty-p arg) (concat "|" arg "| ")) r " }")
-(frzsl "# frozen_string_literal: true\n")
+(frzsl "# frozen_string_literal: true" n)
 (mod "module " p  n> q n> "end" >)
+(visualize "puts ActiveRecord::Bitemporal::Visualizer.visualize(" q ")")
 
 ruby-mode :when rspec-mode
 
