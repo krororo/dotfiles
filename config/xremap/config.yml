@@ -7,7 +7,7 @@ modmap:
 keymap:
   - name: Default
     application:
-      not: [Emacs, Xfce4-terminal]
+      not: [Emacs, Xfce4-terminal, wezterm]
     remap:
       # Emacs basic
       C-b: { with_mark: left }
