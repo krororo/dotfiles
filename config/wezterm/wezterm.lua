@@ -43,6 +43,7 @@ config.show_new_tab_button_in_tab_bar = false
 -- key bindings
 
 local act = wezterm.action
+local darwin = wezterm.target_triple:find('darwin')
 
 config.leader = { key = 'x', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
@@ -83,6 +84,12 @@ for i = 1, 8 do
     key = tostring(i),
     mods = 'ALT',
     action = act.ActivateTab(i - 1),
+  })
+end
+
+if not (darwin) then
+  table.insert(config.keys, {
+    key = 't', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain',
   })
 end
 
