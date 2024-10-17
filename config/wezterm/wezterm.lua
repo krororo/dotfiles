@@ -48,21 +48,6 @@ local darwin = wezterm.target_triple:find('darwin')
 config.leader = { key = 'x', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   {
-    key = 'f',
-    mods = 'SUPER',
-    action = act.SendKey { key = 'f', mods = 'ALT' },
-  },
-  {
-    key = 'b',
-    mods = 'SUPER',
-    action = act.SendKey { key = 'b', mods = 'ALT' },
-  },
-  {
-    key = 'Backspace',
-    mods = 'SUPER',
-    action = act.SendKey { key = 'Backspace', mods = 'ALT' },
-  },
-  {
     key = '0',
     mods = 'LEADER',
     action = act.PaneSelect,
@@ -78,6 +63,15 @@ config.keys = {
     action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
 }
+
+super2alt_keys = { 'f', 'b', 'd', 'Backspace', '.' }
+for _, k in ipairs(super2alt_keys) do
+  table.insert(config.keys, {
+    key = k,
+    mods = 'SUPER',
+    action = act.SendKey { key = k, mods = 'ALT' },
+  })
+end
 
 for i = 1, 8 do
   table.insert(config.keys, {
