@@ -394,6 +394,10 @@ properly disable mozc-mode."
 (leaf bookmark
   :custom `((bookmark-default-file . ,(expand-file-name "bookmarks" my-emacs-data-home))))
 
+(leaf savehist
+  :custom `(savehist-file . ,(expand-file-name "history" my-emacs-data-home))
+  :global-minor-mode t)
+
 (leaf *dired
   :preface
   (defun dired-my-append-buffer-name-hint ()
@@ -425,9 +429,7 @@ properly disable mozc-mode."
   :bind (:vertico-map ("C-l" . vertico-directory-up))
   :custom ((vertico-count . 14)
            (vertico-cycle . t))
-  :init
-  (vertico-mode)
-  (savehist-mode))
+  :global-minor-mode t)
 
 (leaf consult
   :ensure t
