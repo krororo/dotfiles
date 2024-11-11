@@ -1,3 +1,4 @@
+package "1password-cli"
 package 'coreutils'
 package 'findutils'
 package 'grep'
