@@ -77,17 +77,19 @@
   (set-scroll-bar-mode nil)
 
   (put 'downcase-region 'disabled nil)
-  (put 'upcase-region 'disabled nil)
-
-  (set-frame-parameter nil 'fullscreen 'maximized))
+  (put 'upcase-region 'disabled nil))
 
 (leaf *linux-settings
   :unless (eq system-type 'darwin)
   :custom-face
-  (default . '((t (:background "#003300" :foreground "white" :height 120 :foundry "PfEd" :family "HackGen")))))
+  (default . '((t (:background "#003300" :foreground "white" :height 120 :foundry "PfEd" :family "HackGen"))))
+  :config
+  (set-frame-parameter nil 'fullscreen 'maximized))
 
 (leaf *mac-settings
   :if (eq system-type 'darwin)
+  :custom
+  (default-frame-alist . '((width . 200) (height . 70)))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   :bind ("C-M-¥" . indent-region)
