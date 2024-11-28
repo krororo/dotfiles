@@ -741,7 +741,9 @@ properly disable mozc-mode."
 
 (leaf yard-mode
   :ensure t
-  :hook ruby-mode-hook)
+  :hook ruby-mode-hook
+  :config
+  (setq yard-tags-re (regexp-opt (append yard-tags '("rbs")))))
 
 (leaf rspec-mode
   :ensure t
