@@ -733,7 +733,7 @@ properly disable mozc-mode."
       1 font-lock-keyword-face)
      ;; ex. if: :hoge
      (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
-               (regexp-opt '("if" "unless" "in" "format" "class" "retry" "require") "\\(?:")
+               (regexp-opt '("if" "unless" "in" "format" "class" "retry" "require" "using") "\\(?:")
                ":\\)")
       1 font-lock-constant-face))))
 
