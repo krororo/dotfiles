@@ -400,6 +400,19 @@ properly disable mozc-mode."
   :custom `(savehist-file . ,(expand-file-name "history" my-emacs-data-home))
   :global-minor-mode t)
 
+(leaf ediff
+  :preface
+  ;; ref: https://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version/29757750#29757750
+  (defun my-ediff-copy-both-to-C ()
+    (interactive)
+    (ediff-copy-diff ediff-current-difference nil 'C nil
+                     (concat
+                      (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+                      (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+  (defun my-add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'my-ediff-copy-both-to-C))
+  :hook (ediff-keymap-setup-hook . my-add-d-to-ediff-mode-map)
+  :custom ((ediff-window-setup-function . 'ediff-setup-windows-plain)))
+
 (leaf *dired
   :preface
   (defun dired-my-append-buffer-name-hint ()
