@@ -1,8 +1,6 @@
 *~
 .cache
 .emacs-places
-.lsp-session-*
-ac-comphist.dat
 bookmarks
 eln-cache
 elpa
