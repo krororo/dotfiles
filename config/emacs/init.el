@@ -443,7 +443,8 @@ properly disable mozc-mode."
   :require vertico-directory
   :bind (:vertico-map ("C-l" . vertico-directory-up))
   :custom ((vertico-count . 14)
-           (vertico-cycle . t))
+           (vertico-cycle . t)
+           (vertico-sort-function . #'vertico-sort-history-alpha))
   :global-minor-mode t)
 
 (leaf consult
