@@ -672,19 +672,6 @@ properly disable mozc-mode."
   :defer-config
   (define-key markdown-mode-map (kbd "C-c C-r") 'mermaid-compile-region))
 
-(leaf review-mode
-  :ensure t
-  :mode "\\.re_?\\(\\.erb\\)?\\'"
-  :custom-face
-  (review-mode-bold-face . '((t (:foreground "deep sky blue" :weight bold))))
-  (review-mode-header1-face . '((t (:foreground "chartreuse" :weight bold))))
-  (review-mode-header2-face . '((t (:foreground "lawn green" :weight bold))))
-  (review-mode-header3-face . '((t (:foreground "green" :weight bold))))
-  (review-mode-header4-face . '((t (:foreground "#0dd" :weight bold))))
-  (review-mode-italic-face . '((t (:foreground "red" :slant italic :weight bold))))
-  (review-mode-title-face . '((t (:foreground "cyan" :weight bold))))
-  (review-mode-underline-face . '((t (:foreground "cyan" :underline t)))))
-
 (leaf ruby-mode
   :preface
   (defun my-ruby-smie-rules (kind token)
