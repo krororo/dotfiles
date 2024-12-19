@@ -1,4 +1,5 @@
 package 'coreutils'
+package "deno"
 package 'findutils'
 package 'grep'
 package 'noborus/tap/ov'
