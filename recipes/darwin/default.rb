@@ -1,10 +1,10 @@
-package "1password-cli"
 package 'coreutils'
 package 'findutils'
 package 'grep'
 package 'noborus/tap/ov'
 package 'watch'
 
+cask "1password-cli"
 cask 'alt-tab'
 cask 'deepl'
 cask 'devtoys'
