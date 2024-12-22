@@ -15,4 +15,4 @@ cask 'font-noto-color-emoji'
 # cask 'karabiner-elements' # TBD
 cask 'raycast'
 
-xdg_config 'karabiner/assets/complex_modifications/my_emacs.json'
+xdg_config "karabiner/karabiner.json"
