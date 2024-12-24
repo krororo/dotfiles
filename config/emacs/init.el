@@ -72,7 +72,6 @@
 
   (if window-system (menu-bar-mode 1) (menu-bar-mode -1))
   (tool-bar-mode -1)
-  (column-number-mode t)
   (show-paren-mode t)
   (set-scroll-bar-mode nil)
 
@@ -159,6 +158,9 @@
                 (message file-name)
                 (kill-new file-name))))
         (error "Buffer not visiting a file")))))
+
+(leaf simple
+  :global-minor-mode column-number-mode)
 
 (leaf tramp
   :defer-config
