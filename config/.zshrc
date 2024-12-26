@@ -169,6 +169,30 @@ function mkcd() {
   mkdir -p "$@" && cd "$_"
 }
 
+# 1password
+if type op &>/dev/null; then
+  secrets_in_path="$HOME/.config/zsh/secrets-in.zsh"
+  if [ -f $secrets_in_path ]; then
+    secrets_out_path="$HOME/.config/zsh/secrets-out.zsh"
+
+    if [ ! -f "$secrets_out_path" -a -f $secrets_in_path ]; then
+      echo "Creating ${secrets_out_path}..."
+      op inject --in-file $secrets_in_path  --out-file $secrets_out_path
+    fi
+
+    secrets_in_no_values=$(cat $secrets_in_path | sed 's/=.*//' | base64)
+    secrets_out_no_values=$(cat $secrets_out_path | sed 's/=.*//' | base64)
+
+    if [ ! "$secrets_in_no_values" = "$secrets_out_no_values" ]; then
+      echo "Secrets have changed... Updating ${secrets_out_path}"
+      rm $secrets_out_path
+      op inject --in-file $secrets_in_path --out-file $secrets_out_path
+    fi
+
+    source $secrets_out_path
+  fi
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
