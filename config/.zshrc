@@ -213,8 +213,6 @@ if [ -f ~/.config/tabtab/zsh/__tabtab.zsh ]; then
   compdef p=pnpm
 fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 if [ -d ~/.cargo/bin ]; then
   export PATH=~/.cargo/bin:$PATH
 fi
