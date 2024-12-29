@@ -72,7 +72,6 @@
 
   (if window-system (menu-bar-mode 1) (menu-bar-mode -1))
   (tool-bar-mode -1)
-  (show-paren-mode t)
   (set-scroll-bar-mode nil)
 
   (put 'downcase-region 'disabled nil)
@@ -161,6 +160,9 @@
 
 (leaf simple
   :global-minor-mode column-number-mode)
+
+(leaf paren
+  :global-minor-mode show-paren-mode)
 
 (leaf tramp
   :defer-config
