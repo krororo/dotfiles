@@ -85,6 +85,12 @@ if not (darwin) then
   table.insert(config.keys, {
     key = 't', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain',
   })
+  table.insert(config.keys, {
+    key = 'c', mods = 'ALT', action = act.CopyTo 'ClipboardAndPrimarySelection',
+  })
+  table.insert(config.keys, {
+    key = 'v', mods = 'ALT', action = act.PasteFrom 'Clipboard',
+  })
 end
 
 -- other
