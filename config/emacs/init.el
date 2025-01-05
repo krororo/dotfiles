@@ -210,6 +210,10 @@
   :config
   (windmove-default-keybindings))
 
+(leaf colorful-mode
+  :ensure t
+  :global-minor-mode t)
+
 (leaf diff-hl
   :ensure t
   :global-minor-mode global-diff-hl-mode
