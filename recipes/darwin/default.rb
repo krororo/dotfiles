@@ -13,6 +13,7 @@ cask "font-hackgen"
 cask "font-hackgen-nerd"
 cask 'font-noto-color-emoji'
 # cask 'karabiner-elements' # TBD
+cask "meetingbar"
 cask 'raycast'
 
 xdg_config "karabiner/karabiner.json"
