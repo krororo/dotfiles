@@ -703,9 +703,7 @@ properly disable mozc-mode."
          (save-excursion
            (beginning-of-line)
            (skip-chars-forward " \t")
-           (cons 'column (current-column))))
-        (t
-          (cons 'column ruby-indent-level))))))
+           (cons 'column (current-column))))))))
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
