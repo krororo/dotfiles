@@ -920,9 +920,8 @@ properly disable mozc-mode."
 (leaf dashboard
   :ensure t
   :custom
-  (dashboard-items . '((recents   . 5)
+  (dashboard-items . '((recents   . 10)
                        (bookmarks . 5)
-                       (projects  . 5)
-                       (registers . 5)))
+                       (projects  . 5)))
   :config
   (dashboard-setup-startup-hook))
