@@ -44,8 +44,6 @@
   :custom ((scroll-conservatively . 1)
            (scroll-margin . 5)
            (scroll-preserve-screen-position . nil)
-           (compilation-scroll-output . t)
-           (compilation-max-output-line-length . nil)
            (create-lockfiles . nil)
            (indicate-buffer-boundaries . 'left)
            (use-default-font-for-symbols . nil)
@@ -157,6 +155,10 @@
                 (message file-name)
                 (kill-new file-name))))
         (error "Buffer not visiting a file")))))
+
+(leaf compile
+  :custom ((compilation-scroll-output . t)
+           (compilation-max-output-line-length . nil)))
 
 (leaf simple
   :global-minor-mode column-number-mode)
