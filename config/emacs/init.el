@@ -48,8 +48,6 @@
            (indicate-buffer-boundaries . 'left)
            (use-default-font-for-symbols . nil)
            (use-short-answers . t)
-           (make-backup-files . nil) ;; *.~ とかのバックアップファイルを作らない
-           (auto-save-default . nil) ;; .#* とかのバックアップファイルを作らない
            (inhibit-startup-message . t) ;; 起動時のメッセージを非表示
            (visible-bell . t)
            (ring-bell-function . 'ignore)
@@ -159,6 +157,11 @@
 (leaf compile
   :custom ((compilation-scroll-output . t)
            (compilation-max-output-line-length . nil)))
+
+(leaf files
+  :custom ((auto-save-default . nil) ;; .#* とかのバックアップファイルを作らない
+           (make-backup-files . nil) ;; *.~ とかのバックアップファイルを作らない
+           ))
 
 (leaf simple
   :global-minor-mode column-number-mode)
