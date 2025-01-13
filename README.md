@@ -32,6 +32,12 @@ $ git config -f ~/.config/git/config.local user.email <email>
 [ウィンドウマネージャー] -> [キーボード] で [ウィンドウ操作メニュー] の
 ショートカットキーをクリアする。
 
+### Nixインストール
+
+```shell-session
+nix profile install .#default
+```
+
 ## Mac
 
 ### `¥` を `\` に変更する
