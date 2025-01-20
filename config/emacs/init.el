@@ -920,6 +920,10 @@ properly disable mozc-mode."
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
 
+(leaf copilot-chat
+  :ensure t
+  :hook (git-commit-setup-hook . copilot-chat-insert-commit-message))
+
 (leaf dashboard
   :ensure t
   :custom
