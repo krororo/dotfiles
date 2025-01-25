@@ -53,11 +53,3 @@ define :cask do
     not_if "ls -1 $(brew --prefix)/Caskroom | grep '#{params[:name]}$'"
   end
 end
-
-define :linuxbrew do
-  brew_prefix = "/home/linuxbrew/.linuxbrew"
-  execute "#{brew_prefix}/bin/brew install #{params[:name]}" do
-    user node[:user]
-    not_if "ls -1 #{brew_prefix}/Cellar/ | grep -E '^#{params[:name]}$'"
-  end
-end

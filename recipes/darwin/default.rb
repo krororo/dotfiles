@@ -1,6 +1,7 @@
 package 'coreutils'
 package "deno"
 package 'findutils'
+package "fzf"
 package 'grep'
 package 'noborus/tap/ov'
 package 'watch'

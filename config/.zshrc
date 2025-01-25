@@ -3,10 +3,6 @@ bindkey -e
 EDITOR=vim
 zstyle ':completion:*' use-cache true
 
-if [ -d /home/linuxbrew/.linuxbrew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 # Complete
 if type brew &>/dev/null; then
   brew_prefix=$(brew --prefix)
