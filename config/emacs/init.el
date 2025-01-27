@@ -844,7 +844,8 @@ properly disable mozc-mode."
   (magit-diff-removed . '((t (:foreground "red"))))
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
-  (magit-item-highlight . '((t (:background "gray5")))))
+  (magit-item-highlight . '((t (:background "gray5"))))
+  :hook (git-commit-mode-hook . display-fill-column-indicator-mode))
 
 (leaf xterm-color
   :ensure t
