@@ -558,7 +558,9 @@ properly disable mozc-mode."
     (minibufferp))
   :custom
   (electric-pair-inhibit-predicate . #'my-inhibit-electric-pair-mode)
-  :global-minor-mode electric-pair-mode)
+  :global-minor-mode electric-pair-mode
+  :config
+  (setopt electric-pair-pairs (append electric-pair-pairs '((?` . ?`)))))
 
 (leaf puni
   :ensure t
