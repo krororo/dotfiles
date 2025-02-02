@@ -829,6 +829,9 @@ properly disable mozc-mode."
   :ensure t
   :custom (lua-indent-level . 2))
 
+(leaf nix-mode
+  :ensure t)
+
 (leaf add-node-modules-path
   :ensure t
   :hook (typescript-mode-hook . add-node-modules-path))
