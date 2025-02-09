@@ -169,6 +169,8 @@
 (leaf paren
   :global-minor-mode show-paren-mode)
 
+(leaf tab-bar :global-minor-mode t)
+
 (leaf tramp
   :defer-config
   (setenv "SHELL" "/bin/bash"))
