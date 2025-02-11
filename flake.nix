@@ -12,6 +12,7 @@
       name = "my-packages-list";
       paths = with pkgs; [
         fzf
+        ghq
         hackgen-font
         hackgen-nf-font
       ];
