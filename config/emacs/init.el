@@ -479,6 +479,15 @@ properly disable mozc-mode."
       map))
   (consult-customize consult-line :keymap my-consult-line-map))
 
+(leaf consult-ghq
+  :ensure t
+  :config
+  (defun my-consult-ghq-magit-status ()
+    "Show magit status from ghq."
+    (interactive)
+    (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: ")))
+      (magit-status repo))))
+
 (leaf orderless
   :ensure t
   :custom
