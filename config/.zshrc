@@ -161,6 +161,17 @@ if which fzf > /dev/null; then
   source <(fzf --zsh)
 fi
 
+function ghq-fzf() {
+  local src=$(ghq list | fzf --preview "ls -A $(ghq root)/{}")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N ghq-fzf
+bindkey '^]' ghq-fzf
+
 function mkcd() {
   mkdir -p "$@" && cd "$_"
 }
