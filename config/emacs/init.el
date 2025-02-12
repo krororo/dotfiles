@@ -169,7 +169,9 @@
 (leaf paren
   :global-minor-mode show-paren-mode)
 
-(leaf tab-bar :global-minor-mode t)
+(leaf tab-bar
+  :global-minor-mode t
+  :custom ((tab-bar-new-tab-choice . "*scratch*")))
 
 (leaf tramp
   :defer-config
