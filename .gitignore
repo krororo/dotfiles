@@ -3,3 +3,21 @@
 /config/.zsh/zsh-autosuggestions
 
 .DS_Store
+
+# emacs
+*~
+/config/emacs/.cache
+/config/emacs/.emacs-places
+/config/emacs/eln-cache
+/config/emacs/elpa
+/config/emacs/eshell/history
+/config/emacs/games
+/config/emacs/migemo-pattern
+/config/emacs/network-security.data
+/config/emacs/projectile-bookmarks.eld
+/config/emacs/proxy-setting.el
+/config/emacs/recentf
+/config/emacs/session.*
+/config/emacs/tramp
+/config/emacs/transient
+/config/emacs/url/
