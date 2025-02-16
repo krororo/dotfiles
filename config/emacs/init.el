@@ -232,6 +232,7 @@
 
 (leaf avy
   :ensure t
+  :custom ((avy-timeout-seconds . 1.0))
   :bind (("M-;" . avy-goto-char-timer)))
 
 (leaf mwim
