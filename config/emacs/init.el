@@ -943,7 +943,10 @@ properly disable mozc-mode."
 
 (leaf copilot-chat
   :ensure t
-  :hook (git-commit-setup-hook . copilot-chat-insert-commit-message))
+  :if (eq system-type 'darwin)
+  :custom
+  (copilot-chat-prompt-explain . "/explain 日本語で説明してください。\n")
+  :bind (("C-c c" . copilot-chat-transient)))
 
 (leaf dashboard
   :ensure t
