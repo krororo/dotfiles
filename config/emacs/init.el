@@ -484,13 +484,24 @@ properly disable mozc-mode."
   (consult-customize consult-line :keymap my-consult-line-map))
 
 (leaf consult-ghq
+  :if (executable-find "ghq")
   :ensure t
-  :config
+  :transient
+  (my-consult-ghq-transient
+   ()
+   "Transient for consult-ghq"
+   [["Actions"
+     ("f" "Find repo" consult-ghq-find)
+     ("g" "Grep repo" consult-ghq-grep)
+     ("p" "Swith project repo" consult-ghq-switch-project)
+     ("m" "Magit status" my-consult-ghq-magit-status)]])
+  :init
   (defun my-consult-ghq-magit-status ()
     "Show magit status from ghq."
     (interactive)
     (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: ")))
-      (magit-status repo))))
+      (magit-status repo)))
+  (global-set-key (kbd "C-c C-]") 'my-consult-ghq-transient))
 
 (leaf orderless
   :ensure t
