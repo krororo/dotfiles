@@ -949,6 +949,8 @@ properly disable mozc-mode."
   :custom
   (copilot-indent-offset-warning-disable . t)
   (copilot-max-char . -1)
+  (copilot-server-log-level . 3)
+  (copilot-version . "1.272.0")
   :custom-face
   (copilot-overlay-face . '((t (:background "gray5")))))
 
