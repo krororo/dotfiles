@@ -939,7 +939,7 @@ properly disable mozc-mode."
 (leaf copilot
   :if (executable-find "node")
   :ensure t
-  :hook prog-mode-hook
+  :hook (prog-mode-hook yaml-mode-hook)
   ;; ref: https://github.com/copilot-emacs/copilot.el/issues/103
   :bind ((:copilot-completion-map
           ("C-c C-c" . copilot-accept-completion)
