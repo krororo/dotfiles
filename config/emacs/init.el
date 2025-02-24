@@ -954,8 +954,8 @@ properly disable mozc-mode."
   (copilot-overlay-face . '((t (:background "gray5")))))
 
 (leaf copilot-chat
-  :ensure t
   :if (eq system-type 'darwin)
+  :ensure t
   :custom
   (copilot-chat-prompt-explain . "/explain 日本語で説明してください。\n")
   :bind (("C-c c" . copilot-chat-transient)))
