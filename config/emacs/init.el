@@ -793,7 +793,9 @@ properly disable mozc-mode."
   :vc ( :url "https://github.com/uwabami/rdtool"
         :lisp-dir "utils")
   ;; for rurema
-  :mode "/refm/api/src/")
+  :mode "/refm/api/src/"
+  :config
+  (load "~/.config/emacs/elisp/rurema-mode.el"))
 
 (leaf css-mode
   :mode "\\.scss\\'"
