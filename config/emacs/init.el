@@ -634,6 +634,11 @@ properly disable mozc-mode."
            (eldoc-echo-area-use-multiline-p . nil)
            (eglot-ignored-server-capabilities . '(:documentOnTypeFormattingProvider))))
 
+(leaf open-junk-file
+  :ensure t
+  :custom
+  (open-junk-file-format . "/tmp/emacs-junk/%Y-%m-%d-%H%M%S."))
+
 (leaf sh-mode
   :custom
   (sh-basic-offset . 2)
