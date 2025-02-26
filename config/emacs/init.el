@@ -52,9 +52,7 @@
            (visible-bell . t)
            (ring-bell-function . 'ignore)
            (safe-local-variable-values . '((encoding . utf-8)))
-           (split-height-threshold . nil)
-           ;; see: https://github.com/copilot-emacs/copilot.el/pull/230
-           (warning-suppress-types . '((copilot))))
+           (split-height-threshold . nil))
   :custom-face
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
