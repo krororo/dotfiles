@@ -19,7 +19,7 @@ $ git config -f ~/.config/git/config.local user.email <email>
 
 ### emacs で xim を無効化
 
-ランチャーの設定で `env XMODIFIERS @im=none` を追加する。
+ランチャーの設定で `env XMODIFIERS=@im=none` を追加する。
 
 ### 背面ウィンドウのスクロールをできるようにする
 
