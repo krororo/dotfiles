@@ -208,10 +208,10 @@
   :hook (editorconfig-custom-hooks . my-editorconfig-disable-trim-whitespace-in-read-only-buffers)
   :global-minor-mode t)
 
-(leaf eaw
-  :vc (:url "https://github.com/hamano/locale-eaw")
-  :require t
-  :config (eaw-fullwidth))
+(leaf eaw-console
+  :vc ( :url "https://github.com/hamano/locale-eaw"
+        :lisp-dir "dist")
+  :require t)
 
 (leaf windmove
   :config
