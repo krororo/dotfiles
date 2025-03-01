@@ -12,6 +12,11 @@ execute 'Download keyring' do
   not_if "test -f #{keyring_path}"
 end
 
+execute "sudo apt update" do
+  subscribes :run, "file[/etc/apt/sources.list.d/docker.list]", :immediately
+  action :nothing
+end
+
 file '/etc/apt/sources.list.d/docker.list' do
   arch = run_command('dpkg --print-architecture').stdout.chomp
   lsb_release = run_command('lsb_release -cs').stdout.chomp
