@@ -15,5 +15,5 @@ include_recipe "../../cookbooks/nix"
 include_recipe '../../cookbooks/docker'
 include_recipe '../../cookbooks/xremap'
 
-package 'fcitx-mozc'
+package "fcitx5-mozc"
 package 'fonts-noto-color-emoji'
