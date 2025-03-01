@@ -3,6 +3,10 @@ if node[:platform] == 'darwin'
 else
   package 'fd-find'
 
+  directory "#{ENV['HOME']}/.local/bin" do
+    owner node[:user]
+  end
+
   link "#{ENV['HOME']}/.local/bin/fd" do
     to '/usr/bin/fdfind'
     user node[:user]
