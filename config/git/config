@@ -91,3 +91,6 @@
 	markIgnoredLines = true
 [branch]
 	autoSetupMerge = false
+	sort = -committerdate
+[column]
+	ui = auto
