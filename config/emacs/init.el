@@ -554,7 +554,9 @@ properly disable mozc-mode."
 (leaf embark
   :ensure t
   :custom (embark-help-key . "?")
-  :bind ("C-." . embark-act))
+  :bind
+  ("C-." . embark-act)
+  ("M-." . embark-dwim))
 
 (leaf embark-consult
   :ensure t
