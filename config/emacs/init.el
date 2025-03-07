@@ -941,6 +941,12 @@ properly disable mozc-mode."
   (quickrun-truncate-lines . nil)
   (quickrun-timeout-seconds . 30))
 
+(leaf ace-window
+  :ensure t
+  :bind ("M-o" . ace-window)
+  :custom
+  (aw-keys . '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
 (leaf copilot
   :if (executable-find "node")
   :ensure t
