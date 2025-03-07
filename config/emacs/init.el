@@ -11,9 +11,7 @@
                                     ("gnu" . 3)
                                     ("jcs-elpa" . 0))))
     (package-initialize)
-    (unless (package-installed-p 'leaf)
-      (package-refresh-contents)
-      (package-install 'leaf)))
+    (use-package leaf :ensure t))
 
   (leaf leaf-keywords
     :ensure t
