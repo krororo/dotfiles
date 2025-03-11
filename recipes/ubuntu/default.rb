@@ -8,8 +8,6 @@
   end
 end
 
-xdg_config 'gtk-3.0/gtk.css'
-
 include_recipe "../../cookbooks/nix"
 
 include_recipe '../../cookbooks/docker'
