@@ -167,7 +167,7 @@
 
 (leaf tab-bar
   :global-minor-mode t
-  :custom ((tab-bar-new-tab-choice . "*scratch*")))
+  :custom ((tab-bar-new-tab-choice . "*dashboard*")))
 
 (leaf tramp
   :defer-config
