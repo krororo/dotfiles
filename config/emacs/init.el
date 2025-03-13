@@ -965,9 +965,24 @@ properly disable mozc-mode."
 (leaf copilot-chat
   :if (eq system-type 'darwin)
   :ensure t
+  :preface
+  (defun my-advice-copilot-chat--prompts (orig-fun)
+    (let ((original-alist (funcall orig-fun)))
+      (mapcar (lambda (pair)
+                (cons (car pair)
+                      (concat (cdr pair) "Please respond in Japanese.")))
+              original-alist)))
+  :advice (:around copilot-chat--prompts my-advice-copilot-chat--prompts)
   :custom
-  (copilot-chat-prompt-explain . "/explain 日本語で説明してください。\n")
-  :bind (("C-c c" . copilot-chat-transient)))
+  (copilot-chat-frontend . 'markdown)
+  (copilot-chat-model . "claude-3.7-sonnet")
+  :bind (("C-c C-t" . copilot-chat-transient)
+         (:git-commit-mode-map
+          :package git-commit
+          ("C-c m" . copilot-chat-insert-commit-message))
+         (:embark-general-map
+          :package embark
+          ("T" . copilot-chat-transient))))
 
 (leaf dashboard
   :ensure t
