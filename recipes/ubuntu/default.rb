@@ -11,6 +11,7 @@ end
 include_recipe "../../cookbooks/nix"
 
 include_recipe '../../cookbooks/docker'
+include_recipe "../../cookbooks/firefox"
 include_recipe '../../cookbooks/xremap'
 
 package "fcitx5-mozc"
