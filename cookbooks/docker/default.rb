@@ -36,7 +36,7 @@ end
 
 cli_plugins_dir = "#{ENV['HOME']}/.docker/cli-plugins"
 directory cli_plugins_dir do
-  owner node[:user]
+  user node[:user]
 end
 
 execute 'Download docker-compose' do

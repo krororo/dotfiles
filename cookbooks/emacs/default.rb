@@ -17,5 +17,5 @@ link "#{ENV['HOME']}/.config/emacs" do
 end
 
 directory "#{ENV['HOME']}/.local/share/emacs" do
-  owner node[:user]
+  user node[:user]
 end

@@ -4,7 +4,7 @@ else
   package 'fd-find'
 
   directory "#{ENV['HOME']}/.local/bin" do
-    owner node[:user]
+    user node[:user]
   end
 
   link "#{ENV['HOME']}/.local/bin/fd" do

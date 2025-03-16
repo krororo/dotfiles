@@ -11,7 +11,7 @@ define :xdg_config do
   *d, f = params[:name].split('/')
   config_dir = File.join(ENV['HOME'], '.config', *d)
   directory config_dir do
-    owner node[:user]
+    user node[:user]
   end
   link File.join(config_dir, f) do
     to File.expand_path(File.join('../../config', *d, f), __FILE__)

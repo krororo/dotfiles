@@ -4,7 +4,7 @@
   "#{ENV['HOME']}/.config/systemd/user",
 ].each do |dir|
   directory dir do
-    owner node[:user]
+    user node[:user]
   end
 end
 
