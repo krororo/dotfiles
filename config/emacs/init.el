@@ -155,9 +155,9 @@
            (compilation-max-output-line-length . nil)))
 
 (leaf files
-  :custom ((auto-save-default . nil) ;; .#* とかのバックアップファイルを作らない
-           (make-backup-files . nil) ;; *.~ とかのバックアップファイルを作らない
-           ))
+  :custom ((auto-save-default . nil)  ;; .#* とかのバックアップファイルを作らない
+           (make-backup-files . nil)) ;; *.~ とかのバックアップファイルを作らない
+  :hook (after-save-hook . executable-make-buffer-file-executable-if-script-p))
 
 (leaf simple
   :global-minor-mode column-number-mode)
