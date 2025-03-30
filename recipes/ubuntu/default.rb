@@ -16,3 +16,5 @@ include_recipe '../../cookbooks/xremap'
 
 package "fcitx5-mozc"
 package 'fonts-noto-color-emoji'
+
+dotfile ".Xresources"
