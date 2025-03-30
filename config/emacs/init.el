@@ -573,7 +573,8 @@ properly disable mozc-mode."
   (anzu-deactivate-region . t)
   (anzu-search-threshold . 1000)
   :bind
-  ("C-c q" . 'anzu-query-replace-regexp)
+  ("M-%" . 'anzu-query-replace)
+  ("C-M-%" . 'anzu-query-replace-regexp)
   ("C-c Q" . 'anzu-query-replace-at-cursor-thing)
   :global-minor-mode global-anzu-mode)
 
