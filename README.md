@@ -46,6 +46,13 @@ nix profile install .#default
 LANG=C xdg-user-dirs-update --force
 ```
 
+### FirefoxでAltキーを無効化
+
+`about:config` にアクセスして `ui.key.menu` で検索。以下の値に変更する。
+
+- `ui.key.menuAccessKey` : 0
+- `ui.key.menuAccessKeyFocuses` : false
+
 ## Mac
 
 ### `¥` を `\` に変更する
