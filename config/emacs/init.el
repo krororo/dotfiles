@@ -366,9 +366,10 @@ properly disable mozc-mode."
   :custom
   (default-input-method . "japanese-mozc"))
 
+;; NOTE: incompatible mozc_emacs_helper
+;;   https://github.com/google/mozc/discussions/1158
 (leaf mozc-cand-posframe
   :ensure t
-  :after mozc
   :require t
   :custom-face
   (mozc-cand-posframe-normal-face . '((t (:background "#333333" :foreground "#dcd4be"))))
