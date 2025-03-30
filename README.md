@@ -38,6 +38,14 @@ $ git config -f ~/.config/git/config.local user.email <email>
 nix profile install .#default
 ```
 
+### ホームのディレクトリ名を英語化
+
+以下のコマンドを実行。中身の移動やディレクトリの削除はされないので手動で対応する。
+
+```shell-session
+LANG=C xdg-user-dirs-update --force
+```
+
 ## Mac
 
 ### `¥` を `\` に変更する
