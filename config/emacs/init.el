@@ -342,7 +342,6 @@
 
 (leaf mozc
   :if (executable-find "mozc_emacs_helper")
-  :ensure t
   :require t
   :preface
   (defun my-mozc-handle-event (event)
@@ -364,18 +363,17 @@ properly disable mozc-mode."
   :advice
   (:before-until mozc-handle-event my-mozc-handle-event)
   :custom
-  (default-input-method . "japanese-mozc"))
+  (default-input-method . "japanese-mozc")
 
-;; NOTE: incompatible mozc_emacs_helper
-;;   https://github.com/google/mozc/discussions/1158
-(leaf mozc-cand-posframe
-  :ensure t
-  :require t
-  :custom-face
-  (mozc-cand-posframe-normal-face . '((t (:background "#333333" :foreground "#dcd4be"))))
-  (mozc-cand-posframe-footer-face . '((t (:foreground "#ededed"))))
-  :custom
-  (mozc-candidate-style . 'posframe))
+  :config
+  (leaf mozc-cand-posframe
+    :ensure t
+    :require t
+    :custom-face
+    (mozc-cand-posframe-normal-face . '((t (:background "#333333" :foreground "#dcd4be"))))
+    (mozc-cand-posframe-footer-face . '((t (:foreground "#ededed"))))
+    :custom
+    (mozc-candidate-style . 'posframe)))
 
 (leaf recentf
   :preface

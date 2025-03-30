@@ -7,7 +7,7 @@ if node[:platform] == 'darwin'
   package 'emacs-mac'
 else
   package 'emacs'
-  package 'emacs-mozc-bin'
+  package "emacs-mozc"
 end
 
 link "#{ENV['HOME']}/.config/emacs" do
