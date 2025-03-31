@@ -80,11 +80,11 @@
   :if (eq system-type 'darwin)
   :custom
   (default-frame-alist . '((width . 200) (height . 70)))
+  (mac-command-modifier . 'meta)
+  (mac-option-modifier . 'option)
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
-  :bind ("C-M-¥" . indent-region)
-  :init
-  (mac-auto-ascii-mode 1))
+  :bind ("C-M-¥" . indent-region))
 
 (leaf *keep-scratch-buffer
   :doc "don't remove *scratch* buffer"

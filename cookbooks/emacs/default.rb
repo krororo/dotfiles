@@ -1,10 +1,17 @@
 if node[:platform] == 'darwin'
-  execute "Tap repository: emacsmacport" do
-    name = 'railwaycat/emacsmacport'
-    command "brew tap #{name}"
-    not_if "brew tap | grep '^#{name}$'"
+  execute "brew tap d12frosted/emacs-plus" do
+    not_if "brew tap | grep -x d12frosted/emacs-plus"
   end
-  package 'emacs-mac'
+  execute "brew install emacs-plus --with-xwidgets --with-imagemagick --with-modern-pen-icon" do
+    # Optimized `brew list` command
+    # ref. https://github.com/mizzy/specinfra/blob/v2.92.0/lib/specinfra/command/darwin/base/package.rb#L46
+    not_if "ls -1 $(brew --prefix)/Cellar/ | grep ^emacs-plus"
+  end
+
+  link "/Applications/Emacs.app" do
+    to "/opt/homebrew/opt/emacs-plus/Emacs.app"
+    force true
+  end
 else
   package 'emacs'
   package "emacs-mozc"
