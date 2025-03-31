@@ -481,6 +481,7 @@ properly disable mozc-mode."
 (leaf consult-ghq
   :if (executable-find "ghq")
   :ensure t
+  :after transient
   :transient
   (my-consult-ghq-transient
    ()
