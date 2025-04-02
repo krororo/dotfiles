@@ -16,6 +16,10 @@ writeToProfile(
   [
     rule('My Emacs key binding')
       .manipulators([
+        map('f', 'control').to('right_arrow')
+          .condition(ifApp(targetApps)),
+        map('b', 'control').to('left_arrow')
+          .condition(ifApp(targetApps)),
         map('p', 'control').to('up_arrow')
           .condition(ifApp(targetApps)),
         map('n', 'control').to('down_arrow')
