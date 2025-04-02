@@ -63,7 +63,6 @@
   (set-language-environment 'utf-8)
 
   (if window-system (menu-bar-mode 1) (menu-bar-mode -1))
-  (tool-bar-mode -1)
   (set-scroll-bar-mode nil)
 
   (put 'downcase-region 'disabled nil)
