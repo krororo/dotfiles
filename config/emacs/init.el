@@ -72,8 +72,7 @@
   :unless (eq system-type 'darwin)
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 120 :foundry "PfEd" :family "HackGen"))))
-  :config
-  (set-frame-parameter nil 'fullscreen 'maximized))
+  :hook (window-setup-hook . toggle-frame-maximized))
 
 (leaf *mac-settings
   :if (eq system-type 'darwin)
