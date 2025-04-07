@@ -5,6 +5,7 @@ package "fzf"
 package "ghq"
 package 'grep'
 package 'noborus/tap/ov'
+package "uv"
 package 'watch'
 
 cask "1password-cli"
