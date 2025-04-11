@@ -964,17 +964,12 @@ properly disable mozc-mode."
 (leaf copilot-chat
   :if (eq system-type 'darwin)
   :ensure t
-  :preface
-  (defun my-advice-copilot-chat--prompts (orig-fun)
-    (let ((original-alist (funcall orig-fun)))
-      (mapcar (lambda (pair)
-                (cons (car pair)
-                      (concat (cdr pair) "Please respond in Japanese.")))
-              original-alist)))
-  :advice (:around copilot-chat--prompts my-advice-copilot-chat--prompts)
   :custom
   (copilot-chat-frontend . 'markdown)
-  (copilot-chat-model . "claude-3.7-sonnet")
+  (copilot-chat-default-model . "claude-3.7-sonnet")
+  (copilot-chat-markdown-prompt
+   . "I'll behave like a familiar, friendly gal, and won't use polite language.
+Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :bind (("C-c C-t" . copilot-chat-transient)
          (:git-commit-mode-map
           :package git-commit
