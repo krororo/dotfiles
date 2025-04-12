@@ -55,6 +55,7 @@
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
+  (trailing-whitespace . '((t (:background "indian red"))))
   :setq-default
   (indent-tabs-mode . nil)
   :config
