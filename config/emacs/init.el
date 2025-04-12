@@ -52,6 +52,7 @@
            (safe-local-variable-values . '((encoding . utf-8)))
            (split-height-threshold . nil))
   :custom-face
+  (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
   (font-lock-keyword-face . '((t (:foreground "magenta"))))
   :setq-default
@@ -70,8 +71,6 @@
 
 (leaf *linux-settings
   :unless (eq system-type 'darwin)
-  :custom-face
-  (default . '((t (:background "#003300" :foreground "white" :height 120 :foundry "PfEd" :family "HackGen"))))
   :hook (window-setup-hook . toggle-frame-maximized))
 
 (leaf *mac-settings
@@ -80,8 +79,6 @@
   (default-frame-alist . '((width . 200) (height . 70)))
   (mac-command-modifier . 'meta)
   (mac-option-modifier . 'option)
-  :custom-face
-  (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   :bind ("C-M-¥" . indent-region))
 
 (leaf *keep-scratch-buffer
