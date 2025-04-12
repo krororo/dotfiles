@@ -984,3 +984,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
                        (projects  . 5)))
   :config
   (dashboard-setup-startup-hook))
+
+(leaf request
+  :custom
+  `(request-storage-directory . ,(file-name-concat my-emacs-cache-home "request")))
