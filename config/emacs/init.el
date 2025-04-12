@@ -696,14 +696,41 @@ properly disable mozc-mode."
 
 (leaf markdown-mode
   :ensure t
+  :after transient
   :mode ("\\.md\\'" . gfm-mode)
   :bind (:markdown-mode-map
-         ("<S-tab>" . markdown-shifttab))
-  :custom ((markdown-fontify-code-blocks-natively . t)
+         ("<S-tab>" . markdown-shifttab)
+         ("C-c ." . my-markdown-mode-transient))
+  :custom ((markdown-asymmetric-header . t)
+           (markdown-fontify-code-blocks-natively . t)
            (markdown-gfm-use-electric-backquote . nil)
            (markdown-indent-on-enter . 'indent-and-new-item))
   :custom-face
   (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
+  :transient
+  (my-markdown-mode-transient
+   ()
+   "Transient for markdown-mode"
+   [["Styles"
+     ("b" "Bold" markdown-insert-bold)
+     ("i" "Italic" markdown-insert-italic)
+     ("c" "Code" markdown-insert-code)
+     ("s" "Strikethrough" markdown-insert-strike-through)
+     ("q" "Blockquotes" markdown-insert-blockquote)
+     ("B" "GFM Code Block" markdown-insert-gfm-code-block)]
+    ["Heading"
+     ("1" "Header1" markdown-insert-header-atx-1)
+     ("2" "Header2" markdown-insert-header-atx-2)
+     ("3" "Header3" markdown-insert-header-atx-3)]
+    ["Link & Image"
+     ("l" "Link" markdown-insert-link)
+     ("p" "Image" markdown-insert-image)]
+    ["List"
+     ("m" "Insert List item" markdown-insert-list-item)
+     ("t" "GFM checkbox" markdown-insert-gfm-checkbox)]
+    ["Preview & Export"
+     ("P" "Preview" markdown-preview)
+     ("r" "Live Export" markdown-live-preview-mode)]])
   :defer-config
   (define-key markdown-mode-map (kbd "C-c C-r") 'mermaid-compile-region))
 
