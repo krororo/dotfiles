@@ -4,7 +4,6 @@ package 'findutils'
 package "fzf"
 package "ghq"
 package 'grep'
-package "htop"
 package 'noborus/tap/ov'
 package "uv"
 package 'watch'

@@ -8,6 +8,7 @@ xdg_config 'lsd/config.yaml'
 xdg_config 'ov/config.yaml'
 xdg_config "solargraph/config.yml"
 
+package "htop"
 package 'lsd'
 package 'jq'
 
