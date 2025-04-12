@@ -960,7 +960,6 @@ properly disable mozc-mode."
   (copilot-overlay-face . '((t (:background "gray5")))))
 
 (leaf copilot-chat
-  :if (eq system-type 'darwin)
   :ensure t
   :custom
   (copilot-chat-frontend . 'markdown)
