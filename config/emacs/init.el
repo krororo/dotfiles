@@ -969,6 +969,10 @@ properly disable mozc-mode."
   :custom
   (aw-keys . '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
+(leaf auth-source
+  :custom
+  `(auth-sources . '(,(file-name-concat my-emacs-data-home ".authinfo.gpg"))))
+
 (leaf copilot
   :if (executable-find "node")
   :ensure t
