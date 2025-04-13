@@ -1033,3 +1033,7 @@ Please respond in Japanese.")
 (leaf request
   :custom
   `(request-storage-directory . ,(file-name-concat my-emacs-cache-home "request")))
+
+(let ((local-init (file-name-concat user-emacs-directory "init_local.el")))
+  (if (file-exists-p local-init)
+      (load-file local-init)))
