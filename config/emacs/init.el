@@ -1015,6 +1015,21 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :config
   (dashboard-setup-startup-hook))
 
+(leaf gptel
+  :bind
+  ("C-c g m" . gptel-menu)
+  (:embark-general-map
+   :package embark
+   ("G" . gptel-menu))
+  :config
+  (setopt gptel-model 'claude-3.7-sonnet
+          gptel-backend (gptel-make-gh-copilot "Copilot"))
+  (setf (alist-get 'default gptel-directives)
+        "You are a large language model living in Emacs and a helpful assistant. Respond concisely.
+Please respond in Japanese.")
+  (setf (alist-get 'markdown-mode gptel-response-prefix-alist)
+        "**--- Chat Output ---**\n"))
+
 (leaf request
   :custom
   `(request-storage-directory . ,(file-name-concat my-emacs-cache-home "request")))
