@@ -973,6 +973,14 @@ properly disable mozc-mode."
   :custom
   `(auth-sources . '(,(file-name-concat my-emacs-data-home ".authinfo.gpg"))))
 
+(leaf auth-source-1password
+  :if (executable-find "op")
+  :ensure t
+  :custom
+  (auth-source-1password-vault . "Employee")
+  :config
+  (auth-source-1password-enable))
+
 (leaf copilot
   :if (executable-find "node")
   :ensure t
