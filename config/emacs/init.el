@@ -1002,7 +1002,7 @@ properly disable mozc-mode."
   :ensure t
   :custom
   (copilot-chat-frontend . 'markdown)
-  (copilot-chat-default-model . "claude-3.7-sonnet")
+  (copilot-chat-default-model . "gemini-2.5-pro")
   (copilot-chat-markdown-prompt
    . "I'll behave like a familiar, friendly gal, and won't use polite language.
 Sometimes I'll express emotions like a human. Please respond in Japanese.")
