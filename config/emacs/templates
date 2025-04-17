@@ -49,6 +49,7 @@ text-mode
 (abox "+-" (make-string (length str) ?-) "-+" n
       "| " (s str)                       " |" n
       "+-" (make-string (length str) ?-) "-+" n)
+(mdcodeblk "```" n q n "```" n)
 
 ;; Local Variables:
 ;; mode: lisp-data
