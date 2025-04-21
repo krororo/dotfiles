@@ -1024,19 +1024,85 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   (dashboard-setup-startup-hook))
 
 (leaf gptel
+  :ensure t
   :bind
   ("C-c g m" . gptel-menu)
+  ("C-c g t" . gptel-tools)
+  (:gptel-mode-map
+   ("C-c C-c" . gptel-send))
   (:embark-general-map
    :package embark
    ("G" . gptel-menu))
+  :custom
+  (gptel-model . 'gemini-2.5-pro)
+  (gptel-confirm-tool-calls . t)
+  `(gptel-gh-github-token-file . ,(file-name-concat my-emacs-cache-home "gptel/copilot-chat/github-token"))
+  `(gptel-gh-token-file . ,(file-name-concat my-emacs-cache-home "gptel/copilot-chat/token"))
+  (gptel-directives
+   . '((default     . "You are a large language model living in Emacs and a helpful assistant. Respond concisely. Please respond in Japanese.")
+       (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note. Please respond in Japanese.")
+       (writing     . "You are a large language model and a writing assistant. Respond concisely. Please respond in Japanese.")
+       (chat        . "You are a large language model and a conversation partner. Respond concisely. Please respond in Japanese.")))
+  (gptel-prompt-prefix-alist . '((markdown-mode . "**Prompt**\n")
+                                 (text-mode . "**Prompt**\n")))
+  (gptel-response-prefix-alist . '((markdown-mode . "**Response**\n")
+                                   (text-mode . "**Response**\n")))
+  :hook
+  (gptel-post-response-functions . gptel-end-of-response)
   :config
-  (setopt gptel-model 'claude-3.7-sonnet
-          gptel-backend (gptel-make-gh-copilot "Copilot"))
-  (setf (alist-get 'default gptel-directives)
-        "You are a large language model living in Emacs and a helpful assistant. Respond concisely.
-Please respond in Japanese.")
-  (setf (alist-get 'markdown-mode gptel-response-prefix-alist)
-        "**--- Chat Output ---**\n"))
+  (setopt gptel-backend (gptel-make-gh-copilot "Copilot"))
+
+  (leaf mcp-hub
+    :vc (:url "https://github.com/lizqwerscott/mcp.el")
+    :preface
+    (defun gptel-mcp-register-tool ()
+      (interactive)
+      (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
+        (mapcar #'(lambda (tool)
+                    (apply #'gptel-make-tool
+                           tool))
+                tools)))
+    (defun gptel-mcp-use-tool ()
+      (interactive)
+      (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
+        (mapcar #'(lambda (tool)
+                    (let ((path (list (plist-get tool :category)
+                                      (plist-get tool :name))))
+                      (push (gptel-get-tool path)
+                            gptel-tools)))
+                tools)))
+    (defun gptel-mcp-close-use-tool ()
+      (interactive)
+      (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
+        (mapcar #'(lambda (tool)
+                    (let ((path (list (plist-get tool :category)
+                                      (plist-get tool :name))))
+                      (setq gptel-tools
+                            (cl-remove-if #'(lambda (tool)
+                                              (equal path
+                                                     (list (gptel-tool-category tool)
+                                                           (gptel-tool-name tool))))
+                                          gptel-tools))))
+                tools)))
+    :bind
+    (:mcp-hub-mode-map
+     ("?" . my-mcp-hub-tmenu))
+    :transient
+    (my-mcp-hub-tmenu
+     ()
+     "MCP Hub Control"
+     [["Server Management"
+       ("l" "View log" mcp-hub-view-log)
+       ("s" "Start Server" mcp-hub-start-server)
+       ("k" "Close Server" mcp-hub-close-server)
+       ("r" "Restart Server" mcp-hub-restart-server)]
+      ["All Server Management"
+       ("S" "Start All Servers" mcp-hub-start-all-server)
+       ("K" "Close All Servers" mcp-hub-close-all-server)
+       ("R" "Restart All Servers" mcp-hub-restart-all-server)]])
+    :defer-config
+    (setq mcp-hub-servers
+          '(("filesystem" . (:command "npx" :args ("-y" "@modelcontextprotocol/server-filesystem" "~/ghq")))))))
 
 (leaf request
   :custom
