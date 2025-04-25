@@ -1,7 +1,5 @@
 if node[:platform] == 'darwin'
-  execute "brew tap d12frosted/emacs-plus" do
-    not_if "brew tap | grep -x d12frosted/emacs-plus"
-  end
+  brew_tap "d12frosted/emacs-plus"
   execute "brew install emacs-plus --with-xwidgets --with-imagemagick --with-modern-pen-icon" do
     # Optimized `brew list` command
     # ref. https://github.com/mizzy/specinfra/blob/v2.92.0/lib/specinfra/command/darwin/base/package.rb#L46

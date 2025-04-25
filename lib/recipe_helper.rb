@@ -53,3 +53,9 @@ define :cask do
     not_if "ls -1 $(brew --prefix)/Caskroom | grep '#{params[:name]}$'"
   end
 end
+
+define :brew_tap do
+  execute "brew tap #{params[:name]}" do
+    not_if "brew tap | grep -ix #{params[:name]}"
+  end
+end
