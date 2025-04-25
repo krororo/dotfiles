@@ -2,6 +2,7 @@
 bindkey -e
 EDITOR=vim
 zstyle ':completion:*' use-cache true
+autoload -Uz add-zsh-hook
 
 # Complete
 if type brew &>/dev/null; then
@@ -52,9 +53,11 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Title
 case "${TERM}" in
 kterm*|xterm*|rxvt*)
-    precmd () {
-        print -Pn "\e]0;%m:%~\a"
-    };;
+  set_title () {
+    print -Pn "\e]0;%m:%~\a"
+  }
+  add-zsh-hook precmd set_title
+  ;;
 esac
 
 # Prompt
@@ -67,9 +70,15 @@ fi
 setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
 PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
-$ "
+%{$fg[green]%}$%{$reset_color%} "
 RPROMPT=''
 SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%f%b "
+
+prompt_precmd() {
+  PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
+%{%(?.$fg[green].$fg[red])%}$%{$reset_color%} "
+}
+add-zsh-hook precmd prompt_precmd
 
 # Alias
 alias ls="ls --color"
