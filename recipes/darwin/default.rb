@@ -20,3 +20,5 @@ cask "meetingbar"
 cask 'raycast'
 
 xdg_config "karabiner/karabiner.json"
+
+include_recipe "../../cookbooks/borders"
