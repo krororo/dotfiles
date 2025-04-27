@@ -1,6 +1,8 @@
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
+(add-to-list 'load-path (file-name-concat user-emacs-directory "lisp"))
+
 (prog1 "leaf"
   (prog1 "install leaf"
     (custom-set-variables
@@ -816,11 +818,8 @@ properly disable mozc-mode."
 
 (leaf rubocop :ensure t)
 
-(leaf rd-mode
-  :vc ( :url "https://github.com/uwabami/rdtool"
-        :lisp-dir "utils")
-  ;; for rurema
-  :mode "/refm/api/src/")
+(leaf rurema-mode
+  :mode "\\.rd\\'" "/refm/api/src/[^.]+\\'")
 
 (leaf css-mode
   :mode "\\.scss\\'"
