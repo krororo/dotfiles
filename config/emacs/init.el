@@ -740,38 +740,26 @@ properly disable mozc-mode."
   :preface
   (defun my-ruby-smie-rules (kind token)
     (pcase (cons kind token)
-      ('(:before . ".")
-       (cond
-        ((smie-rule-sibling-p)
-         (smie-backward-sexp ".")
-         (forward-char -1)
-         (if (ruby-smie--bosp)
-             0
-           (smie-backward-sexp ";")
-           (cons 'column (+ (current-column) ruby-indent-level))))
-        ((not (smie-rule-parent-p ";"))
-         (smie-rule-parent ruby-indent-level))))
-      ;; expect(...).to eq [] のインデント対応
-      (`(:before . ,(or "[" "("))
-       (cond
-        ((and (smie-rule-hanging-p)
-              (smie-rule-parent-p " @ "))
-         (smie-backward-sexp ";")
-         (cons 'column (current-column)))))
-      ('(:after . "(")
+      (`(:before . ,(or "(" "[" "{"))
        (cond
         ;; foo([...]) and bar({...})
-        ((smie-rule-next-p "[" "{")
-         (save-excursion
-           (beginning-of-line)
-           (skip-chars-forward " \t")
-           (cons 'column (current-column))))))))
+        ;; TODO: Not needed after 30.1
+        ((smie-rule-prev-p "," "(" "[")
+         (cons 'column (current-indentation)))
+        ;; expect(...).to eq [
+        ;;   ...
+        ;; ]
+        ((and (smie-rule-hanging-p)
+              (smie-rule-parent-p " @ "))
+         (cons 'column (current-indentation)))))))
   :advice
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
-  :custom ((ruby-insert-encoding-magic-comment . nil)
-           (ruby-method-params-indent . nil)
-           (ruby-block-indent . nil))
+  :custom ((ruby-block-indent . nil)
+           (ruby-bracketed-args-indent . nil) ;; 30.1 later
+           (ruby-insert-encoding-magic-comment . nil)
+           (ruby-method-call-indent . nil)
+           (ruby-method-params-indent . nil))
   :hook
   (ruby-mode-hook
    . (lambda ()
