@@ -425,24 +425,24 @@ properly disable mozc-mode."
   :hook (ediff-keymap-setup-hook . my-add-d-to-ediff-mode-map)
   :custom ((ediff-window-setup-function . 'ediff-setup-windows-plain)))
 
-(leaf *dired
-  :preface
-  (defun dired-my-append-buffer-name-hint ()
-    "dired バッファに [dir] 追加"
-    (when (eq major-mode 'dired-mode)
-      (rename-buffer (concat (buffer-name) " [dir]") t)))
-  :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
+(leaf dired
+  :bind (:dired-mode-map
+         ("a" . dired-find-file)
+         ("RET" . my-dired-open-in-accordance-with-situation))
+  :hook (dired-mode-hook . my-dired-append-buffer-name-hint)
   :config
   (put 'dired-find-alternate-file 'disabled nil)
 
-  (defun dired-open-in-accordance-with-situation ()
+  (defun my-dired-append-buffer-name-hint ()
+    "dired バッファに [dir] 追加"
+    (when (eq major-mode 'dired-mode)
+      (rename-buffer (concat (buffer-name) " [dir]") t)))
+  (defun my-dired-open-in-accordance-with-situation ()
     (interactive)
     (let ((file (dired-get-filename)))
       (if (file-directory-p file)
           (dired-find-alternate-file)
-        (dired-find-file))))
-  (define-key dired-mode-map "a" 'dired-find-file)
-  (define-key dired-mode-map (kbd "RET") 'dired-open-in-accordance-with-situation))
+        (dired-find-file)))))
 
 (leaf vertico
   :ensure t
