@@ -1028,59 +1028,59 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :hook
   (gptel-post-response-functions . gptel-end-of-response)
   :config
-  (setopt gptel-backend (gptel-make-gh-copilot "Copilot"))
+  (setopt gptel-backend (gptel-make-gh-copilot "Copilot")))
 
-  (leaf mcp-hub
-    :vc (:url "https://github.com/lizqwerscott/mcp.el")
-    :preface
-    (defun gptel-mcp-register-tool ()
-      (interactive)
-      (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
-        (mapcar #'(lambda (tool)
-                    (apply #'gptel-make-tool
-                           tool))
-                tools)))
-    (defun gptel-mcp-use-tool ()
-      (interactive)
-      (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
-        (mapcar #'(lambda (tool)
-                    (let ((path (list (plist-get tool :category)
-                                      (plist-get tool :name))))
-                      (push (gptel-get-tool path)
-                            gptel-tools)))
-                tools)))
-    (defun gptel-mcp-close-use-tool ()
-      (interactive)
-      (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
-        (mapcar #'(lambda (tool)
-                    (let ((path (list (plist-get tool :category)
-                                      (plist-get tool :name))))
-                      (setq gptel-tools
-                            (cl-remove-if #'(lambda (tool)
-                                              (equal path
-                                                     (list (gptel-tool-category tool)
-                                                           (gptel-tool-name tool))))
-                                          gptel-tools))))
-                tools)))
-    :bind
-    (:mcp-hub-mode-map
-     ("?" . my-mcp-hub-tmenu))
-    :transient
-    (my-mcp-hub-tmenu
-     ()
-     "MCP Hub Control"
-     [["Server Management"
-       ("l" "View log" mcp-hub-view-log)
-       ("s" "Start Server" mcp-hub-start-server)
-       ("k" "Close Server" mcp-hub-close-server)
-       ("r" "Restart Server" mcp-hub-restart-server)]
-      ["All Server Management"
-       ("S" "Start All Servers" mcp-hub-start-all-server)
-       ("K" "Close All Servers" mcp-hub-close-all-server)
-       ("R" "Restart All Servers" mcp-hub-restart-all-server)]])
-    :defer-config
-    (setq mcp-hub-servers
-          '(("filesystem" . (:command "npx" :args ("-y" "@modelcontextprotocol/server-filesystem" "~/ghq")))))))
+(leaf mcp-hub
+  :vc (:url "https://github.com/lizqwerscott/mcp.el")
+  :preface
+  (defun gptel-mcp-register-tool ()
+    (interactive)
+    (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
+      (mapcar #'(lambda (tool)
+                  (apply #'gptel-make-tool
+                         tool))
+              tools)))
+  (defun gptel-mcp-use-tool ()
+    (interactive)
+    (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
+      (mapcar #'(lambda (tool)
+                  (let ((path (list (plist-get tool :category)
+                                    (plist-get tool :name))))
+                    (push (gptel-get-tool path)
+                          gptel-tools)))
+              tools)))
+  (defun gptel-mcp-close-use-tool ()
+    (interactive)
+    (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
+      (mapcar #'(lambda (tool)
+                  (let ((path (list (plist-get tool :category)
+                                    (plist-get tool :name))))
+                    (setq gptel-tools
+                          (cl-remove-if #'(lambda (tool)
+                                            (equal path
+                                                   (list (gptel-tool-category tool)
+                                                         (gptel-tool-name tool))))
+                                        gptel-tools))))
+              tools)))
+  :bind
+  (:mcp-hub-mode-map
+   ("?" . my-mcp-hub-tmenu))
+  :transient
+  (my-mcp-hub-tmenu
+   ()
+   "MCP Hub Control"
+   [["Server Management"
+     ("l" "View log" mcp-hub-view-log)
+     ("s" "Start Server" mcp-hub-start-server)
+     ("k" "Close Server" mcp-hub-close-server)
+     ("r" "Restart Server" mcp-hub-restart-server)]
+    ["All Server Management"
+     ("S" "Start All Servers" mcp-hub-start-all-server)
+     ("K" "Close All Servers" mcp-hub-close-all-server)
+     ("R" "Restart All Servers" mcp-hub-restart-all-server)]])
+  :defer-config
+  (setq mcp-hub-servers
+        '(("filesystem" . (:command "npx" :args ("-y" "@modelcontextprotocol/server-filesystem" "~/ghq"))))))
 
 (leaf request
   :custom
