@@ -795,7 +795,15 @@ properly disable mozc-mode."
            (rspec-use-rake-when-possible . nil)
            (rspec-use-spring-when-possible . nil)))
 
-(leaf rubocop :ensure t)
+(leaf rubocop
+  :ensure t
+  :commands my-rubocop-check-project-with-options
+  :config
+  (defun my-rubocop-check-project-with-options (options)
+    "Run check on current project with OPTIONS."
+    (interactive "sOptions: ")
+    (let ((command (concat rubocop-check-command " " options)))
+      (rubocop--dir-command command (rubocop-project-root)))))
 
 (leaf rurema-mode
   :mode "\\.rd\\'" "/refm/api/src/[^.]+\\'")
