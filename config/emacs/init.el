@@ -148,6 +148,9 @@
                 (kill-new file-name))))
         (error "Buffer not visiting a file")))))
 
+(leaf project
+  :custom `(project-list-file . ,(expand-file-name "projects" my-emacs-data-home)))
+
 (leaf compile
   :custom ((compilation-scroll-output . t)
            (compilation-max-output-line-length . nil)))
@@ -550,9 +553,6 @@ properly disable mozc-mode."
   :after consult embark
   :require t
   :hook (embark-collect-mode-hook . consult-preview-at-point-mode))
-
-(leaf project
-  :custom `(project-list-file . ,(expand-file-name "projects" my-emacs-data-home)))
 
 (leaf anzu
   :ensure t
