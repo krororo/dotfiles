@@ -733,10 +733,6 @@ properly disable mozc-mode."
     (pcase (cons kind token)
       (`(:before . ,(or "(" "[" "{"))
        (cond
-        ;; foo([...]) and bar({...})
-        ;; TODO: Not needed after 30.1
-        ((smie-rule-prev-p "," "(" "[")
-         (cons 'column (current-indentation)))
         ;; expect(...).to eq [
         ;;   ...
         ;; ]
@@ -747,7 +743,7 @@ properly disable mozc-mode."
   (:before-until ruby-smie-rules my-ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
   :custom ((ruby-block-indent . nil)
-           (ruby-bracketed-args-indent . nil) ;; 30.1 later
+           (ruby-bracketed-args-indent . nil)
            (ruby-insert-encoding-magic-comment . nil)
            (ruby-method-call-indent . nil)
            (ruby-method-params-indent . nil))
