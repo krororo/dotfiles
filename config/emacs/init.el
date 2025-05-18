@@ -878,7 +878,59 @@ properly disable mozc-mode."
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
   (magit-item-highlight . '((t (:background "gray5"))))
-  :hook (git-commit-mode-hook . display-fill-column-indicator-mode))
+  :hook (git-commit-mode-hook . display-fill-column-indicator-mode)
+  :config
+  (with-eval-after-load 'magit-branch
+    (defun my-magit-gh-pr-checkout (pr-number detach)
+      (let* ((args (append '("pr" "checkout")
+                           (when detach '("--detach"))
+                           (list (number-to-string pr-number))))
+             (cmd (string-join (cons "gh" args) " ")))
+        (message "Executing: %s" cmd)
+        (apply #'call-process "gh" nil nil nil args)
+        (magit-refresh)))
+
+    (defun my-magit-gh-pr-completion-read (prompt)
+      (if-let*
+          ((candidates
+            (let ((command
+                   (concat "gh api -X GET 'repos/{owner}/{repo}/pulls' "
+                           "--paginate -F sort=created -F direction=desc "
+                           "--jq '[.[] | {number: .number, title: .title}]'")))
+              (condition-case err
+                  (let* ((json-string (shell-command-to-string command))
+                         (pr-data (if (string-empty-p json-string)
+                                      nil
+                                    (json-parse-string
+                                     json-string :object-type 'alist))))
+                    (if pr-data
+                        (mapcar (lambda (pr-item)
+                                  (cons (format "%s: %s"
+                                                (alist-get 'number pr-item)
+                                                (alist-get 'title pr-item))
+                                        (alist-get 'number pr-item)))
+                                pr-data)
+                      (error "Pull request not found.")))
+                (error (error-message-string err)))))
+           (selected (completing-read prompt candidates)))
+          (cdr (assoc selected candidates))
+        (message "No pull requests found or error fetching them.")
+        nil))
+
+    (defun my-magit-gh-pr-checkout-detach ()
+      (interactive)
+      (if-let* ((pr (my-magit-gh-pr-completion-read "GitHub PR number (detach): ")))
+        (my-magit-gh-pr-checkout pr t)))
+
+    (defun my-magit-gh-pr-checkout-normal ()
+      (interactive)
+      (if-let* ((pr (my-magit-gh-pr-completion-read "GitHub PR number (branch): ")))
+        (my-magit-gh-pr-checkout pr nil)))
+
+    (transient-append-suffix 'magit-branch "c"
+      '("p" "Checkout PR (detach)" my-magit-gh-pr-checkout-detach))
+    (transient-append-suffix 'magit-branch "c"
+      '("P" "Checkout PR (branch)" my-magit-gh-pr-checkout-normal))))
 
 (leaf xterm-color
   :ensure t
