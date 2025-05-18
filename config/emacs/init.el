@@ -1109,7 +1109,17 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
      ("R" "Restart All Servers" mcp-hub-restart-all-server)]])
   :config
   (setq mcp-hub-servers
-        '(("filesystem" . (:command "npx" :args ("-y" "@modelcontextprotocol/server-filesystem" "~/ghq")))))
+        `(("filesystem" . ( :command "npx"
+                            :args ("-y"
+                                   "@modelcontextprotocol/server-filesystem"
+                                   "~/ghq")))
+          ("github" . ( :command "docker"
+                        :args ("run" "-i" "--rm"
+                               "-e" "GITHUB_PERSONAL_ACCESS_TOKEN"
+                               "ghcr.io/github/github-mcp-server:0.3.0")
+                        :env (:GITHUB_PERSONAL_ACCESS_TOKEN
+                              ,(auth-source-pick-first-password
+                                :host "github-api" :user "token"))))))
 
   (defun gptel-mcp-register-tool ()
     (interactive)
