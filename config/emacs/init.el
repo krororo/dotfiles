@@ -343,7 +343,9 @@
 
 (leaf mozc
   :if (executable-find "mozc_emacs_helper")
-  :require t
+  :init
+  (leaf popup :ensure t)
+  :require mozc-popup
   :preface
   (defun my-mozc-handle-event (event)
     "Intercept keys muhenkan and zenkaku-hankaku, before passing keys
@@ -365,16 +367,7 @@ properly disable mozc-mode."
   (:before-until mozc-handle-event my-mozc-handle-event)
   :custom
   (default-input-method . "japanese-mozc")
-
-  :config
-  (leaf mozc-cand-posframe
-    :ensure t
-    :require t
-    :custom-face
-    (mozc-cand-posframe-normal-face . '((t (:background "#333333" :foreground "#dcd4be"))))
-    (mozc-cand-posframe-footer-face . '((t (:foreground "#ededed"))))
-    :custom
-    (mozc-candidate-style . 'posframe)))
+  (mozc-candidate-style . 'popup))
 
 (leaf recentf
   :preface
