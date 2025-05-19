@@ -896,7 +896,8 @@ properly disable mozc-mode."
             (let ((command
                    (concat "gh api -X GET 'repos/{owner}/{repo}/pulls' "
                            "--paginate -F sort=created -F direction=desc "
-                           "--jq '[.[] | {number: .number, title: .title}]'")))
+                           "--jq '.[] | {number: .number, title: .title}' "
+                           "| jq -s -c '.'")))
               (condition-case err
                   (let* ((json-string (shell-command-to-string command))
                          (pr-data (if (string-empty-p json-string)
