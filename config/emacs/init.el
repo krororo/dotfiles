@@ -1120,37 +1120,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
                                "ghcr.io/github/github-mcp-server:0.4.0")
                         :env (:GITHUB_PERSONAL_ACCESS_TOKEN
                               ,(auth-source-pick-first-password
-                                :host "github-api" :user "token"))))))
-
-  (defun gptel-mcp-register-tool ()
-    (interactive)
-    (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
-      (mapcar #'(lambda (tool)
-                  (apply #'gptel-make-tool
-                         tool))
-              tools)))
-  (defun gptel-mcp-use-tool ()
-    (interactive)
-    (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
-      (mapcar #'(lambda (tool)
-                  (let ((path (list (plist-get tool :category)
-                                    (plist-get tool :name))))
-                    (push (gptel-get-tool path)
-                          gptel-tools)))
-              tools)))
-  (defun gptel-mcp-close-use-tool ()
-    (interactive)
-    (let ((tools (mcp-hub-get-all-tool :asyncp t :categoryp t)))
-      (mapcar #'(lambda (tool)
-                  (let ((path (list (plist-get tool :category)
-                                    (plist-get tool :name))))
-                    (setq gptel-tools
-                          (cl-remove-if #'(lambda (tool)
-                                            (equal path
-                                                   (list (gptel-tool-category tool)
-                                                         (gptel-tool-name tool))))
-                                        gptel-tools))))
-              tools))))
+                                :host "github-api" :user "token")))))))
 
 (leaf request
   :custom
