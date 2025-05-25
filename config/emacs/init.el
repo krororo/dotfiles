@@ -1117,7 +1117,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
           ("github" . ( :command "docker"
                         :args ("run" "-i" "--rm"
                                "-e" "GITHUB_PERSONAL_ACCESS_TOKEN"
-                               "ghcr.io/github/github-mcp-server:0.3.0")
+                               "ghcr.io/github/github-mcp-server:0.4.0")
                         :env (:GITHUB_PERSONAL_ACCESS_TOKEN
                               ,(auth-source-pick-first-password
                                 :host "github-api" :user "token"))))))
