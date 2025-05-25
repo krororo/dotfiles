@@ -1098,7 +1098,6 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
 
 (leaf mcp-hub
   :vc (:url "https://github.com/lizqwerscott/mcp.el")
-  :commands gptel-mcp-register-tool gptel-mcp-use-tool gptel-mcp-close-use-tool
   :bind
   (:mcp-hub-mode-map
    ("?" . my-mcp-hub-tmenu))
