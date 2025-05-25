@@ -258,6 +258,12 @@
 
 (leaf indent-bars
   :ensure t
+  :custom
+  (indent-bars-color . '(highlight :face-bg t :blend 0.325))
+  ;; The NS build has partial stipple support in Emacs 30.1.
+  ;; see: https://github.com/jdtsmith/indent-bars/blob/v0.8.3/README.md#compatibility
+  (indent-bars-prefer-character . t)
+  (indent-bars-no-stipple-char . ?|)
   :hook yaml-mode-hook haml-mode-hook)
 
 (leaf vundo
