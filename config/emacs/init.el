@@ -896,33 +896,34 @@ properly disable mozc-mode."
         (apply #'call-process "gh" nil nil nil args)
         (magit-refresh)))
 
+    (defun my-magit-gh-pr-candidates ()
+      (let ((command
+             (concat "gh api -X GET 'repos/{owner}/{repo}/pulls' "
+                     "--paginate -F sort=created -F direction=desc "
+                     "--jq '.[] | {number: .number, title: .title}' "
+                     "| jq -s -c '.'")))
+        (condition-case err
+            (let* ((json-string (shell-command-to-string command))
+                   (pr-data (if (string-empty-p json-string)
+                                nil
+                              (json-parse-string
+                               json-string :object-type 'alist))))
+              (if pr-data
+                  (mapcar (lambda (pr-item)
+                            (cons (format "%s: %s"
+                                          (alist-get 'number pr-item)
+                                          (alist-get 'title pr-item))
+                                  (alist-get 'number pr-item)))
+                          pr-data)
+                (error "Pull request not found.")))
+          (error (error-message-string err)))))
+
     (defun my-magit-gh-pr-completion-read (prompt)
-      (if-let*
-          ((candidates
-            (let ((command
-                   (concat "gh api -X GET 'repos/{owner}/{repo}/pulls' "
-                           "--paginate -F sort=created -F direction=desc "
-                           "--jq '.[] | {number: .number, title: .title}' "
-                           "| jq -s -c '.'")))
-              (condition-case err
-                  (let* ((json-string (shell-command-to-string command))
-                         (pr-data (if (string-empty-p json-string)
-                                      nil
-                                    (json-parse-string
-                                     json-string :object-type 'alist))))
-                    (if pr-data
-                        (mapcar (lambda (pr-item)
-                                  (cons (format "%s: %s"
-                                                (alist-get 'number pr-item)
-                                                (alist-get 'title pr-item))
-                                        (alist-get 'number pr-item)))
-                                pr-data)
-                      (error "Pull request not found.")))
-                (error (error-message-string err)))))
-           (selected (completing-read prompt candidates)))
-          (cdr (assoc selected candidates))
-        (message "No pull requests found or error fetching them.")
-        nil))
+      (consult--read
+       (consult--slow-operation "Collecting Pull Requests..."
+         (my-magit-gh-pr-candidates))
+       :prompt prompt
+       :lookup #'consult--lookup-cdr))
 
     (defun my-magit-gh-pr-checkout-detach ()
       (interactive)
