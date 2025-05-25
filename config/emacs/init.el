@@ -549,7 +549,7 @@ properly disable mozc-mode."
 
 (leaf embark-consult
   :ensure t
-  :after consult embark
+  :after embark
   :require t
   :hook (embark-collect-mode-hook . consult-preview-at-point-mode))
 
