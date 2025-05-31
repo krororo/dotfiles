@@ -15,10 +15,6 @@ keymap:
       C-p: { with_mark: up }
       C-n: { with_mark: down }
 
-      # Forward/Backward word
-      M-b: { with_mark: C-left }
-      M-f: { with_mark: C-right }
-
       # Emacs lines
       C-a: { with_mark: home }
       C-e: { with_mark: end }
@@ -64,3 +60,5 @@ keymap:
       M-w: [C-w, { set_mark: false }]
       M-t: [C-t, { set_mark: false }]
       M-r: [C-r, { set_mark: false }]
+      M-f: C-f
+      M-g: C-g
