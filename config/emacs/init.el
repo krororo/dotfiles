@@ -1069,7 +1069,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
    :package embark
    ("G" . gptel-menu))
   :custom
-  (gptel-model . 'gemini-2.5-pro)
+  (gptel-model . 'claude-sonnet-4)
   (gptel-confirm-tool-calls . t)
   `(gptel-gh-github-token-file . ,(file-name-concat my-emacs-cache-home "gptel/copilot-chat/github-token"))
   `(gptel-gh-token-file . ,(file-name-concat my-emacs-cache-home "gptel/copilot-chat/token"))
