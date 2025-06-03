@@ -30,9 +30,10 @@
 (leaf exec-path-from-shell
   :ensure t
   :custom ((exec-path-from-shell-warn-duration-millis . 2000)
-           (exec-path-from-shell-shell-name . "/bin/zsh"))
+           (exec-path-from-shell-shell-name . "/bin/zsh")
+           (exec-path-from-shell-variables . '("PATH" "NODE_EXTRA_CA_CERTS")))
   :config
-  (exec-path-from-shell-copy-env "PATH"))
+  (exec-path-from-shell-initialize))
 
 (leaf package-utils :ensure t)
 
