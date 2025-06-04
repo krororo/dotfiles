@@ -1097,10 +1097,10 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   (mapcar (apply-partially #'apply #'gptel-make-tool)
         (llm-tool-collection-get-all)))
 
-(leaf mcp-hub
-  :vc (:url "https://github.com/lizqwerscott/mcp.el")
+(leaf mcp
+  :ensure t
   :bind
-  (:mcp-hub-mode-map
+  (:mcp-hub-mode-map :package mcp-hub
    ("?" . my-mcp-hub-tmenu))
   :transient
   (my-mcp-hub-tmenu
