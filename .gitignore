@@ -18,6 +18,5 @@
 /config/emacs/proxy-setting.el
 /config/emacs/recentf
 /config/emacs/session.*
-/config/emacs/tramp
 /config/emacs/transient
 /config/emacs/url/

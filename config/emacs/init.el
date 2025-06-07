@@ -172,6 +172,9 @@
   :custom ((tab-bar-new-tab-choice . "*dashboard*")))
 
 (leaf tramp
+  :custom
+  `(tramp-persistency-file-name
+    . ,(file-name-concat my-emacs-data-home "tramp"))
   :defer-config
   (setenv "SHELL" "/bin/bash"))
 
