@@ -24,8 +24,8 @@
 (leaf xdg
   :require t
   :config
-  (defvar my-emacs-cache-home (expand-file-name "emacs" (xdg-cache-home)))
-  (defvar my-emacs-data-home (expand-file-name "emacs" (xdg-data-home))))
+  (defvar my/emacs-cache-home (expand-file-name "emacs" (xdg-cache-home)))
+  (defvar my/emacs-data-home (expand-file-name "emacs" (xdg-data-home))))
 
 (leaf exec-path-from-shell
   :ensure t
@@ -39,7 +39,7 @@
 
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
-  :custom `((custom-file . ,(expand-file-name "custom.el" my-emacs-data-home))))
+  :custom `((custom-file . ,(expand-file-name "custom.el" my/emacs-data-home))))
 
 (leaf *initialize-emacs
   :custom ((scroll-conservatively . 1)
@@ -88,7 +88,7 @@
 (leaf *keep-scratch-buffer
   :doc "don't remove *scratch* buffer"
   :preface
-  (defun my-make-scratch (&optional arg)
+  (defun my/make-scratch (&optional arg)
     (interactive)
     (progn
       ;; "*scratch*" を作成して buffer-list に放り込む
@@ -106,17 +106,17 @@
     ;; *scratch* バッファで kill-buffer したら内容を消去するだけにする
     . (lambda ()
         (if (string= "*scratch*" (buffer-name))
-            (progn (my-make-scratch 0) nil)
+            (progn (my/make-scratch 0) nil)
           t)))
    (after-save-hook
     ;; *scratch* バッファの内容を保存したら *scratch* バッファを新しく作る
     . (lambda ()
         (unless (member (get-buffer "*scratch*") (buffer-list))
-          (my-make-scratch 1))))))
+          (my/make-scratch 1))))))
 
 (leaf *deepl
   :config
-  (defun my-trans-deepl (beg end)
+  (defun my/trans-deepl (beg end)
     (interactive "r")
     (let ((str (buffer-substring beg end)))
       (browse-url
@@ -124,7 +124,7 @@
 
 (leaf *show-buffer-file-name
   :config
-  (defun my-show-buffer-file-name ()
+  (defun my/show-buffer-file-name ()
     "Show the full path to the current file in the minibuffer."
     (interactive)
     (let ((file-name (buffer-file-name)))
@@ -133,7 +133,7 @@
             (message file-name)
             (kill-new file-name))
         (error "Buffer not visiting a file"))))
-  (defun my-show-buffer-file-name-relative-vc-root ()
+  (defun my/show-buffer-file-name-relative-vc-root ()
     "Show the relative path of vc root to the current file in the minibuffer."
     (interactive)
     (let ((file-name (buffer-file-name)))
@@ -150,7 +150,7 @@
         (error "Buffer not visiting a file")))))
 
 (leaf project
-  :custom `(project-list-file . ,(expand-file-name "projects" my-emacs-data-home)))
+  :custom `(project-list-file . ,(expand-file-name "projects" my/emacs-data-home)))
 
 (leaf compile
   :custom ((compilation-scroll-output . t)
@@ -174,7 +174,7 @@
 (leaf tramp
   :custom
   `(tramp-persistency-file-name
-    . ,(file-name-concat my-emacs-data-home "tramp"))
+    . ,(file-name-concat my/emacs-data-home "tramp"))
   :defer-config
   (setenv "SHELL" "/bin/bash"))
 
@@ -191,24 +191,24 @@
 (leaf editorconfig
   :ensure t
   :preface
-  (defun my-editorconfig-disable-trim-whitespace-in-read-only-buffers (props)
+  (defun my/editorconfig-disable-trim-whitespace-in-read-only-buffers (props)
     (when (and buffer-read-only (gethash 'trim_trailing_whitespace props))
       (remove-hook 'write-file-functions #'delete-trailing-whitespace :local)))
 
-  (defvar my-current-cleanup-state ""
+  (defvar my/current-cleanup-state ""
     "delete-trailing-whitespace モードの状態")
-  (defun my-toggle-cleanup-spaces ()
+  (defun my/toggle-cleanup-spaces ()
     (interactive)
     (cond ((memq 'delete-trailing-whitespace write-file-functions)
-           (setq my-current-cleanup-state
+           (setq my/current-cleanup-state
                  (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
            (remove-hook 'write-file-functions 'delete-trailing-whitespace))
           (t
-           (setq my-current-cleanup-state "")
+           (setq my/current-cleanup-state "")
            (add-hook 'write-file-functions 'delete-trailing-whitespace)))
     (force-mode-line-update))
   :custom ((editorconfig-exclude-modes . '(web-mode)))
-  :hook (editorconfig-custom-hooks . my-editorconfig-disable-trim-whitespace-in-read-only-buffers)
+  :hook (editorconfig-custom-hooks . my/editorconfig-disable-trim-whitespace-in-read-only-buffers)
   :global-minor-mode t)
 
 (leaf eaw-console
@@ -276,7 +276,7 @@
 
 (leaf *key-binding
   :preface
-  (defun my-reverse-other-window ()
+  (defun my/reverse-other-window ()
     (interactive)
     (other-window -1))
   :bind (("C-;" . comment-dwim)
@@ -296,7 +296,7 @@
 (leaf *mode-line
   :config
   (setq-default mode-line-format
-                '((:eval my-current-cleanup-state)
+                '((:eval my/current-cleanup-state)
                   "%e"
                   mode-line-front-space
                   mode-line-mule-info
@@ -336,19 +336,19 @@
                  (setq mode-name mode-str)))))
   (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-  (defvar my-mode-line-format)
-  (setq my-mode-line-format "%d")
+  (defvar my/mode-line-format)
+  (setq my/mode-line-format "%d")
   (if size-indication-mode
-      (setq my-mode-line-format (concat my-mode-line-format " of %%I")))
+      (setq my/mode-line-format (concat my/mode-line-format " of %%I")))
   (cond ((and (eq line-number-mode t) (eq column-number-mode t))
-         (setq my-mode-line-format (concat "(%%l,%%c) " my-mode-line-format)))
+         (setq my/mode-line-format (concat "(%%l,%%c) " my/mode-line-format)))
         ((eq line-number-mode t)
-         (setq my-mode-line-format (concat my-mode-line-format " L%%l")))
+         (setq my/mode-line-format (concat my/mode-line-format " L%%l")))
         ((eq column-number-mode t)
-         (setq my-mode-line-format (concat my-mode-line-format " C%%c"))))
+         (setq my/mode-line-format (concat my/mode-line-format " C%%c"))))
 
   (setq mode-line-position
-        '(:eval (format my-mode-line-format
+        '(:eval (format my/mode-line-format
                         (+ (count-lines (point-max) (point-min)) 1)))))
 
 (leaf mozc
@@ -357,7 +357,7 @@
   (leaf popup :ensure t)
   :require mozc-popup
   :preface
-  (defun my-mozc-handle-event (event)
+  (defun my/mozc-handle-event (event)
     "Intercept keys muhenkan and zenkaku-hankaku, before passing keys
 to mozc-server (which the function mozc-handle-event does), to
 properly disable mozc-mode."
@@ -374,14 +374,14 @@ properly disable mozc-mode."
   (input-method-activate-hook . (lambda () (set-cursor-color "green")))
   (input-method-deactivate-hook . (lambda () (set-cursor-color "red")))
   :advice
-  (:before-until mozc-handle-event my-mozc-handle-event)
+  (:before-until mozc-handle-event my/mozc-handle-event)
   :custom
   (default-input-method . "japanese-mozc")
   (mozc-candidate-style . 'popup))
 
 (leaf recentf
   :preface
-  (defun my-recentf-inhibit-message:around (orig-func &rest args)
+  (defun my/recentf-inhibit-message:around (orig-func &rest args)
     "recentf の メッセージをエコーエリア(ミニバッファ)に表示しない
 (*Messages* バッファには出力される)"
     (setq inhibit-message t)
@@ -392,10 +392,10 @@ properly disable mozc-mode."
             (recentf-max-saved-items . 500)
             (recentf-exclude . '("recentf" "COMMIT_EDITMSG"))
             (recentf-auto-cleanup . 'never)
-            (recentf-save-file . ,(expand-file-name "recentf" my-emacs-data-home)))
+            (recentf-save-file . ,(expand-file-name "recentf" my/emacs-data-home)))
   :advice
-  (:around recentf-cleanup my-recentf-inhibit-message:around)
-  (:around recentf-save-list my-recentf-inhibit-message:around)
+  (:around recentf-cleanup my/recentf-inhibit-message:around)
+  (:around recentf-save-list my/recentf-inhibit-message:around)
   :config
   (recentf-mode 1)
   (run-with-idle-timer 30 t 'recentf-save-list))
@@ -412,38 +412,38 @@ properly disable mozc-mode."
            (uniquify-ignore-buffers-re . "*[^*]+*")))
 
 (leaf bookmark
-  :custom `((bookmark-default-file . ,(expand-file-name "bookmarks" my-emacs-data-home))))
+  :custom `((bookmark-default-file . ,(expand-file-name "bookmarks" my/emacs-data-home))))
 
 (leaf savehist
-  :custom `(savehist-file . ,(expand-file-name "history" my-emacs-data-home))
+  :custom `(savehist-file . ,(expand-file-name "history" my/emacs-data-home))
   :global-minor-mode t)
 
 (leaf ediff
   :preface
   ;; ref: https://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version/29757750#29757750
-  (defun my-ediff-copy-both-to-C ()
+  (defun my/ediff-copy-both-to-C ()
     (interactive)
     (ediff-copy-diff ediff-current-difference nil 'C nil
                      (concat
                       (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
                       (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
-  (defun my-add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'my-ediff-copy-both-to-C))
-  :hook (ediff-keymap-setup-hook . my-add-d-to-ediff-mode-map)
+  (defun my/add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'my/ediff-copy-both-to-C))
+  :hook (ediff-keymap-setup-hook . my/add-d-to-ediff-mode-map)
   :custom ((ediff-window-setup-function . 'ediff-setup-windows-plain)))
 
 (leaf dired
   :bind (:dired-mode-map
          ("a" . dired-find-file)
-         ("RET" . my-dired-open-in-accordance-with-situation))
-  :hook (dired-mode-hook . my-dired-append-buffer-name-hint)
+         ("RET" . my/dired-open-in-accordance-with-situation))
+  :hook (dired-mode-hook . my/dired-append-buffer-name-hint)
   :config
   (put 'dired-find-alternate-file 'disabled nil)
 
-  (defun my-dired-append-buffer-name-hint ()
+  (defun my/dired-append-buffer-name-hint ()
     "dired バッファに [dir] 追加"
     (when (eq major-mode 'dired-mode)
       (rename-buffer (concat (buffer-name) " [dir]") t)))
-  (defun my-dired-open-in-accordance-with-situation ()
+  (defun my/dired-open-in-accordance-with-situation ()
     (interactive)
     (let ((file (dired-get-filename)))
       (if (file-directory-p file)
@@ -475,20 +475,20 @@ properly disable mozc-mode."
    consult--source-bookmark consult-ripgrep consult-git-grep
    :preview-key "M-.")
 
-  (defvar my-consult-line-map
+  (defvar my/consult-line-map
     (let ((map (make-sparse-keymap)))
       (define-key map "\C-s" #'previous-history-element)
-      ;; (define-key map "\C-w" #'my-yank-char) ;; see: isearch--yank-char-or-syntax
+      ;; (define-key map "\C-w" #'my/yank-char) ;; see: isearch--yank-char-or-syntax
       map))
-  (consult-customize consult-line :keymap my-consult-line-map))
+  (consult-customize consult-line :keymap my/consult-line-map))
 
 (leaf consult-ghq
   :if (executable-find "ghq")
   :ensure t
   :bind
-  ("C-c C-]" . my-consult-ghq-magit-status)
+  ("C-c C-]" . my/consult-ghq-magit-status)
   :config
-  (defun my-consult-ghq-magit-status ()
+  (defun my/consult-ghq-magit-status ()
     "Show magit status from ghq."
     (interactive)
     (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: ")))
@@ -521,14 +521,14 @@ properly disable mozc-mode."
   :ensure t
   :require t
   :preface
-  (defun my-custom-capf ()
+  (defun my/custom-capf ()
     (let* ((capfs (remove t completion-at-point-functions)))
       (add-to-list 'capfs #'cape-dabbrev t)
       (setq-local completion-at-point-functions
                   `(cape-file
                     ,(cape-capf-inside-code #'cape-elisp-symbol)
                     ,(cape-capf-buster (apply #'cape-capf-super capfs))))))
-  :hook ((emacs-lisp-mode-hook) . my-custom-capf)
+  :hook ((emacs-lisp-mode-hook) . my/custom-capf)
   :config
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
@@ -540,7 +540,7 @@ properly disable mozc-mode."
   :require t
   :custom
   (kind-icon-default-face . 'corfu-default)
-  `(svg-lib-icons-dir . ,(expand-file-name "svg-lib/" my-emacs-cache-home))
+  `(svg-lib-icons-dir . ,(expand-file-name "svg-lib/" my/emacs-cache-home))
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
@@ -571,10 +571,10 @@ properly disable mozc-mode."
 
 (leaf elec-pair
   :preface
-  (defun my-inhibit-electric-pair-mode (char)
+  (defun my/inhibit-electric-pair-mode (char)
     (minibufferp))
   :custom
-  (electric-pair-inhibit-predicate . #'my-inhibit-electric-pair-mode)
+  (electric-pair-inhibit-predicate . #'my/inhibit-electric-pair-mode)
   :global-minor-mode electric-pair-mode
   :config
   (setopt electric-pair-pairs (append electric-pair-pairs '((?` . ?`)))))
@@ -582,13 +582,13 @@ properly disable mozc-mode."
 (leaf puni
   :ensure t
   :preface
-  (defun my-disable-puni-in-minibuffer ()
+  (defun my/disable-puni-in-minibuffer ()
     "Disable `puni-mode' in minibuffer unless when eval-expression"
     (unless (eq this-command 'eval-expression)
       (puni-disable-puni-mode)))
   :hook
   prog-mode-hook
-  (minibuffer-setup-hook . my-disable-puni-in-minibuffer)
+  (minibuffer-setup-hook . my/disable-puni-in-minibuffer)
   :bind (:puni-mode-map
          ("C-h" . puni-backward-delete-char)
          ("M-D" . puni-splice)
@@ -646,11 +646,11 @@ properly disable mozc-mode."
           ("<tab>" . tempel-next)
           ("<backtab>" . tempel-previous)))
   :preface
-  (defun my-tempel-setup-capf ()
+  (defun my/tempel-setup-capf ()
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand
                       completion-at-point-functions)))
-  :hook ((conf-mode-hook prog-mode-hook text-mode-hook) . my-tempel-setup-capf))
+  :hook ((conf-mode-hook prog-mode-hook text-mode-hook) . my/tempel-setup-capf))
 
 (leaf feature-mode
   :ensure t
@@ -696,7 +696,7 @@ properly disable mozc-mode."
   :mode ("\\.md\\'" . gfm-mode)
   :bind (:markdown-mode-map
          ("<S-tab>" . markdown-shifttab)
-         ("C-c ." . my-markdown-mode-transient))
+         ("C-c ." . my/markdown-mode-transient))
   :custom ((markdown-asymmetric-header . t)
            (markdown-fontify-code-blocks-natively . t)
            (markdown-gfm-use-electric-backquote . nil)
@@ -704,7 +704,7 @@ properly disable mozc-mode."
   :custom-face
   (markdown-code-face . '((t (:inherit default :foreground "medium aquamarine"))))
   :transient
-  (my-markdown-mode-transient
+  (my/markdown-mode-transient
    ()
    "Transient for markdown-mode"
    [["Styles"
@@ -732,7 +732,7 @@ properly disable mozc-mode."
 
 (leaf ruby-mode
   :preface
-  (defun my-ruby-smie-rules (kind token)
+  (defun my/ruby-smie-rules (kind token)
     (pcase (cons kind token)
       (`(:before . ,(or "(" "[" "{"))
        (cond
@@ -743,7 +743,7 @@ properly disable mozc-mode."
               (smie-rule-parent-p " @ "))
          (cons 'column (current-indentation)))))))
   :advice
-  (:before-until ruby-smie-rules my-ruby-smie-rules)
+  (:before-until ruby-smie-rules my/ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
   :custom ((ruby-block-indent . nil)
            (ruby-bracketed-args-indent . nil)
@@ -796,9 +796,9 @@ properly disable mozc-mode."
 
 (leaf rubocop
   :ensure t
-  :commands my-rubocop-check-project-with-options
+  :commands my/rubocop-check-project-with-options
   :config
-  (defun my-rubocop-check-project-with-options (options)
+  (defun my/rubocop-check-project-with-options (options)
     "Run check on current project with OPTIONS."
     (interactive "sOptions: ")
     (let ((command (concat rubocop-check-command " " options)))
@@ -891,7 +891,7 @@ properly disable mozc-mode."
   :hook (git-commit-mode-hook . display-fill-column-indicator-mode)
   :config
   (with-eval-after-load 'magit-branch
-    (defun my-magit-gh-pr-checkout (pr-number detach)
+    (defun my/magit-gh-pr-checkout (pr-number detach)
       (let* ((args (append '("pr" "checkout")
                            (when detach '("--detach"))
                            (list (number-to-string pr-number))))
@@ -900,7 +900,7 @@ properly disable mozc-mode."
         (apply #'call-process "gh" nil nil nil args)
         (magit-refresh)))
 
-    (defun my-magit-gh-pr-candidates ()
+    (defun my/magit-gh-pr-candidates ()
       (let ((command
              (concat "gh api -X GET 'repos/{owner}/{repo}/pulls' "
                      "--paginate -F sort=created -F direction=desc "
@@ -922,27 +922,27 @@ properly disable mozc-mode."
                 (error "Pull request not found.")))
           (error (error-message-string err)))))
 
-    (defun my-magit-gh-pr-completion-read (prompt)
+    (defun my/magit-gh-pr-completion-read (prompt)
       (consult--read
        (consult--slow-operation "Collecting Pull Requests..."
-         (my-magit-gh-pr-candidates))
+         (my/magit-gh-pr-candidates))
        :prompt prompt
        :lookup #'consult--lookup-cdr))
 
-    (defun my-magit-gh-pr-checkout-detach ()
+    (defun my/magit-gh-pr-checkout-detach ()
       (interactive)
-      (if-let* ((pr (my-magit-gh-pr-completion-read "GitHub PR number (detach): ")))
-        (my-magit-gh-pr-checkout pr t)))
+      (if-let* ((pr (my/magit-gh-pr-completion-read "GitHub PR number (detach): ")))
+        (my/magit-gh-pr-checkout pr t)))
 
-    (defun my-magit-gh-pr-checkout-normal ()
+    (defun my/magit-gh-pr-checkout-normal ()
       (interactive)
-      (if-let* ((pr (my-magit-gh-pr-completion-read "GitHub PR number (branch): ")))
-        (my-magit-gh-pr-checkout pr nil)))
+      (if-let* ((pr (my/magit-gh-pr-completion-read "GitHub PR number (branch): ")))
+        (my/magit-gh-pr-checkout pr nil)))
 
     (transient-append-suffix 'magit-branch "c"
-      '("p" "Checkout PR (detach)" my-magit-gh-pr-checkout-detach))
+      '("p" "Checkout PR (detach)" my/magit-gh-pr-checkout-detach))
     (transient-append-suffix 'magit-branch "c"
-      '("P" "Checkout PR (branch)" my-magit-gh-pr-checkout-normal))))
+      '("P" "Checkout PR (branch)" my/magit-gh-pr-checkout-normal))))
 
 (leaf xterm-color
   :ensure t
@@ -1010,7 +1010,7 @@ properly disable mozc-mode."
 
 (leaf auth-source
   :custom
-  `(auth-sources . '(,(file-name-concat my-emacs-data-home ".authinfo.gpg"))))
+  `(auth-sources . '(,(file-name-concat my/emacs-data-home ".authinfo.gpg"))))
 
 (leaf auth-source-1password
   :if (executable-find "op")
@@ -1075,8 +1075,8 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :custom
   (gptel-model . 'claude-sonnet-4)
   (gptel-confirm-tool-calls . t)
-  `(gptel-gh-github-token-file . ,(file-name-concat my-emacs-cache-home "gptel/copilot-chat/github-token"))
-  `(gptel-gh-token-file . ,(file-name-concat my-emacs-cache-home "gptel/copilot-chat/token"))
+  `(gptel-gh-github-token-file . ,(file-name-concat my/emacs-cache-home "gptel/copilot-chat/github-token"))
+  `(gptel-gh-token-file . ,(file-name-concat my/emacs-cache-home "gptel/copilot-chat/token"))
   (gptel-directives
    . '((default     . "You are a large language model living in Emacs and a helpful assistant. Respond concisely. Please respond in Japanese.")
        (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note. Please respond in Japanese.")
@@ -1104,9 +1104,9 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :ensure t
   :bind
   (:mcp-hub-mode-map :package mcp-hub
-   ("?" . my-mcp-hub-tmenu))
+   ("?" . my/mcp-hub-tmenu))
   :transient
-  (my-mcp-hub-tmenu
+  (my/mcp-hub-tmenu
    ()
    "MCP Hub Control"
    [["Server Management"
@@ -1134,7 +1134,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
 
 (leaf request
   :custom
-  `(request-storage-directory . ,(file-name-concat my-emacs-cache-home "request")))
+  `(request-storage-directory . ,(file-name-concat my/emacs-cache-home "request")))
 
 (let ((local-init (file-name-concat user-emacs-directory "init_local.el")))
   (if (file-exists-p local-init)
