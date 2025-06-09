@@ -12,6 +12,7 @@
 /config/emacs/elpa
 /config/emacs/eshell/history
 /config/emacs/games
+/config/emacs/init_local.el
 /config/emacs/migemo-pattern
 /config/emacs/network-security.data
 /config/emacs/projectile-bookmarks.eld
