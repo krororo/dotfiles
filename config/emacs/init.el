@@ -472,8 +472,9 @@ properly disable mozc-mode."
          ("M-s g" . consult-git-grep))
   :config
   (consult-customize
-   consult--source-recent-file consult--source-project-recent-file
-   consult--source-bookmark consult-ripgrep consult-git-grep
+   consult--source-recent-file
+   consult--source-project-recent-file
+   consult--source-bookmark
    :preview-key "M-.")
 
   (defvar my/consult-line-map
