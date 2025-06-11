@@ -1093,7 +1093,19 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   (gptel-post-response-functions . gptel-end-of-response)
   :config
   (require 'gptel-integrations)
-  (setopt gptel-backend (gptel-make-gh-copilot "Copilot")))
+  (require 'my-gptel-tools)
+  (setopt gptel-backend (gptel-make-gh-copilot "Copilot"))
+
+  (autoload 'gptel--suffix-rewrite "gptel-rewrite" nil t)
+  (defun my/gptel-rewrite-region (beg end)
+    "Prompt for a rewrite instruction and rewrite the region using gptel-rewrite."
+    (interactive "r*")
+    (or (use-region-p)
+        (user-error "No region selected"))
+    (let ((instruction (read-string
+                        (format "Rewrite instruction to %s: " gptel-model)
+                        nil 'gptel-rewrite-history)))
+    (gptel--suffix-rewrite instruction))))
 
 (leaf llm-tool-collection
   :ensure t
