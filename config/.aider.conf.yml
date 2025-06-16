@@ -1,0 +1,7 @@
+openai-api-base: https://api.githubcopilot.com
+model: openai/claude-sonnet-4
+weak-model: openai/gpt-4o-mini
+show-model-warnings: false
+gitignore: false
+chat-language: ja
+# commit-language: ja

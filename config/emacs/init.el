@@ -1016,6 +1016,15 @@ properly disable mozc-mode."
   :custom
   (aw-keys . '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
+(leaf aidermacs
+  :if (executable-find "aider")
+  :ensure t
+  :bind
+  ("C-c a" . aidermacs-transient-menu)
+  :custom
+  (aidermacs-use-architect-mode . t)
+  (aidermacs-default-model . "openai/claude-sonnet-4"))
+
 (leaf auth-source
   :custom
   `(auth-sources . '(,(file-name-concat my/emacs-data-home ".authinfo.gpg"))))

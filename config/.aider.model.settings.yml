@@ -1,0 +1,10 @@
+# https://zenn.dev/takets/articles/aider-with-copilot#.aider.model.settings.ymlの設定
+# https://aider.chat/docs/config/adv-model-settings.html#model-settings
+
+- name: openai/claude-sonnet-4
+  extra_params:
+    api_base: https://api.githubcopilot.com
+    extra_headers:
+      Editor-Version: Aider/0.84.0
+      Copilot-Integration-Id: vscode-chat
+    max_tokens: 128000
