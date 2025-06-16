@@ -31,7 +31,13 @@
   :ensure t
   :custom ((exec-path-from-shell-warn-duration-millis . 2000)
            (exec-path-from-shell-shell-name . "/bin/zsh")
-           (exec-path-from-shell-variables . '("PATH" "NODE_EXTRA_CA_CERTS")))
+           (exec-path-from-shell-variables . '("PATH"
+                                               "CIRCLECI_TOKEN"
+                                               "DOCBASE_API_TOKEN"
+                                               "GITHUB_COPILOT_TOKEN"
+                                               "GITHUB_PERSONAL_ACCESS_TOKEN"
+                                               "NODE_EXTRA_CA_CERTS"
+                                               "OPENAI_API_KEY")))
   :config
   (exec-path-from-shell-initialize))
 
@@ -1135,17 +1141,23 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
      ("R" "Restart All Servers" mcp-hub-restart-all-server)]])
   :config
   (setq mcp-hub-servers
-        `(("filesystem" . ( :command "npx"
+        '(("filesystem" . ( :command "npx"
                             :args ("-y"
                                    "@modelcontextprotocol/server-filesystem"
-                                   "~/ghq")))
-          ("github" . ( :command "docker"
-                        :args ("run" "-i" "--rm"
-                               "-e" "GITHUB_PERSONAL_ACCESS_TOKEN"
-                               "ghcr.io/github/github-mcp-server:0.4.0")
-                        :env (:GITHUB_PERSONAL_ACCESS_TOKEN
-                              ,(auth-source-pick-first-password
-                                :host "github-api" :user "token")))))))
+                                   "~/ghq")))))
+  (if (executable-find "github-mcp-server")
+      (push '("github" . ( :command "github-mcp-server"
+                           :args ("stdio" "--read-only")))
+        mcp-hub-servers))
+
+  (advice-add 'mcp-make-text-tool :filter-return
+              (lambda (tool-def)
+                (when tool-def
+                  ;; descriptionがnilの場合、tool-nameから生成
+                  (when (null (plist-get tool-def :description))
+                    (plist-put tool-def :description
+                               (format "MCP tool: %s" (plist-get tool-def :name))))
+                  tool-def))))
 
 (leaf request
   :custom

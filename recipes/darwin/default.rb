@@ -3,6 +3,7 @@ package "deno"
 package 'findutils'
 package "fzf"
 package "ghq"
+package "github-mcp-server"
 package 'grep'
 package 'noborus/tap/ov'
 package "uv"
