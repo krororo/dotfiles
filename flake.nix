@@ -12,6 +12,7 @@
       name = "my-packages-list";
       paths = with pkgs; [
         fzf
+        github-mcp-server
         ghq
         hackgen-font
         hackgen-nf-font
