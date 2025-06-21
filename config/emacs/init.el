@@ -769,22 +769,35 @@ properly disable mozc-mode."
                                 (file-exists-p (expand-file-name "Gemfile.lock" config-dir))
                                 (ruby-flymake-rubocop--use-bundler-p config-dir))
                            (append '("bundle" "exec") command)
-                         command))))))
+                         command))))
+
+       (font-lock-add-keywords
+        nil
+        `(("\\s *def\\s +\\(?:[^( \t\n.]*\\.\\)?\\([^( \t\n]+\\)"
+           1 font-lock-function-name-face)
+          (,(concat ruby-font-lock-keyword-beg-re
+                    "\\_<\\(nil\\|true\\|false\\)\\_>")
+           1 font-lock-keyword-face)
+          ;; ex. if: :hoge
+          (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
+                    (regexp-opt '("if" "unless" "in" "format" "class"
+                                  "retry" "require" "using")
+                                "\\(?:")
+                    ":\\)")
+           1 font-lock-constant-face)
+          ;; rbs inline
+          ("# +\\(@rbs\\) +" 1 font-lock-doc-face t)
+          ("# +@rbs +\\(&?\\(\\sw\\|\\s_\\)+\\):"
+           1 font-lock-variable-name-face t)
+          ("# +@rbs +\\(return\\):"
+           1 font-lock-keyword-face t)
+          (,(concat "# +@rbs +\\(?:&?\\(?:\\sw\\|\\s_\\)+\\): *"
+                    "\\(.+?\\) *\\(?:--\\|$\\)")
+           1 font-lock-type-face t)
+          ))))
   :config
   ;; workaround: https://gnu.emacs.bug.narkive.com/H2x8ODth/bug-42841-28-0-50-ruby-mode-ruby-beginning-end-of-block-doesn-t-work-as-is-exepected-if-arguments
-  (setq ruby-deep-indent-paren (delete ?\( ruby-deep-indent-paren))
-  (font-lock-add-keywords
-   'ruby-mode
-   `(("\\s *def\\s +\\(?:[^( \t\n.]*\\.\\)?\\([^( \t\n]+\\)"
-      1 font-lock-function-name-face)
-     (,(concat ruby-font-lock-keyword-beg-re
-               "\\_<\\(nil\\|true\\|false\\)\\_>")
-      1 font-lock-keyword-face)
-     ;; ex. if: :hoge
-     (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
-               (regexp-opt '("if" "unless" "in" "format" "class" "retry" "require" "using") "\\(?:")
-               ":\\)")
-      1 font-lock-constant-face))))
+  (setq ruby-deep-indent-paren (delete ?\( ruby-deep-indent-paren)))
 
 (leaf inf-ruby
   :ensure t
@@ -792,9 +805,7 @@ properly disable mozc-mode."
 
 (leaf yard-mode
   :ensure t
-  :hook ruby-mode-hook
-  :config
-  (setq yard-tags-re (regexp-opt (append yard-tags '("rbs")))))
+  :hook ruby-mode-hook)
 
 (leaf rspec-mode
   :ensure t
