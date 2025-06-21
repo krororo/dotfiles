@@ -1102,7 +1102,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
    ("G" . gptel-menu))
   :custom
   (gptel-model . 'claude-sonnet-4)
-  (gptel-confirm-tool-calls . t)
+  (gptel-confirm-tool-calls . 'auto)
   `(gptel-gh-github-token-file . ,(file-name-concat my/emacs-cache-home "gptel/copilot-chat/github-token"))
   `(gptel-gh-token-file . ,(file-name-concat my/emacs-cache-home "gptel/copilot-chat/token"))
   (gptel-directives

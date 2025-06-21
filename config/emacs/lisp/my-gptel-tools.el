@@ -1,3 +1,7 @@
+;;; -*- lexical-binding: t; -*-
+
+;; https://github.com/karthink/gptel/wiki/Tools-collection
+
 (gptel-make-tool
  :function (lambda (pattern &optional include path)
              "Search for PATTERN in files, optionally including INCLUDE and PATH."
@@ -26,7 +30,8 @@
            :type string
            :optional t
            :description "Directory to search in"))
- :category "command")
+ :category "command"
+ :confirm t)
 
 (gptel-make-tool
  :function (lambda (url)
@@ -45,5 +50,25 @@
            :type string
            :description "The URL to read"))
  :category "web")
+
+(gptel-make-tool
+ :name "read_documentation"
+ :function
+ (lambda (symbol)
+   "Read the documentation for SYMBOL, which can be a function or variable."
+   (let ((sym (intern symbol)))
+     (cond
+      ((fboundp sym)
+       (documentation sym))
+      ((boundp sym)
+       (documentation-property sym 'variable-documentation))
+      (t
+       (format "No documentation found for %s" symbol)))))
+ :description "Read the documentation for a given function or variable"
+ :args (list
+        '( :name "name"
+           :type string
+           :description "The name of the function or variable whose documentation is to be retrieved"))
+ :category "emacs")
 
 (provide 'my-gptel-tools)
