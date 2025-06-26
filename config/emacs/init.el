@@ -750,6 +750,42 @@ properly disable mozc-mode."
         ((and (smie-rule-hanging-p)
               (smie-rule-parent-p " @ "))
          (cons 'column (current-indentation)))))))
+
+  (defun my/ruby-set-flycheck-command-wrapper-function ()
+    "Set `flycheck-command-wrapper-function' for Ruby"
+    (setq-local flycheck-command-wrapper-function
+                (lambda (command)
+                  (let ((config-dir (locate-dominating-file buffer-file-name
+                                                            "Gemfile")))
+                    (if (and config-dir
+                             (file-exists-p (expand-file-name "Gemfile.lock" config-dir))
+                             (ruby-flymake-rubocop--use-bundler-p config-dir))
+                        (append '("bundle" "exec") command)
+                      command)))))
+
+  (defun my/ruby-ext-font-lock-keywords ()
+    "Generate additional font-lock keywords for Ruby mode."
+    `(("\\s *def\\s +\\(?:[^( \t\n.]*\\.\\)?\\([^( \t\n]+\\)"
+       1 font-lock-function-name-face)
+      (,(concat ruby-font-lock-keyword-beg-re
+                "\\_<\\(nil\\|true\\|false\\)\\_>")
+       1 font-lock-keyword-face)
+      ;; ex. if: :hoge
+      (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
+                (regexp-opt '("if" "unless" "in" "format" "class"
+                              "retry" "require" "using")
+                            "\\(?:")
+                ":\\)")
+       1 font-lock-constant-face)
+      ;; rbs inline
+      ("# +\\(@rbs\\) +" 1 font-lock-doc-face t)
+      ("# +@rbs +\\(&?\\(\\sw\\|\\s_\\)*\\):"
+       1 font-lock-variable-name-face t)
+      ("# +@rbs +\\(return\\):"
+       1 font-lock-keyword-face t)
+      (,(concat "# +@rbs +\\(?:&?\\(?:\\sw\\|\\s_\\)+\\): *"
+                "\\(.+?\\) *\\(?:--\\|$\\)")
+       1 font-lock-type-face t)))
   :advice
   (:before-until ruby-smie-rules my/ruby-smie-rules)
   :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
@@ -759,42 +795,10 @@ properly disable mozc-mode."
            (ruby-method-call-indent . nil)
            (ruby-method-params-indent . nil))
   :hook
+  (ruby-mode-hook . my/ruby-set-flycheck-command-wrapper-function)
   (ruby-mode-hook
    . (lambda ()
-       (setq-local flycheck-command-wrapper-function
-                   (lambda (command)
-                     (let ((config-dir (locate-dominating-file buffer-file-name
-                                                               "Gemfile")))
-                       (if (and config-dir
-                                (file-exists-p (expand-file-name "Gemfile.lock" config-dir))
-                                (ruby-flymake-rubocop--use-bundler-p config-dir))
-                           (append '("bundle" "exec") command)
-                         command))))
-
-       (font-lock-add-keywords
-        nil
-        `(("\\s *def\\s +\\(?:[^( \t\n.]*\\.\\)?\\([^( \t\n]+\\)"
-           1 font-lock-function-name-face)
-          (,(concat ruby-font-lock-keyword-beg-re
-                    "\\_<\\(nil\\|true\\|false\\)\\_>")
-           1 font-lock-keyword-face)
-          ;; ex. if: :hoge
-          (,(concat "\\(?:^\\s *\\|[[{(,]\\s *\\|\\sw\\s +\\)\\("
-                    (regexp-opt '("if" "unless" "in" "format" "class"
-                                  "retry" "require" "using")
-                                "\\(?:")
-                    ":\\)")
-           1 font-lock-constant-face)
-          ;; rbs inline
-          ("# +\\(@rbs\\) +" 1 font-lock-doc-face t)
-          ("# +@rbs +\\(&?\\(\\sw\\|\\s_\\)+\\):"
-           1 font-lock-variable-name-face t)
-          ("# +@rbs +\\(return\\):"
-           1 font-lock-keyword-face t)
-          (,(concat "# +@rbs +\\(?:&?\\(?:\\sw\\|\\s_\\)+\\): *"
-                    "\\(.+?\\) *\\(?:--\\|$\\)")
-           1 font-lock-type-face t)
-          ))))
+       (font-lock-add-keywords nil (my/ruby-ext-font-lock-keywords))))
   :config
   ;; workaround: https://gnu.emacs.bug.narkive.com/H2x8ODth/bug-42841-28-0-50-ruby-mode-ruby-beginning-end-of-block-doesn-t-work-as-is-exepected-if-arguments
   (setq ruby-deep-indent-paren (delete ?\( ruby-deep-indent-paren)))
