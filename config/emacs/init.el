@@ -817,9 +817,13 @@ properly disable mozc-mode."
   :ensure t
   :commands my/rubocop-check-project-with-options
   :config
+  (defvar my/rubocop-options--history nil
+    "History of rubocop options for `my/rubocop-check-project-with-options'.")
+
   (defun my/rubocop-check-project-with-options (options)
     "Run check on current project with OPTIONS."
-    (interactive "sOptions: ")
+    (interactive
+     (list (read-string "Options: " nil 'my/rubocop-options--history)))
     (let ((command (concat rubocop-check-command " " options)))
       (rubocop--dir-command command (rubocop-project-root)))))
 
