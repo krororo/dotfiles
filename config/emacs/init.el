@@ -134,27 +134,24 @@
   (defun my/show-buffer-file-name ()
     "Show the full path to the current file in the minibuffer."
     (interactive)
-    (let ((file-name (buffer-file-name)))
-      (if file-name
-          (progn
-            (message file-name)
-            (kill-new file-name))
-        (error "Buffer not visiting a file"))))
+    (if-let* ((file-name (buffer-file-name)))
+        (progn
+          (message file-name)
+          (kill-new file-name))
+      (error "Buffer not visiting a file")))
   (defun my/show-buffer-file-name-relative-vc-root ()
     "Show the relative path of vc root to the current file in the minibuffer."
     (interactive)
-    (let ((file-name (buffer-file-name)))
-      (if file-name
-          (let ((root (vc-root-dir)))
-            (if root
-                (progn
-                  (let ((file-rel-name (file-relative-name file-name root)))
-                    (message file-rel-name)
-                    (kill-new file-rel-name)))
-              (progn
-                (message file-name)
-                (kill-new file-name))))
-        (error "Buffer not visiting a file")))))
+    (if-let* ((file-name (buffer-file-name)))
+        (if-let* ((root (vc-root-dir)))
+            (progn
+              (let ((file-rel-name (file-relative-name file-name root)))
+                (message file-rel-name)
+                (kill-new file-rel-name)))
+          (progn
+            (message file-name)
+            (kill-new file-name)))
+      (error "Buffer not visiting a file"))))
 
 (leaf project
   :custom `(project-list-file . ,(expand-file-name "projects" my/emacs-data-home)))
