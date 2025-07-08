@@ -22,7 +22,7 @@ end
 
 if system('which sqlformat > /dev/null 2>&1')
   def pp_sql(sql)
-    puts `echo #{sql} | sqlformat - -r -k upper`
+    puts `cat <<SQL | sqlformat - -r -k upper\n#{sql}\nSQL`
   end
 end
 
