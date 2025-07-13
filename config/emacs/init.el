@@ -635,7 +635,12 @@ properly disable mozc-mode."
 (leaf open-junk-file
   :ensure t
   :custom
-  (open-junk-file-format . "/tmp/emacs-junk/%Y-%m-%d-%H%M%S."))
+  (open-junk-file-format . "~/junk/%Y-%m-%d-%H%M%S.")
+  :config
+  (defun my/consult-junk-file-grep ()
+    "Search junk files using consult-grep."
+    (interactive)
+    (consult-grep (concat "~/junk/"))))
 
 (leaf sh-mode
   :custom
