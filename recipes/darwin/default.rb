@@ -8,6 +8,7 @@ package 'grep'
 package 'noborus/tap/ov'
 package "uv"
 package 'watch'
+package "yq"
 
 cask "1password-cli"
 cask 'alt-tab'
