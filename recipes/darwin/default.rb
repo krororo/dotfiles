@@ -1,3 +1,4 @@
+package "colima"
 package 'coreutils'
 package "deno"
 package 'findutils'
