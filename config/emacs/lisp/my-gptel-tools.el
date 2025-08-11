@@ -28,8 +28,7 @@
            :type string
            :optional t
            :description "Directory to search in"))
- :category "command"
- :confirm t)
+ :category "command")
 
 (gptel-make-tool
  :function (lambda (url)
@@ -92,8 +91,7 @@
            :type string
            :optional t
            :description "Format string for commit display (e.g., 'oneline', 'short', 'full')"))
- :category "git"
- :confirm t)
+ :category "git")
 
 (gptel-make-tool
  :function (lambda (&optional ref1 ref2 file)
@@ -125,8 +123,7 @@
            :type string
            :optional t
            :description "Specific file to show diff for"))
- :category "git"
- :confirm t)
+ :category "git")
 
 (gptel-make-tool
  :function (lambda (&optional count oneline author since until)
@@ -173,8 +170,7 @@
            :type string
            :optional t
            :description "Show commits until date (e.g., '2023-12-31')"))
- :category "git"
- :confirm t)
+ :category "git")
 
 (gptel-make-tool
  :function (lambda (pattern &optional file-pattern)
@@ -201,7 +197,6 @@
            :type string
            :optional t
            :description "File pattern to limit search (e.g., '*.py', '*.el')"))
- :category "git"
- :confirm t)
+ :category "git")
 
 (provide 'my-gptel-tools)
