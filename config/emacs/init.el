@@ -795,7 +795,9 @@ properly disable mozc-mode."
        1 font-lock-type-face t)))
   :advice
   (:before-until ruby-smie-rules my/ruby-smie-rules)
-  :mode "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
+  :mode
+  "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
+  "Dangerfile\\'"
   :custom ((ruby-block-indent . nil)
            (ruby-bracketed-args-indent . nil)
            (ruby-insert-encoding-magic-comment . nil)
