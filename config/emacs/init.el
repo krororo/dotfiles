@@ -708,7 +708,7 @@ properly disable mozc-mode."
 (leaf markdown-mode
   :ensure t
   :after transient
-  :mode ("\\.md\\'" . gfm-mode)
+  :mode ("\\.mdc?\\'" . gfm-mode)
   :bind (:markdown-mode-map
          ("<S-tab>" . markdown-shifttab)
          ("C-c ." . my/markdown-mode-transient))
