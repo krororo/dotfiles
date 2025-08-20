@@ -975,6 +975,9 @@ properly disable mozc-mode."
       (if-let* ((pr (my/magit-gh-pr-completion-read "GitHub PR number (branch): ")))
         (my/magit-gh-pr-checkout pr nil)))
 
+    (autoload 'my/magit-gh-pr-checkout-detach "consult" nil t)
+    (autoload 'my/magit-gh-pr-checkout-normal "consult" nil t)
+
     (transient-append-suffix 'magit-branch "c"
       '("p" "Checkout PR (detach)" my/magit-gh-pr-checkout-detach))
     (transient-append-suffix 'magit-branch "c"
