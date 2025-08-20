@@ -1200,6 +1200,35 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :custom
   `(request-storage-directory . ,(file-name-concat my/emacs-cache-home "request")))
 
+;; https://naokton.hatenablog.com/entry/2020/12/08/150130
+(leaf vterm
+  :ensure t
+  :bind
+  (:project-prefix-map
+   ("v" . my/project-vterm))
+  :custom
+  (vterm-max-scrollback . 1000)
+  (vterm-keymap-exceptions
+   . '("C-c" "C-x" "C-u" "C-g" "C-l" "C-v" "M-v" "M-x" "M-o" "C-y" "M-y"))
+  ;; TODO: blueがみづらいので調整したい
+  :custom-face
+  (vterm-color-blue . '((t (:foreground "LightSkyBlue1"))))
+  :config
+  (defun my/project-vterm ()
+    "Start Eshell in the current project's root directory.
+If a buffer already exists for running Eshell in the project's root,
+switch to it.  Otherwise, create a new Eshell buffer.
+With \\[universal-argument] prefix arg, create a new Eshell buffer even
+if one already exists."
+    (interactive)
+    (defvar my/vterm-buffer-name)
+    (let* ((default-directory (project-root (project-current t)))
+           (my/vterm-buffer-name (project-prefixed-buffer-name "vterm"))
+           (vterm-buffer (get-buffer my/vterm-buffer-name)))
+      (if (and vterm-buffer (not current-prefix-arg))
+          (pop-to-buffer vterm-buffer (bound-and-true-p display-comint-buffer-action))
+        (vterm t)))))
+
 (let ((local-init (file-name-concat user-emacs-directory "init_local.el")))
   (if (file-exists-p local-init)
       (load-file local-init)))
