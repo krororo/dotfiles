@@ -1,6 +1,9 @@
 package "colima"
 package 'coreutils'
 package "deno"
+package "docker"
+package "docker-compose"
+package "docker-credential-helper"
 package 'findutils'
 package "fzf"
 package "ghq"
