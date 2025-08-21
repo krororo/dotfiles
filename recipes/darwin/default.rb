@@ -10,7 +10,6 @@ package "ghq"
 package "github-mcp-server"
 package 'grep'
 package 'noborus/tap/ov'
-package "notion"
 package "uv"
 package 'watch'
 package "yq"
@@ -24,7 +23,9 @@ cask "font-hackgen-nerd"
 cask 'font-noto-color-emoji'
 # cask 'karabiner-elements' # TBD
 cask "meetingbar"
+cask "notion"
 cask 'raycast'
+cask "superwhisper"
 
 xdg_config "karabiner/karabiner.json"
 
