@@ -1006,10 +1006,9 @@ properly disable mozc-mode."
   :custom ((browse-at-remote-prefer-symbolic . nil)
            (browse-at-remote-preferred-remote-name . "upstream")))
 
-(leaf docker
-  :ensure t
-  :config
-  (leaf dockerfile-mode :ensure t))
+(leaf docker :ensure t)
+
+(leaf dockerfile-mode :ensure t)
 
 (leaf yaml-mode :ensure t)
 
