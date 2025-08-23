@@ -13,6 +13,10 @@ if node[:platform] == 'darwin'
 else
   package 'emacs'
   package "emacs-mozc"
+
+  # for compile vterm
+  package "cmake"
+  package "libtool-bin"
 end
 
 link "#{ENV['HOME']}/.config/emacs" do

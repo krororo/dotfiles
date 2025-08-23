@@ -1208,6 +1208,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   :ensure t
   :bind
   (:project-prefix-map
+   :package project
    ("v" . my/project-vterm))
   :custom
   (vterm-max-scrollback . 1000)
@@ -1218,10 +1219,10 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   (vterm-color-blue . '((t (:foreground "LightSkyBlue1"))))
   :config
   (defun my/project-vterm ()
-    "Start Eshell in the current project's root directory.
-If a buffer already exists for running Eshell in the project's root,
-switch to it.  Otherwise, create a new Eshell buffer.
-With \\[universal-argument] prefix arg, create a new Eshell buffer even
+    "Start vterm in the current project's root directory.
+If a buffer already exists for running vterm in the project's root,
+switch to it.  Otherwise, create a new vterm buffer.
+With \\[universal-argument] prefix arg, create a new vterm buffer even
 if one already exists."
     (interactive)
     (defvar my/vterm-buffer-name)
