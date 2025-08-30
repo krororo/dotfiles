@@ -1131,11 +1131,29 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
        (chat        . "You are a large language model and a conversation partner. Respond concisely. Please respond in Japanese.")))
   (gptel-log-level . 'info)
   (gptel-prompt-prefix-alist . '((markdown-mode . "**Prompt**\n")
+                                 (gfm-mode . "**Prompt**\n")
                                  (text-mode . "**Prompt**\n")))
   (gptel-response-prefix-alist . '((markdown-mode . "**Response**\n")
+                                   (gfm-mode . "**Response**\n")
                                    (text-mode . "**Response**\n")))
+  :preface
+  ;; https://github.com/karthink/gptel/discussions/129
+  (defun my/gptel-write-buffer ()
+    "Save buffer to disk when starting gptel"
+    (unless (buffer-file-name (current-buffer))
+      (let* ((suffix (format-time-string "%Y%m%d-%H%M" (current-time)))
+             (chat-dir
+              (if-let* ((pc (project-current)))
+                  (file-name-concat (project-root pc) ".gptel_sessions")
+                (file-name-concat my/emacs-data-home "gptel_sessions"))))
+        (unless (file-directory-p chat-dir)
+          (make-directory chat-dir :parents))
+        (write-file (file-name-concat chat-dir (concat "gptel-" suffix ".md")))
+        ;; reenable gptel-mode after saving buffer
+        (gptel-mode 1))))
   :hook
   (gptel-post-response-functions . gptel-end-of-response)
+  (gptel-mode-hook . my/gptel-write-buffer)
   :config
   (require 'gptel-integrations)
   (require 'my-gptel-tools)
