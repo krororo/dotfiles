@@ -1141,7 +1141,7 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
   (defun my/gptel-write-buffer ()
     "Save buffer to disk when starting gptel"
     (unless (buffer-file-name (current-buffer))
-      (let* ((suffix (format-time-string "%Y%m%d-%H%M" (current-time)))
+      (let* ((suffix (format-time-string "%Y%m%d-%H%M%S" (current-time)))
              (chat-dir
               (if-let* ((pc (project-current)))
                   (file-name-concat (project-root pc) ".gptel_sessions")
