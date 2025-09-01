@@ -1,9 +1,5 @@
-package "colima"
 package 'coreutils'
 package "deno"
-package "docker"
-package "docker-compose"
-package "docker-credential-helper"
 package 'findutils'
 package "fzf"
 package "ghq"
@@ -31,3 +27,4 @@ xdg_config "karabiner/karabiner.json"
 
 include_recipe "../../cookbooks/aider"
 include_recipe "../../cookbooks/borders"
+include_recipe "../../cookbooks/colima"
