@@ -1151,9 +1151,15 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
         (write-file (file-name-concat chat-dir (concat "gptel-" suffix ".md")))
         ;; reenable gptel-mode after saving buffer
         (gptel-mode 1))))
+  (defun my/gptel-enable-mode-if-session-file ()
+    "Enable gptel-mode if the current buffer is a gptel session file."
+    (when (and (buffer-file-name)
+               (string-match-p "gptel-.*\\.md\\'" (buffer-file-name)))
+      (gptel-mode 1)))
   :hook
   (gptel-post-response-functions . gptel-end-of-response)
   (gptel-mode-hook . my/gptel-write-buffer)
+  (gfm-mode-hook . my/gptel-enable-mode-if-session-file)
   :config
   (require 'gptel-integrations)
   (require 'my-gptel-tools)
