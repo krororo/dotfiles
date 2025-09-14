@@ -487,6 +487,11 @@ properly disable mozc-mode."
       map))
   (consult-customize consult-line :keymap my/consult-line-map))
 
+(leaf consult-flycheck
+  :ensure t
+  :bind
+  ("M-g n" . consult-flycheck))
+
 (leaf consult-ghq
   :if (executable-find "ghq")
   :ensure t
