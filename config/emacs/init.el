@@ -637,15 +637,17 @@ properly disable mozc-mode."
            (eldoc-echo-area-use-multiline-p . nil)
            (eglot-ignored-server-capabilities . '(:documentOnTypeFormattingProvider))))
 
+(defvar my/junk-file-dir (file-name-concat my/emacs-data-home "junk"))
 (leaf open-junk-file
   :ensure t
   :custom
-  (open-junk-file-format . "~/junk/%Y-%m-%d-%H%M%S.")
+  `(open-junk-file-format
+    . ,(file-name-concat my/junk-file-dir "%Y-%m-%d-%H%M%S."))
   :config
   (defun my/consult-junk-file-grep ()
     "Search junk files using consult-grep."
     (interactive)
-    (consult-grep (concat "~/junk/"))))
+    (consult-grep my/junk-file-dir)))
 
 (leaf sh-mode
   :custom
