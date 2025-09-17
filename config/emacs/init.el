@@ -1074,6 +1074,10 @@ properly disable mozc-mode."
   :config
   (auth-source-1password-enable))
 
+(leaf casual-avy
+  :ensure t
+  :bind ("M-g a" . casual-avy-tmenu))
+
 (leaf copilot
   :if (executable-find "node")
   :ensure t
