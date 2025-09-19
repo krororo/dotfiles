@@ -3,6 +3,10 @@
 
 (add-to-list 'load-path (file-name-concat user-emacs-directory "lisp"))
 
+(let ((local-init (file-name-concat user-emacs-directory "init_local.el")))
+  (if (file-exists-p local-init)
+      (load-file local-init)))
+
 (prog1 "leaf"
   (prog1 "install leaf"
     (custom-set-variables
@@ -30,15 +34,10 @@
 (leaf exec-path-from-shell
   :ensure t
   :custom ((exec-path-from-shell-warn-duration-millis . 2000)
-           (exec-path-from-shell-shell-name . "/bin/zsh")
-           (exec-path-from-shell-variables . '("PATH"
-                                               "CIRCLECI_TOKEN"
-                                               "DOCBASE_API_TOKEN"
-                                               "GITHUB_COPILOT_TOKEN"
-                                               "GITHUB_PERSONAL_ACCESS_TOKEN"
-                                               "NODE_EXTRA_CA_CERTS"
-                                               "OPENAI_API_KEY")))
+           (exec-path-from-shell-shell-name . "/bin/zsh"))
   :config
+  (customize-set-variable 'exec-path-from-shell-variables
+                          (append '("PATH") exec-path-from-shell-variables))
   (exec-path-from-shell-initialize))
 
 (leaf package-utils :ensure t)
@@ -1266,7 +1265,3 @@ if one already exists."
       (if (and vterm-buffer (not current-prefix-arg))
           (pop-to-buffer vterm-buffer (bound-and-true-p display-comint-buffer-action))
         (vterm t)))))
-
-(let ((local-init (file-name-concat user-emacs-directory "init_local.el")))
-  (if (file-exists-p local-init)
-      (load-file local-init)))
