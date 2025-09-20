@@ -37,7 +37,10 @@
            (exec-path-from-shell-shell-name . "/bin/zsh"))
   :config
   (customize-set-variable 'exec-path-from-shell-variables
-                          (append '("PATH") exec-path-from-shell-variables))
+                          (append '("PATH")
+                                  (if (boundp 'exec-path-from-shell-variables)
+                                      exec-path-from-shell-variables
+                                    '())))
   (exec-path-from-shell-initialize))
 
 (leaf package-utils :ensure t)
