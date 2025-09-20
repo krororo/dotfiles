@@ -62,3 +62,4 @@ keymap:
       M-r: [C-r, { set_mark: false }]
       M-f: C-f
       M-g: C-g
+      M-k: C-k
