@@ -977,12 +977,12 @@ properly disable mozc-mode."
     (defun my/magit-gh-pr-checkout-detach ()
       (interactive)
       (if-let* ((pr (my/magit-gh-pr-completion-read "GitHub PR number (detach): ")))
-        (my/magit-gh-pr-checkout pr t)))
+          (my/magit-gh-pr-checkout pr t)))
 
     (defun my/magit-gh-pr-checkout-normal ()
       (interactive)
       (if-let* ((pr (my/magit-gh-pr-completion-read "GitHub PR number (branch): ")))
-        (my/magit-gh-pr-checkout pr nil)))
+          (my/magit-gh-pr-checkout pr nil)))
 
     (autoload 'my/magit-gh-pr-checkout-detach "consult" nil t)
     (autoload 'my/magit-gh-pr-checkout-normal "consult" nil t)
@@ -1171,7 +1171,7 @@ properly disable mozc-mode."
     (let ((instruction (read-string
                         (format "Rewrite instruction to %s: " gptel-model)
                         nil 'gptel-rewrite-history)))
-    (gptel--suffix-rewrite instruction))))
+      (gptel--suffix-rewrite instruction))))
 
 (leaf gptel-magit
   :ensure t
@@ -1183,13 +1183,13 @@ properly disable mozc-mode."
   :after gptel
   :config
   (mapcar (apply-partially #'apply #'gptel-make-tool)
-        (llm-tool-collection-get-all)))
+          (llm-tool-collection-get-all)))
 
 (leaf mcp
   :ensure t
   :bind
   (:mcp-hub-mode-map :package mcp-hub
-   ("?" . my/mcp-hub-tmenu))
+                     ("?" . my/mcp-hub-tmenu))
   :transient
   (my/mcp-hub-tmenu
    ()
@@ -1212,7 +1212,7 @@ properly disable mozc-mode."
   (if (executable-find "github-mcp-server")
       (push '("github" . ( :command "github-mcp-server"
                            :args ("stdio" "--read-only")))
-        mcp-hub-servers))
+            mcp-hub-servers))
 
   (advice-add 'mcp-make-text-tool :filter-return
               (lambda (tool-def)
