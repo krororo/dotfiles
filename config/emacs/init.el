@@ -1156,7 +1156,8 @@ properly disable mozc-mode."
   :hook
   (gptel-post-response-functions . gptel-end-of-response)
   (gptel-mode-hook . my/gptel-write-buffer)
-  (gfm-mode-hook . my/gptel-enable-mode-if-session-file)
+  ;; TODO: do not work
+  ;; (gfm-mode-hook . my/gptel-enable-mode-if-session-file)
   :config
   (require 'gptel-integrations)
   (require 'my-gptel-tools)
