@@ -684,7 +684,7 @@ properly disable mozc-mode."
   :custom ((flycheck-check-syntax-automatically . '(mode-enabled save)))
   :hook ruby-mode-hook)
 
-(leaf flycheck-inline
+(leaf flycheck-posframe
   :ensure t
   :after flycheck
   :hook flycheck-mode-hook)
