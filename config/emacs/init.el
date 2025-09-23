@@ -1189,6 +1189,10 @@ Sometimes I'll express emotions like a human. Please respond in Japanese.")
                         nil 'gptel-rewrite-history)))
     (gptel--suffix-rewrite instruction))))
 
+(leaf gptel-magit
+  :ensure t
+  :hook (magit-mode-hook . gptel-magit-install))
+
 (leaf llm-tool-collection
   :ensure t
   :vc (:url "https://github.com/skissue/llm-tool-collection")
