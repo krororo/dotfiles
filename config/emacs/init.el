@@ -1212,7 +1212,10 @@ properly disable mozc-mode."
                                    "~/ghq")))))
   (if (executable-find "github-mcp-server")
       (push '("github" . ( :command "github-mcp-server"
-                           :args ("stdio" "--read-only")))
+                           :args ("stdio"
+                                  "--read-only"
+                                  "--toolsets"
+                                  "context,issues,pull_requests,repos")))
             mcp-hub-servers))
 
   (advice-add 'mcp-make-text-tool :filter-return
