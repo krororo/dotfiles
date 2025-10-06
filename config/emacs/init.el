@@ -1121,7 +1121,7 @@ properly disable mozc-mode."
    :package embark
    ("G" . gptel-menu))
   :custom
-  (gptel-model . 'claude-sonnet-4)
+  (gptel-model . 'claude-sonnet-4.5)
   (gptel-confirm-tool-calls . 'auto)
   `(gptel-gh-github-token-file . ,(file-name-concat my/emacs-cache-home "gptel/copilot-chat/github-token"))
   `(gptel-gh-token-file . ,(file-name-concat my/emacs-cache-home "gptel/copilot-chat/token"))
@@ -1165,7 +1165,9 @@ properly disable mozc-mode."
   :config
   (require 'gptel-integrations)
   (require 'my-gptel-tools)
-  (setopt gptel-backend (gptel-make-gh-copilot "Copilot"))
+  (setopt gptel-backend
+          (gptel-make-gh-copilot "Copilot"
+            :host "api.business.githubcopilot.com"))
 
   (autoload 'gptel--suffix-rewrite "gptel-rewrite" nil t)
   (defun my/gptel-rewrite-region (beg end)
