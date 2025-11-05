@@ -11,7 +11,6 @@ package "yq"
 
 cask "1password-cli"
 cask 'alt-tab'
-cask "claude-code"
 cask 'deepl'
 cask 'devtoys'
 cask "font-hackgen"
