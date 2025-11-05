@@ -1,6 +1,5 @@
 typescript
 typescript-language-server
 yaml-language-server
-@anthropic-ai/claude-code
 @github/copilot
 @github/copilot-language-server
