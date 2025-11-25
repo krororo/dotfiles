@@ -39,6 +39,7 @@
 	editor = vim
 	quotepath = false
 	pager = delta
+	commentChar = ";"
 [rebase]
 	autosquash = true
 	autostash = true
