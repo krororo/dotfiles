@@ -810,7 +810,7 @@ properly disable mozc-mode."
   (:before-until ruby-smie-rules my/ruby-smie-rules)
   :mode
   "\\.\\(ruby\\|plugin\\|irbrc\\)\\'"
-  "Dangerfile\\'"
+  "\\(Danger\\|Steep\\)file\\'"
   :custom ((ruby-block-indent . nil)
            (ruby-bracketed-args-indent . nil)
            (ruby-insert-encoding-magic-comment . nil)
@@ -855,6 +855,8 @@ properly disable mozc-mode."
 
 (leaf rurema-mode
   :mode "\\.rd\\'" "/refm/api/src/[^.]+\\'")
+
+(leaf rbs-mode :ensure t)
 
 (leaf css-mode
   :mode "\\.scss\\'"
