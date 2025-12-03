@@ -444,7 +444,8 @@ properly disable mozc-mode."
 (leaf dired
   :bind (:dired-mode-map
          ("a" . dired-find-file)
-         ("RET" . my/dired-open-in-accordance-with-situation))
+         ("RET" . my/dired-open-in-accordance-with-situation)
+         ("r" . wdired-change-to-wdired-mode))
   :hook (dired-mode-hook . my/dired-append-buffer-name-hint)
   :config
   (put 'dired-find-alternate-file 'disabled nil)
