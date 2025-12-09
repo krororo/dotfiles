@@ -1260,3 +1260,8 @@ if one already exists."
       (if (and vterm-buffer (not current-prefix-arg))
           (pop-to-buffer vterm-buffer (bound-and-true-p display-comint-buffer-action))
         (vterm t)))))
+
+(leaf wgrep
+  :ensure t
+  :custom
+  (wgrep-enable-key . "r"))
