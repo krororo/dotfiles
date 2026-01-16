@@ -1078,6 +1078,14 @@ properly disable mozc-mode."
   :ensure t
   :bind ("M-g a" . casual-avy-tmenu))
 
+(leaf comment-translate
+  :vc (:url "https://github.com/Kyure-A/emacs-comment-translate")
+  :require t
+  :global-minor-mode global-comment-translate-mode
+  :custom
+  (comment-translate-target-language . "ja")
+  (comment-translate-hover-source . 'mouse))
+
 (leaf copilot
   :if (executable-find "node")
   :ensure t
