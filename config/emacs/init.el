@@ -1271,4 +1271,5 @@ if one already exists."
 (leaf wgrep
   :ensure t
   :custom
+  (wgrep-auto-save-buffer . t)
   (wgrep-enable-key . "r"))
