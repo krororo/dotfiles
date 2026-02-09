@@ -942,6 +942,7 @@ properly disable mozc-mode."
   (magit-item-highlight . '((t (:background "gray5"))))
   :hook (git-commit-mode-hook . display-fill-column-indicator-mode)
   :config
+  (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
   (with-eval-after-load 'magit-branch
     (defun my/magit-gh-pr-checkout (pr-number detach)
       (let* ((args (append '("pr" "checkout")
