@@ -4,6 +4,8 @@ xdg_config 'git/ignore'
 
 if node[:platform] == 'darwin'
   package 'git-delta'
+
+  package "k1LoW/tap/git-wt"
 else
   github_release 'git-delta' do
     v = '0.18.2'

@@ -24,7 +24,6 @@
 	puf = push --force-with-lease
 	cp = cherry-pick
 	lg1 = !git --no-pager log --decorate -1
-	wt = worktree
 	fa = fetch --prune --tags --all
 	sw = switch
 	release = !git switch -c release/$(date +\"%Y%m%d%H%M\")
@@ -95,3 +94,5 @@
 	sort = -committerdate
 [column]
 	ui = auto
+[wt]
+	basedir = .worktrees

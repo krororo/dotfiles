@@ -239,6 +239,11 @@ vterm_cmd() {
   vterm_printf "51;E$vterm_elisp"
 }
 
+# git wt
+if which git-wt > /dev/null; then
+  eval "$(git wt --init zsh)"
+fi
+
 # Other
 xset -r 49 >/dev/null 2>&1 || :
 
