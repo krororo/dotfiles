@@ -25,4 +25,4 @@ file "/etc/apt/preferences.d/mozilla" do
   mode "644"
 end
 
-package "firefox-l10n-ja"
+package "firefox"
