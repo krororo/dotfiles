@@ -47,7 +47,7 @@ local_ruby_block "edit plist" do
       %r{(<key>EnvironmentVariables</key>\s*<dict>)}m,
       "\\1\n\t\t<key>XDG_CONFIG_HOME</key>\n\t\t<string>#{ENV['HOME']}/.config</string>"
     )
-    File.write(plist_path, content)
+    File.open(plist_path, "w") { |f| f.write(content) }
   end
   not_if "grep -q XDG_CONFIG_HOME #{plist_path}"
 end

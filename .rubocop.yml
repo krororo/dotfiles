@@ -16,6 +16,10 @@ Style/ExpandPathArguments:
 Style/FetchEnvVar:
   Enabled: false
 
+# NOTE: mruby does not support File.write
+Style/FileWrite:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Exclude:
     - "cookbooks/**/*"
