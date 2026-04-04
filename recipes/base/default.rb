@@ -3,6 +3,7 @@ include_recipe "../../cookbooks/brew"
 dotfile '.vimrc'
 
 xdg_config 'gem/gemrc'
+xdg_config "ghostty/config.ghostty"
 xdg_config 'irb/irbrc'
 xdg_config 'lsd/config.yaml'
 xdg_config 'ov/config.yaml'
