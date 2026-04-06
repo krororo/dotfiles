@@ -18,6 +18,7 @@ cask 'devtoys'
 cask "font-hackgen"
 cask "font-hackgen-nerd"
 cask 'font-noto-color-emoji'
+cask "ghostty"
 # cask 'karabiner-elements' # TBD
 cask "meetingbar"
 cask "notion"
