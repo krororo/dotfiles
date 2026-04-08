@@ -2,7 +2,16 @@ language = ja
 
 theme = Catppuccin Mocha
 
-font-family = HackGen Console
+font-family = HackGen Console NF
 font-size = 16
-background-opacity = 0.8
+background-opacity = 0.9
 background-blur-radius = 15
+
+macos-option-as-alt = left
+
+keybind = cmd+f=esc:f
+keybind = cmd+b=esc:b
+keybind = cmd+d=esc:d
+keybind = cmd+backspace=text:\x1b\x7f
+
+keybind = ctrl+x>3=new_split:right
