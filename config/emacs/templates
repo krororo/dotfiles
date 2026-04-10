@@ -13,6 +13,7 @@ prog-mode
 ruby-mode
 
 (birb "binding.irb")
+(bb "binding.b")
 (cls "class " p  n> q n> "end" >)
 (def "def " (p "name") n> q n> "end" >)
 (do "do" (p "arg: " arg t) (unless (string-empty-p arg) (concat " |" arg "|")) n> r> n "end" >)
