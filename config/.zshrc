@@ -242,6 +242,7 @@ vterm_cmd() {
 # git wt
 if which git-wt > /dev/null; then
   eval "$(git wt --init zsh)"
+  compdef _git-wt-wrapper g
 fi
 
 # Other
