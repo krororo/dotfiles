@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -f pnpm-lock.yaml ]; then
+  echo "pnpm install"
+  pnpm install --ignore-scripts
+fi
+
+if [ -f Gemfile ]; then
+  echo "bundle install"
+  bundle install
+fi
+
+if [ -f bin/worktree-add ]; then
+  echo "run worktree-add"
+  bin/worktree-add
+fi

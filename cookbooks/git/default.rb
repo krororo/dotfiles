@@ -1,6 +1,8 @@
 xdg_config 'git/config'
 xdg_config 'git/commit_template'
 xdg_config 'git/ignore'
+xdg_config "git/worktree-add"
+xdg_config "git/worktree-delete"
 
 if node[:platform] == 'darwin'
   package 'git-delta'
