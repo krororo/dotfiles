@@ -940,7 +940,10 @@ properly disable mozc-mode."
   (magit-diff-removed-highlight . '((t (:foreground "red"))))
   (magit-hash . '((t (:foreground "gold"))))
   (magit-item-highlight . '((t (:background "gray5"))))
-  :hook (git-commit-mode-hook . display-fill-column-indicator-mode)
+  :hook
+  (git-commit-mode-hook . display-fill-column-indicator-mode)
+  (git-commit-mode-hook . (lambda ()
+                            (setq-local corfu-auto nil)))
   :config
   (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
   (with-eval-after-load 'magit-branch
