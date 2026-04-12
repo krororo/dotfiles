@@ -16,4 +16,12 @@ else
     filename "git-delta_#{v}_amd64.deb"
     not_if %(command -v delta && [ $(delta --version | egrep -o "([0-9]+.){2}[0-9]+") = #{v} ])
   end
+
+  github_release "git-wt" do
+    v = "0.26.2"
+    repository "k1LoW/git-wt"
+    version "v#{v}"
+    filename "git-wt_#{v}-1_amd64.deb"
+    not_if %(command -v git-wt && [ $(git-wt --version | egrep -o "([0-9]+.){2}[0-9]+") = #{v} ])
+  end
 end
