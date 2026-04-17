@@ -12,6 +12,7 @@ package "yq"
 cask "1password-cli"
 cask 'alt-tab'
 cask "claude-code@latest"
+cask "codex"
 cask "copilot-cli"
 cask 'deepl'
 cask 'devtoys'
