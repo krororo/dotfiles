@@ -125,7 +125,7 @@ if [ -d /opt/homebrew ] && ls /opt/homebrew/opt/*/libexec/gnubin &>/dev/null; th
   done
 fi
 
-alias gae-ssh='(){ gcloud --project $1 app instances ssh $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" --filter="instance.vmLiveness=HEALTHY" | jq -r ".[0].id") --service $2 --version $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" --filter="instance.vmLiveness=HEALTHY" | jq -r ".[0].version") }'
+alias gae-ssh='(){ TERM=xterm-256color gcloud --project $1 app instances ssh $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" --filter="instance.vmLiveness=HEALTHY" | jq -r ".[0].id") --service $2 --version $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" --filter="instance.vmLiveness=HEALTHY" | jq -r ".[0].version") }'
 alias gae-scp-local='(){ gcloud --project $1 app instances scp $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" --filter="instance.vmLiveness=HEALTHY" | jq -r ".[0].id"):$3 --service $2 --version $(gcloud --project $1 --format json app instances list --service $2 --sort-by="~instance.startTime" --filter="instance.vmLiveness=HEALTHY" | jq -r ".[0].version") $4 }'
 
 # Plugin
