@@ -240,9 +240,87 @@ vterm_cmd() {
 }
 
 # git wt
+_git_worktree_format() {
+  local root=$1
+  local git_cmd=$2
+  local line path branch mark is_root
+  local base_branch=$("$git_cmd" symbolic-ref --quiet refs/remotes/origin/HEAD 2>/dev/null)
+  base_branch=${base_branch#refs/remotes/origin/}
+  base_branch=${base_branch:-main}
+
+  while read -r line; do
+    path=${line%% *}
+    branch=${line##*\[}
+    branch=${branch%\]*}
+    if [[ $line == *"(detached HEAD)"* ]]; then
+      branch="(detached)"
+    fi
+    if ! "$git_cmd" -C "$path" diff --quiet HEAD 2>/dev/null; then
+      mark="*"
+    elif [[ "$branch" != "$base_branch" ]] && [ -z "$("$git_cmd" -C "$path" log "origin/${base_branch}...HEAD" --oneline 2>/dev/null)" ]; then
+      mark="x"
+    else
+      mark=""
+    fi
+    if [ "$path" = "$root" ]; then
+      is_root="(root)"
+    else
+      is_root=""
+    fi
+    print "${path}\t[${branch}]${mark}\t${is_root}"
+  done
+}
+
+_git_worktree_colorize() {
+  sed -e $'s/\\[\\([^]]*\\)\\]\\*(root)/\e[1;36m[\\1]\e[1;31m*\e[0m\\2\e[90m(root)\e[0m/' \
+      -e $'s/\\[\\([^]]*\\)\\]x\\(.*\\)(root)/\e[1;36m[\\1]\e[1;31mx\e[0m\\2\e[90m(root)\e[0m/' \
+      -e $'s/\\[\\([^]]*\\)\\] \\(.*\\)(root)/\e[1;36m[\\1]\e[0m \\2\e[90m(root)\e[0m/' \
+      -e $'s/\\[\\([^]]*\\)\\]\\*/\e[1;33m[\\1]\e[1;31m*\e[0m/' \
+      -e $'s/\\[\\([^]]*\\)\\]x/\e[1;33m[\\1]\e[1;31mx\e[0m/' \
+      -e $'s/\\[\\([^]]*\\)\\] /\e[1;33m[\\1]\e[0m /'
+}
+
+# alt-w で起動
+# enter:cd | C-e:editor | C-d:delete | C-k:delete(force)
+git_worktree_list() {
+  local worktrees=$(git worktree list)
+  local root=$(echo "$worktrees" | head -1 | awk '{print $1}')
+  local result=$(
+    echo "$worktrees" | _git_worktree_format "$root" "git" | column -ts $'\t' | _git_worktree_colorize |
+    fzf --ansi \
+      --no-sort \
+      --header 'enter:cd | C-e:editor | C-d:delete | C-k:delete(force)' \
+      --expect ctrl-e,ctrl-d,ctrl-k \
+      --bind 'ctrl-d:execute-silent(git wt -d {1})+abort,ctrl-k:execute-silent(git wt -D {1})+abort'
+  )
+
+  local key="${result%%$'\n'*}"
+  local selection="${result#*$'\n'}"
+  local path=$(echo "$selection" | awk '{print $1}')
+
+  case "$key" in
+    ctrl-e)
+      BUFFER="e '$path'"
+      zle accept-line
+      return
+      ;;
+    *)
+      if [ -n "$path" ]; then
+        BUFFER="cd ${path}"
+        zle accept-line
+        return
+      fi
+      ;;
+  esac
+  zle -R -c
+}
+
 if which git-wt > /dev/null; then
   eval "$(git wt --init zsh)"
   compdef _git-wt-wrapper g
+
+  zle -N git_worktree_list
+  bindkey '^[w' git_worktree_list
 fi
 
 # Other
