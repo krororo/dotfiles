@@ -24,8 +24,11 @@ keybind = cmd+s=start_search
 keybind = ctrl+x>3=new_split:right
 
 # workaround
-keybind = ctrl+n=text:\x0e
-keybind = ctrl+p=text:\x10
-keybind = ctrl+m=text:\x0d
+keybind = ctrl+g=text:\x07
+keybind = ctrl+h=text:\x08
 keybind = ctrl+i=text:\x09
+keybind = ctrl+k=text:\x0b
+keybind = ctrl+n=text:\x0e
+keybind = ctrl+m=text:\x0d
+keybind = ctrl+p=text:\x10
 keybind = ctrl+[=text:\x1b
