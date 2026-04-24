@@ -24,7 +24,6 @@ cask "ghostty"
 cask "meetingbar"
 cask "notion"
 cask 'raycast'
-cask "superwhisper"
 
 xdg_config "karabiner/karabiner.json"
 
