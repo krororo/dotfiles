@@ -32,8 +32,8 @@ if version.nil?
   raise "GitHub responded unexpectedly!"
 end
 
-linux_shasum = latest_sha256_for("mitamae-x86_64-linux.tar.gz", parsed_body['assets'])
-darwin_shasum = latest_sha256_for("mitamae-aarch64-darwin.tar.gz", parsed_body['assets'])
+linux_shasum = latest_sha256_for("mitamae-x86_64-linux", parsed_body['assets'])
+darwin_shasum = latest_sha256_for("mitamae-aarch64-darwin", parsed_body['assets'])
 
 setup_file = "#{__dir__}/setup"
 source = File.read(setup_file)
