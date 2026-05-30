@@ -1,7 +1,6 @@
 package 'coreutils'
 package "deno"
 package 'findutils'
-package "fzf"
 package "ghq"
 package "github-mcp-server"
 package 'grep'
