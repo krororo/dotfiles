@@ -19,5 +19,4 @@ include_recipe '../../cookbooks/gh'
 include_recipe "../../cookbooks/ghostty"
 include_recipe '../../cookbooks/git'
 include_recipe '../../cookbooks/mise'
-include_recipe "../../cookbooks/wezterm"
 include_recipe '../../cookbooks/zsh'
