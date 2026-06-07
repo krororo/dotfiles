@@ -362,7 +362,8 @@
                         (+ (count-lines (point-max) (point-min)) 1)))))
 
 (leaf mozc
-  :if (executable-find "mozc_emacs_helper")
+  ;; :if (executable-find "mozc_emacs_helper")
+  :disabled t
   :init
   (leaf popup :ensure t)
   :require mozc-popup
@@ -1114,6 +1115,43 @@ properly disable mozc-mode."
                        (projects  . 5)))
   :config
   (dashboard-setup-startup-hook))
+
+(leaf ddskk
+  :ensure t
+  :url "https://github.com/skk-dev/ddskk"
+  :bind
+  ("C-x C-j" . skk-mode)
+  ("<henkan>" . skk-kakutei)
+  ("<muhenkan>" . skk-latin-mode)
+  :custom
+  (skk-dcomp-activate . t)
+  `(skk-get-jisyo-directory
+    . ,(file-name-concat my/emacs-data-home "skk-get-jisyo"))
+  ;; (skk-kakutei-key . "\C-S-j")
+  (skk-show-inline . 'vertical)
+  `(skk-user-directory . ,(file-name-concat (xdg-config-home) "ddskk"))
+  :preface
+  ;; ref. skk-setup.el
+  (defun skk-isearch-setup-maybe ()
+    (require 'skk-vars)
+    (when (or (eq skk-isearch-mode-enable 'always)
+              (and (boundp 'skk-mode)
+                   skk-mode
+                   skk-isearch-mode-enable))
+      (skk-isearch-mode-setup)))
+
+  (defun skk-isearch-cleanup-maybe ()
+    (require 'skk-vars)
+    (when (and (featurep 'skk-isearch)
+               skk-isearch-mode-enable)
+      (skk-isearch-mode-cleanup)))
+
+  (defun my/always-enable-skk-latin-mode-hook ()
+    (skk-latin-mode 1))
+  :hook
+  (find-file-hooks . my/always-enable-skk-latin-mode-hook)
+  (isearch-mode-hook . skk-isearch-setup-maybe)
+  (isearch-mode-end-hook . skk-isearch-cleanup-maybe))
 
 (leaf gptel
   :ensure t
