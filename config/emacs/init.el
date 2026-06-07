@@ -1146,10 +1146,11 @@ properly disable mozc-mode."
                skk-isearch-mode-enable)
       (skk-isearch-mode-cleanup)))
 
-  (defun my/always-enable-skk-latin-mode-hook ()
+  (defun my/skk-always-enable-latin-mode-hook ()
     (skk-latin-mode 1))
   :hook
-  (find-file-hooks . my/always-enable-skk-latin-mode-hook)
+  (find-file-hooks . my/skk-always-enable-latin-mode-hook)
+  (git-commit-mode-hook . my/skk-always-enable-latin-mode-hook)
   (isearch-mode-hook . skk-isearch-setup-maybe)
   (isearch-mode-end-hook . skk-isearch-cleanup-maybe))
 
