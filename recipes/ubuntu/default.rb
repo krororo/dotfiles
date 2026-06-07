@@ -15,6 +15,7 @@ include_recipe "../../cookbooks/firefox"
 include_recipe '../../cookbooks/xremap'
 
 package "fcitx5-mozc"
+package "fcitx5-skk"
 package 'fonts-noto-color-emoji'
 
 dotfile ".Xresources"
