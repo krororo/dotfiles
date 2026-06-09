@@ -62,6 +62,21 @@ LANG=C xdg-user-dirs-update --force
 - 入力モードの「英字」をチェック
 - ABC キーボードを削除
 
+もしくは ~/Library/KeyBindings/DefaultKeyBinding.dict によるキーバインドの変更。
+上記のファイルに以下を記載する。
+デフォルトでは ~/Library/KeyBindings ディレクトリは存在しないので作成する必要がある。
+
+```
+{
+  "¥" = ("insertText:", "\\");
+  "~\\" = ("insertText:", "¥");
+}
+```
+
+追加後に再ログインすると有効になる。
+
+ref. https://texwiki.texjp.org/?Mac#defaultkeybinding-dict
+
 ### クォートが勝手に変換されないようにする
 システム環境設定 → キーボード → ユーザ辞書
 
