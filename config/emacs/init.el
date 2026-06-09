@@ -1125,6 +1125,7 @@ properly disable mozc-mode."
   ("<muhenkan>" . skk-latin-mode)
   :custom
   (skk-dcomp-activate . t)
+  (skk-egg-like-newline . t)
   `(skk-get-jisyo-directory
     . ,(file-name-concat my/emacs-data-home "skk-get-jisyo"))
   ;; (skk-kakutei-key . "\C-S-j")
