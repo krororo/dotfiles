@@ -55,7 +55,7 @@ define :cask do
 end
 
 define :brew_tap do
-  execute "brew tap #{params[:name]}" do
+  execute "brew tap #{params[:name]} && brew trust #{params[:name]}" do
     not_if "brew tap | grep -ix #{params[:name]}"
   end
 end
