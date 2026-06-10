@@ -1125,11 +1125,13 @@ properly disable mozc-mode."
   ("<muhenkan>" . skk-latin-mode)
   :custom
   (skk-dcomp-activate . t)
+  (skk-dcomp-multiple-activate . t)
   (skk-egg-like-newline . t)
   `(skk-get-jisyo-directory
     . ,(file-name-concat my/emacs-data-home "skk-get-jisyo"))
   ;; (skk-kakutei-key . "\C-S-j")
   (skk-show-inline . 'vertical)
+  (skk-sticky-key . ";")
   `(skk-user-directory . ,(file-name-concat (xdg-config-home) "ddskk"))
   :preface
   ;; ref. skk-setup.el
@@ -1153,7 +1155,10 @@ properly disable mozc-mode."
   (find-file-hooks . my/skk-always-enable-latin-mode-hook)
   (git-commit-mode-hook . my/skk-always-enable-latin-mode-hook)
   (isearch-mode-hook . skk-isearch-setup-maybe)
-  (isearch-mode-end-hook . skk-isearch-cleanup-maybe))
+  (isearch-mode-end-hook . skk-isearch-cleanup-maybe)
+  :config
+  (add-to-list 'skk-rom-kana-base-rule-list '("(" nil "（"))
+  (add-to-list 'skk-rom-kana-base-rule-list '(")" nil "）")))
 
 (leaf gptel
   :ensure t
