@@ -1093,6 +1093,7 @@ properly disable mozc-mode."
 (leaf copilot
   :if (executable-find "node")
   :ensure t
+  :url "https://github.com/copilot-emacs/copilot.el"
   :hook (prog-mode-hook yaml-mode-hook)
   ;; ref: https://github.com/copilot-emacs/copilot.el/issues/103
   :bind ((:copilot-completion-map
@@ -1162,6 +1163,7 @@ properly disable mozc-mode."
 
 (leaf gptel
   :ensure t
+  :url "https://github.com/karthink/gptel"
   :bind
   ("C-c g m" . gptel-menu)
   ("C-c g t" . gptel-tools)
