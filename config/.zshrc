@@ -312,7 +312,7 @@ git_worktree_list() {
       fi
       ;;
   esac
-  zle -R -c
+  zle reset-prompt
 }
 
 if which git-wt > /dev/null; then
