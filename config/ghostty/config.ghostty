@@ -10,7 +10,7 @@ window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
 
-selection-word-chars = " \t'\"│`|:;,()[]{}<>$."
+selection-word-chars = " \t'\"│`|:;,()[]{}<>$"
 copy-on-select = true
 
 keybind = ctrl+x>3=new_split:right
