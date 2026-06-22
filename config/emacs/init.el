@@ -1155,6 +1155,7 @@ properly disable mozc-mode."
   :hook
   (find-file-hooks . my/skk-always-enable-latin-mode-hook)
   (git-commit-mode-hook . my/skk-always-enable-latin-mode-hook)
+  (gptel-mode-hook . my/skk-always-enable-latin-mode-hook)
   (isearch-mode-hook . skk-isearch-setup-maybe)
   (isearch-mode-end-hook . skk-isearch-cleanup-maybe)
   :config
