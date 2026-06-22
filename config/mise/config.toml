@@ -6,6 +6,13 @@ python = "3.13.5"
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
 minimum_release_age = "7d"
+experimental = true
 
 [settings.ruby]
 compile = false
+
+# https://mise.jdx.dev/bootstrap/macos-defaults.html
+#
+# $ mise bootstrap macos-defaults apply
+[bootstrap.macos.defaults]
+NSGlobalDomain.NSWindowShouldDragOnGesture = true
