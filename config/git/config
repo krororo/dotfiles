@@ -1,23 +1,23 @@
 [alias]
 	gconf = config --global
 	st = !git status --short && echo '----' && git --no-pager stash list
-	lg = log --decorate --date=iso --graph
+	lg = log --decorate --date=iso --graph --graph-lane-limit=5
 	ci = commit
 	br = branch -v
 	co = checkout
 	di = diff
 	f = fetch --tags
-	lgo = log --oneline --decorate --graph --date=iso
+	lgo = log --oneline --decorate --graph --graph-lane-limit=5 --date=iso
 	fp = fetch --prune --tags
 	ss = stash
 	sp = stash pop
 	mg = merge --no-edit
 	lgp = log -p --decorate --date=iso
-	lgn = log --decorate --graph --name-status --date=iso
+	lgn = log --decorate --graph --graph-lane-limit=5 --name-status --date=iso
 	dc = diff --cached
 	brr = branch -vr
 	bd = branch -d
-	lga = log --graph --decorate --oneline --all
+	lga = log --graph --graph-lane-limit=5 --decorate --oneline --all
 	lgr = log -p --reverse
 	p = pull
 	pu = push
