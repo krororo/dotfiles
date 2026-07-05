@@ -1002,7 +1002,30 @@ properly disable mozc-mode."
     (transient-append-suffix 'magit-branch "c"
       '("p" "Checkout PR (detach)" my/magit-gh-pr-checkout-detach))
     (transient-append-suffix 'magit-branch "c"
-      '("P" "Checkout PR (branch)" my/magit-gh-pr-checkout-normal))))
+      '("P" "Checkout PR (branch)" my/magit-gh-pr-checkout-normal)))
+
+  (with-eval-after-load 'magit-worktree
+    (defun my/magit-wt-add-with-branch (branch start-point)
+      "Create a new worktree with BRANCH at branch or revision START-POINT."
+      (interactive
+       (magit-branch-read-args "In new worktree; checkout new branch"))
+      (let ((default-directory (magit-toplevel)))
+        (magit-run-git "wt" branch start-point)))
+
+    (defun my/magit-wt-delete-worktree (worktree)
+      "Delete a WORKTREE."
+      (interactive
+       (list (magit-completing-read "Delete worktree"
+                                 (mapcar #'car (cdr (magit-list-worktrees)))
+                                 nil t nil nil
+                                 (magit-section-value-if 'worktree))))
+      (let ((default-directory (magit-toplevel)))
+        (magit-run-git "wt" "-D" worktree)))
+
+    (transient-append-suffix 'magit-worktree "c"
+      '("C" "branch and worktree(wt)" my/magit-wt-add-with-branch))
+    (transient-append-suffix 'magit-worktree "k"
+      '("d" "Delete worktree(wt)" my/magit-wt-delete-worktree))))
 
 (leaf xterm-color
   :ensure t
