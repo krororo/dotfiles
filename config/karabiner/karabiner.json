@@ -122,7 +122,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "escape"
+                    "key_code": "vk_none"
                   }
                 ],
                 "conditions": [
