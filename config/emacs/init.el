@@ -483,6 +483,24 @@ properly disable mozc-mode."
          ("M-g M-g" . consult-goto-line)
          ("M-g i" . consult-imenu)
          ("M-s g" . consult-git-grep))
+  :preface
+  (defun my/consult-git-grep-pathspec-advice (make-builder paths)
+    "Advice for `consult--git-grep-make-builder' adding pathspec support.
+Input after `~~' is treated as git pathspec."
+    (let ((builder (funcall make-builder nil)))
+      (lambda (input)
+        (setq input (substring-no-properties input))
+        (let* ((parts (split-string input " ~~ " t "[ \t]+"))
+               (new-input (car parts))
+               (pathspec (when (cdr parts)
+                           (split-string-shell-command
+                            (string-join (cdr parts) " ")))))
+          (let ((result (funcall builder new-input)))
+            (when result
+              (setcar result (append (car result) '("--") paths pathspec)))
+            result)))))
+  :advice
+  (:around consult--git-grep-make-builder my/consult-git-grep-pathspec-advice)
   :config
   (consult-customize
    consult-source-recent-file
