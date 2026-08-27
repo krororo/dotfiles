@@ -10,7 +10,14 @@ if [ -f Gemfile ]; then
   bundle install
 fi
 
-if [ -f bin/worktree-add ]; then
-  echo "run worktree-add"
-  bin/worktree-add
+worktrees=$(git worktree list)
+root=$(echo "$worktrees" | head -1 | awk '{print $1}')
+if [ -f "$root/CLAUDE.local.md" ]; then
+  echo "copy CLAUDE.local.md from worktree root"
+  cp "$root/CLAUDE.local.md" .
+fi
+if [ -f "$root/.claude/settings.local.json" ]; then
+  echo "copy settings.local.json from worktree root"
+  mkdir -p .claude
+  cp "$root/.claude/settings.local.json" .claude/
 fi
