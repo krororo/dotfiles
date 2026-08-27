@@ -8,7 +8,9 @@ package 'findutils'
 package "ghq"
 package "github-mcp-server"
 package 'grep'
+package "logrotate"
 package 'noborus/tap/ov'
+package "pgcli"
 package 'watch'
 package "yq"
 
