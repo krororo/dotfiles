@@ -2,3 +2,4 @@
 .gptel_sessions
 .worktrees
 **/.claude/settings.local.json
+**/.claude/.cc-writes/
