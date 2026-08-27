@@ -1,3 +1,7 @@
+directory "#{ENV['HOME']}/bin" do
+  user node[:user]
+end
+
 package 'coreutils'
 package "deno"
 package 'findutils'
