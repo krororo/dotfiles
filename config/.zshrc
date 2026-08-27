@@ -69,13 +69,13 @@ elif [ -f ${brew_prefix}/etc/bash_completion.d/git-prompt.sh ]; then
 fi
 setopt prompt_subst
 git_prompt='$(__git_ps1 " (\e[01;32m%s\e[00m)")'
-PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
+PROMPT="%n: %B%{${fg[red]}%}%(5~|%-1~/…/%2~|%~)%f%b%r${git_prompt}
 %{$fg[green]%}$%{$reset_color%} "
 RPROMPT=''
 SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%f%b "
 
 prompt_precmd() {
-  PROMPT="%n: %B%{${fg[red]}%}%~%f%b%r${git_prompt}
+  PROMPT="%n: %B%{${fg[red]}%}%(5~|%-1~/…/%2~|%~)%f%b%r${git_prompt}
 %{%(?.$fg[green].$fg[red])%}$%{$reset_color%} "
 }
 add-zsh-hook precmd prompt_precmd
