@@ -5,8 +5,8 @@ xdg_config "git/worktree-add"
 xdg_config "git/worktree-delete"
 
 if node[:platform] == 'darwin'
+  package "git"
   package 'git-delta'
-
   package "k1LoW/tap/git-wt"
 else
   github_release 'git-delta' do
