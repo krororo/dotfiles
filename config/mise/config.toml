@@ -16,3 +16,4 @@ compile = false
 # $ mise bootstrap macos-defaults apply
 [bootstrap.macos.defaults]
 NSGlobalDomain.NSWindowShouldDragOnGesture = true
+NSGlobalDomain.ApplePressAndHoldEnabled = false
