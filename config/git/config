@@ -98,3 +98,4 @@
 	basedir = .worktrees
 	hook = ~/.config/git/worktree-add
 	deletehook = ~/.config/git/worktree-delete
+	nocd = create
