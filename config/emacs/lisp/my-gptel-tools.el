@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; https://github.com/karthink/gptel/wiki/Tools-collection
 
 (gptel-make-tool
