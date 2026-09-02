@@ -29,6 +29,7 @@ cask "macskk"
 cask "meetingbar"
 cask "notion"
 cask 'raycast'
+cask "stablyai/orca/orca"
 
 xdg_config "karabiner/karabiner.json"
 
