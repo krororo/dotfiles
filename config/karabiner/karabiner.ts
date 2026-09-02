@@ -2,7 +2,7 @@
  * $ deno run --allow-env --allow-read --allow-write ./config/karabiner/karabiner.ts
  */
 
-import { rule, map, ifApp, writeToProfile } from 'https://deno.land/x/karabinerts@1.38.0/deno.ts'
+import { rule, map, ifApp, ifInputSource, writeToProfile } from 'https://deno.land/x/karabinerts@1.38.0/deno.ts'
 
 const targetApps = [
   "^com\\.tinyspeck\\.slackmacgap$",
@@ -22,6 +22,13 @@ writeToProfile(
         map('n', 'control').to('down_arrow'),
         map('g', 'control').to('vk_none'),
         map('h', 'control').to('delete_or_backspace'),
+      ]),
+
+    rule('macSKK for Orca', ifApp('^com\\.stablyai\\.orca$'))
+      .manipulators([
+        map('j', 'control').to('japanese_kana').condition(ifInputSource({
+          input_source_id: '^net\\.mtgto\\.inputmethod\\.macSKK\\.(ascii|hiragana|katakana|hankaku|eisu)$'
+        })),
       ])
   ]
 )
