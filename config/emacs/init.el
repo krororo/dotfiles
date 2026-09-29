@@ -68,7 +68,7 @@
            (ring-bell-function . 'ignore)
            (safe-local-variable-values . '((encoding . utf-8)))
            (split-height-threshold . nil)
-           (warning-suppress-types . '((native-compiler files missing-lexbind-cookie))))
+           (warning-suppress-types . '((native-compiler) (files missing-lexbind-cookie))))
   :custom-face
   (default . '((t (:background "#003300" :foreground "white" :height 140 :foundry "PfEd" :family "HackGen"))))
   (font-lock-comment-face . '((t (:foreground "gray"))))
