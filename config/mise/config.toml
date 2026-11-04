@@ -10,7 +10,6 @@ node = "24.1.0"
 "npm:typescript-language-server" = "latest"
 "npm:yaml-language-server" = "latest"
 "npm:@github/copilot-language-server" = "latest"
-"npm:profile-viewer" = "latest"
 python = "3.13.5"
 
 [settings]
