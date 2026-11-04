@@ -1,6 +1,16 @@
 [tools]
 ruby = "4.0.5"
+"gem:profile-viewer" = "latest"
+"gem:rubocop" = "latest"
+"gem:solargraph" = "latest"
+"gem:solargraph-rails" = "latest"
+"gem:solargraph-rspec" = "latest"
 node = "24.1.0"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:@github/copilot-language-server" = "latest"
+"npm:profile-viewer" = "latest"
 python = "3.13.5"
 
 [settings]
