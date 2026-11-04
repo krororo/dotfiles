@@ -2,6 +2,8 @@ directory "#{ENV['HOME']}/bin" do
   user node[:user]
 end
 
+brew_tap "stablyai/orca"
+
 package 'coreutils'
 package "deno"
 package 'findutils'
@@ -28,8 +30,8 @@ cask "karabiner-elements"
 cask "macskk"
 cask "meetingbar"
 cask "notion"
+cask "orca"
 cask 'raycast'
-cask "stablyai/orca/orca"
 
 xdg_config "karabiner/karabiner.json"
 
