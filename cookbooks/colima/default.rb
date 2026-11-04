@@ -43,13 +43,22 @@ local_ruby_block "edit colima config" do
   not_if "test ! -f #{config_path} || grep -q cloudflare.crt #{config_path}"
 end
 
-plist_path = "#{ENV['HOME']}/.config/colima/colima.plist"
-template plist_path do
-  source "templates/colima.plist.erb"
+[
+  "#{ENV['HOME']}/.config",
+  "#{ENV['HOME']}/.config/homebrew",
+  "#{ENV['HOME']}/.config/homebrew/services",
+].each do |dir|
+  directory dir do
+    user node[:user]
+  end
+end
+
+template "#{ENV['HOME']}/.config/homebrew/services/colima.env" do
+  source "templates/colima.env.erb"
   mode "644"
   owner node[:user]
 end
 
-execute "brew services start colima --file=#{plist_path}" do
+execute "brew services start colima" do
   not_if "brew services list | grep colima | grep started"
 end
