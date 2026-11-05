@@ -1,5 +1,5 @@
 [tools]
-ruby = "4.0.5"
+ruby = "4.0.9"
 "gem:profile-viewer" = "latest"
 "gem:rubocop" = "latest"
 "gem:solargraph" = "latest"
